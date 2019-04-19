@@ -35,7 +35,7 @@
     </div>
 
     <div class="form-group">
-        <label for="cpf"><span>*</span>RG:</label>
+        <label for="cpf"><span>*</span>CPF:</label>
         <input type="text" class="form-control" id="cpf" placeholder="Informe seu CPF">
     </div>
 
