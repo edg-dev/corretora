@@ -1,5 +1,5 @@
 <?php include '../Templates/header.php'; ?>
-
+<h2> Cadastro de Pessoa Física </h2>
 <form>
 
     <div class="form-group">

@@ -38,8 +38,8 @@
                         Cadastros
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="View/Cadastro/PessoaFisica.php">Pessoa Física</a>
-                        <a class="dropdown-item" href="View/Cadastro/PessoaJuridica.php">Pessoa Juridica</a>
+                        <a class="dropdown-item" href="/Projeto-Integrador-V/View/Cadastro/PessoaFisica.php">Pessoa Física</a>
+                        <a class="dropdown-item" href="/Projeto-Integrador-V/View/Cadastro/PessoaJuridica.php">Pessoa Juridica</a>
                     <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
