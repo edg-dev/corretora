@@ -12,4 +12,3 @@ Serão utilizados:
 - Entre outros.
 
 # EDG Dev.
-//comentario teste
