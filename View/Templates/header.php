@@ -14,8 +14,7 @@
         <script src="/Projeto-Integrador-V/Config/JS/jquery-3.2.1.min.js"></script>
         <script src="/Projeto-Integrador-V/Config/JS/bootstrap.js"></script>
         <script src="/Projeto-Integrador-V/Config/JS/init.js"></script>
-
-
+      
     </head>
 
 <body>
