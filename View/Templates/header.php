@@ -11,9 +11,9 @@
         <link href="/Projeto-Integrador-V/Config/Bootstrap/bootstrap.css" type="text/css" rel="stylesheet">
 
         <!-- JavaScript  -->
-        <script src="/Projeto-Integrador-V/Config/JS/jquery-3.2.1.min.js"></script>
-        <script src="/Projeto-Integrador-V/Config/JS/bootstrap.js"></script>
-        <script src="/Projeto-Integrador-V/Config/JS/init.js"></script>
+        <script src="/corretora/Config/JS/jquery-3.2.1.min.js"></script>
+        <script src="/corretora/Config/JS/bootstrap.js"></script>
+        <script src="/corretora/Config/JS/init.js"></script>
       
     </head>
 
@@ -38,10 +38,10 @@
                         Cadastros
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/Projeto-Integrador-V/View/Cadastro/PessoaFisica.php">Pessoa Física</a>
-                        <a class="dropdown-item" href="/Projeto-Integrador-V/View/Cadastro/PessoaJuridica.php">Pessoa Juridica</a>
+                        <a class="dropdown-item" href="/corretora/View/Cadastro/PessoaFisica.php">Pessoa Física</a>
+                        <a class="dropdown-item" href="/corretora/View/Cadastro/PessoaJuridica.php">Pessoa Juridica</a>
                     <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#">Apenas teste</a>
                     </div>
                 </li>
             </ul>
@@ -51,3 +51,4 @@
             </form>
         </div>
     </nav>
+    <div class="container">
