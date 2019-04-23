@@ -38,6 +38,7 @@
                         Cadastros
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        
                         <a class="dropdown-item" href="/corretora/View/Cadastro/PessoaFisica.php">Pessoa Física</a>
                         <a class="dropdown-item" href="/corretora/View/Cadastro/PessoaJuridica.php">Pessoa Juridica</a>
                         <a class="dropdown-item" href="/corretora/View/Cadastro/Imovel.php">Imóvel</a>
