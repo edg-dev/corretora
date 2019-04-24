@@ -8,7 +8,7 @@
         <title>Título teste</title>
 
         <!-- CSS  -->
-        <link href="/Projeto-Integrador-V/Config/Bootstrap/bootstrap.css" type="text/css" rel="stylesheet">
+        <link href="/corretora/Config/Bootstrap/bootstrap.css" type="text/css" rel="stylesheet">
 
         <!-- JavaScript  -->
         <script src="/corretora/Config/JS/jquery-3.2.1.min.js"></script>
@@ -38,11 +38,11 @@
                         Cadastros
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      
+                        
                         <a class="dropdown-item" href="/corretora/View/Cadastro/PessoaFisica.php">Pessoa Física</a>
                         <a class="dropdown-item" href="/corretora/View/Cadastro/PessoaJuridica.php">Pessoa Juridica</a>
                         <a class="dropdown-item" href="/corretora/View/Cadastro/Imovel.php">Imóvel</a>
-                  
+
                     <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Apenas teste</a>
                     </div>
