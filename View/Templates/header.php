@@ -8,7 +8,7 @@
         <title>Título teste</title>
 
         <!-- CSS  -->
-        <link href="/Projeto-Integrador-V/Config/Bootstrap/bootstrap.css" type="text/css" rel="stylesheet">
+        <link href="/corretora/Config/Bootstrap/bootstrap.css" type="text/css" rel="stylesheet">
 
         <!-- JavaScript  -->
         <script src="/corretora/Config/JS/jquery-3.2.1.min.js"></script>
