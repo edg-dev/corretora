@@ -46,6 +46,12 @@
                     <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Apenas teste</a>
                     </div>
+
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/corretora/View/login/user/login-user.php">Login</a>
+                </li>
+
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
