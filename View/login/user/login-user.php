@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-             <title>Imobiliaria | Log in</title>
-         <!-- Fala pro navegador pra responder à largura da tela -->
-         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-         <!-- Bootstrap 3.3.6 -->
-        <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">  
-          </head>
-<body class="hold-transition login-page">
+<?php include '../../Templates/header.php'; ?>
 <div class="login-box">
   <div class="login-logo">
     <a href="../../../index.html">Acesse sua conta <b>Imobi</b></a>
@@ -31,16 +20,19 @@
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox"> Lembrar de min
+              <input type="checkbox"> Lembrar de mim
             </label>
           </div>
         </div>
-        
-        <div class="col-xs-4">
+
+        <div class="form-group col-md-4">
           <button type="submit" href="index.html" class="btn btn-primary btn-block btn-flat">Logar</button>
+        </div>
+
+        <div class="col-md-4">
           <button type="submit" class="btn btn-primary btn-block btn-flat">Esqueci a senha</button>
         </div>
-        
+
       </div>
     </form>
 
@@ -61,5 +53,4 @@
 
 </div>
 
-</body>
-</html>
+<?php include '../../Templates/footer.php'; ?>
