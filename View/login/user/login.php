@@ -9,11 +9,11 @@
 
     <form action="../../../index.php" method="post">
       <div class="form-group has-feedback">
-        <input value="<?php if(isset($_SESSION['email'])) echo $_SESSION['email']; ?>" type="text" class="form-control" placeholder="Email" >
+        <input value="<?php if(isset($_SESSION['email'])) echo $_SESSION['email']; ?>" name="emailLogin" type="email" class="form-control" placeholder="Email" >
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Senha" >
+        <input class="form-control" required placeholder="Senha" name="password" type="password" value="<?php if(isset($_SESSION['senha'])) echo $_SESSION['senha']; ?>">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
