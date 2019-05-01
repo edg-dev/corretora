@@ -6,52 +6,52 @@
 <!--Completar Campos de Id,For e placeholder-->
 <form>
     <div class="form-group">
-        <label for="">Nome Completo</label>
-        <input type="text" class="form-control" id="" placeholder="Coloque Seu Nome Completo" required>
+        <label for="nome">Nome Completo</label>
+        <input type="text" class="form-control" id="nome" placeholder="Informe seu nome completo" required>
     </div>
 
     <div class="form-group">
-        <label for="">E-Mail</label>
-        <input type="email" class="form-control" id="" placeholder="Coloque Seu E-Mail" required>
+        <label for="email">E-Mail</label>
+        <input type="email" class="form-control" id="email" placeholder="Informe seu e-mail" required>
     </div>
 
     <div class="form-group">
-        <label for="">Senha</label>
-        <input type="password" class="form-control" id="" placeholder="Coloque Sua Senha" required>
+        <label for="senha">Senha</label>
+        <input type="password" class="form-control" id="senha" placeholder="Informe sua senha de acesso" required>
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="">Telefone Empresarial 1</label>
-            <input type="text" class="form-control" id="" placeholder="">
+            <label for="telefone1">Telefone Empresarial 1</label>
+            <input type="text" class="form-control" id="telefone1" placeholder="Telefone 1">
         </div>
         <div class="form-group col-md-6">
             <label for="inputPassword4">Telefone Empresarial 2</label>
-            <input type="text" class="form-control" id="" placeholder="">
+            <input type="text" class="form-control" id="telefone2" placeholder="Telefone 2">
         </div>
     </div>
 
     <div class="form-group">
-        <label for="">CNPJ</label>
-        <input type="text" class="form-control" id="" placeholder="">
+        <label for="telefone2">CNPJ</label>
+        <input type="text" class="form-control" id="cnpj" placeholder="Informe o CNPJ">
     </div>
 
     <!--Endereco Completo com uma funcao de Buscar Atomaticamente-->
     <div class="form-group">
         <label for="cep">CEP</label>
-		<input type="text" class="form-control" id="cep" required/>
+		<input type="text" class="form-control" id="cep" placeholder="Informe seu CEP"required/>
 
         <label for="logradouro">Logradouro</label>
-		<input type="text" class="form-control" id="logradouro" placeholder="" required/>
+		<input type="text" class="form-control" id="logradouro" placeholder="Rua,Avenida,etc..." required/>
 
         <label for="numero">Número</label>
 		<input type="text" class="form-control" id="numero" placeholder="" required/>
 
         <label for="complemento">Complemento</label>
-		<input type="text" class="form-control" id="complemento" placeholder=""/>
+		<input type="text" class="form-control" id="complemento" placeholder="Informe o Complemento"/>
 
         <label for="bairro">Bairro</label>
-		<input type="text" class="form-control" id="bairro" placeholder="" required/>
+		<input type="text" class="form-control" id="bairro" placeholder="Informe seu Bairro" required/>
 
         <label for="uf">Estado</label>
 		<select class="form-control" id="uf">
@@ -86,26 +86,8 @@
     </div>
 
     <div class="form-group">
-        <label for="">Estado Civil</label>
-        <select id="">
-        <option value="Selecione seu Estado Civil"></option>
-        <option value="Solteiro">Solteiro</option>
-        <option value="Casado">Casado</option>
-        <option value="Separado">Separado</option>
-        <option value="Divorciado">Divorciado</option>
-        <option value="Viúvo">Viúvo</option>
-        <option value="Amasiado">Amasiado</option>
-        </select>
-    </div>
-
-    <div class="form-group">
-        <label for="">Profissão</label>
-        <input type="text" class="form-control" id="" placeholder="" required/>
-    </div>
-
-    <div class="form-group">
-        <label for="">Creci</label>
-        <input type="text" class="form-control" id="" placeholder=""/>
+        <label for="creci">Creci</label>
+        <input type="text" class="form-control" id="creci" placeholder="Informe seu Creci"/>
     </div>
 
     <button type="button" class="btn btn-primary btn-lg btn-block" value="submit">Cadastrar</button>
