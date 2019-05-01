@@ -38,7 +38,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/login/user/login-user.php">Entrar</a>
+                    <a class="nav-link" href="/corretora/View/login/user/login.php">Entrar</a>
                 </li>
 
                 <li class="nav-item dropdown">
