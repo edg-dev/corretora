@@ -4,7 +4,7 @@
         <b><h1>Cadastro do Imóvel:</h1></b> 
     </div>
 
-<form action="">
+<form method="post" id="formImovel" method="POST" action="/corretora/Controller/ImovelController.php?acao=<?=$acao?>">
     <div class="form-group col-md-6">
         <b><label for="transacao">Transação</label></b>
         <select id="transacao" class="form-control">
