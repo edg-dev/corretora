@@ -26,7 +26,7 @@
         </div>
 
         <div class="form-group col-md-4">
-          <button type="submit" href="index.php" class="btn btn-primary btn-block btn-flat">Logar</button>
+          <button type="submit" name="login" value="true" class="btn btn-success btn-block">Logar</button>
         </div>
 
         <div class="col-md-4">
@@ -47,7 +47,7 @@
    
 
     <br>
-    <a href=" exemplo-registro.html" class="text-center">Crie uma nova conta</a>
+    <a href=" ../../../index.php" class="text-center">Crie uma nova conta</a>
 
   </div>
 
@@ -57,14 +57,14 @@ if(!isset($_SESSION))
     session_start();
 
 //Login de Usários
-if(isset($_POST[login])){
+if(isset($_POST['login'])){
 
   include('../conexao.php');
   
   $erro = array();
 
   // Captação de dados
-    $senha = $_POST[password];
+    $senha = $_POST['password'];
     $_SESSION['email'] = $mysqli->escape_string($_POST['email']);
 
     // Validação de dados
@@ -76,17 +76,16 @@ if(isset($_POST[login])){
 
     if(count($erro) == 0){
 
-        $sql = "SELECT senha as senha, idUsuario as valor 
-        FROM Usuario 
-        WHERE emailLogin = '$_SESSION[email]'";
+      $sql ='SELECT senha as senha, idUsuario as valor 
+      FROM Usuario WHERE emailLogin = $_SESSION[email]';
         $que = $mysqli->query($sql) or die($mysqli->error);
         $dado = $que->fetch_assoc();
         
         if($que->num_rows == 0)
             $erro[] = "Nenhum usuário possui o <strong>e-mail</strong> informado.";
 
-        elseif(strcmp($dado[senha], ($senha)) == 0){
-            $_SESSION[Usuario_Logado] = $dado[valor];
+        elseif(strcmp($dado['senha'], ($senha)) == 0){
+            $_SESSION['Usuario_Logado'] = $dado[valor];
         }else
             $erro[] = "<strong>Senha</strong> incorreta.";
 
