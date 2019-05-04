@@ -11,7 +11,7 @@
 	</div>
 	
 	<div class="form-group">
-        <label for="razaosocial">Razão Social</label>
+        <label for="razaoSocial">Razão Social</label>
         <input type="text" class="form-control" id="nome" placeholder="Informe a Razão Social" required>
     </div>
 
@@ -31,7 +31,7 @@
             <input type="text" class="form-control" id="telefone1" placeholder="Telefone 1">
         </div>
         <div class="form-group col-md-6">
-            <label for="inputPassword4">Telefone Empresarial 2</label>
+            <label for="telefone2">Telefone Empresarial 2</label>
             <input type="text" class="form-control" id="telefone2" placeholder="Telefone 2">
         </div>
     </div>
@@ -88,11 +88,6 @@
 			<option value="SE">Sergipe</option>
 			<option value="TO">Tocantins</option>
 		</select>
-    </div>
-
-    <div class="form-group">
-        <label for="creci">Creci</label>
-        <input type="text" class="form-control" id="creci" placeholder="Informe seu Creci"/>
     </div>
 
     <button type="button" class="btn btn-primary btn-lg btn-block" value="submit">Cadastrar</button>
