@@ -8,6 +8,11 @@
     <div class="form-group">
         <label for="nome">Nome Completo</label>
         <input type="text" class="form-control" id="nome" placeholder="Informe seu nome completo" required>
+	</div>
+	
+	<div class="form-group">
+        <label for="razaosocial">Razão Social</label>
+        <input type="text" class="form-control" id="nome" placeholder="Informe a Razão Social" required>
     </div>
 
     <div class="form-group">
