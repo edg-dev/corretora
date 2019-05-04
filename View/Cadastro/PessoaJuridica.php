@@ -2,22 +2,28 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-<h2> Cadastro de Pessoa Juridica </h2>
-<!--Completar Campos de Id,For e placeholder-->
+<h2> Cadastro de Pessoa Jurídica </h2>
+
 <form>
     <div class="form-group">
-        <label for="nome">Nome Completo</label>
-        <input type="text" class="form-control" id="nome" placeholder="Informe seu nome completo" required>
+        <label for="nome"><span>*</span>Nome Completo</label>
+        <input type="text" class="form-control" id="nome" placeholder="Informe o Nome Completo" required>
+	</div>
+	
+	<div class="form-group">
+        <label for="razaoSocial"><span>*</span>Razão Social</label>
+        <input type="text" class="form-control" id="razaoSocial" placeholder="Informe a Razão Social" required>
     </div>
 
     <div class="form-group">
-        <label for="email">E-Mail</label>
-        <input type="email" class="form-control" id="email" placeholder="Informe seu e-mail" required>
+        <label for="email"><span>*</span>E-mail:</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Informe seu E-mail" name="email">
+        <small id="emailHelp" class="form-text text-muted">Esse email será para usado para contatos.</small>
     </div>
 
     <div class="form-group">
-        <label for="senha">Senha</label>
-        <input type="password" class="form-control" id="senha" placeholder="Informe sua senha de acesso" required>
+        <label for="senha"><span>*</span>Senha</label>
+        <input type="password" class="form-control" id="senha" placeholder="Informe sua Senha de acesso" required>
     </div>
 
     <div class="form-row">
@@ -26,35 +32,31 @@
             <input type="text" class="form-control" id="telefone1" placeholder="Telefone 1">
         </div>
         <div class="form-group col-md-6">
-            <label for="inputPassword4">Telefone Empresarial 2</label>
+            <label for="telefone2">Telefone Empresarial 2</label>
             <input type="text" class="form-control" id="telefone2" placeholder="Telefone 2">
         </div>
     </div>
 
     <div class="form-group">
-        <label for="telefone2">CNPJ</label>
+        <label for="cnpj"><span>*</span>CNPJ</label>
         <input type="text" class="form-control" id="cnpj" placeholder="Informe o CNPJ">
     </div>
 
     <!--Endereco Completo com uma funcao de Buscar Atomaticamente-->
-    <div class="form-group">
-        <label for="cep">CEP</label>
-		<input type="text" class="form-control" id="cep" placeholder="Informe seu CEP"required/>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="cep"><span>*</span>CEP:</label>
+            <input type="text" class="form-control" id="cep" placeholder="Informe sua cidade" name="cep">
+        </div>
 
-        <label for="logradouro">Logradouro</label>
-		<input type="text" class="form-control" id="logradouro" placeholder="Rua,Avenida,etc..." required/>
+        <div class="form-group col-md-4">
+            <label for="cidade"><span>*</span>Cidade:</label>
+            <input type="text" class="form-control" id="cidade" placeholder="Informe sua cidade" name="cidade">
+        </div>
 
-        <label for="numero">Número</label>
-		<input type="text" class="form-control" id="numero" placeholder="" required/>
-
-        <label for="complemento">Complemento</label>
-		<input type="text" class="form-control" id="complemento" placeholder="Informe o Complemento"/>
-
-        <label for="bairro">Bairro</label>
-		<input type="text" class="form-control" id="bairro" placeholder="Informe seu Bairro" required/>
-
-        <label for="uf">Estado</label>
-		<select class="form-control" id="uf">
+        <div class="form-group col-md-4">
+        <label for="uf"><span>*</span>Estado</label>
+		<select class="form-control" id="uf" placeholder="Informe seu Estado">
 			<option value="AC">Acre</option>
 			<option value="AL">Alagoas</option>
 			<option value="AP">Amapá</option>
@@ -83,15 +85,33 @@
 			<option value="SE">Sergipe</option>
 			<option value="TO">Tocantins</option>
 		</select>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-10">
+            <label for="logradouro"><span>*</span>Logradouro:</label>
+            <input type="text" class="form-control" id="logradouro" placeholder="Rua, Avenida, etc..." name="logradouro">
+        </div>
+
+        <div class="form-group col-md-2">
+            <label for="numero"><span>*</span>Numero:</label>
+            <input type="text" class="form-control" id="numero" name="numero">
+        </div>
     </div>
 
     <div class="form-group">
-        <label for="creci">Creci</label>
-        <input type="text" class="form-control" id="creci" placeholder="Informe seu Creci"/>
+        <label for="cpf">Complemento:</label>
+        <input type="text" class="form-control" id="complemento" placeholder="Opcional" name="complemento">
     </div>
 
-    <button type="button" class="btn btn-primary btn-lg btn-block" value="submit">Cadastrar</button>
+
+	<button type="button" class="btn btn-primary btn-lg btn-block" value="submit">Cadastrar</button>
+	
 </form>
+<br>
+<p style="text-align:center">Já possui uma conta?	<a href="../login/user/login.php">Entre Aqui</a>
+
 <!--JS do CEP -->
 <script type="text/javascript">
 	$("#cep").focusout(function(){
