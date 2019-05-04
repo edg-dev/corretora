@@ -88,6 +88,7 @@
         <input type="text" class="form-control" id="bairro" placeholder="Bairro">
         <input type="text" class="form-control" id="rua" placeholder="Rua">
         <input type="text" class="form-control" id="complemento" placeholder="Complemento">
+        <input type="text" class="form-control" id="numero" placeholder="Número">
     </div>
 
     <div class="form-group col-md-6">
