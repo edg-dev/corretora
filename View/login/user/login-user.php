@@ -1,7 +1,7 @@
 <?php include '../../Templates/header.php'; ?>
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../../index.html">Acesse sua conta <b>Imobi</b></a>
+    
   </div>
   <!-- /logo do login -->
   <div class="login-box-body">
