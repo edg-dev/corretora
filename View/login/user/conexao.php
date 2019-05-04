@@ -1,9 +1,9 @@
 <?php
 
-$host = "projetohom.000webhostapp.com";
-$usuario = "id9478593_edgdev";
-$senha = "projeto2019";
-$bd = "id9478593_corretora";
+$host = "localhost";
+$usuario = "corretora";
+$senha = "";
+$bd = "corretora";
 
 $mysqli = new mysqli($host, $usuario, $senha, $bd);
 
