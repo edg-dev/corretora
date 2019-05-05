@@ -13,20 +13,22 @@
 		 public function inserir($transacao, $tipoDeImovel, $cep, 
 		 						 $uf, $cidade, $bairro, $rua, $complemento, $quarto, $suite, $vagaGaragem, $banheiro, 
 		 						 $areaUtil, $areaTotal, $descricao, $precoImovel){
-			try{
+			try {
 				$insercao = $this->bd->prepare("INSERT INTO Ainda nao sei(transacao, tipoDeImovel, cep, uf, cidade, bairro,
 				rua, complemento, quarto, suite, vagaGaragem, banheiro,areaUtil, areaTotal, descricao, precoImovel)
 
-				VALUES (:transacao, :tipoDeImovel, :cep, :uf, :cidade, :bairro, :rua, :complemento, :quarto, :suite, 
-				:vagaGaragem, :banheiro, :areaUtil, :areaTotal, :descricao, :precoImovel)");
+		 	  $insercao = $this->bd->prepare("INSERT INTO Imovel(transacao, tipoDeImovel, cep, uf, cidade, bairro,
+			  rua, complemento, quarto, suite, vagaGaragem, banheiro,areaUtil, areaTotal, descricao, precoImovel)
 
 				$insercao->bindParam(":transacao", $transacao);
 				$insercao->bindParam(":tipoDeImovel", $tipoDeImovel); //tem mais
-				$insercao->execute();
-
-			} catch(Exception $e){
-				throw $e;
-			}
+				$insercao->bindParam(":areaUtil", $areaUtil);
+			  $insercao->bindParam(":areaTotal", $areaTotal);
+			  $insercao->bindParam(":precoImovel", $precoImovel);
+		 	  $insercao->execute();
+			  } catch(Exception $e){
+				  throw $e;
+			  }
 
 		 }
 	}

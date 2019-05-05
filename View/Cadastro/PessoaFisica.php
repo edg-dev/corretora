@@ -1,3 +1,4 @@
+
 <?php include '../Templates/header.php'; 
     
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/EstadoModel.php";
@@ -18,6 +19,7 @@
 
 <h2> Cadastro de Pessoa Física </h2>
 <form method="POST" id="cadastroPessoaFisica" action="/corretora/Controller/PessoaFisicaController.php?acao=<?=$acao?>">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="nomeCompleto"><span>*</span>Nome completo:</label>
@@ -41,6 +43,7 @@
                 <?php foreach($sexo as $opcao) { ?>
                 <option value="<?php echo $opcao['codigoSexo'];?>"> <?php echo $opcao['descricaoSexo'];?> </option>
                 <?php } ?>
+
             </select>
         </div>
     </div>
@@ -54,14 +57,15 @@
     <div class="form-group">
         <label for="senha"><span>*</span>Senha:</label>
         <input type="password" class="form-control" id="senha" placeholder="Informe sua senha de acesso" name="senha" required>
+
     </div>
 
     <div class="row">
-        <div class="col">
+        <div class="form-group col-md-6">
             <label for="telefone1">Telefone residencial:</label>
             <input type="text" class="form-control" placeholder="Telefone 1" name="telefone1">
         </div>
-        <div class="col">
+        <div class="form-group col-md-6">
             <label for="telefone2">Telefone pessoal:</label>
             <input type="text" class="form-control" placeholder="Telefone 2" name="telefone2">
         </div>
@@ -76,11 +80,12 @@
         <label for="cpf"><span>*</span>CPF:</label>
         <input type="number" class="form-control" id="cpf" placeholder="Informe seu CPF" name="cpf" required>
     </div>
-
+    
     <div class="form-row">
         <div class="form-group col-md-10">
-            <label for="logradouro">Logradouro:</label>
+            <label for="logradouro"><span>*</span>Logradouro:</label>
             <input type="text" class="form-control" id="logradouro" placeholder="Rua, Avenida, etc..." name="logradouro" required>
+
         </div>
 
         <div class="form-group col-md-2">
@@ -93,7 +98,7 @@
         <label for="cpf">Complemento:</label>
         <input type="text" class="form-control" id="complemento" placeholder="Opcional" name="complemento">
     </div>
-
+  
     <div class="form-row">
         <div class="form-group col-md-4">
             <label for="cep"><span>*</span>CEP:</label>
@@ -128,12 +133,42 @@
         </div>
     </div>  
 
-    <button type="submit" class="btn btn-primary">Cadastrar Usuário</button>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar Usuário</button>
     <div id="mensagem"></div>
-</form>
 
+</form>
+<br>
+<p style="text-align:center">Já possui uma conta?	<a href="../login/user/login.php">Entre Aqui</a>
+
+<!--JS do CEP -->
 <script type="text/javascript">
-		
+	$("#cep").focusout(function(){
+		//Início do Comando AJAX
+		$.ajax({
+			//O campo URL diz o caminho de onde virá os dados
+			//É importante concatenar o valor digitado no CEP
+			url: 'https://viacep.com.br/ws/'+$(this).val()+'/json/unicode/',
+			//Aqui você deve preencher o tipo de dados que será lido,
+			//no caso, estamos lendo JSON.
+			dataType: 'json',
+			//SUCESS é referente a função que será executada caso
+			//ele consiga ler a fonte de dados com sucesso.
+			//O parâmetro dentro da função se refere ao nome da variável
+			//que você vai dar para ler esse objeto.
+			success: function(resposta){
+				//Agora basta definir os valores que você deseja preencher
+				//automaticamente nos campos acima.
+				$("#logradouro").val(resposta.logradouro);
+				$("#complemento").val(resposta.complemento);
+				$("#bairro").val(resposta.bairro);
+				$("#cidade").val(resposta.localidade);
+				$("#uf").val(resposta.uf);
+				//Vamos incluir para que o Número seja focado automaticamente
+				//melhorando a experiência do usuário
+				$("#numero").focus();
+			}
+		});
+	});
 		$("#cadastroPessoaFisica").on("submit", function(event){
 			event.preventDefault();
 

@@ -1,5 +1,7 @@
 <?php
 
+require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Config/DataBase/dbConfig.php";
+
 class BairroModel{
     private $bd;
 
