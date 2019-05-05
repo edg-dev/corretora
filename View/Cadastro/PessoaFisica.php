@@ -18,7 +18,7 @@
 
 <h2> Cadastro de Pessoa Física </h2>
 <form method="POST" id="cadastroPessoaFisica" action="/corretora/Controller/PessoaFisicaController.php?acao=<?=$acao?>">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="nomeCompleto"><span>*</span>Nome completo:</label>
@@ -80,10 +80,9 @@
         <input type="number" class="form-control" id="cpf" placeholder="Informe seu CPF" name="cpf" required>
     </div>
     
-    
     <div class="form-row">
         <div class="form-group col-md-10">
-            <label for="logradouro">Logradouro:</label>
+            <label for="logradouro"><span>*</span>Logradouro:</label>
             <input type="text" class="form-control" id="logradouro" placeholder="Rua, Avenida, etc..." name="logradouro" required>
 
         </div>
@@ -98,7 +97,7 @@
         <label for="cpf">Complemento:</label>
         <input type="text" class="form-control" id="complemento" placeholder="Opcional" name="complemento">
     </div>
-
+  
     <div class="form-row">
         <div class="form-group col-md-4">
             <label for="cep"><span>*</span>CEP:</label>
@@ -169,7 +168,6 @@
 			}
 		});
 	});
-		
 		$("#cadastroPessoaFisica").on("submit", function(event){
 			event.preventDefault();
 

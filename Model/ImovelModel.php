@@ -23,13 +23,13 @@
 				$insercao->bindParam(":transacao", $transacao);
 				$insercao->bindParam(":tipoDeImovel", $tipoDeImovel); //tem mais
 				$insercao->bindParam(":areaUtil", $areaUtil);
-				$insercao->bindParam(":areaTotal", $areaTotal);
-				$insercao->bindParam(":precoImovel", $precoImovel);
-				$insercao->execute();
+			  	$insercao->bindParam(":areaTotal", $areaTotal);
+			  	$insercao->bindParam(":precoImovel", $precoImovel);
+		 	  	$insercao->execute();
+			  } catch(Exception $e){
+				  throw $e;
+			  }
 
-			} catch(Exception $e){
-				throw $e;
-			}
-		}
+		 }
 	}
 ?>
