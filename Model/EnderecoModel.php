@@ -1,73 +1,92 @@
 <?php 
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Config/DataBase/dbConfig.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/CepModel.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/BairroModel.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/CidadeModel.php";
 
 class EnderecoModel{
     private $bd;
 
-    $cep = new CepModel();
-    $bairro = new BairroModel();
-    $cidade = new CidadeModel();
+    private $cep;
+    private $bairro; 
+    private $cidade;
 
     function __construct(){
         $this->bd = BancoDados::obterConexao();
+        $this->cep = new CepModel();
+        $this->bairro = new BairroModel();
+        $this->cidade = new CidadeModel();
     }
 
     public function inserir($logradouro, $numero, $complemento, $descricaoCep, $nomeBairro, $nomeCidade, $idEstado){
+        try{
+            $verCep = $this->cep->ListarIdPorDescricao($descricaoCep);
+            $verBairro = $this->bairro->ListarIdPorBairro($nomeBairro);
+            $idCidade = $this->cidade->ListarIdPorCidade($nomeCidade);
 
-        $idCep = $cep->ListarIdPorDescricao($descricaoCep);
-        $idBairro = $bairro->ListarIdPorBairro($nomeBairro);
-        $idCidade = $cidade->ListarIdPorCidade($nomeCidade);
+            if($verCep == false){
+                $this->cep->inserir($descricaoCep);              
+            }
+            
+            $idCep = $this->cep->ListarIdPorDescricao($descricaoCep);
 
-        if($idCep->num_rows() == 0){
-            $cep->inserir($descricaoCep);
-            $idCep = $cep->ListarIdPorDescricao($descricaoCep);
+            if($verBairro[0] == 0){
+                $this->bairro->inserir($nomeBairro);
+                $idBairro = $this->bairro->ListarIdPorBairro($nomeBairro);
+            }
+
+            if($idCidade == 0){
+                $this->cidade->inserir($nomeCidade);
+                $idCidade = $this->cidade->ListarIdPorCidade($nomeCidade);
+            }
+
+            $insercao = $this->bd->prepare(
+                "INSERT INTO endereco(logradouro, numero, complemento, idCep, idBairro, idCidade, idEstado)
+                VALUES (:logradouro, :numero, :complemento, :idCep, :idBairro, :idCidade, :idEstado)"
+            );
+
+            $insercao->bindParam(":logradouro",     $logradouro);
+            $insercao->bindParam(":numero",         $numero);
+            $insercao->bindParam(":complemento",    $complemento);
+            $insercao->bindParam(":idCep",          $idCep, PDO::PARAM_INT);
+            $insercao->bindParam(":idBairro",       $idBairro, PDO::PARAM_INT);
+            $insercao->bindParam(":idCidade",       $idCidade, PDO::PARAM_INT);
+            $insercao->bindParam(":idEstado",       $idEstado);
+            $insercao->execute();
+            
+        } catch(Exception $e){
+            throw $e;
         }
 
-        if($idBairro->num_rows() == 0){
-            $bairro->inserir($nomeBairro);
-            $idBairro = $bairro->ListarIdPorBairro($nomeBairro);
-        }
-
-        if($idCidade->num_rows() == 0){
-            $cidade->inserir($nomeCidade);
-            $idCep = $cep->ListarIdPorDescricao($descricaoCep);
-        }
-
-        $insercao = $this->bd->prepare(
-            "INSERT INTO endereco(logradouro, numero, complemento, idCep, idBairro, idCidade, idEstado)
-            VALUES (:logradouro, :numero, :complemento, :idCep, :idBairro, :idCidade, :idEstado)"
-        );
-
-        $insercao->bindParam(":logradouro",     $logradouro);
-        $insercao->bindParam(":numero",         $numero);
-        $insercao->bindParam(":complemento",    $complemento);
-        $insercao->bindParam(":idCep",          $idCep);
-        $insercao->bindParam(":idBairro",       $idBairro);
-        $insercao->bindParam(":idCidade",       $idCidade);
-        $insercao->bindParam(":idEstado",       $idEstado);
-        $insercao->execute();
     }
 
     public function getIdEndereco($logradouro, $numero, $complemento, $descricaoCep, $nomeBairro, $nomeCidade, $idEstado){
-        $idCep = $cep->ListarIdPorDescricao($descricaoCep);
-        $idBairro = $bairro->ListarIdPorBairro($nomeBairro);
-        $idCidade = $cidade->ListarIdPorCidade($nomeCidade);
-        
-        $getEndereco = $this->bd->query(
-            "SELECT idEndereco FROM Endereco WHERE logradouro = :logradouro AND numero = :numero AND complemento = :complemento
-            AND idCep = :idCep AND idCidade = :idCidade AND idEstado = :idEstado"
-            );
-        $getEndereco->bindParam(":logradouro",     $logradouro);
-        $getEndereco->bindParam(":numero",         $numero);
-        $getEndereco->bindParam(":complemento",    $complemento);
-        $getEndereco->bindParam(":idCep",          $idCep);
-        $getEndereco->bindParam(":idBairro",       $idBairro);
-        $getEndereco->bindParam(":idCidade",       $idCidade);
-        $getEndereco->bindParam(":idEstado",       $idEstado);
-        $getEndereco->execute();
 
-        return $idEndereco = $getEndereco->fetch();
+        try{
+            $idCep = $this->cep->ListarIdPorDescricao($descricaoCep);
+            $idBairro = $this->bairro->ListarIdPorBairro($nomeBairro);
+            $idCidade = $this->cidade->ListarIdPorCidade($nomeCidade);
+            
+             
+            $getEndereco = $this->bd->prepare("SELECT idEndereco FROM endereco WHERE logradouro = :logradouro 
+            AND numero = :numero AND complemento = :complemento AND idCep = :idCep 
+            AND idBairro = :idBairro AND idCidade = :idCidade AND idEstado = :idEstado");
+
+            $getEndereco->bindParam(":logradouro",     $logradouro);
+            $getEndereco->bindParam(":numero",         $numero);
+            $getEndereco->bindParam(":complemento",    $complemento);
+            $getEndereco->bindParam(":idCep",          $idCep, PDO::PARAM_INT);
+            $getEndereco->bindParam(":idBairro",       $idBairro, PDO::PARAM_INT);
+            $getEndereco->bindParam(":idCidade",       $idCidade, PDO::PARAM_INT);
+            $getEndereco->bindParam(":idEstado",       $idEstado);
+            $getEndereco->execute();
+
+            return $idEndereco = $getEndereco->fetch();
+
+        } catch(Exception $e){
+            throw $e;
+        } 
     }
 }
 
