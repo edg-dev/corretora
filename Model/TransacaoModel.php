@@ -13,7 +13,7 @@ class TransacaoModel{
     public function inserir($transacao){
         try{
 
-            $insTransacao = $this->bd->prepare("INSERT INTO Transacao($transacao) 
+            $insTransacao = $this->bd->prepare("INSERT INTO Transacao(descricaoTransacao) 
                                         VALUES (:descricaoTransacao)");
 
             $insTransacao->bindParam(":descricaoTransacao", $transacao);
