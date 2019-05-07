@@ -75,7 +75,7 @@ if(isset($_POST['login'])){
         </div>
 
         <div class="col-md-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Esqueci a senha</button>
+          <button type="" class="btn btn-primary btn-block btn-flat">Esqueci a senha</button>
         </div>
 
       </div>
