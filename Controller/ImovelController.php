@@ -9,7 +9,7 @@
 
 	if($acao == "create"){
 
-		$DescricaoTipoImovel = $_POST["tipoDeImovel"];
+		$descricaoTipoImovel = $_POST["tipoDeImovel"];
 
 		$cep = $_POST["cep"];
 		$idEstado = $_POST["estado"];
@@ -52,7 +52,7 @@
 		}
 
 
-		$ImovelModel->inserir($DescricaoTipoImovel, $cep, $idEstado, $nomeCidade, $nomeBairro, $logradouro, $numero,
+		$ImovelModel->inserir($descricaoTipoImovel, $cep, $idEstado, $nomeCidade, $nomeBairro, $logradouro, $numero,
 							  $complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, $transacao, $areaUtil, 
 							  $areaTotal, $precoImovel, $descricaoImovel);
 
