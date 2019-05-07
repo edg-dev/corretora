@@ -71,7 +71,7 @@ if(isset($_POST['login'])){
         </div>
 
         <div class="form-group col-md-4">
-          <button type="submit" name="login" value="true" class="btn btn-success btn-block">Logar</button>
+          <button type="submit" name="login"  class="btn btn-success btn-block">Logar</button>
         </div>
 
         <div class="col-md-4">
@@ -120,10 +120,12 @@ if(isset($_POST['login'])){
         $erro[] = "Preencha sua <strong>senha</strong> corretamente.";
 
     if(count($erro) == 0){
-
+      $email = $_SESSION['email'];
       $sql ='SELECT senha as senha, idUsuario as valor 
-      FROM Usuario WHERE emailLogin = $_SESSION[email]';
-        $que = $mysqli->query($sql) or die($mysqli->error);
+      FROM Usuario WHERE emailLogin =:email';
+      $mysqli->prepare->query($sql);
+      $mysqli->bindParam(":email", $email);
+        $que = $mysqli->execute() or die($mysqli->error);
         $dado = $que->fetch_assoc();
         
         if($que->num_rows == 0)
