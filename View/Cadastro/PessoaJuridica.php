@@ -1,10 +1,20 @@
-<?php include '../Templates/header.php'; ?>
+<?php include '../Templates/header.php'; 
+    
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/EstadoModel.php";
+
+    $acao = "create";
+
+    $estadoModel = new EstadoModel();
+    $estados = $estadoModel->getAllEstado();
+
+?>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <h2> Cadastro de Pessoa Jurídica </h2>
 
-<form>
+<form method="POST" id="cadastroPessoaJuridica" action="/corretora/Controller/PessoaJuridicaController.php?acao=<?=$acao?>">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <div class="form-group">
         <label for="nome"><span>*</span>Nome Completo</label>
         <input type="text" class="form-control" id="nome" placeholder="Informe o Nome Completo" required>
@@ -57,33 +67,9 @@
         <div class="form-group col-md-4">
         <label for="uf"><span>*</span>Estado</label>
 		<select class="form-control" id="uf" placeholder="Informe seu Estado">
-			<option value="AC">Acre</option>
-			<option value="AL">Alagoas</option>
-			<option value="AP">Amapá</option>
-			<option value="AM">Amazonas</option>
-			<option value="BA">Bahia</option>
-			<option value="CE">Ceará</option>
-			<option value="DF">Distrito Federal</option>
-			<option value="ES">Espírito Santo</option>
-			<option value="GO">Goiás</option>
-			<option value="MA">Maranhão</option>
-			<option value="MT">Mato Grosso</option>
-			<option value="MS">Mato Grosso do Sul</option>
-			<option value="MG">Minas Gerais</option>
-			<option value="PA">Pará</option>
-			<option value="PB">Paraíba</option>
-			<option value="PR">Paraná</option>
-			<option value="PE">Pernambuco</option>
-			<option value="PI">Piauí</option>
-			<option value="RJ">Rio de Janeiro</option>
-			<option value="RN">Rio Grande do Norte</option>
-			<option value="RS">Rio Grande do Sul</option>
-			<option value="RO">Rondônia</option>
-			<option value="RR">Roraima</option>
-			<option value="SC">Santa Catarina</option>
-			<option value="SP">São Paulo</option>
-			<option value="SE">Sergipe</option>
-			<option value="TO">Tocantins</option>
+			<?php foreach($estados as $estado){?>
+                <option value="<?php echo $estado['idEstado'];?>"> <?php echo $estado['descricaoEstado'];?> </option>
+                <?php }?>
 		</select>
         </div>
     </div>
@@ -143,4 +129,14 @@
 	});
 </script>
 
-<?php include '../Templates/footer.php'; ?>
+<?php include "../Templates/footer.php"; ?>
+<style>
+    input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+</style>

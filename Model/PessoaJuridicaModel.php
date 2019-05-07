@@ -1,39 +1,55 @@
 <?php 
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Config/DataBase/dbConfig.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/EnderecoModel.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/PessoaModel.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/UsuarioModel.php";
 
 class PessoaJuridicaModel{
-    private $bd;
 
-    $endereco = new EnderecoModel();
-    $pessoa = new PessoaModel();
+    private $bd;
+    private $endereco;
+    private $pessoa;
+    private $usuario;
 
     function __construct(){
         $this->bd = BancoDados::obterConexao();
+        $this->endereco = new EnderecoModel();
+        $this->pessoa = new PessoaModel();
+        $this->usuario = new UsuarioModel();
     }
 
     public function inserir($nome, $email, $senha, $telefone1, $telefone2, $razaoSocial, $cnpj, $logradouro,
-                            $numero, $descricaoCep, $nomeBairro, $nomeCidade, $idEstado, $creci){
+                            $numero, $complemento, $cep, $nomeBairro, $nomeCidade, $idEstado){
         
-        $idEndereco = $endereco->getIdEndereco($logradouro, $numero, $complemento, $descricaoCep, $nomeBairro, $nomeCidade, $idEstado);
-        $idPessoa = $pessoa->getIdPessoa($nome, $email);
+        try{
+            $idEndereco = $this->endereco->getIdEndereco($logradouro, $numero, $complemento, $cep, $nomeBairro, $nomeCidade, $idEstado);
+            $idPessoa = $this->pessoa->getIdPessoa($nome, $email);
 
-        if($idEndereco->num_rows() == 0){
-            $endereco->inserir($logradouro, $numero, $complemento, $descricaoCep, $nomeBairro, $nomeCidade, $idEstado);
-            $idEndereco = $endereco->getIdEndereco($logradouro, $numero, $complemento, $descricaoCep, $nomeBairro, $nomeCidade, $idEstado);
-        }
-        
-        if($idPessoa->num_rows() == 0){
-            $pessoa->inserir($nome, $idEndereco, $email);
-            $idPessoa = $pessoa->getIdPessoa($nome, $email);
-        }
+            if($idEndereco == null){
+                $this->endereco->inserir($logradouro, $numero, $complemento, $cep, $nomeBairro, $nomeCidade, $idEstado);
+                $idEndereco = $this->endereco->getIdEndereco($logradouro, $numero, $complemento, $cep, $nomeBairro, $nomeCidade, $idEstado);
+            }
+            
+            if($idPessoa == null){
+                $this->pessoa->inserir($nome, $idEndereco, $email);
+            }
 
-        $insPJ = $this->bd->prepare("INSERT INTO PessoaJuridica(idPessoa, razaoSocial, cnpj) 
-                                    VALUES (:idPessoa, :razaoSocial, :cnpj)");
-        $insPF->bindParam(":idPessoa",      $idPessoa);
-        $insPF->bindParam(":razaoSocial", $razaoSocial);
-        $insPF->bindParam(":cnpj",           $cnpj);
-        $insPF->execute();
+            $valPessoa = $this->pessoa->getIdPessoa($nome, $email);
+
+            $insPJ = $this->bd->prepare("INSERT INTO PessoaJuridica(idPessoa, razaoSocial, cnpj) 
+                                        VALUES (:idPessoa, :razaoSocial, :cnpj)");
+            $idPj = intval($valPessoa[0]);
+            $insPJ->bindParam(":idPessoa", $idPessoa, PDO::PARAM_INT);
+            $insPJ->bindParam(":razaoSocial", $razaoSocial);
+            $insPJ->bindParam(":cnpj", $cnpj, PDO::PARAM_INT);
+            $insPJ->execute();
+
+            $this->usuario->inserir($idPj, $email, $senha);
+
+            } catch(Exception $e){
+                throw $e;
+            }
     }
 }
 
