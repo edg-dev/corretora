@@ -9,11 +9,11 @@
     $estadoModel = new EstadoModel();
     $estados = $estadoModel->getAllEstado();
 
-    $transacao = new TransacaoModel();
-    $transacao = $transacao->getAllTransacao();
+    $transacaoModel = new TransacaoModel();
+    $transacoes = $transacaoModel->getAllTransacao();
     
-    $tipoImovel = new TipoImovelModel();
-    $tipoImovel = $tipoImovel->getAllTipoImovel();
+    $tipoImovelModel = new TipoImovelModel();
+    $tiposDeImovel = $tipoImovelModel->getAllTipoImovel();
 
 ?>
     <div class="form-group col-md-6">
@@ -31,9 +31,9 @@
         </select>
     </div>
     <div class="form-group col-md-6">
-        <b><label for="descricaoImovel">Que tipo de imóvel você quer anunciar?</label></b>
-        <select id="descricaoImovel" class="form-control" name="descricaoImovel" required>
-                <option selected>Selecione a opção de transação:</option>
+        <b><label for="tipoDeImovel">Que tipo de imóvel você quer anunciar?</label></b>
+        <select id="tipoDeImovel" class="form-control" name="tipoDeImovel" required>
+                <option selected>Selecione o tipo do imóvel:</option>
                 <?php foreach($tiposDeImovel as $tipoImovel){?>
                 <option value="<?php echo $tipoImovel['idTipoImovel'];?>"> <?php echo $tipoImovel['descricaoTipoImovel'];?> </option>
                 <?php } ?>
@@ -45,7 +45,7 @@
     </div>
     <div class="form-group col-md-6">
         <label for="cep"><span>*</span>Cep:</label>
-        <input type="text" class="form-control" id="cep" placeholder="00000-000">
+        <input type="text" class="form-control" id="cep" placeholder="00000-000" name="cep" require>
 		<select id="estado" class="form-control" name="estado" required>
                 <option selected>Selecione seu estado</option>
                 <?php foreach($estados as $estado){?>
@@ -101,14 +101,6 @@
     <div class="form-group col-md-6">
         <label for="precoImovel">Valor total de venda (R$):</label>
         <input type="text" class="form-control" id="precoImovel" placeholder="000 000" name="precoImovel" required>
-    </div>
-
-    <div class="form-group col-md-6">
-        <b><h1>Possui imagens do imóvel?</h1></b> 
-    </div>
-    <div class="form-group col-md-6">
-        <label for="imagens">Imagens do seu imóvel:</label>
-        <input type="file" class="form-control" id="imagens" placeholder="" name="imagens" >
     </div>
 
     <div class="form-group col-md-6">
