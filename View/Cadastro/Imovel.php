@@ -104,14 +104,6 @@
     </div>
 
     <div class="form-group col-md-6">
-        <b><h1>Possui imagens do imóvel?</h1></b> 
-    </div>
-    <div class="form-group col-md-6">
-        <label for="imagens">Imagens do seu imóvel:</label>
-        <input type="file" class="form-control" id="imagens" placeholder="" name="imagens" >
-    </div>
-
-    <div class="form-group col-md-6">
         <button type="submit" class="btn btn-primary">Salvar</button>
     </div>
 

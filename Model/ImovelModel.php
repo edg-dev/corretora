@@ -9,51 +9,33 @@
 
 		private $bd;
 		private $endereco;
-		private	$tipoImovel;
-		private	$transacao;
 
 		 function __construct(){
 			 $this->bd = BancoDados::obterConexao();
 			 $this->endereco = new EnderecoModel();
-			 $this->tipoImovel = new TipoImovelModel();
-			 $this->transacao = new TransacaoModel();
 		 }
 
-		 public function inserir($descricaoTipoImovel, $cep, $idEstado, $nomeCidade, $nomeBairro, $logradouro, $numero,
-								 $complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, $transacao, $areaUtil, 
+		 public function inserir($idTipoImovel, $idTransacao, $cep, $idEstado, $nomeCidade, $nomeBairro, $logradouro, $numero,
+								 $complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, $areaUtil, 
 								 $areaTotal, $precoImovel, $descricaoImovel){
 			try {
 				$idEndereco = $this->endereco->getIdEndereco($logradouro, $numero, $complemento, $cep, $nomeBairro,
 															 $nomeCidade, $idEstado);
-				$idTipoImovel = $this->tipoImovel->getIdTipoImovel($descricaoTipoImovel);
-				$idTrasacao = $this->transacao->getidTrasacao($transacao);
 
 			if($idEndereco == null){
 				$this->endereco->inserir($logradouro, $numero, $complemento, $cep, $nomeBairro, $nomeCidade, $idEstado);
 				$idEndereco = $this->endereco->getIdEndereco($logradouro, $numero, $complemento, $cep, $nomeBairro, 
 				$nomeCidade, $idEstado);
 			}
-		/*	if($idTipoImovel == null){
-                $this->tipoImovel->inserir($descricaoTipoImovel);
-			}
-			if($idTrasacao == null){
-                $this->transacao->inserir($transacao);
-			}
 
-			$valTipoImovel = $this->tipoImovel->getIdTipoImovel($descricaoTipoImovel);
+		 	    $insImovel = $this->bd->prepare("INSERT INTO Imovel(idEndereco, idTransacao, idTipoImovel, areaUtil, areaTotal, 
+				 		precoImovel, descricaoImovel, quantQuarto, quantSuite, quantVagaGaragem, quantBanheiro) 
+			    VALUES (:idEndereco, :idTransacao, :idTipoImovel, :areaUtil, :areaTotal, :precoImovel, :descricaoImovel, 
+						:quantQuarto, :quantSuite, :quantVagaGaragem, :quantBanheiro)");
 
-			$valTransacao = $this->transacao->getidTrasacao($transacao);*/
-
-		 	    $insImovel = $this->bd->prepare("INSERT INTO Imovel(areaUtil, areaTotal, precoImovel, descricaoImovel
-				 											quantQuarto, quantSuite, quantVagaGaragem, quantBanheiro) 
-			    VALUES (:areaUtil, :areaTotal, :precoImovel, :descricaoImovel, :quantQuarto, :quantSuite, 
-						:quantVagaGaragem, :quantBanheiro)");
-
-			/*	$insTipImovel = intval($valTipoImovel[0]);
-				$insTransa = intval($valTransacao[0]);
-
-				$insImovel->bindParam(":idTipoImovel", $insTipImovel, PDO::PARAM_INT);
-				$insImovel->bindParam(":idTransacao", $insTransa, PDO::PARAM_INT);*/
+				$insImovel->bindParam(":idEndereco", $idEndereco, PDO::PARAM_INT);
+				$insImovel->bindParam(":idTransacao", $idTransacao, PDO::PARAM_INT);
+				$insImovel->bindParam(":idTipoImovel", $idTipoImovel, PDO::PARAM_INT);
 
 			    $insImovel->bindParam(":areaUtil", $areaUtil, PDO::PARAM_INT);
 			    $insImovel->bindParam(":areaTotal", $areaTotal, PDO::PARAM_INT);
