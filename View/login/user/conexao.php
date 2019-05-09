@@ -1,7 +1,7 @@
 <?php
 
 $host = "localhost";
-$usuario = "corretora";
+$usuario = "root";
 $senha = "";
 $bd = "corretora";
 

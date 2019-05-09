@@ -1,49 +1,5 @@
 <?php include '../../Templates/header.php'; ?>
-<?php
-if(!isset($_SESSION))
-    session_start();
 
-//Login de Usários
-if(isset($_POST['login'])){
-
-  include('../conexao.php');
-  
-  $erro = array();
-
-  // Captação de dados
-    $senha = $_POST['password'];
-    $_SESSION['email'] = $mysqli->escape_string($_POST['email']);
-
-    // Validação de dados
-    if(!filter_var($_SESSION['email'], FILTER_VALIDATE_EMAIL))
-        $erro[] = "Preencha seu <strong>e-mail</strong> corretamente.";
-
-    if(strlen($senha) < 6 || strlen($senha) > 16)
-        $erro[] = "Preencha sua <strong>senha</strong> corretamente.";
-
-    if(count($erro) == 0){
-
-      $sql ='SELECT senha as senha, idUsuario as valor 
-      FROM Usuario WHERE emailLogin = $_SESSION[email]';
-        $que = $mysqli->query($sql) or die($mysqli->error);
-        $dado = $que->fetch_assoc();
-        
-        if($que->num_rows == 0)
-            $erro[] = "Nenhum usuário possui o <strong>e-mail</strong> informado.";
-
-        elseif(strcmp($dado['senha'], ($senha)) == 0){
-            $_SESSION['Usuario_Logado'] = $dado[valor];
-        }else
-            $erro[] = "<strong>Senha</strong> incorreta.";
-
-        if(count($erro) == 0){
-            echo "<script>location.href='index.php=';</script>";
-            exit();
-            unset($_SESSION['email']);
-        }
-    }
-}
-?>
 <div class="login-box">
   <div class="login-logo">
     
@@ -116,7 +72,7 @@ if(isset($_POST['login'])){
     if(!filter_var($_SESSION['email'], FILTER_VALIDATE_EMAIL))
         $erro[] = "Preencha seu <strong>e-mail</strong> corretamente.";
 
-    if(strlen($senha) < 6 || strlen($senha) > 16)
+    if(strlen($senha) < 6 || strlen($senha) > 32)
         $erro[] = "Preencha sua <strong>senha</strong> corretamente.";
 
     if(count($erro) == 0){
