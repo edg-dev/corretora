@@ -114,7 +114,17 @@
     <div class="form-group col-md-6">
         <button type="submit" class="btn btn-primary">Salvar</button>
     </div>
+    <div>
+        <button type="button" class="btn btn-primary">
+            <a href="/corretora/view/cadastro/ImagensImovel.php">Adicionar Imagens</a>
+        </button>
+    </div>
 
 </form>
+
+
+
+
+
 
 <?php include "../Templates/footer.php"; ?>
