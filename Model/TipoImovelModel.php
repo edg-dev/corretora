@@ -10,25 +10,10 @@ class TipoImovelModel{
         $this->bd = BancoDados::obterConexao();
     }
 
-    public function inserir($DescricaoTipoImovel){
+    public function getIdTipoImovel($descricaoTipoImovel){       
         try{
-
-            $insTipo = $this->bd->prepare("INSERT INTO TipoImovel($DescricaoTipoImovel) 
-                                        VALUES (:DescricaoTipoImovel)");
-
-            $insTipo->bindParam(":DescricaoTipoImovel", $DescricaoTipoImovel);
-
-            $insTipo->execute();
-
-        } catch(Exception $e){
-            throw $e;
-        }
-    }
-
-    public function getIdTipoImovel($DescricaoTipoImovel){       
-        try{
-            $selTipoImovel = $this->bd->prepare("SELECT idTipoImovel FROM TipoImovel WHERE DescricaoTipoImovel LIKE ? ");
-            $param = array("%$DescricaoTipoImovel%");//pode dar errado
+            $selTipoImovel = $this->bd->prepare("SELECT idTipoImovel FROM TipoImovel WHERE descricaoTipoImovel LIKE ? ");
+            $param = array("%$descricaoTipoImovel%");//pode dar errado
             $selTipoImovel->execute($param);
 
             return $idTipoImovel = $selTipoImovel->fetch();

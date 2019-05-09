@@ -5,7 +5,8 @@
 
 		public static function obterConexao(){
 			if(isset($conexao) == false){
-				$conexao = new PDO("mysql:dbname=corretorateste;host=localhost","root","");
+
+				$conexao = new PDO("mysql:dbname=corretora;host=localhost","root","root");
 				$conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			}
 			return $conexao;
