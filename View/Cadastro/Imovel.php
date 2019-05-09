@@ -1,5 +1,21 @@
-<?php include '../Templates/header.php'; ?>
+<?php include '../Templates/header.php'; 
 
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/EstadoModel.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TransacaoModel.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TipoImovelModel.php";
+
+    $acao = "create";
+
+    $estadoModel = new EstadoModel();
+    $estados = $estadoModel->getAllEstado();
+
+    $transacao = new TransacaoModel();
+    $transacao = $transacao->getAllTransacao();
+    
+    $tipoImovel = new TipoImovelModel();
+    $tipoImovel = $tipoImovel->getAllTipoImovel();
+
+?>
     <div class="form-group col-md-6">
         <b><h1>Cadastro do Imóvel:</h1></b> 
     </div>
@@ -7,41 +23,20 @@
 <form method="post" id="formImovel" method="POST" action="/corretora/Controller/ImovelController.php?acao=<?=$acao?>">
     <div class="form-group col-md-6">
         <b><label for="transacao">Transação</label></b>
-        <select id="transacao" class="form-control">
-            <option selected>Opções de transação:</option>
-            <option>Alugar</option>
-            <option>Vender</option>
+        <select id="transacao" class="form-control" name="transacao" required>
+                <option selected>Selecione a opção de transação:</option>
+                <?php foreach($transacoes as $transacao){?>
+                <option value="<?php echo $transacao['idTransacao'];?>"> <?php echo $transacao['descricaoTransacao'];?> </option>
+                <?php } ?>
         </select>
     </div>
     <div class="form-group col-md-6">
-        <b><label for="tipoDeImovel">Que tipo de imóvel você quer anunciar?</label></b>
-        <select id="tipoDeImovel" class="form-control">
-            <option selected>Escolha o tipo de imóvel:</option>
-            <option>Apartamento Padrão</option>
-            <option>Kitchenette/Conjugados</option>
-            <option>Loft</option>
-            <option>Casa Padrão</option>
-            <option>Terreno Padrão</option>
-            <option>Box/Garagem</option>
-            <option>Casa Comercial</option>
-            <option>Casa de Condomínio</option>
-            <option>Casa de Vila</option>
-            <option>Chácara</option>
-            <option>Conjunto Comercial/Sala</option>
-            <option>Fazenda</option>
-            <option>Flat</option>
-            <option>Galpão/Deposito/Armazém</option>
-            <option>Haras</option>
-            <option>Hotel</option>
-            <option>Indústria</option>
-            <option>Loja Shopping/Ct Comercial</option>
-            <option>Loja/Salão</option>
-            <option>Loteamento/Condomínio</option>
-            <option>Motel</option>
-            <option>Pousada/Chalé</option>
-            <option>Prédio Interno</option>
-            <option>Sítio</option>
-            <option>Studio</option>
+        <b><label for="descricaoImovel">Que tipo de imóvel você quer anunciar?</label></b>
+        <select id="descricaoImovel" class="form-control" name="descricaoImovel" required>
+                <option selected>Selecione a opção de transação:</option>
+                <?php foreach($tiposDeImovel as $tipoImovel){?>
+                <option value="<?php echo $tipoImovel['idTipoImovel'];?>"> <?php echo $tipoImovel['descricaoTipoImovel'];?> </option>
+                <?php } ?>
         </select>
     </div>
 
@@ -51,75 +46,53 @@
     <div class="form-group col-md-6">
         <label for="cep"><span>*</span>Cep:</label>
         <input type="text" class="form-control" id="cep" placeholder="00000-000">
-		<select class="form-control" id="uf">
-            <option selected>Estado</option>
-			<option value="AC">Acre</option>
-			<option value="AL">Alagoas</option>
-			<option value="AP">Amapá</option>
-			<option value="AM">Amazonas</option>
-			<option value="BA">Bahia</option>
-			<option value="CE">Ceará</option>
-			<option value="DF">Distrito Federal</option>
-			<option value="ES">Espírito Santo</option>
-			<option value="GO">Goiás</option>
-			<option value="MA">Maranhão</option>
-			<option value="MT">Mato Grosso</option>
-			<option value="MS">Mato Grosso do Sul</option>
-			<option value="MG">Minas Gerais</option>
-			<option value="PA">Pará</option>
-			<option value="PB">Paraíba</option>
-			<option value="PR">Paraná</option>
-			<option value="PE">Pernambuco</option>
-			<option value="PI">Piauí</option>
-			<option value="RJ">Rio de Janeiro</option>
-			<option value="RN">Rio Grande do Norte</option>
-			<option value="RS">Rio Grande do Sul</option>
-			<option value="RO">Rondônia</option>
-			<option value="RR">Roraima</option>
-			<option value="SC">Santa Catarina</option>
-			<option value="SP">São Paulo</option>
-			<option value="SE">Sergipe</option>
-			<option value="TO">Tocantins</option>
-		</select>
-        <input type="text" class="form-control" id="cidade" placeholder="Cidade">
+		<select id="estado" class="form-control" name="estado" required>
+                <option selected>Selecione seu estado</option>
+                <?php foreach($estados as $estado){?>
+                <option value="<?php echo $estado['idEstado'];?>"> <?php echo $estado['descricaoEstado'];?> </option>
+                <?php }?>
+            </select>
+        <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade" required>
     </div>
     <div class="form-group col-md-6">
         <label for="endereco">Endereço:</label>
-        <input type="text" class="form-control" id="bairro" placeholder="Bairro">
-        <input type="text" class="form-control" id="rua" placeholder="Rua">
-        <input type="text" class="form-control" id="complemento" placeholder="Complemento">
+        <input type="text" class="form-control" id="bairro" placeholder="Bairro" name="bairro" required>
+        <input type="text" class="form-control" id="rua" placeholder="Rua" name="rua" required>
+        <input type="text" class="form-control" id="complemento" placeholder="Complemento" name="complemento" required>
+        <input type="text" class="form-control" id="numero" placeholder="Número" name="numero" required>
     </div>
 
     <div class="form-group col-md-6">
         <b><h1 for="localImovel">Dados principais do imóvel:</h1></b>
     </div>
     <div class="form-group col-md-6">
-        <label for="quarto">Quartos:</label>
-        <input type="text" class="form-control" id="quarto" placeholder="0">
+        <label for="quantQuarto">Quartos:</label>
+        <input type="text" class="form-control" id="quantQuarto" placeholder="0" name="quantQuarto" required>
     </div>
     <div class="form-group col-md-6">
-        <label for="suite">Suítes (Opcional):</label>
-        <input type="text" class="form-control" id="suite" placeholder="0">
+        <label for="quantSuite">Suítes (Opcional):</label>
+        <input type="text" class="form-control" id="quantSuite" placeholder="0" name="quantSuite" required>
     </div>
     <div class="form-group col-md-6">
-        <label for="vagaGaragem">Vagas de garagem (Opcional):</label>
-        <input type="text" class="form-control" id="vagaGaragem" placeholder="0">
+        <label for="quantVagaGaragem">Vagas de garagem (Opcional):</label>
+        <input type="text" class="form-control" id="quantVagaGaragem" placeholder="0" name="quantVagaGaragem" required>
     </div>
     <div class="form-group col-md-6">
-        <label for="banheiro">Banheiros:</label>
-        <input type="text" class="form-control" id="banheiro" placeholder="0">
+        <label for="quantBanheiro">Banheiros:</label>
+        <input type="text" class="form-control" id="quantBanheiro" placeholder="0" name="quantBanheiro" required>
     </div>
     <div class="form-group col-md-6">
         <label for="areaUtil">Área útil (M²):</label>
-        <input type="text" class="form-control" id="areaUtil" placeholder="000">
+        <input type="text" class="form-control" id="areaUtil" placeholder="000" name="areaUtil" required>
     </div>
     <div class="form-group col-md-6">
         <label for="areaTotal">Área total (M²) (Opcional):</label>
-        <input type="text" class="form-control" id="areaTotal" placeholder="000">
+        <input type="text" class="form-control" id="areaTotal" placeholder="000" name="areaTotal" required>
     </div>
     <div class="form-group col-md-6">
-        <label for="descricao">Descrição (Opcional):</label>
-        <input type="text" class="form-control" id="descricao" placeholder="Descrição do imóvel">
+        <label for="descricaoImovel">Descrição (Opcional):</label>
+        <input type="text" class="form-control" id="descricaoImovel" placeholder="Descrição do imóvel" 
+                                                                     name="descricaoImovel" required>
     </div>
 
     <div class="form-group col-md-6">
@@ -127,7 +100,15 @@
     </div>
     <div class="form-group col-md-6">
         <label for="precoImovel">Valor total de venda (R$):</label>
-        <input type="text" class="form-control" id="precoImovel" placeholder="000 000">
+        <input type="text" class="form-control" id="precoImovel" placeholder="000 000" name="precoImovel" required>
+    </div>
+
+    <div class="form-group col-md-6">
+        <b><h1>Possui imagens do imóvel?</h1></b> 
+    </div>
+    <div class="form-group col-md-6">
+        <label for="imagens">Imagens do seu imóvel:</label>
+        <input type="file" class="form-control" id="imagens" placeholder="" name="imagens" >
     </div>
 
     <div class="form-group col-md-6">

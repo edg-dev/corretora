@@ -9,13 +9,26 @@ class SexoModel {
         $this->bd = BancoDados::obterConexao();
     }
     public function getCodigoSexo($codigoSexo){
-        $sexo = $this->bd->query("SELECT codigoSexo FROM Sexo WHERE codigoSexo = :codigoSexo");
-        $sexo->bindParam(":codigoSexo", $codigoSexo);
-        $sexo->execute();
+        try{
+            $sexo = $this->bd->query("SELECT codigoSexo FROM Sexo WHERE codigoSexo = :codigoSexo");
+            $sexo->bindParam(":codigoSexo", $codigoSexo);
+            $sexo->execute();
 
-        return $res = $sexo->fetch();
+            return $res = $sexo->fetch();
+        } catch(Exception $e){
+            throw $e;
+        }
+    }
+
+    public function getAllSexo(){
+        try{
+            $resSexo = $this->bd->query("SELECT * FROM Sexo");
+            $resSexo->execute();
+            return $sexo = $resSexo->fetchAll();
+        }catch(Exception $e){
+            throw $e;
+        }
     }
 }
-
 
 ?>

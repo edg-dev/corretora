@@ -10,16 +10,24 @@ class CidadeModel{
     }
 
     public function listarIdPorCidade($nomeCidade){
-        $resCidade = $this->bd->query("SELECT idCidade FROM Cidade WHERE nomeCidade = :nomeCidade");
-        $resCidade->bindParam(":nomeCidade", $nomeCidade);
-        $resCidade->execute();
-        return $idCidade = $resCidade->fetch();        
+        try{
+            $resCidade = $this->bd->prepare("SELECT idCidade FROM Cidade WHERE nomeCidade = :nomeCidade");
+            $resCidade->bindParam(":nomeCidade", $nomeCidade);
+            $resCidade->execute();
+            return $idCidade = $resCidade->fetch();  
+        } catch(Exception $e){
+            throw $e;
+        }      
     }
 
-    public function inserir($nomeCidade){      
+    public function inserir($nomeCidade){   
+        try{   
             $insCidade = $this->bd->prepare("INSERT INTO cidade(nomeCidade) VALUES(:nomeCidade)");
             $insCidade->bindParam(":nomeCidade", $nomeCidade);
             $insCidade->execute();
+        } catch(Exception $e){
+            throw $e;
+        }
     }
 }
 
