@@ -19,6 +19,7 @@
 								 $complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, $areaUtil, 
 								 $areaTotal, $precoImovel, $descricaoImovel){
 			try {
+				
 				$idEndereco = $this->endereco->getIdEndereco($logradouro, $numero, $complemento, $cep, $nomeBairro,
 															 $nomeCidade, $idEstado);
 
@@ -47,6 +48,7 @@
 				$insImovel->bindParam(":quantBanheiro", $quantBanheiro, PDO::PARAM_INT);
 
 		 	    $insImovel->execute();
+
 			  } catch(Exception $e){
 				  throw $e;
 			  }

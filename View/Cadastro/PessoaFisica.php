@@ -1,4 +1,3 @@
-
 <?php include '../Templates/header.php'; 
     
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/EstadoModel.php";
@@ -138,7 +137,7 @@
 
 </form>
 <br>
-<p style="text-align:center">Já possui uma conta?	<a href="../login/user/login.php">Entre Aqui</a>
+<p style="text-align:center">Já possui uma conta?<a href="../login/user/login.php">Entre Aqui</a>
 
 <!--JS do CEP -->
 <script type="text/javascript">
