@@ -9,7 +9,7 @@
 
 	if($acao == "create"){
 
-		$DescricaoTipoImovel = $_POST["tipoDeImovel"];
+		$idTipoImovel = $_POST["tipoDeImovel"];
 
 		$cep = $_POST["cep"];
 		$idEstado = $_POST["estado"];
@@ -24,7 +24,7 @@
 		$quantVagaGaragem = $_POST["quantVagaGaragem"];
 		$quantBanheiro = $_POST["quantBanheiro"];
 
-		$transacao = $_POST["transacao"];
+		$idTransacao = $_POST["transacao"];
 
 		$areaUtil = $_POST["areaUtil"];
 		$areaTotal = $_POST["areaTotal"];
@@ -52,8 +52,9 @@
 		}
 
 
-		$ImovelModel->inserir($DescricaoTipoImovel, $cep, $idEstado, $nomeCidade, $nomeBairro, $logradouro, $numero,
-							  $complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, $transacao, $areaUtil, 
+		$ImovelModel->inserir($idTipoImovel, $cep, $idEstado, $nomeCidade, $nomeBairro, $logradouro, $numero,
+							  $complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, 
+							  $idTransacao, $areaUtil, 
 							  $areaTotal, $precoImovel, $descricaoImovel);
 
 			echo "<script>alert('Imóvel cadastrado com sucesso'); location.href='/corretora/index.php';</script>";
