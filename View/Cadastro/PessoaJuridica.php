@@ -39,11 +39,11 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="telefone1">Telefone Empresarial 1</label>
-            <input type="text" class="form-control" id="telefone1" name="telefone1" placeholder="Telefone 1">
+            <input type="text" class="form-control" id="telefone1" name="telefone1" placeholder="Informe seu Telefone 1">
         </div>
         <div class="form-group col-md-6">
             <label for="telefone2">Telefone Empresarial 2</label>
-            <input type="text" class="form-control" id="telefone2" name="telefone2" placeholder="Telefone 2">
+            <input type="text" class="form-control" id="telefone2" name="telefone2" placeholder="Informe seu Telefone 2">
         </div>
     </div>
 
@@ -54,50 +54,57 @@
 
     <!--Endereco Completo com uma funcao de Buscar Atomaticamente-->
     <div class="form-row">
-        <div class="form-group col-md-4">
-            <label for="cep"><span>*</span>CEP:</label>
-            <input type="text" class="form-control" id="cep" name="cep" placeholder="Informe sua cidade" >
-        </div>
-
-        <div class="form-group col-md-4">
-            <label for="cidade"><span>*</span>Cidade:</label>
-            <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Informe sua cidade" >
-        </div>
-
-        <div class="form-group col-md-4">
-        <label for="estado"><span>*</span>Estado</label>
-		<select class="form-control" id="estado" name="estado" placeholder="Informe seu Estado">
-			<?php foreach($estados as $estado){?>
-                <option value="<?php echo $estado['idEstado'];?>"> <?php echo $estado['descricaoEstado'];?> </option>
-                <?php }?>
-		</select>
-        </div>
-    </div>
-
-    <div class="form-row">
         <div class="form-group col-md-10">
             <label for="logradouro"><span>*</span>Logradouro:</label>
-            <input type="text" class="form-control" id="logradouro" name="logradouro" placeholder="Rua, Avenida, etc..." >
+            <input type="text" class="form-control" id="logradouro" placeholder="Rua, Avenida, etc..." name="logradouro" required>
+
         </div>
 
         <div class="form-group col-md-2">
             <label for="numero"><span>*</span>Numero:</label>
-            <input type="text" class="form-control" id="numero" name="numero">
+            <input type="number" class="form-control" id="numero" name="numero" required>
         </div>
     </div>
 
     <div class="form-group">
         <label for="cpf">Complemento:</label>
-        <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Opcional" >
+        <input type="text" class="form-control" id="complemento" placeholder="Opcional" name="complemento">
     </div>
+  
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="cep"><span>*</span>CEP:</label>
+            <input type="number" class="form-control" id="cep" placeholder="Informe seu CEP" name="cep" required>
+        </div>
 
+        <div class="form-group col-md-3">
+            <label for="bairro"><span>*</span>Bairro:</label>
+            <input type="text" class="form-control" id="bairro" placeholder="Informe seu bairro" name="bairro" required>
+        </div>
 
+        <div class="form-group col-md-3">
+            <label for="cidade"><span>*</span>Cidade:</label>
+            <input type="text" class="form-control" id="cidade" placeholder="Informe sua cidade" name="cidade" required>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label for="estado"><span>*</span>Estado:</label>
+            <select id="estado" class="form-control" name="estado" required>
+                <option selected>Selecione seu estado</option>
+                <?php foreach($estados as $estado){?>
+                <option value="<?php echo $estado['idEstado'];?>"> <?php echo $estado['descricaoEstado'];?> </option>
+                <?php }?>
+            </select>
+        </div>
+
+    </div>
 	<button type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
 	
 </form>
 <br>
-<p style="text-align:center">Já possui uma conta?	<a href="../login/user/login.php">Entre Aqui</a>
-
+<div>
+    <p style="text-align:center">Já possui uma conta?	<a href="../login/user/login.php">Entre Aqui</a>
+</div>
 <!--JS do CEP -->
 <script type="text/javascript">
 	$("#cep").focusout(function(){
@@ -127,8 +134,19 @@
 			}
 		});
 	});
-</script>
+		$("#cadastroPessoaFisica").on("submit", function(event){
+			event.preventDefault();
 
+			$.ajax({
+				url: $("#cadastroPessoaFisica").attr("action"),
+				method: $("#cadastroPessoaFisica").attr("method"),
+				data: $("#cadastroPessoaFisica").serialize(),
+				success: function(data){
+					$("#mensagem").html(data);
+				}
+			})
+        });
+</script>
 <?php include "../Templates/footer.php"; ?>
 <style>
     input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
