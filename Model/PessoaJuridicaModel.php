@@ -19,13 +19,13 @@ class PessoaJuridicaModel{
         $this->usuario = new UsuarioModel();
     }
 
-    public function inserir($nome, $email, $senha, $telefone1, $telefone2, $razaoSocial, $cnpj, $logradouro,
-                            $numero, $complemento, $cep, $nomeBairro, $nomeCidade, $idEstado){
+    public function inserir($nome, $razaoSocial, $email, $senha, $telefone1, $telefone2,  $cnpj, 
+                            $logradouro, $numero, $complemento, $cep, $nomeBairro, $nomeCidade, $idEstado){
         
         try{
             $idEndereco = $this->endereco->getIdEndereco($logradouro, $numero, $complemento, $cep, $nomeBairro, $nomeCidade, $idEstado);
             $idPessoa = $this->pessoa->getIdPessoa($nome, $email);
-
+            
             if($idEndereco == null){
                 $this->endereco->inserir($logradouro, $numero, $complemento, $cep, $nomeBairro, $nomeCidade, $idEstado);
                 $idEndereco = $this->endereco->getIdEndereco($logradouro, $numero, $complemento, $cep, $nomeBairro, $nomeCidade, $idEstado);
