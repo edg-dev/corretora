@@ -17,56 +17,56 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <div class="form-group">
         <label for="nome"><span>*</span>Nome Completo</label>
-        <input type="text" class="form-control" id="nome" placeholder="Informe o Nome Completo" required>
+        <input type="text" class="form-control" id="nome" name="nome" placeholder="Informe o Nome Completo" required>
 	</div>
 	
 	<div class="form-group">
         <label for="razaoSocial"><span>*</span>Razão Social</label>
-        <input type="text" class="form-control" id="razaoSocial" placeholder="Informe a Razão Social" required>
+        <input type="text" class="form-control" id="razaoSocial" name="razaoSocial" placeholder="Informe a Razão Social" required>
     </div>
 
     <div class="form-group">
         <label for="email"><span>*</span>E-mail:</label>
-        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Informe seu E-mail" name="email">
+        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Informe seu E-mail" >
         <small id="emailHelp" class="form-text text-muted">Esse email será para usado para contatos.</small>
     </div>
 
     <div class="form-group">
         <label for="senha"><span>*</span>Senha</label>
-        <input type="password" class="form-control" id="senha" placeholder="Informe sua Senha de acesso" required>
+        <input type="password" class="form-control" id="senha" name="senha" placeholder="Informe sua Senha de acesso" required>
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="telefone1">Telefone Empresarial 1</label>
-            <input type="text" class="form-control" id="telefone1" placeholder="Telefone 1">
+            <input type="text" class="form-control" id="telefone1" name="telefone1" placeholder="Telefone 1">
         </div>
         <div class="form-group col-md-6">
             <label for="telefone2">Telefone Empresarial 2</label>
-            <input type="text" class="form-control" id="telefone2" placeholder="Telefone 2">
+            <input type="text" class="form-control" id="telefone2" name="telefone2" placeholder="Telefone 2">
         </div>
     </div>
 
     <div class="form-group">
         <label for="cnpj"><span>*</span>CNPJ</label>
-        <input type="text" class="form-control" id="cnpj" placeholder="Informe o CNPJ">
+        <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="Informe o CNPJ">
     </div>
 
     <!--Endereco Completo com uma funcao de Buscar Atomaticamente-->
     <div class="form-row">
         <div class="form-group col-md-4">
             <label for="cep"><span>*</span>CEP:</label>
-            <input type="text" class="form-control" id="cep" placeholder="Informe sua cidade" name="cep">
+            <input type="text" class="form-control" id="cep" name="cep" placeholder="Informe sua cidade" >
         </div>
 
         <div class="form-group col-md-4">
             <label for="cidade"><span>*</span>Cidade:</label>
-            <input type="text" class="form-control" id="cidade" placeholder="Informe sua cidade" name="cidade">
+            <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Informe sua cidade" >
         </div>
 
         <div class="form-group col-md-4">
-        <label for="uf"><span>*</span>Estado</label>
-		<select class="form-control" id="uf" placeholder="Informe seu Estado">
+        <label for="estado"><span>*</span>Estado</label>
+		<select class="form-control" id="estado" name="estado" placeholder="Informe seu Estado">
 			<?php foreach($estados as $estado){?>
                 <option value="<?php echo $estado['idEstado'];?>"> <?php echo $estado['descricaoEstado'];?> </option>
                 <?php }?>
@@ -77,7 +77,7 @@
     <div class="form-row">
         <div class="form-group col-md-10">
             <label for="logradouro"><span>*</span>Logradouro:</label>
-            <input type="text" class="form-control" id="logradouro" placeholder="Rua, Avenida, etc..." name="logradouro">
+            <input type="text" class="form-control" id="logradouro" name="logradouro" placeholder="Rua, Avenida, etc..." >
         </div>
 
         <div class="form-group col-md-2">
@@ -88,11 +88,11 @@
 
     <div class="form-group">
         <label for="cpf">Complemento:</label>
-        <input type="text" class="form-control" id="complemento" placeholder="Opcional" name="complemento">
+        <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Opcional" >
     </div>
 
 
-	<button type="button" class="btn btn-primary btn-lg btn-block" value="submit">Cadastrar</button>
+	<button type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
 	
 </form>
 <br>
