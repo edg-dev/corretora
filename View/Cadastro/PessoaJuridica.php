@@ -92,7 +92,7 @@
     </div>
 
 
-	<button type="button" class="btn btn-primary btn-lg btn-block" value="submit">Cadastrar</button>
+	<button type="submit" class="btn btn-primary btn-lg btn-block" >Cadastrar</button>
 	
 </form>
 <br>

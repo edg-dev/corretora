@@ -37,9 +37,7 @@
                     <a class="nav-link" href="#">Anunciar</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/login/user/login.php">Entrar</a>
-                </li>
+                
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -56,6 +54,11 @@
                     </div>
 
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/corretora/View/login/user/indexLogin.php">Entrar</a>
+                </li>
+               
+
             </ul>
         </div>
     </nav>

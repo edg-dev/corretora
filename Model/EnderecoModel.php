@@ -31,7 +31,7 @@ class EnderecoModel{
             
             $idCep = $this->cep->ListarIdPorDescricao($descricaoCep);
 
-            if($verBairro[0] == 0){
+            if($verBairro[0] == null){
                 $this->bairro->inserir($nomeBairro);
                 $idBairro = $this->bairro->ListarIdPorBairro($nomeBairro);
             }
@@ -52,7 +52,7 @@ class EnderecoModel{
             $insercao->bindParam(":idCep",          $idCep, PDO::PARAM_INT);
             $insercao->bindParam(":idBairro",       $idBairro, PDO::PARAM_INT);
             $insercao->bindParam(":idCidade",       $idCidade, PDO::PARAM_INT);
-            $insercao->bindParam(":idEstado",       $idEstado);
+            $insercao->bindParam(":idEstado",       $idEstado, PDO::PARAM_INT);
             $insercao->execute();
             
         } catch(Exception $e){

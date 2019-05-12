@@ -52,10 +52,9 @@
 		}
 
 
-		$ImovelModel->inserir($idTipoImovel, $cep, $idEstado, $nomeCidade, $nomeBairro, $logradouro, $numero,
-							  $complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, 
-							  $idTransacao, $areaUtil, 
-							  $areaTotal, $precoImovel, $descricaoImovel);
+		$ImovelModel->inserir($idTipoImovel, $idTransacao, $cep, $idEstado, $nomeCidade, $nomeBairro, $logradouro, 
+		$numero, $complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, $areaUtil, 
+		$areaTotal, $precoImovel, $descricaoImovel);
 
 			echo "<script>alert('Imóvel cadastrado com sucesso'); location.href='/corretora/index.php';</script>";
 
