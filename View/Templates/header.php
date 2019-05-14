@@ -53,7 +53,7 @@
                         <a class="dropdown-item" href="/corretora/View/Cadastro/Imovel.php">Imóvel</a>
 
                     <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Apenas teste</a>
+                        <a class="dropdown-item" href="/corretora/View/Templates/template_padrao/index.html">Template Teste</a>
                     </div>
 
                 </li>
