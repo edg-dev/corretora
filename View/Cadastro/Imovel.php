@@ -58,7 +58,7 @@
         <label for="endereco">Endereço:</label>
         <input type="text" class="form-control" id="bairro" placeholder="Bairro" name="bairro" required>
         <input type="text" class="form-control" id="rua" placeholder="Rua" name="rua" required>
-        <input type="text" class="form-control" id="complemento" placeholder="Complemento" name="complemento" required>
+        <input type="text" class="form-control" id="complemento" placeholder="Complemento" name="complemento">
         <input type="text" class="form-control" id="numero" placeholder="Número" name="numero" required>
     </div>
 

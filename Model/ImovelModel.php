@@ -15,9 +15,9 @@
 			 $this->endereco = new EnderecoModel();
 		 }
 
-		 public function inserir($idTipoImovel, $idTransacao, $cep, $idEstado, $nomeCidade, $nomeBairro, $logradouro, $numero,
-								 $complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, $areaUtil, 
-								 $areaTotal, $precoImovel, $descricaoImovel){
+		 public function inserir($idTipoImovel, $cep, $idEstado, $nomeCidade, $nomeBairro, $logradouro, $numero,
+		 						 $complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, 
+								 $idTransacao, $areaUtil, $areaTotal, $precoImovel, $descricaoImovel){
 			try {
 				
 				$idEndereco = $this->endereco->getIdEndereco($logradouro, $numero, $complemento, $cep, $nomeBairro,
