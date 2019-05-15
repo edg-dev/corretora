@@ -363,12 +363,12 @@ class UploadHandler
             return array();
         }
 
-        $imagensImovelModel = new ImagensImovelModel();
-        $fotos = $imagensImovelModel->listaArrayImagens();
+        //$imagensImovelModel = new ImagensImovelModel();
+        //$fotos = $imagensImovelModel->listaArrayImagens();
 
         return array_values(array_filter(array_map(
             array($this, $iteration_method),
-            $fotos
+            scandir($upload_dir)
         )));
     }
 
