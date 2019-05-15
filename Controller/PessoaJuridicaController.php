@@ -30,7 +30,7 @@
         $pessoaJuridicaModel->inserir($nome, $razaoSocial, $email, $senha, $telefone1, $telefone2,  $cnpj, 
         $logradouro, $numero, $complemento, $cep, $nomeBairro, $nomeCidade, $idEstado);
 
-        echo "<div class='card-panel teal lighten-2'>Usuário cadastrado com sucesso</div>";
+        echo "<script>alert('Pessoa cadastrada com sucesso'); location.href='/corretora/index.php';</script>";
     }
 
 ?>

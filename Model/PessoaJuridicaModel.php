@@ -34,13 +34,12 @@ class PessoaJuridicaModel{
             if($idPessoa == null){
                 $this->pessoa->inserir($nome, $idEndereco, $email);
             }
-
             $valPessoa = $this->pessoa->getIdPessoa($nome, $email);
 
             $insPJ = $this->bd->prepare("INSERT INTO PessoaJuridica(idPessoa, razaoSocial, cnpj) 
                                         VALUES (:idPessoa, :razaoSocial, :cnpj)");
             $idPj = intval($valPessoa[0]);
-            $insPJ->bindParam(":idPessoa", $idPessoa, PDO::PARAM_INT);
+            $insPJ->bindParam(":idPessoa", $idPj, PDO::PARAM_INT);
             $insPJ->bindParam(":razaoSocial", $razaoSocial);
             $insPJ->bindParam(":cnpj", $cnpj, PDO::PARAM_INT);
             $insPJ->execute();

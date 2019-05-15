@@ -23,23 +23,22 @@ class EnderecoModel{
         try{
             $verCep = $this->cep->ListarIdPorDescricao($descricaoCep);
             $verBairro = $this->bairro->ListarIdPorBairro($nomeBairro);
-            $idCidade = $this->cidade->ListarIdPorCidade($nomeCidade);
+            $verCidade = $this->cidade->ListarIdPorCidade($nomeCidade);
 
             if($verCep == false){
                 $this->cep->inserir($descricaoCep);              
             }
-            
             $idCep = $this->cep->ListarIdPorDescricao($descricaoCep);
 
             if($verBairro[0] == 0){
-                $this->bairro->inserir($nomeBairro);
-                $idBairro = $this->bairro->ListarIdPorBairro($nomeBairro);
+                $this->bairro->inserir($nomeBairro); 
             }
+            $idBairro = $this->bairro->ListarIdPorBairro($nomeBairro);
 
-            if($idCidade == 0){
+            if($verCidade == 0){
                 $this->cidade->inserir($nomeCidade);
-                $idCidade = $this->cidade->ListarIdPorCidade($nomeCidade);
             }
+            $idCidade = $this->cidade->ListarIdPorCidade($nomeCidade);
 
             $insercao = $this->bd->prepare(
                 "INSERT INTO endereco(logradouro, numero, complemento, idCep, idBairro, idCidade, idEstado)
@@ -52,7 +51,7 @@ class EnderecoModel{
             $insercao->bindParam(":idCep",          $idCep, PDO::PARAM_INT);
             $insercao->bindParam(":idBairro",       $idBairro, PDO::PARAM_INT);
             $insercao->bindParam(":idCidade",       $idCidade, PDO::PARAM_INT);
-            $insercao->bindParam(":idEstado",       $idEstado);
+            $insercao->bindParam(":idEstado",       $idEstado, PDO::PARAM_INT);
             $insercao->execute();
             
         } catch(Exception $e){
