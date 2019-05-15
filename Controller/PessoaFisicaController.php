@@ -32,7 +32,7 @@
         $pessoaFisicaModel->inserir($nome, $codSexo, $email, $senha, $telefone1, $telefone2, $rg, $cpf, $logradouro, $numero, 
                                     $complemento, $cep, $nomeBairro, $nomeCidade, $idEstado, $idEstadoCivil, $descricaoProfissao);
 
-        echo "<script>alert('Pessoa cadastrada com sucesso'); location.href='/corretora/index.php';</script>"
+        echo "<script>alert('Pessoa cadastrada com sucesso'); location.href='/corretora/index.php';</script>";
     }
 
 ?>
