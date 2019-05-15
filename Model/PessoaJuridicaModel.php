@@ -4,6 +4,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Config/DataBase/dbConfig.ph
 require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/EnderecoModel.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/PessoaModel.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/UsuarioModel.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TelefoneModel.php";
 
 class PessoaJuridicaModel{
 
@@ -11,12 +12,14 @@ class PessoaJuridicaModel{
     private $endereco;
     private $pessoa;
     private $usuario;
+    private $telefone;
 
     function __construct(){
         $this->bd = BancoDados::obterConexao();
         $this->endereco = new EnderecoModel();
         $this->pessoa = new PessoaModel();
         $this->usuario = new UsuarioModel();
+        $this->telefone = new TelefoneModel();
     }
 
     public function inserir($nome, $razaoSocial, $email, $senha, $telefone1, $telefone2,  $cnpj, 
@@ -35,6 +38,9 @@ class PessoaJuridicaModel{
                 $this->pessoa->inserir($nome, $idEndereco, $email);
             }
             $valPessoa = $this->pessoa->getIdPessoa($nome, $email);
+
+
+            $this->telefone->inserir($valPessoa, $telefone1, $telefone2);
 
             $insPJ = $this->bd->prepare("INSERT INTO PessoaJuridica(idPessoa, razaoSocial, cnpj) 
                                         VALUES (:idPessoa, :razaoSocial, :cnpj)");
