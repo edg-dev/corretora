@@ -8,6 +8,7 @@
         <title>Corretora</title>
 
         <!-- CSS  -->
+        <link href="/corretora/Config/CSS/style.css" type="text/css" rel="stylesheet">
         <link href="/corretora/Config/Bootstrap/bootstrap.css" type="text/css" rel="stylesheet">
 
         <!-- JavaScript  -->
@@ -18,15 +19,15 @@
     </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/corretora/index.php">(Logo)</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active" >
                     <a class="nav-link" href="/corretora/index.php">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -52,7 +53,7 @@
                         <a class="dropdown-item" href="/corretora/View/Cadastro/Imovel.php">Imóvel</a>
 
                     <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Apenas teste</a>
+                        <a class="dropdown-item" href="/corretora/View/Templates/template_padrao/index.html">Template Teste</a>
                     </div>
 
                 </li>
