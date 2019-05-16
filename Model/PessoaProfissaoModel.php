@@ -12,7 +12,7 @@
             $insProf = $this->bd->prepare("INSERT INTO PessoaProfissao(idPessoa, idProfissao) 
                                             VALUES (:idPessoa, :idProfissao)");
             $idPes = intval($idPessoa[0]);
-            $idProf = intval($idPessoa[0]);
+            $idProf = intval($idProfissao[0]);
             $insProf->bindParam(":idPessoa", $idPes, PDO::PARAM_INT);
             $insProf->bindParam(":idProfissao", $idProf, PDO::PARAM_INT);
             $insProf->execute();

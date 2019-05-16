@@ -51,12 +51,7 @@ class PessoaFisicaModel{
                 $idProfissao = $this->profissao->getProfissao($descricaoProfissao);
             }
 
-            $this->pessoaProfissao->inserir($idPessoa, $idProfissao);
-
             $this->telefone->inserir($valPessoa, $telefone1, $telefone2);
-
-            
-            
 
             $insPF = $this->bd->prepare("INSERT INTO PessoaFisica(idPessoa, rg, cpf, codigoSexo, idestadoCivil) 
                                         VALUES (:idPessoa, :rg, :cpf, :codigoSexo, :estadoCivil)");
@@ -68,6 +63,7 @@ class PessoaFisicaModel{
             $insPF->bindParam(":estadoCivil",   $idEstadoCivil,  PDO::PARAM_INT);
             $insPF->execute();
 
+            $this->pessoaProfissao->inserir($valPessoa, $idProfissao);
             $this->usuario->inserir($idPf, $email, $senha);
 
         } catch(Exception $e){
