@@ -54,5 +54,18 @@
 			  }
 
 		 }
+
+		 public function getAllImovel(){
+			try{
+				$resImovel = $this->bd->query("select areaUtil, areaTotal, precoImovel, descricaoImovel, quantQuarto, quantSuite, quantVagaGaragem, quantBanheiro,
+				descricaoTipoImovel, descricaoTransacao from imovel 
+				inner join transacao on imovel.idTransacao = transacao.idTransacao
+				inner join tipoimovel on imovel.idTipoImovel = tipoimovel.idTipoImovel");
+				$resImovel->execute();
+				return $imoveis = $resImovel->fetchAll();
+			} catch(Exception $e){
+				throw $e;
+			}
+		}
 	}
 ?>
