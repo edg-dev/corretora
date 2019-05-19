@@ -1,9 +1,13 @@
     <br>
     <div>
-        <footer class="page-footer black">
-            <div class="container">
+        <footer  class="page-footer black">
+            <div class="rodape container">
+                
                 <div class="row">
                     <div class="col l6 s12">
+
+                    <a class="back-to-top" style="display: inline;" href="#">Back to Top</a>
+
                         <h5 class="white-text">Institucional</h5>
                         <ul>
                             <li><a class="white-text" href="#!">Quem Somos</a></li>
@@ -33,7 +37,7 @@
                     </div>
                 </div>
             </div>
-            <div class="footer-copyright">
+            <div class=" footer footer-copyright">
                 <div class="container">
                 @Copyright
                 </div>

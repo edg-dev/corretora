@@ -1,10 +1,10 @@
 # Projeto Integrador V
 
-## Projeto desenvolvido por alunos do Centro Universit·rio de Patos de Minas.
+## Projeto desenvolvido por alunos do Centro Universit√°rio de Patos de Minas.
 
-O projeto tem como intuito desenvolver um Site para comÈrcrio imobili·rio.
+O projeto tem como intuito desenvolver um Site para com√©rcio imobili√°rio.
 
-Ser„o utilizados:
+Ser√£o utilizados:
 
 - HTML, CSS e JavaScript;
 - PHP;
