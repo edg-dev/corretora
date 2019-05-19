@@ -115,8 +115,4 @@
 </form>
 
 
-
-
-
-
 <?php include "../Templates/footer.php"; ?>

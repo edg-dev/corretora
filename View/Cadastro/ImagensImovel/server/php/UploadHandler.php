@@ -1,17 +1,6 @@
 <?php
 
-    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/config/DataBase/dbConfig.php";
-    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImagensImovelModel.php";
-/*
- * jQuery File Upload Plugin PHP Class
- * https://github.com/blueimp/jQuery-File-Upload
- *
- * Copyright 2010, Sebastian Tschan
- * https://blueimp.net
- *
- * Licensed under the MIT license:
- * https://opensource.org/licenses/MIT
- */
+    include_once "uploadBanco.php";
 
 class UploadHandler
 {
@@ -357,18 +346,20 @@ class UploadHandler
         return null;
     }
 
+
+
     protected function get_file_objects($iteration_method = 'get_file_object') {
         $upload_dir = $this->get_upload_path();
         if (!is_dir($upload_dir)) {
             return array();
         }
 
-        //$imagensImovelModel = new ImagensImovelModel();
-        //$fotos = $imagensImovelModel->listaArrayImagens();
+        $conn = new uploadBanco();
+        $fotos = $conn->getImagens();
 
         return array_values(array_filter(array_map(
             array($this, $iteration_method),
-            scandir($upload_dir)
+            $fotos
         )));
     }
 
@@ -1150,6 +1141,8 @@ class UploadHandler
                     );
                 } else {
                     move_uploaded_file($uploaded_file, $file_path);
+                    $conn3 = new uploadBanco();
+                    $conn3->inserir($file->name);
                 }
             } else {
                 // Non-multipart uploads (PUT method support)
@@ -1452,6 +1445,10 @@ class UploadHandler
                     }
                 }
             }
+
+            $conn2 = new uploadBanco();
+            $conn2->deletar($file_name);
+
             $response[$file_name] = $success;
         }
         return $this->generate_response($response, $print_response);

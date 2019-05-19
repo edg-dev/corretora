@@ -1,8 +1,7 @@
 <!doctype html>
 <html>
-    <head>
-        
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <head>  
+        <meta charset="ISO-8859-1"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
 
         <title>Corretora</title>
@@ -15,7 +14,26 @@
         <script src="/corretora/Config/JS/jquery-3.2.1.min.js"></script>
         <script src="/corretora/Config/JS/bootstrap.js"></script>
         <script src="/corretora/Config/JS/init.js"></script>
-      
+
+        <!-- blueimp Gallery styles -->
+        <link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+        <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+        <link rel="stylesheet" href="/corretora/Config/JS/jQueryUpload/css/jquery.fileupload.css">
+        <link rel="stylesheet" href="/corretora/Config/JS/jQueryUpload/css/jquery.fileupload-ui.css">
+        <!-- CSS adjustments for browsers with JavaScript disabled -->
+        <noscript><link rel="stylesheet" href="/corretora/Config/JS/jQueryUpload/css/jquery.fileupload-noscript.css"></noscript>
+        <noscript><link rel="stylesheet" href="/corretora/Config/JS/jQueryUpload/css/jquery.fileupload-ui-noscript.css"></noscript>
+        <!-- Generic page styles -->
+        <link rel="stylesheet" href="css/style.css">
+        <!-- blueimp Gallery styles -->
+        <link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+        <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+        <link rel="stylesheet" href="/corretora/Config/JS/jQueryUpload/css/jquery.fileupload.css">
+        <link rel="stylesheet" href="/corretora/Config/JS/jQueryUpload/css/jquery.fileupload-ui.css">
+        <!-- CSS adjustments for browsers with JavaScript disabled -->
+        <noscript><link rel="stylesheet" href="/corretora/Config/JS/jQueryUpload/css/jquery.fileupload-noscript.css"></noscript>
+        <noscript><link rel="stylesheet" href="/corretora/Config/JS/jQueryUpload/css/jquery.fileupload-ui-noscript.css"></noscript>
+
     </head>
 
 <body>
