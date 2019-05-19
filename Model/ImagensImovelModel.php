@@ -31,6 +31,17 @@
             }        
             return $array;
         }
+
+        public function listarAllImagens(){
+            $lista = $this->bd->query("SELECT * FROM ImagensImovel");
+            $lista->execute();
+
+            $array = array();
+            while ($res = $lista->fetch(PDO::FETCH_ASSOC)){
+                array_push($array, $res['imagemImovel']);
+            }        
+            return $array;
+        }
     }
 
 ?>
