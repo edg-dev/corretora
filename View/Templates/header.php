@@ -35,7 +35,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Anunciar</a>
+                    <a class="nav-link" href="/corretora/View/Pages/anunciar.php">Anunciar</a>
                 </li>
 
                 <li class="nav-item">
