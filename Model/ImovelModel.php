@@ -15,9 +15,9 @@
 			 $this->endereco = new EnderecoModel();
 		 }
 
-		 public function inserir($idTipoImovel, $idTransacao, $cep, $idEstado, $nomeCidade, $nomeBairro, $logradouro, $numero,
-								 $complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, $areaUtil, 
-								 $areaTotal, $precoImovel, $descricaoImovel){
+		 public function inserir($idTipoImovel, $cep, $idEstado, $nomeCidade, $nomeBairro, $logradouro, $numero,
+		 						 $complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, 
+								 $idTransacao, $areaUtil, $areaTotal, $precoImovel, $descricaoImovel){
 			try {
 				
 				$idEndereco = $this->endereco->getIdEndereco($logradouro, $numero, $complemento, $cep, $nomeBairro,
@@ -54,5 +54,18 @@
 			  }
 
 		 }
+
+		 public function getAllImovel(){
+			try{
+				$resImovel = $this->bd->query("select areaUtil, areaTotal, precoImovel, descricaoImovel, quantQuarto, quantSuite, quantVagaGaragem, quantBanheiro,
+				descricaoTipoImovel, descricaoTransacao from imovel 
+				inner join transacao on imovel.idTransacao = transacao.idTransacao
+				inner join tipoimovel on imovel.idTipoImovel = tipoimovel.idTipoImovel");
+				$resImovel->execute();
+				return $imoveis = $resImovel->fetchAll();
+			} catch(Exception $e){
+				throw $e;
+			}
+		}
 	}
 ?>

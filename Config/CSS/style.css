@@ -1,0 +1,17 @@
+.footer {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+ }
+ .rodape{
+    padding: 1rem;
+    margin: 0;
+    padding: 0;
+    display: block;
+    width: 100%;
+    background-color: black;
+    color: white;
+ }

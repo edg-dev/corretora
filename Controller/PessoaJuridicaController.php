@@ -8,11 +8,11 @@
 
     if($acao == "create"){
         $nome = $_POST["nome"];
+        $razaoSocial = $_POST["razaoSocial"];
         $email = $_POST["email"];
         $senha = $_POST["senha"];
         $telefone1 = $_POST["telefone1"];
         $telefone2 = $_POST["telefone2"];
-        $razaoSocial = $_POST["razaoSocial"];
         $cnpj = $_POST["cnpj"];
         $logradouro = $_POST["logradouro"];
         $numero = $_POST["numero"];
@@ -22,14 +22,15 @@
         $nomeCidade = $_POST["cidade"];
         $idEstado = $_POST["estado"];
 
+
         if(!isset($_POST["complemento"])){
             $complemento = " ";
         }
         
-        $pessoaJuridicaModel->inserir($nome, $email, $senha, $telefone1, $telefone2, $razaoSocial, $cnpj, $logradouro, $numero, 
-                                    $complemento, $cep, $nomeBairro, $nomeCidade, $idEstado);
+        $pessoaJuridicaModel->inserir($nome, $razaoSocial, $email, $senha, $telefone1, $telefone2,  $cnpj, 
+        $logradouro, $numero, $complemento, $cep, $nomeBairro, $nomeCidade, $idEstado);
 
-        echo "<div class='card-panel teal lighten-2'>Usuário cadastrado com sucesso</div>";
+        echo "<script>alert('Pessoa cadastrada com sucesso'); location.href='/corretora/index.php';</script>";
     }
 
 ?>

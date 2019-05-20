@@ -1,5 +1,11 @@
-<?php include 'View/Templates/header.php'; ?>
+<?php include 'View/Templates/header.php'; 
 
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImovelModel.php";
+    
+    $imovelModel = new ImovelModel();
+    $imoveis = $imovelModel->getAllImovel();
+
+?>
     <h1>NOME DO SITE</h1>
 
     <div class="bd-example">
@@ -40,6 +46,74 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Proximo</span>
         </a>
+
+
+                        <!-- Page Content -->
+                    <div class="container">
+
+                <!-- Page Heading -->
+                <h1 class="my-4">Anúncios
+                
+                </h1>
+
+                <!-- Project One -->
+                <?php foreach($imoveis as $imovel){?>
+                <div class="row">
+                <div class="col-md-7">
+                    <a href="#">
+                    <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <p> 
+                        <?php echo $imovel['descricaoTransacao'];?>
+                        <?php echo $imovel['descricaoTipoImovel'];?>
+                        <?php echo $imovel['precoImovel'];?>
+                        <?php echo $imovel['areaUtil'];?>
+                        <?php echo $imovel['areaTotal'];?>
+                        <?php echo $imovel['quantQuarto'];?>
+                        <?php echo $imovel['quantSuite'];?>
+                        <?php echo $imovel['quantVagaGaragem'];?>
+                        <?php echo $imovel['quantBanheiro'];?>
+                        <?php echo $imovel['descricaoImovel'];?>
+
+                    </p>                
+                    <a class="btn btn-primary" href="#">Detalhes</a>
+  
+                </div>
+                </div>
+                <!-- /.row -->
+                <hr>
+                <?php } ?>
+
+                <!-- Pagination -->
+
+                <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                    </a>
+                </li>
+                </ul>
+
+                </div>
+                <!-- /.container -->
     </div>
     </div>
 

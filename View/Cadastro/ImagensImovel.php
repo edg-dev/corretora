@@ -1,7 +1,5 @@
 <?php include "../Templates/header.php"; 
-
     $acao = "create";
-
 ?>
 
 <form method="POST" enctype="multipart/form-data" id="formImagens"

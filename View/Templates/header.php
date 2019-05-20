@@ -1,32 +1,51 @@
 <!doctype html>
 <html>
-    <head>
-        
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <head>  
+        <meta charset="ISO-8859-1"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
 
         <title>Corretora</title>
 
         <!-- CSS  -->
+        <link href="/corretora/Config/CSS/style.css" type="text/css" rel="stylesheet">
         <link href="/corretora/Config/Bootstrap/bootstrap.css" type="text/css" rel="stylesheet">
 
         <!-- JavaScript  -->
         <script src="/corretora/Config/JS/jquery-3.2.1.min.js"></script>
         <script src="/corretora/Config/JS/bootstrap.js"></script>
         <script src="/corretora/Config/JS/init.js"></script>
-      
+
+        <!-- blueimp Gallery styles -->
+        <link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+        <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+        <link rel="stylesheet" href="/corretora/Config/JS/jQueryUpload/css/jquery.fileupload.css">
+        <link rel="stylesheet" href="/corretora/Config/JS/jQueryUpload/css/jquery.fileupload-ui.css">
+        <!-- CSS adjustments for browsers with JavaScript disabled -->
+        <noscript><link rel="stylesheet" href="/corretora/Config/JS/jQueryUpload/css/jquery.fileupload-noscript.css"></noscript>
+        <noscript><link rel="stylesheet" href="/corretora/Config/JS/jQueryUpload/css/jquery.fileupload-ui-noscript.css"></noscript>
+        <!-- Generic page styles -->
+        <link rel="stylesheet" href="css/style.css">
+        <!-- blueimp Gallery styles -->
+        <link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+        <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+        <link rel="stylesheet" href="/corretora/Config/JS/jQueryUpload/css/jquery.fileupload.css">
+        <link rel="stylesheet" href="/corretora/Config/JS/jQueryUpload/css/jquery.fileupload-ui.css">
+        <!-- CSS adjustments for browsers with JavaScript disabled -->
+        <noscript><link rel="stylesheet" href="/corretora/Config/JS/jQueryUpload/css/jquery.fileupload-noscript.css"></noscript>
+        <noscript><link rel="stylesheet" href="/corretora/Config/JS/jQueryUpload/css/jquery.fileupload-ui-noscript.css"></noscript>
+
     </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="/corretora/index.php">(Logo)</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active" >
                     <a class="nav-link" href="/corretora/index.php">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -34,7 +53,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Anunciar</a>
+                    <a class="nav-link" href="/corretora/View/Pages/anunciar.php">Anunciar</a>
                 </li>
 
                 
@@ -50,7 +69,7 @@
                         <a class="dropdown-item" href="/corretora/View/Cadastro/Imovel.php">Imóvel</a>
 
                     <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Apenas teste</a>
+                        <a class="dropdown-item" href="/corretora/View/Templates/template_padrao/index.html">Template Teste</a>
                     </div>
 
                 </li>
