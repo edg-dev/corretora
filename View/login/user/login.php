@@ -69,7 +69,7 @@ $query = "select emailLogin from usuario where emailLogin = '{$emailLogin}' and 
  
 $result = mysqli_query($conexao, $query);
  
-if($result == null) {
+if($result =! null) {
 	$_SESSION['verifica_login'] = true;
 	header('Location: indexLogin.php');
 	exit();
@@ -80,7 +80,4 @@ if($result == null) {
 	exit();
 }
 ?>
-<<<<<<< HEAD
 <?php include '../../Templates/footer.php'; ?>
-=======
->>>>>>> master
