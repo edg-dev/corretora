@@ -51,7 +51,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/Pages/administrador.php">Adm</a>
+                    <a class="nav-link" href="/corretora/View/administrador/index.html">Adm</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/corretora/View/Pages/perfil.php">User </a>
