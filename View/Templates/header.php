@@ -39,7 +39,7 @@
                     <a class="nav-link" href="/corretora/index.php">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/Pages/buscar.php">Buscar</a>
+                    <a class="nav-link" href="/corretora/View/buscar/index.php">Buscar</a>
                 </li>
 
                 <li class="nav-item">
