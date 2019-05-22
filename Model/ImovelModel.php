@@ -57,10 +57,15 @@
 
 		 public function getAllImovel(){
 			try{
-				$resImovel = $this->bd->query("select areaUtil, areaTotal, precoImovel, descricaoImovel, quantQuarto, quantSuite, quantVagaGaragem, quantBanheiro,
+				$resImovel = $this->bd->query("select nomeBairro, nomeCidade, descricaoEstado, numero, logradouro,
+				areaUtil, areaTotal, precoImovel, descricaoImovel, quantQuarto, quantSuite, quantVagaGaragem, quantBanheiro,
 				descricaoTipoImovel, descricaoTransacao from imovel 
 				inner join transacao on imovel.idTransacao = transacao.idTransacao
-				inner join tipoimovel on imovel.idTipoImovel = tipoimovel.idTipoImovel");
+				inner join tipoimovel on imovel.idTipoImovel = tipoimovel.idTipoImovel
+				inner join endereco on imovel.idEndereco = endereco.idEndereco
+				inner join bairro on endereco.idBairro = bairro.idBairro
+				inner join cidade on endereco.idCidade = cidade.idCidade
+				inner join estado on endereco.idEstado = estado.idEstado");
 				$resImovel->execute();
 				return $imoveis = $resImovel->fetchAll();
 			} catch(Exception $e){
