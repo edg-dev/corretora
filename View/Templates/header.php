@@ -1,10 +1,6 @@
 <!doctype html>
 <html>
-        <?php
-        session_start();
-        ?>
     <head>  
- 
         <meta charset="ISO-8859-1"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
 
@@ -39,7 +35,11 @@
                     <a class="nav-link" href="/corretora/index.php">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
+<<<<<<< HEAD
                     <a class="nav-link" href="/corretora/View/buscar/index.php">Buscar</a>
+=======
+                    <a class="nav-link" href="#">Buscar</a>
+>>>>>>> parent of 19e323a... Merge branch 'Main-Leonardo' into Main-Alex
                 </li>
 
                 <li class="nav-item">
@@ -48,6 +48,7 @@
 
                 
 
+<<<<<<< HEAD
                 <li class="nav-item">
                     <a class="nav-link" href="/corretora/View/administrador/index.html">Adm</a>
                 </li>
@@ -55,6 +56,8 @@
                     <a class="nav-link" href="/corretora/View/Pages/perfil.php">User </a>
                 </li>
 
+=======
+>>>>>>> parent of 19e323a... Merge branch 'Main-Leonardo' into Main-Alex
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Cadastrar
@@ -64,6 +67,10 @@
                         <a class="dropdown-item" href="/corretora/View/Cadastro/PessoaFisica.php">Pessoa Física</a>
                         <a class="dropdown-item" href="/corretora/View/Cadastro/PessoaJuridica.php">Pessoa Jurídica</a>
                         <a class="dropdown-item" href="/corretora/View/Cadastro/Imovel.php">Imóvel</a>
+
+                    <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/corretora/View/Templates/template_padrao/index.html">Template Teste</a>
+                    </div>
 
                 </li>
                 <li class="nav-item">
