@@ -2,6 +2,55 @@
 <html>
 
   <head>
+      <?php
+        if(!isset($_SESSION))
+            session_start();
+
+        //Login de Usários
+        if(isset($_POST['login'])){
+
+          require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Config/DataBase/dbConfig.php";
+        
+        $erro = array();
+
+        // Captação de dados
+            $senha = $_POST['password'];
+            $_SESSION['email'] = $mysqli->escape_string($_POST['email']);
+
+            // Validação de dados
+            if(!filter_var($_SESSION['email'], FILTER_VALIDATE_EMAIL))
+                $erro[] = "Preencha seu <strong>e-mail</strong> corretamente.";
+
+            if(strlen($senha) < 6 || strlen($senha) > 32)
+                $erro[] = "Preencha sua <strong>senha</strong> corretamente.";
+
+            if(count($erro) == 0){
+            $email = $_SESSION['email'];
+            $sql ='SELECT senha as senha, idUsuario as valor 
+            FROM Usuario WHERE emailLogin =:email';
+
+            $mysqli->prepare->query($sql);
+            $mysqli->bindParam(":email", $email);
+            
+                $que = $mysqli->execute() or die($mysqli->error);
+                $dado = $que->fetch_assoc();
+                
+                if($que->num_rows == 0)
+                    $erro[] = "Nenhum usuário possui o <strong>e-mail</strong> informado.";
+
+                elseif(strcmp($dado['senha'], ($senha)) == 0){
+                    $_SESSION['Usuario_Logado'] = $dado[valor];
+                }else
+                    $erro[] = "<strong>Senha</strong> incorreta.";
+
+                if(count($erro) == 0){
+                    echo "<script>location.href='index.php=';</script>";
+                    exit();
+                    unset($_SESSION['email']);
+                }
+            }
+        }
+      ?>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
@@ -17,7 +66,8 @@
         <script src="/corretora/Config/JS/init.js"></script>
 
   </head>
-
+  
+  <form action="/corretora/View/login/user/perfil.php" method="post">
     <div class="container">
         <div class="row">
           <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -26,12 +76,14 @@
                 <h5 class="card-title text-center">Entre aqui!</h5>
                 <form class="form-signin">
                   <div class="form-label-group">
-                    <input type="email" id="inputEmail" class="form-control" placeholder="email@email.com" required autofocus>
+                    <input value ="<?php if(isset($_SESSION['email'])) echo $_SESSION['email']; ?>" name="emailLogin"
+                        type="email" id="inputEmail" class="form-control" placeholder="email@email.com" required autofocus>
                     <label for="inputEmail">E-mail</label>
                   </div>
 
                   <div class="form-label-group">
-                    <input type="password" id="inputPassword" class="form-control" placeholder="senha" required>
+                    <input value="<?php if(isset($_SESSION['senha'])) echo $_SESSION['senha']; ?>" name="password"
+                        type="password" id="inputPassword" class="form-control" placeholder="senha" required>
                     <label for="inputPassword">Senha</label>
                   </div>
 
