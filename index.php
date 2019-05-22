@@ -55,9 +55,11 @@
                 <h1 class="my-4">Anúncios
                 
                 </h1>
-
+                    
                 <!-- Project One -->
+                <?php $count = 0; ?>
                 <?php foreach($imoveis as $imovel){?>
+
                 <div class="row">
                 <div class="col-md-7">
                     <a href="#">
@@ -65,26 +67,64 @@
                     </a>
                 </div>
                 <div class="col-md-5">
-                    <p> 
+                        <p><b>Transação:</b>      
                         <?php echo $imovel['descricaoTransacao'];?>
-                        <?php echo $imovel['descricaoTipoImovel'];?>
-                        <?php echo $imovel['precoImovel'];?>
-                        <?php echo $imovel['areaUtil'];?>
-                        <?php echo $imovel['areaTotal'];?>
-                        <?php echo $imovel['quantQuarto'];?>
-                        <?php echo $imovel['quantSuite'];?>
-                        <?php echo $imovel['quantVagaGaragem'];?>
-                        <?php echo $imovel['quantBanheiro'];?>
-                        <?php echo $imovel['descricaoImovel'];?>
+                        
+                        <b>um(a)</b>
+                        <?php echo $imovel['descricaoTipoImovel'];?>;</p>
 
-                    </p>                
-                    <a class="btn btn-primary" href="#">Detalhes</a>
-  
+                        <p><b>Preço: R$</b>        
+                        <?php echo $imovel['precoImovel'];?>;</p>
+
+                        <p><b>Área útil:</b>
+                        <?php echo $imovel['areaUtil'];?>;
+
+                        <b>Área total:</b>
+                        <?php echo $imovel['areaTotal'];?>;</p>
+
+                        <p><b>Quant de quarto:</b>
+                        <?php echo $imovel['quantQuarto'];?>;
+
+                        <b>Quant de suítes:</b> 
+                        <?php echo $imovel['quantSuite'];?>;</p>
+
+                        <p><b>Quant de vagas na garagem:</b> 
+                        <?php echo $imovel['quantVagaGaragem'];?>;
+
+                        <b>Quant de banheiro:</b> 
+                        <?php echo $imovel['quantBanheiro'];?>;</p>
+
+                        <!-- Modal --> 
+
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo<?php echo $count; ?>">
+                            Detalhes
+                        </button>
+
+                        <div class="modal fade" id="modalExemplo<?php echo $count; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Detalhes</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                        <?php echo $imovel['descricaoImovel'];?>.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+
                 </div>
                 </div>
                 <!-- /.row -->
                 <hr>
-                <?php } ?>
+                <?php $count++; ?>
+                <?php } ?> <!-- foreach fecha aki --> 
 
                 <!-- Pagination -->
 
