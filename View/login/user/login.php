@@ -15,7 +15,7 @@
 
         // Captação de dados
             $senha = $_POST['senha'];
-            $_SESSION['senha'] = $mysqli->escape_string($_POST['senha']);
+            $_SESSION['senha'] = $mysqli->mysqli_real_escape_string($_POST['senha']);
 
             // Validação de dados
             if(!filter_var($_SESSION['emailLogin'], FILTER_VALIDATE_EMAIL))
@@ -32,11 +32,11 @@
             $mysqli->prepare->query($sql);
             $mysqli->bindParam(":emailLogin", $email);
             
-                $mysqli = $mysqli->execute() or die($mysqli->error);
+                $que = $mysqli->execute() or die($mysqli->error);
                 $dado = $que->fetch_assoc();
                 
                 
-                if($mysqli->num_rows == 0)
+                if($que->num_rows == 0)
                     $erro[] = "Nenhum usuário possui o <strong>e-mail</strong> informado.";
                     
 
