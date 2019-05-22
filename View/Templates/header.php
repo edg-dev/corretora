@@ -67,7 +67,7 @@
 
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/login/user/login.php">Entrar</a>
+                    <a class="nav-link" href="/corretora/View/login/user/indexLogin.php">Entrar</a>
                 </li>
                
 
