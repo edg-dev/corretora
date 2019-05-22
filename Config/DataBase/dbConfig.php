@@ -9,7 +9,7 @@
 
 				$conexao = new PDO("mysql:dbname=corretora;host=localhost","root","");
 
-				$conexao = new PDO("mysql:dbname=corretora;host=localhost","root","root");
+				$conexao = new PDO("mysql:dbname=corretora;host=localhost","root","");
 
 
 				$conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
