@@ -56,7 +56,8 @@
 		$numero, $complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, $areaUtil, 
 		$areaTotal, $precoImovel, $descricaoImovel);
 
-			echo "<script>alert('Imóvel cadastrado com sucesso'); location.href='/corretora/index.php';</script>";
+
+			//echo "<script>alert('Imóvel cadastrado com sucesso'); location.href='/corretora/index.php';</script>";
 
 	}
 

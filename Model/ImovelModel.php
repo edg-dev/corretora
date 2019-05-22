@@ -67,5 +67,28 @@
 				throw $e;
 			}
 		}
+
+		public function getIdImovel($idTipoImovel, $areaUtil, $areaTotal, $precoImovel, $idTransacao, $descricaoImovel,
+									$quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro){
+
+			$getID = $this->bd->prepare("SELECT idImovel FROM Imovel where 
+			idTipoImovel = :idTipoImovel and areaUtil = :areaUtil and areaTotal = :areaTotal and precoImovel = :precoImovel
+			and idTransacao = :idTransacao and descricaoImovel = :descricaoImovel and quantQuarto = :quantQuarto
+			and quantSuite = :quantSuite and quantVagaGaragem = :quantVagaGaragem and quantBanheiro = :quantBanheiro");
+							$getID->bindParam(":idTransacao", $idTransacao, PDO::PARAM_INT);
+							$getID->bindParam(":idTipoImovel", $idTipoImovel, PDO::PARAM_INT);
+			
+							$getID->bindParam(":areaUtil", $areaUtil, PDO::PARAM_INT);
+							$getID->bindParam(":areaTotal", $areaTotal, PDO::PARAM_INT);
+							$getID->bindParam(":precoImovel", $precoImovel, PDO::PARAM_INT);
+							$getID->bindParam(":descricaoImovel", $descricaoImovel);
+							$getID->bindParam(":quantQuarto", $quantQuarto, PDO::PARAM_INT);
+							$getID->bindParam(":quantSuite", $quantSuite, PDO::PARAM_INT);
+							$getID->bindParam(":quantVagaGaragem", $quantVagaGaragem, PDO::PARAM_INT);
+							$getID->bindParam(":quantBanheiro", $quantBanheiro, PDO::PARAM_INT);
+			$getID->execute();
+			return $idImovel = $getID->fetch();
+
+		}
 	}
 ?>
