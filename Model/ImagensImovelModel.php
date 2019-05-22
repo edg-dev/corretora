@@ -42,6 +42,13 @@
             }        
             return $array;
         }
+
+        public function deletar($idImovel, $imagemImovel){
+            $delete = $this->bd->query("DELETE FROM ImagensImovel where idImovel = :idImovel and imagemImovel = :imagemImovel");
+            $delete->bindParam(":idImovel", $idImovel);
+            $delete->bindParam(":imagemImovel", $imagemImovel);
+            $delete->execute();
+        }
     }
 
 ?>
