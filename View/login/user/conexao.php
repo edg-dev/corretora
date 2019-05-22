@@ -1,13 +1,11 @@
 <?php
 
-$host = "localhost";
-$usuario = "root";
-$senha = "";
-$bd = "corretora";
+define("host" ,"localhost");
+define("usuario" , "root");
+define("senha" , "");
+define("bd" , "corretora");
 
-$mysqli = new mysqli($host, $usuario, $senha, $bd);
+$conexao = mysqli_connect(host, usuario, senha, bd) or die('Não foi possivel fazer Login');
 
-if($mysqli->connect_errno)
-  echo "Falha na conexão: (".$mysqli->connect_errno.") ".$mysqli->connect_error;
 
 ?>

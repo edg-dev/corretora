@@ -2,33 +2,57 @@
 <html>
 
   <head>
-  <?php
-session_start();
-include('conexao.php');
- 
-if(empty($_POST['emailLogin']) || empty($_POST['senha'])) {
-	header('Location: indexLogin.php');
-	exit();
-}
- 
-$emailLogin = mysqli_real_escape_string($conexao, $_POST['emailLogin']);
-$senha = mysqli_real_escape_string($conexao, $_POST['senha']);
- 
-$query = "select emailLogin from usuario where emailLogin = '{$emailLogin}' and senha = '{$senha}";
- 
-$result = mysqli_query($conexao, $query);
- 
-if($result == null) {
-	$_SESSION['verifica_login'] = true;
-	header('Location: indexLogin.php');
-	exit();
-	
-} else {
-	$_SESSION['emailLogin'] = $emailLogin;
-	header('Location: perfil.php');
-	exit();
-}
-?>
+      <?php
+        if(!isset($_SESSION))
+            session_start();
+
+        //Login de Usários
+        if(isset($_POST['emailLogin'])){
+          include('conexao.php');
+          //require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/View/login/conexao.php";
+        
+        $erro = array();
+
+        // Captação de dados
+            $senha = $_POST['senha'];
+            $_SESSION['senha'] = $mysqli->escape_string($_POST['senha']);
+
+            // Validação de dados
+            if(!filter_var($_SESSION['emailLogin'], FILTER_VALIDATE_EMAIL))
+                $erro[] = "Preencha seu <strong>e-mail</strong> corretamente.";
+
+            if(strlen($senha) < 6 || strlen($senha) > 32)
+                $erro[] = "Preencha sua <strong>senha</strong> corretamente.";
+
+            if(count($erro) == 0){
+            $email = $_SESSION['emailLogin'];
+            $sql ='SELECT emailLogin, idUsuario as valor 
+            FROM usuario WHERE emailLogin =:email';
+
+            $mysqli->prepare->query($sql);
+            $mysqli->bindParam(":emailLogin", $email);
+            
+                $mysqli = $mysqli->execute() or die($mysqli->error);
+                $dado = $que->fetch_assoc();
+                
+                
+                if($mysqli->num_rows == 0)
+                    $erro[] = "Nenhum usuário possui o <strong>e-mail</strong> informado.";
+                    
+
+                elseif(strcmp($dado['emailLogin'], ($email)) == 0){
+                    $_SESSION['verica_login.php'] = $dado[valor];
+                }else
+                    $erro[] = "<strong>Senha</strong> incorreta.";
+
+                if(count($erro) == 0){
+                    echo "<script>location.href='index.php=';</script>";
+                    exit();
+                    unset($_SESSION['emailLogin']);
+                }
+            }
+        }
+      ?>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
@@ -45,7 +69,7 @@ if($result == null) {
 
   </head>
   
-  <form action="/corretora/View/login/user/perfil.php" method="post">
+  <form action="/corretora/View/login/user/login.php" method="post">
     <div class="container">
         <div class="row">
           <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -54,7 +78,7 @@ if($result == null) {
                 <h5 class="card-title text-center">Entre aqui!</h5>
                 <form class="form-signin">
                   <div class="form-label-group">
-                    <input value ="<?php if(isset($_SESSION['email'])) echo $_SESSION['email']; ?>" name="emailLogin"
+                    <input value ="<?php if(isset($_SESSION['emailLogin'])) echo $_SESSION['emailLogin']; ?>" name="emailLogin"
                         type="email" id="inputEmail" class="form-control" placeholder="email@email.com" required autofocus>
                     <label for="inputEmail">E-mail</label>
                   </div>
@@ -80,3 +104,4 @@ if($result == null) {
         </div>
       </div>
     </form>
+
