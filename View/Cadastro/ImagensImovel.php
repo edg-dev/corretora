@@ -2,7 +2,7 @@
     $acao = "create";
 ?>
 
-<form method="POST" enctype="multipart/form-data" id="formImagens"
+<form method="POST" id="formImagens" class="dropzone" style="padding-top: 60px; !important"
       action="/corretora/Controller/ImagensImovelController.php?acao=<?=$acao?>">
 
     <h1>Adicione imagens referentes ao seu imóvel.</h1>
@@ -14,7 +14,7 @@
     <div id="dropZone" class="file-field">
         <h1>Arraste arquivos até aqui</h1>
         <div class="btn btn-primary btn-sm float-left">
-            <input type="file" id="fileupload" name="imagens[]" multiple
+            <input type="file" id="file" name="file" multiple
                    class="file-path validate" placeholder="Ou escolha de seus arquivos" />
         </div>
     </div>
