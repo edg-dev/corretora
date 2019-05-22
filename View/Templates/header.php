@@ -53,6 +53,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/corretora/View/Pages/administrador.php">Adm</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/corretora/View/Pages/perfil.php">User </a>
+                </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
