@@ -162,7 +162,7 @@ CREATE TABLE TipoAnuncio(
 CREATE TABLE Usuario(
 	idUsuario int not null auto_increment,
     nomeUsuario varchar(30) not null,
-    emailLogin varchar(80) not null,
+    usuario varchar(80) not null,
     senha varchar(30) not null,
     primary key (idUsuario)
 ) ENGINE=InnoDB;
@@ -177,8 +177,15 @@ CREATE TABLE UsuarioPerfil(
 
 CREATE TABLE Perfis(
 	idPerfil smallint not null auto_increment,
-    descricaoPerfil varchar(50),
+    descricaoPerfil varchar(50) not null,
     primary key (idPerfil)
+) ENGINE=InnoDB;
+
+CREATE TABLE Banners(
+	idBanner smallint not null auto_increment,
+    link varchar(2048) not null,
+    imagemBanner varchar(500) not null,
+    primary key (idBanner)
 ) ENGINE=InnoDB;
 
 ALTER TABLE PessoaFisica
