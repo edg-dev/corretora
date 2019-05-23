@@ -35,11 +35,7 @@
                     <a class="nav-link" href="/corretora/index.php">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-<<<<<<< HEAD
                     <a class="nav-link" href="/corretora/View/buscar/index.php">Buscar</a>
-=======
-                    <a class="nav-link" href="#">Buscar</a>
->>>>>>> parent of 19e323a... Merge branch 'Main-Leonardo' into Main-Alex
                 </li>
 
                 <li class="nav-item">
@@ -48,16 +44,13 @@
 
                 
 
-<<<<<<< HEAD
                 <li class="nav-item">
                     <a class="nav-link" href="/corretora/View/administrador/index.html">Adm</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/Pages/perfil.php">User </a>
+                    <a class="nav-link" href="/corretora/View/login/user/user.php">User </a>
                 </li>
 
-=======
->>>>>>> parent of 19e323a... Merge branch 'Main-Leonardo' into Main-Alex
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Cadastrar
@@ -74,11 +67,11 @@
 
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/login/user/indexLogin.php">Entrar</a>
+                    <a class="nav-link" href="/corretora/View/login/user/user.php">Entrar</a>
                 </li>
                
 
             </ul>
         </div>
     </nav>
-    <div class="container">
+    <div class="container" style="padding-top: 60px !important;">
