@@ -1,12 +1,10 @@
     <br>
     <div>
-        <footer  class="page-footer black">
-            <div class="rodape container">
+        <footer  class="page-footer black footer">
+            <div class="container">
                 
                 <div class="row">
                     <div class="col l6 s12">
-
-                    <a class="back-to-top" style="display: inline;" href="#">Back to Top</a>
 
                         <h5 class="white-text">Institucional</h5>
                         <ul>
@@ -37,12 +35,33 @@
                     </div>
                 </div>
             </div>
-            <div class=" footer footer-copyright">
+            <div class="footer-copyright">
                 <div class="container">
                 @Copyright
                 </div>
             </div>
         </footer>
     </div>
+    <div>
+        <button onclick="topFunction()" id="vpi" title="Vá Para o Inicio">Subir</button>
+    <div>
+    <script>
+ 
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("vpi").style.display = "block";
+    } else {
+        document.getElementById("vpi").style.display = "none";
+    }
+    }
+
+
+    function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    }
+    </script>
 </body>
 </html>
