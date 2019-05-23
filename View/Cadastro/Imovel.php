@@ -1,8 +1,10 @@
-<?php include '../Templates/header.php'; 
+<?php 
+    include '../Templates/header.php'; 
 
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/EstadoModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TransacaoModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TipoImovelModel.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImovelModel.php";
 
     $acao = "create";
 
@@ -16,9 +18,30 @@
     $tiposDeImovel = $tipoImovelModel->getAllTipoImovel();
 
 ?>
-    <div class="form-group col-md-6">
-        <b><h1>Cadastro do Imóvel:</h1></b> 
-    </div>
+<style>
+    .container-form-dropzone{
+    margin: 0 auto;
+    }
+
+    .content-form-dropzone{
+    padding: 5px;
+    margin: 0 auto;
+    }
+    .content-form-dropzone span{
+    width: 250px;
+    }
+
+    .dz-message{
+    text-align: center;
+    font-size: 28px;
+    }
+
+    .dz-max-files-reached {background-color: red};
+</style>
+
+<div class="form-group col-md-6">
+    <b><h1>Cadastro do Imóvel:</h1></b> 
+</div>
 
 <form method="post" id="formImovel" method="POST" action="/corretora/Controller/ImovelController.php?acao=<?=$acao?>">
     <div class="form-group col-md-6">
@@ -104,105 +127,9 @@
     </div>
 
     <div class="form-group col-md-6">
-        <button type="submit" onclick="AdicionarImagens();" class="btn btn-primary">Salvar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
     </div>
 
 </form>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<div class="modal fade bd-example-modal-lg" tabindex="-1" 
-        role="dialog" id="exampleModal" aria-hidden="true" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Adicionar Imagens</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>
-        Que tal adicionar algumas imagens para seu anúncio? Apenas arraste as imagens ou clique no espaço.
-        Suas imagens serão enviadas automaticamente. Se não gostar ou enviou alguma imagem errada, apenas clique
-        em "Remover Imagem" que ela será removida.
-        </p>
-        <div class="form-group">    
-        </div>
-        <div class="container-form-dropzone">
-            <div class="content-form-dropzone">
-                <form action="/corretora/Controller/ImagensImovelController.php?acao=<?=$acao?>" 
-                    class="dropzone" method="POST">
-                    <input type="hidden" name="idImovel" value="<?=$id?>" id="idImovel">
-                </form>
-            </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="btn-Finalizar">Finalizar!</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn-AgoraNao">Agora não</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-    function AdicionarImagens(){
-        $('#exampleModal').modal('show');
-    }
-    $("#btn-AgoraNao").on("click", function(e){
-        window.location.href='/corretora/index.php';
-    });
-
-    Dropzone.autoDiscover = false;
-    Dropzone.autoProcessQueue = false;
-
-    var submitButton = document.querySelector("#btn-Finalizar")
-        myDropzone = this;
-
-    $(".dropzone").dropzone({
-        addRemoveLinks: true,
-        maxFilesize: 5,
-        maxFiles: 10,
-        autoProcessQueue: false,
-        acceptedFiles: '.jpg,.jpeg,.JPEG,.JPG,.png,.PNG',
-        removedfile: function(file) {
-            var name = file.name; 
-            var _ref;
-            return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
-        },
-        init: function(){
-            var submitButton = document.querySelector("#btn-Finalizar")
-                myDropzone = this; // closure
-
-            submitButton.addEventListener("click", function() {
-                myDropzone.processQueue(); // Tell Dropzone to process all queued files.
-            });
-        }
-    });
-
-</script>
-
-<style>
-.container-form-dropzone{
- margin: 0 auto;
-}
-
-.content-form-dropzone{
- padding: 5px;
- margin: 0 auto;
-}
-.content-form-dropzone span{
- width: 250px;
-}
-
-.dz-message{
- text-align: center;
- font-size: 28px;
-}
-
-.dz-max-files-reached {background-color: red};
-</style>
 
 <?php include "../Templates/footer.php"; ?>
