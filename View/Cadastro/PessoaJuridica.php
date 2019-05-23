@@ -82,6 +82,9 @@
             <input type="text" class="form-control" id="bairro" placeholder="Informe seu bairro" name="bairro" required>
         </div>
 
+<<<<<<< HEAD
+	<button type="submit" class="btn btn-primary btn-lg btn-block" >Cadastrar</button>
+=======
         <div class="form-group col-md-3">
             <label for="cidade"><span>*</span>Cidade:</label>
             <input type="text" class="form-control" id="cidade" placeholder="Informe sua cidade" name="cidade" required>
@@ -99,6 +102,7 @@
 
     </div>
 	<button type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
+>>>>>>> master
 	
 </form>
 <br>

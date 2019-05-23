@@ -1,10 +1,6 @@
 <!doctype html>
 <html>
-        <?php
-        session_start();
-        ?>
     <head>  
- 
         <meta charset="ISO-8859-1"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
 
@@ -50,15 +46,13 @@
                     <a class="nav-link" href="/corretora/View/Pages/anunciar.php">Anunciar</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/login/user/login.php">Entrar</a>
-                </li>
+                
 
                 <li class="nav-item">
                     <a class="nav-link" href="/corretora/View/administrador/index.html">Adm</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/Pages/perfil.php">User </a>
+                    <a class="nav-link" href="/corretora/View/login/user/user.php">User </a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -71,7 +65,16 @@
                         <a class="dropdown-item" href="/corretora/View/Cadastro/PessoaJuridica.php">Pessoa Jurídica</a>
                         <a class="dropdown-item" href="/corretora/View/Cadastro/Imovel.php">Imóvel</a>
 
+                    <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/corretora/View/Templates/template_padrao/index.html">Template Teste</a>
+                    </div>
+
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/corretora/View/login/user/user.php">Entrar</a>
+                </li>
+               
+
             </ul>
         </div>
     </nav>

@@ -51,7 +51,6 @@
             $descricaoImovel = " ";
 		}
 
-
 		$idteste = $ImovelModel->inserir($idTipoImovel, $cep, $idEstado, $nomeCidade, $nomeBairro, $logradouro, $numero,
 							  $complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, 
 							  $idTransacao, $areaUtil, 
