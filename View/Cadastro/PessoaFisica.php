@@ -132,7 +132,7 @@
         </div>
     </div>  
 
-    <button type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar Usuário</button>
+    <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="fa fa-user-plus"></i> Cadastrar Usuário</button>
     <div id="mensagem"></div>
 
 </form>

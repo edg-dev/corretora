@@ -121,6 +121,11 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Tables</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/corretora/index.php">
+          <i class="fas fa-fw fa-home"></i>
+          <span>Home</span></a>
+      </li>
     </ul>
 
     <div id="content-wrapper">

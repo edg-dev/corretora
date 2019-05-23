@@ -98,7 +98,7 @@
         </div>
 
     </div>
-	<button type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
+	<button type="submit" class="btn btn-primary btn-lg btn-block"><i class="fa fa-building"></i> Cadastrar</button>
 	
 </form>
 <br>

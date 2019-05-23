@@ -9,6 +9,7 @@
         $id = 0;
     }
 ?>
+
 <div class="container-fluid">
 
     <div>
@@ -23,7 +24,7 @@
         </p>
     </div>
         <!-- Formulário do dropzone. Não modificar sob qualquer circunstância -->
-        <div class="container-form-dropzone">
+        <div class="container-form-dropzone form-group">
             <div class="content-form-dropzone">
                 <form action="/corretora/Controller/ImagensImovelController.php?acao=<?=$acao?>" 
                     class="dropzone" method="POST">
@@ -31,21 +32,39 @@
                 </form>
             </div>
         </div>
-
-        <button type="button" class="btn btn-primary" id="btn-Finalizar">Finalizar!</button>
-        <button type="button" class="btn btn-secondary" id="btn-AgoraNao">Agora não</button>
+        <div class="form-group">
+            <button type="button" class="btn btn-success" id="btn-Finalizar"><i class="fa fa-check-circle"></i> Finalizar</button>
+            <button type="button" class="btn btn-primary" id="btn-Upload"><i class="fa fa-cloud-upload-alt"></i> Upload</button>
+            <button type="button" class="btn btn-danger" id="btn-AgoraNao"><i class="fa fa-times-circle"></i> Agora não</button>
+            <button class="btn btn-info" data-toggle="tooltip" data-placement="top" id="exemplo"
+                title="Após enviadas, as imagens são removidas apenas da fila e não do banco nem do servidor.">
+                <i class="fa fa-info-circle"></i> 
+            </button>
+        </div>
     </div>
 
 <script type="text/javascript">
 
+    $(document).ready(function () {
+        $('#exemplo').tooltip(container: 'body');
+    });
+    $('body').tooltip({
+        selector: '[rel="tooltip"]'
+    });
     $("#btn-AgoraNao").on("click", function(e){
         window.location.href='/corretora/index.php';
     });
 
+    $("#btn-Finalizar").on("click", function(e){
+        window.location.href='/corretora/index.php';
+    });
+
+    $('#btn-Info').tooltip(options);
+
     Dropzone.autoDiscover = false;
     Dropzone.autoProcessQueue = false;
 
-    var submitButton = document.querySelector("#btn-Finalizar")
+    var submitButton = document.querySelector("#btn-Upload")
         myDropzone = this;
 
     $(".dropzone").dropzone({
@@ -61,7 +80,7 @@
             return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
         },
         init: function(){
-            var submitButton = document.querySelector("#btn-Finalizar")
+            var submitButton = document.querySelector("#btn-Upload")
                 myDropzone = this; // closure
 
             submitButton.addEventListener("click", function() {
