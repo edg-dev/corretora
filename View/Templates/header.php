@@ -71,7 +71,7 @@
 
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/login/user/user.php">Entrar</a>
+                    <a class="nav-link" href="/corretora/View/login/user/index.php">Entrar</a>
                 </li>
                
 
