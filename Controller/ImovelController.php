@@ -1,11 +1,11 @@
 <?php
-	
+	session_start();
 	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/config/DataBase/dbConfig.php";
 	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImovelModel.php";
 
 	$ImovelModel = new ImovelModel();
 
-	$acao = $_GET["acao"];
+	$acao = $_GET['acao'];
 
 	if($acao == "create"){
 
@@ -51,13 +51,13 @@
             $descricaoImovel = " ";
 		}
 
-
-		$ImovelModel->inserir($idTipoImovel, $idTransacao, $cep, $idEstado, $nomeCidade, $nomeBairro, $logradouro, 
-		$numero, $complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, $areaUtil, 
-		$areaTotal, $precoImovel, $descricaoImovel);
-
-
-			//echo "<script>alert('Imóvel cadastrado com sucesso'); location.href='/corretora/index.php';</script>";
+		$idteste = $ImovelModel->inserir($idTipoImovel, $cep, $idEstado, $nomeCidade, $nomeBairro, $logradouro, $numero,
+							  $complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, 
+							  $idTransacao, $areaUtil, 
+							  $areaTotal, $precoImovel, $descricaoImovel);
+							  
+		$_SESSION['idteste'] = $idteste;
+		echo "<script>alert('Imóvel cadastrado com sucesso'); location.href='/corretora/View/Cadastro/ImagensImovel.php';</script>";
 
 	}
 
