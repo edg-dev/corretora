@@ -47,8 +47,9 @@
 				$insImovel->bindParam(":quantVagaGaragem", $quantVagaGaragem, PDO::PARAM_INT);
 				$insImovel->bindParam(":quantBanheiro", $quantBanheiro, PDO::PARAM_INT);
 
-		 	    $insImovel->execute();
-
+				$insImovel->execute();
+				return $teste = $this->bd->lastInsertId();
+				
 			  } catch(Exception $e){
 				  throw $e;
 			  }
