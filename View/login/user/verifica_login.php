@@ -1,6 +1,7 @@
 <?php
-
-if(!$_SESSION['usuario']) {
-	header('Location: index.php');
+session_start();
+if(!$_SESSION['emailogin']) {
+	header('Location: indexLogin.php');
 	exit();
 }
+?>
