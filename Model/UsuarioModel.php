@@ -12,7 +12,7 @@ class UsuarioModel{
 
     public function inserir($idPessoa,  $email, $senha){
         try{
-            $usuario = $this->bd->prepare("INSERT INTO usuario(idUsuario, emailLogin, senha) VALUES (:idUsuario, :email, :senha)");
+            $usuario = $this->bd->prepare("INSERT INTO usuario(idUsuario, usuario, senha) VALUES (:idUsuario, :email, :senha)");
             $senhaCrip = sha1($senha);
             $usuario->bindParam(":idUsuario", $idPessoa);
             $usuario->bindParam(":email", $email);
