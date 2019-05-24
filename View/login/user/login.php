@@ -1,6 +1,6 @@
 
 <?php
-
+session_start();
 include('conexao.php');
  
 if(empty($_POST['usuario']) || empty($_POST['senha'])) {
@@ -27,3 +27,4 @@ if($row == 1) {
 	header('Location: index.php');
 	exit();
 }
+?>

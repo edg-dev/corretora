@@ -1,7 +1,7 @@
 <?php include '../../Templates/header.php'; ?>
 
 <?php
-
+session_start();
 include('verifica_login.php');
 ?>
 

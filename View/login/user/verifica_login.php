@@ -1,7 +1,7 @@
 <?php
 
-include('login.php');
 if(!$_SESSION['usuario']) {
-	header('Location: index.php');
+	header('Location: corretora/View/login/user/index.php');
 	exit();
 }
+?>
