@@ -71,28 +71,28 @@
                         <?php echo $imovel['descricaoTransacao'];?>
                         
                         <b>um(a)</b>
-                        <?php echo $imovel['descricaoTipoImovel'];?>;</p>
+                        <?php echo $imovel['descricaoTipoImovel'];?></p>
 
                         <p><b>Preço: R$</b>        
-                        <?php echo $imovel['precoImovel'];?>;</p>
+                        <?php echo $imovel['precoImovel'];?></p>
 
                         <p><b>Área útil:</b>
-                        <?php echo $imovel['areaUtil'];?>;
+                        <?php echo $imovel['areaUtil'];?> M² ;
 
                         <b>Área total:</b>
-                        <?php echo $imovel['areaTotal'];?>;</p>
+                        <?php echo $imovel['areaTotal'];?> M² ;</p>
 
-                        <p><b>Quant de quarto:</b>
-                        <?php echo $imovel['quantQuarto'];?>;
+                        <p><img src="https://img.icons8.com/windows/32/000000/bed.png" title="Quantidade de Quartos:">:
+                        <?php echo $imovel['quantQuarto'];?> quartos </p>
 
-                        <b>Quant de suítes:</b> 
-                        <?php echo $imovel['quantSuite'];?>;</p>
+                        <p><img src="https://img.icons8.com/metro/32/000000/shower-and-tub.png" title="Quantidade de Suítes:">:
+                        <?php echo $imovel['quantSuite'];?> suítes </p>
 
-                        <p><b>Quant de vagas na garagem:</b> 
-                        <?php echo $imovel['quantVagaGaragem'];?>;
+                        <p><img src="https://img.icons8.com/ios/32/000000/car.png" title="Quantidade de Vagas na Garagem:">
+                        <?php echo $imovel['quantVagaGaragem'];?> vagas </p>
 
-                        <b>Quant de banheiro:</b> 
-                        <?php echo $imovel['quantBanheiro'];?>;</p>
+                        <p><img src="https://img.icons8.com/ios/32/000000/shower.png" title="Quantidade de Banheiros:">
+                        <?php echo $imovel['quantBanheiro'];?> banheiros </p>
 
                         <!-- Modal --> 
 
@@ -110,19 +110,24 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                        <p><b>Número:</b>
-                        <?php echo $imovel['numero'];?>;
-                        <b>Rua:</b>
-                        <?php echo $imovel['logradouro'];?>;
-                        <b>Bairro:</b>
-                        <?php echo $imovel['nomeBairro'];?>;
-                        <b>Cidade:</b>
-                        <?php echo $imovel['nomeCidade'];?>;
-                        <b>Estado:</b>
-                        <?php echo $imovel['descricaoEstado'];?>.</p>
-                        <b>Descrição:</b>
-                        <?php echo $imovel['descricaoImovel'];?>.
 
+                                <p><b>Estado:</b>
+                                <?php echo $imovel['descricaoEstado'];?>.</p>
+
+                                <p><b>Cidade:</b>
+                                <?php echo $imovel['nomeCidade'];?>.</p>
+
+                                <p><b>Bairro:</b>
+                                <?php echo $imovel['nomeBairro'];?>.</p>
+
+                                <p><b>Rua:</b>
+                                <?php echo $imovel['logradouro'];?>.</p>
+
+                                <p><b>Número:</b>
+                                <?php echo $imovel['numero'];?>.</p>                              
+                               
+                                <p><b>Descrição do Imovel:</b>
+                                <?php echo $imovel['descricaoImovel'];?>.</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
