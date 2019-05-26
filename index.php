@@ -1,12 +1,17 @@
 <?php include 'View/Templates/header.php'; 
 
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImovelModel.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImagensImovelModel.php";
     
     $imovelModel = new ImovelModel();
     $imoveis = $imovelModel->getAllImovel();
 
+    $imagensImovelModel = new ImagensImovelModel();
+    $imagens = $imagensImovelModel->getAllImagens();
+
 ?>
-    <h1>NOME DO SITE</h1>
+    <h1>Gabriela Guimarães Imóveis</h1>
+    <br>
 
     <div class="bd-example">
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -17,24 +22,24 @@
         </ol>
         <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="http://www.verdemarimoveis.com/smart2/modulos/casas/imagens/grande/acapulco_1181-154-57208.jpg" class="d-block w-100" alt="...">
+            <img class="d-block w-100 img-fluid" style="width:500px;height:600px;" src="http://www.verdemarimoveis.com/smart2/modulos/casas/imagens/grande/acapulco_1181-154-57208.jpg"  alt="...">
             <div class="carousel-caption d-none d-md-block">
             <h5>Primeiro Slide</h5>
-            <p>Jotaro.</p>
+            <p>Casa com Piscina.</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="https://media.idownloadblog.com/wp-content/uploads/2017/03/View-HTML.jpg" class="d-block w-100" alt="...">
+            <img class="d-block w-100 img-fluid" style="width:500px;height:600px;" src="https://s01.video.glbimg.com/x720/6166808.jpg" alt="...">
             <div class="carousel-caption d-none d-md-block">
             <h5>Segunda Slide</h5>
-            <p>Kono DioDa.</p>
+            <p>Casa Luxuosa.</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="https://www.ed2go.com/binaries/content/gallery/ed2go/products/16434.jpg" class="d-block w-100" alt="...">
+            <img class="d-block w-100 img-fluid" style="width:500px;height:600px;" src="https://thumbs.jusbr.com/filters:format(webp)/imgs.jusbr.com/publications/artigos/451460204/images/condominio11493087337.jpg"  alt="...">
             <div class="carousel-caption d-none d-md-block">
             <h5>Terceiro Slide</h5>
-            <p>Praise The Sun.</p>
+            <p>Condominio.</p>
             </div>
         </div>
         </div>
@@ -48,13 +53,11 @@
         </a>
 
 
-                        <!-- Page Content -->
-                    <div class="container">
+                <!-- Page Content -->
+                <div class="container">
 
                 <!-- Page Heading -->
-                <h1 class="my-4">Anúncios
-                
-                </h1>
+                <h1 class="my-4">Anúncios</h1>
                     
                 <!-- Project One -->
                 <?php $count = 0; ?>
@@ -63,7 +66,11 @@
                 <div class="row">
                 <div class="col-md-7">
                     <a href="#">
-                    <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
+                    <!-- TESTE TESTE TESTE TESTE -->
+                    <?php foreach($imagens as $imagem){?>
+                        <img class="img-fluid" style="width:750px;height:300px;" src="Files/<?php echo $imagem;?>"  >
+                    <?php } ?> 
+                    <!-- TESTE TESTE TESTE TESTE -->
                     </a>
                 </div>
                 <div class="col-md-5">

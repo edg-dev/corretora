@@ -55,6 +55,18 @@
             $delete->bindParam(":idImovel", $idImovel);
             $delete->execute();
         }
+
+        //TESTE
+        public function getAllImagens(){
+            $foto = $this->bd->query("SELECT imagemImovel FROM ImagensImovel");
+            $foto->execute();
+
+            $array = array();
+            while ($res = $foto->fetch(PDO::FETCH_ASSOC)){
+                array_push($array, $res['imagemImovel']);
+            }        
+            return $array;
+        }
     }
 
 ?>
