@@ -2,8 +2,10 @@
 	session_start();
 	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/config/DataBase/dbConfig.php";
 	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImovelModel.php";
+	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/AnuncioModel.php";
 
 	$ImovelModel = new ImovelModel();
+	$AnuncioModel = new AnuncioModel();
 
 	$acao = $_GET['acao'];
 
@@ -55,6 +57,8 @@
 							  $complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, 
 							  $idTransacao, $areaUtil, 
 							  $areaTotal, $precoImovel, $descricaoImovel);
+
+		$AnuncioModel->inserir($idteste);
 							  
 		$_SESSION['idteste'] = $idteste;
 		echo "<script>alert('Imóvel cadastrado com sucesso'); location.href='/corretora/View/Cadastro/ImagensImovel.php';</script>";

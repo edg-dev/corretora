@@ -52,7 +52,7 @@
                 
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/administrador/index.html">Adm</a>
+                    <a class="nav-link" href="/corretora/View/administrador/index.php">Adm</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/corretora/View/login/user/user.php">User </a>

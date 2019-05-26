@@ -12,7 +12,7 @@ class UsuarioModel{
 
     public function inserir($idPessoa,  $email, $senha){
         try{
-            $usuario = $this->bd->prepare("INSERT INTO usuario(idUsuario, emailLogin, senha) VALUES (:idUsuario, :email, :senha)");
+            $usuario = $this->bd->prepare("INSERT INTO usuario(idUsuario, usuario, senha) VALUES (:idUsuario, :email, :senha)");
             $senhaCrip = sha1($senha);
             $usuario->bindParam(":idUsuario", $idPessoa);
             $usuario->bindParam(":email", $email);
@@ -22,6 +22,16 @@ class UsuarioModel{
         } catch(Exception $e){
             throw $e;
         }
+    }
+
+    public function countUsers(){
+        try{
+            $users = $this->bd->prepare("SELECT COUNT(*) as total FROM Usuario");
+            $users->execute();
+            return $users->fetch(PDO::FETCH_ASSOC);
+        } catch(Exception $e){
+            throw $e;
+        }     
     }
 }
 
