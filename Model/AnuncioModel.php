@@ -41,7 +41,7 @@
                 where a.verificado = 0"
             );
             $getAP->execute();
-            return $getAP->fetchAll();
+            return $getAP->fetchAll(PDO::FETCH_ASSOC);
         }
 
         public function countAnuncios(){

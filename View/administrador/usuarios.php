@@ -123,6 +123,7 @@
     </div>
   </div>
 </div>
+<div id="alert"></div>
 
 <script type="text/javascript">
 
@@ -133,7 +134,10 @@ $(document).on('click', '.btn-warning', function(e) {
         var idPessoa = $(this).closest('tr').find('td[data-idpessoa]').data('idpessoa');
         $('.modal-body #idPessoaUpdatePerfil').val( idPessoa );
     });
+    
 }
+
+$("#alert").html(data);
 </script>
 
 <?php include_once "templates/footer.php"; ?>
