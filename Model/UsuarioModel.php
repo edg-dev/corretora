@@ -23,6 +23,16 @@ class UsuarioModel{
             throw $e;
         }
     }
+
+    public function countUsers(){
+        try{
+            $users = $this->bd->prepare("SELECT COUNT(*) as total FROM Usuario");
+            $users->execute();
+            return $users->fetch(PDO::FETCH_ASSOC);
+        } catch(Exception $e){
+            throw $e;
+        }     
+    }
 }
 
 ?>

@@ -32,15 +32,17 @@ class EnderecoModel{
            $idCep = $this->cep->ListarIdPorDescricao($descricaoCep);
 
            if($verBairro[0] == null){
-               $this->bairro->inserir($nomeBairro);
-               $idBairro = $this->bairro->ListarIdPorBairro($nomeBairro);
+               $this->bairro->inserir($nomeBairro); 
            }
+
+           $idBairro = $this->bairro->ListarIdPorBairro($nomeBairro);
 
            if($idCidade == 0){
                $this->cidade->inserir($nomeCidade);
-               $idCidade = $this->cidade->ListarIdPorCidade($nomeCidade);
+               
            }
-
+           $idCidade = $this->cidade->ListarIdPorCidade($nomeCidade);
+           
            $insercao = $this->bd->prepare(
                "INSERT INTO endereco(logradouro, numero, complemento, idCep, idBairro, idCidade, idEstado)
                VALUES (:logradouro, :numero, :complemento, :idCep, :idBairro, :idCidade, :idEstado)"

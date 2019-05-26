@@ -45,15 +45,6 @@
 
 <form method="post" id="formImovel" method="POST" action="/corretora/Controller/ImovelController.php?acao=<?=$acao?>">
     <div class="form-group col-md-6">
-        <b><label for="transacao">Transação</label></b>
-        <select id="transacao" class="form-control" name="transacao" required>
-                <option selected>Selecione a opção de transação:</option>
-                <?php foreach($transacoes as $transacao){?>
-                <option value="<?php echo $transacao['idTransacao'];?>"> <?php echo $transacao['descricaoTransacao'];?> </option>
-                <?php } ?>
-        </select>
-    </div>
-    <div class="form-group col-md-6">
         <b><label for="tipoDeImovel">Que tipo de imóvel você quer anunciar?</label></b>
         <select id="tipoDeImovel" class="form-control" name="tipoDeImovel" required>
                 <option selected>Selecione o tipo do imóvel:</option>
@@ -64,7 +55,7 @@
     </div>
 
     <div class="form-group col-md-6">
-        <b><h1>Onde fica seu imóvel?</h1></b> 
+    <b><label for="tipoDeImovel">Onde fica seu imóvel?</label></b>
     </div>
     <div class="form-group col-md-6">
         <label for="cep"><span>*</span>Cep:</label>
@@ -124,6 +115,16 @@
     <div class="form-group col-md-6">
         <label for="precoImovel">Valor total de venda (R$):</label>
         <input type="text" class="form-control" id="precoImovel" placeholder="000 000" name="precoImovel" required>
+    </div>
+
+    <div class="form-group col-md-6">
+        <b><label for="transacao">Transação</label></b>
+        <select id="transacao" class="form-control" name="transacao" required>
+                <option selected>Selecione a opção de transação:</option>
+                <?php foreach($transacoes as $transacao){?>
+                <option value="<?php echo $transacao['idTransacao'];?>"> <?php echo $transacao['descricaoTransacao'];?> </option>
+                <?php } ?>
+        </select>
     </div>
 
     <div class="form-group col-md-6">

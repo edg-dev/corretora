@@ -10,8 +10,8 @@
                         <ul>
                             <li><a class="white-text" href="#!">Quem Somos</a></li>
                             <li><a class="white-text" href="#!">Parceiros</a></li>
-                            <li><a class="white-text" href="#!">_Publicidade</a></li>
-                            <li><a class="white-text" href="#!">_Imprensa</a></li>
+                            <li><a class="white-text" href="#!">Publicidade</a></li>
+                            <li><a class="white-text" href="#!">Imprensa</a></li>
                             <li><a class="white-text" href="#!">Trabalhe Conosco</a></li>
                         </ul>
                     </div>
@@ -27,10 +27,10 @@
                     <div class="col l3 s12">
                         <h5 class="white-text">Encontre Imóveis</h5>
                         <ul>
-                            <li><a class="white-text" href="#!">Venda</a></li>
-                            <li><a class="white-text" href="#!">Aluguel</a></li>
-                            <li><a class="white-text" href="#!">Lançamentos</a></li>
-                            <li><a class="white-text" href="#!">Busca</a></li>
+                            <li ><a href="#!">Venda</a></li>
+                            <li ><a href="#!">Aluguel</a></li>
+                            <li ><a href="#!">Lançamentos</a></li>
+                            <li ><a href="#!">Busca</a></li>
                         </ul>
                     </div>
                 </div>
