@@ -1,6 +1,10 @@
 <!doctype html>
 <html>
-    <head>  
+    <head> 
+    <?php
+    session_start();
+    ?> 
+        
         <meta charset="ISO-8859-1"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
 
@@ -55,7 +59,7 @@
                     <a class="nav-link" href="/corretora/View/administrador/index.php">Adm</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/login/user/user.php">User </a>
+                    <a class="nav-link" href="/corretora/View/login/user/user.php">Usuario </a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -74,7 +78,7 @@
 
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/login/user/user.php">Entrar</a>
+                    <a class="nav-link" href="/corretora/View/login/user/index.php">Entrar</a>
                 </li>
                
 

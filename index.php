@@ -17,7 +17,7 @@
         </ol>
         <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="https://www.hostinger.com.br/tutoriais/wp-content/uploads/sites/12/2018/04/O-que-e-PHP-guia-basico.jpg" class="d-block w-100" alt="...">
+            <img src="http://www.verdemarimoveis.com/smart2/modulos/casas/imagens/grande/acapulco_1181-154-57208.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
             <h5>Primeiro Slide</h5>
             <p>Jotaro.</p>
