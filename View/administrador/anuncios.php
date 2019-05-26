@@ -27,33 +27,46 @@
                     <th>Tipo de Anúncio</th>
                     <th>Prioridade</th>
                     <th>Detalhes</th>
-                    <th>Ação</th>
+                    <th>Ações</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach($anuncioAP as $result) { ?>
-                <td id="teste" value="<?php echo $result['idAnuncio'];?>"> <?php echo $result['idAnuncio'];?></td>
-                <td id="idImovelval" value="<?php echo $result['idimovel'];?>"> <?php echo $result['idimovel'];?></td>
+                <td id="idAnuncioval" data-idanuncio="<?php echo $result['idAnuncio'];?>"> <?php echo $result['idAnuncio'];?></td>
+                <td id="idImovelval" data-idimovel="<?php echo $result['idimovel'];?>"> <?php echo $result['idimovel'];?></td>
                 <td> <?php echo $result['nome'];?></td>
                 <td> <?php echo $result['usuario'];?></td>
                 <td> <?php echo $result['descricaoTransacao'];?></td>
                 <td>
                     <select id="prioridade" class="form-control" name="prioridade" required>
-                        <option selected>Nenhuma</option>
+                        <option value="0">Nenhuma</option>
                         <?php foreach($prioridades as $prioridade){?>
-                        <option value="<?php echo $prioridade['idPrioridade'];?>"> <?php echo $prioridade['descricaoPrioridade'];?> </option>
+                        <option id="idPrioridade" data-prioridade="<?php echo $prioridade['idPrioridade'];?>" value="<?php echo $prioridade['idPrioridade'];?>"> 
+                            <?php echo $prioridade['descricaoPrioridade'];?> </option>
                         <?php } ?>
                     </select>
                 </td>
-                <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Detalhes</button> </td>
+                <td> 
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fa fa-info-circle"></i> Detalhes
+                    </button> 
+                </td>
                 <td> 
                     <button type="button" class="btn btn-success" onclick="aprovarAnuncio();">
-                        Aprovar
-                    </button> </td>  
+                        <i class="fa fa-clipboard-check"></i> Aprovar
+                    </button> 
+                </td>
+                <td> 
+                    <button type="button" class="btn btn-danger" onclick="reprovarAnuncio();">
+                        <i class="fa fa-flag"></i> Reprovar
+                    </button> 
+                </td>  
             </tbody>
             <?php } ?>
         </table>
 
+<!-- Modal detalhes -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -78,32 +91,57 @@
     </div>
   </div>
 </div>
+
 <script type="text/javascript">
 
 function aprovarAnuncio(){
-    debugger
-    var idAnuncio = $("#teste").val();
-    alert(idAnuncio);
-    var idImovel = $("#idImovelval").val();
-    var idPrioridade = $("#idPrioridade").val();
 
-    $.ajax({
-        url: 'controllers/adminController.php?acao=updateVerificado',
-        type: "POST",
-        data: {
-            idAnuncio: idAnuncio,
-            idImovel: idImovel,
-            idPrioridade: idPrioridade
-        },
-        dataType: "json",
-        success: function (data) {
-            notificar(data.message, data.type);
-            if (data.type == "success") {
-                alert("Anúncio aprovado com sucesso!");
-                window.location.href="anuncios.php";
+    $(document).on('click', '.btn-success', function(e) {
+        e.preventDefault;
+        var idAnuncio = $(this).closest('tr').find('td[data-idanuncio]').data('idanuncio');
+        var idImovel = $(this).closest('tr').find('td[data-idimovel]').data('idimovel');
+        var idPrioridade = $(this).parent().siblings().find("select").val();
+        
+        $.ajax({
+            url: 'controllers/adminController.php?acao=updateVerificado',
+            type: "POST",
+            data: {
+                idAnuncio: idAnuncio,
+                idImovel: idImovel,
+                idPrioridade: idPrioridade
+            },
+            dataType: "html",
+            success: function (data) {
+                notificar(data.message, data.type);
+                if (data.type == "success") {
+                    alert("Anúncio aprovado com sucesso!");
+                    window.location.href="anuncios.php";
+                }
             }
-        }
-    })
+        });
+    });
+}
+
+function reprovarAnuncio(){
+
+    $(document).on('click', '.btn-danger', function(e) {
+        e.preventDefault;
+        var idAnuncio = $(this).closest('tr').find('td[data-idanuncio]').data('idanuncio');
+        var idImovel = $(this).closest('tr').find('td[data-idimovel]').data('idimovel');
+        $.ajax({
+            url: 'controllers/adminController.php?acao=reprovar',
+            type: "POST",
+            data: {
+                idAnuncio: idAnuncio,
+                idImovel: idImovel,
+            },
+            dataType: "html",
+            success: function (data) {
+                alert("Anúncio reprovado com sucesso!");
+                window.location.href="anuncios.php";    
+            }
+        });
+    });
 }
 
 </script>

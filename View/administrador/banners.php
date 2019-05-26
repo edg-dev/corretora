@@ -59,7 +59,7 @@
                   <?php if(($result['imagemBanner'] == "")){ ?> <td>Não</td> <?php } else {?> <td>Sim</td> <?php } ?>
                   <td> <button type="button"id="btn-ExcluirBanner" class="btn btn-danger" 
                       onclick="window.location.href='controllers/adminController.php?acao=delete&id=<?php echo $result['idBanner'];?>'">
-                    Excluir</button> 
+                      <i class="fa fa-times-circle"></i> Excluir</button> 
                 </td>  
               </tbody>
               <?php } ?>

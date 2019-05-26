@@ -9,13 +9,13 @@
             $this->bd = BancoDados::obterConexao();
         }
 
-        function inserir($idImovel){
+        public function inserir($idImovel){
             $inserir = $this->bd->prepare("INSERT INTO Anuncio(idImovel, verificado, idUsuario) VALUES (:idImovel, 0, 1)");
             $inserir->bindParam(":idImovel", $idImovel);
             $inserir->execute();
         }
 
-        function getAnunciosAprovacao(){
+        public function getAnunciosAprovacao(){
             $getAP = $this->bd->prepare(
                 "SELECT a.idAnuncio, i.idimovel, p.nome, u.usuario, t.descricaoTransacao,
                 e.logradouro, e.numero, e.complemento, cep.descricaoCep, b.nomeBairro, c.nomecidade
@@ -44,19 +44,19 @@
             return $getAP->fetchAll();
         }
 
-        function countAnuncios(){
+        public function countAnuncios(){
             $count = $this->bd->prepare("SELECT COUNT(*) as total FROM Anuncio");
             $count->execute();
             return $count->fetch(PDO::FETCH_ASSOC);
         }
 
-        function countAnunciosAprovacao(){
+        public function countAnunciosAprovacao(){
             $count = $this->bd->prepare("SELECT COUNT(*) as total FROM Anuncio WHERE verificado = 0");
             $count->execute();
             return $count->fetch(PDO::FETCH_ASSOC);
         }
 
-        function updateAprovacao($idImovel, $idPrioridade, $idAnuncio){
+        public function updateAprovacao($idImovel, $idPrioridade, $idAnuncio){
             $update = $this->bd->prepare("UPDATE Anuncio SET idImovel = :idImovel, verificado = 1, 
                 idPrioridade = :idPrioridade, idUsuario = 1 WHERE idAnuncio = :idAnuncio");
             $update->bindParam(":idImovel", $idImovel);
@@ -64,6 +64,12 @@
             $update->bindParam(":idAnuncio", $idAnuncio);
             #$update->bindParam(":idUsuario", $idUsuario);          
             $update->execute();
+        }
+
+       public function delete($idAnuncio){
+            $delete = $this->bd->prepare("DELETE FROM Anuncio WHERE idAnuncio = :idAnuncio");
+            $delete->bindParam(":idAnuncio", $idAnuncio);
+            $delete->execute();
         }
         
     }

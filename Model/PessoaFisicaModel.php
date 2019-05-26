@@ -7,8 +7,9 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/UsuarioModel.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TelefoneModel.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ProfissaoModel.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/PessoaProfissaoModel.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/PerfisModel.php";
 
-class PessoaFisicaModel{
+class PessoaFisicaModel {
 
     private $bd;
     private $endereco;
@@ -17,6 +18,7 @@ class PessoaFisicaModel{
     private $telefone;
     private $profissao;
     private $pessoaProfissao;
+    private $perfis;
 
     function __construct(){
         $this->bd = BancoDados::obterConexao();
@@ -26,6 +28,7 @@ class PessoaFisicaModel{
         $this->telefone = new TelefoneModel();
         $this->profissao = new ProfissaoModel();
         $this->pessoaProfissao = new PessoaProfissaoModel();
+        $this->perfis = new PerfisModel();
     }
 
     public function inserir($nome, $codSexo, $email, $senha, $telefone1, $telefone2, $rg, $cpf, $logradouro, $numero, $complemento, 
@@ -65,10 +68,34 @@ class PessoaFisicaModel{
 
             $this->pessoaProfissao->inserir($valPessoa, $idProfissao);
             $this->usuario->inserir($idPf, $email, $senha);
+            $this->perfis->insertPerfilDefault($idPf);
+
 
         } catch(Exception $e){
             throw $e;
         }
+    }
+
+    public function getUsuarioInfo(){
+        $select = $this->bd->prepare("SELECT  
+        p.idPessoa, p.nome, p.emailContato, ec.descricaoEstadoCivil, pf.rg, pf.cpf, pr.descricaoProfissao, per.descricaoPerfil, up.cresci
+        from pessoafisica pf
+            inner join pessoa p
+                on p.idpessoa = pf.idpessoa
+            inner join estadocivil ec
+                on ec.idestadocivil = pf.idestadocivil
+            inner join pessoaprofissao as pp
+                on pp.idpessoa = p.idpessoa
+            inner join profissao as pr
+                on pr.idprofissao = pp.idprofissao
+            inner join usuario u
+                on u.idusuario = p.idpessoa
+            inner join usuarioperfil up
+                on up.idusuario = u.idusuario
+            inner join perfis per 
+                on per.idperfil = up.idperfil");
+        $select->execute();
+        return $select->fetchAll();
     }
 }
 

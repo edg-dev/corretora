@@ -3,10 +3,16 @@
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/UsuarioModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/BannerModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/AnuncioModel.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImovelModel.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImagensImovelModel.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/PerfisModel.php";
 
     $users = new UsuarioModel();
     $banners = new BannerModel();
     $anuncio = new AnuncioModel();
+    $imovel = new ImovelModel();
+    $imagens = new ImagensImovelModel();
+    $perfis = new PerfisModel();
 
     $acao = $_GET['acao'];
 
@@ -67,5 +73,39 @@
         $idPrioridade = $_POST['idPrioridade'];
 
         $anuncio->updateAprovacao($idImovel, $idPrioridade, $idAnuncio);
+
+        echo "<script>alert('Anúncio aprovado com sucesso!'); location.href='/corretora/View/administrador/banners.php';</script>";
     }
+
+    if($acao == "reprovar"){
+        $idAnuncio = $_POST['idAnuncio'];
+        $idImovel = $_POST['idImovel'];
+
+        $anuncio->delete($idAnuncio);
+        $imagensImovel = $imagens->listarArrayImagens($idImovel);
+
+        foreach($imagensImovel as $imagem){
+            $path = $_SERVER["DOCUMENT_ROOT"] . "/corretora/Files/" . $imagem;
+            unlink($path);
+        }
+        $imagens->deletarAllImagens($idImovel);
+        $imovel->deleteImovel($idImovel);
+        
+        echo "<script>alert('Anúncio aprovado com sucesso!'); location.href='/corretora/View/administrador/banners.php';</script>";
+    }
+
+    if($acao == "updatePerfil"){
+        $idPessoa = $_POST['idPessoaUpdatePerfil'];
+        $perfil = $_POST['perfis'];
+        $cresci = $_POST['cresci'];
+
+        if(!isset($cresci)){
+            $cresci = "";
+        }
+
+        $perfis->insertPerfil($idPessoa, $perfil, $cresci);
+        echo "<script>alert('Perfil atualizado com sucesso!'); location.href='/corretora/View/administrador/usuarios.php';</script>";
+    }
+
+
 ?>
