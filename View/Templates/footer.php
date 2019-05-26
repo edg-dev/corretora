@@ -1,40 +1,40 @@
     <br>
     <div>
+    <br>
         <footer  class="page-footer black footer">
             <div class="container">
                 
                 <div class="row">
                     <div class="col l6 s12">
 
-                        <h5 class="white-text">Institucional</h5>
-                        <ul>
-                            <li><a class="white-text" href="#!">Quem Somos</a></li>
-                            <li><a class="white-text" href="#!">Parceiros</a></li>
-                            <li><a class="white-text" href="#!">Publicidade</a></li>
-                            <li><a class="white-text" href="#!">Imprensa</a></li>
-                            <li><a class="white-text" href="#!">Trabalhe Conosco</a></li>
-                        </ul>
+                        <h4>Institucional</h4>
+
+                            <h6><a href="#!">Quem Somos</a></h6>
+                            <h6><a href="#!">Parceiros</a></h6>
+                            <h6><a href="#!">Publicidade</a></h6>
+                            <h6><a href="#!">Trabalhe Conosco</a></h6>
+
                     </div>
                     <div class="col l3 s12">
-                        <h5 class="white-text">Anuncie Imóveis</h5>
-                        <ul>
-                            <li><a class="white-text" href="#!">Proprietario</a></li>
-                            <li><a class="white-text" href="#!">Corretora</a></li>
-                            <li><a class="white-text" href="#!">Imobiliaria</a></li>
-                            <li><a class="white-text" href="#!">Contrutora</a></li>
-                        </ul>
+                        <h4>Imóveis</h4>
+
+                        <h6><a href="/corretora/View/Cadastro/PessoaFisica.php">Cadastre-se</a></h6>
+                        <h6><a href="/corretora/View/Pages/anunciar.php">Anuncie</a></h6>
+                        <h6><a href="/corretora/View/buscar/index.php">Busque</a></h6>
+                        <h6><a href="/corretora/View/Cadastro/PessoaJuridica.php">Contrutora</a></h6>
+
                     </div>
                     <div class="col l3 s12">
-                        <h5 class="white-text">Encontre Imóveis</h5>
-                        <ul>
-                            <li ><a href="#!">Venda</a></li>
-                            <li ><a href="#!">Aluguel</a></li>
-                            <li ><a href="#!">Lançamentos</a></li>
-                            <li ><a href="#!">Busca</a></li>
-                        </ul>
+                        <h5 class="white-text">Redes Sociais</h5>
+                        <br>
+                        <a class="fb-ic mr-3" role="button" href="https://www.facebook.com/"><i class="fab fa-lg fa-facebook-f"></i></a>
+                        <a class="tw-ic mr-3" role="button"  href="https://twitter.com/"><i class="fab fa-lg fa-twitter"></i></a>
+                        <a class="yt-ic mr-3" role="button" href="https://www.youtube.com/"><i class="fab fa-lg fa-youtube"></i></a>
+                        <a class="ins-ic mr-3" role="button" href="https://www.instagram.com/"><i class="fab fa-lg fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
+            <br>
             <div class="footer-copyright">
                 <div class="container">
                 @Copyright

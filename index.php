@@ -17,24 +17,24 @@
         </ol>
         <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="http://www.verdemarimoveis.com/smart2/modulos/casas/imagens/grande/acapulco_1181-154-57208.jpg" class="d-block w-100" alt="...">
+            <img class="d-block w-100 img-fluid" style="width:500px;height:600px;" src="http://www.verdemarimoveis.com/smart2/modulos/casas/imagens/grande/acapulco_1181-154-57208.jpg"  alt="...">
             <div class="carousel-caption d-none d-md-block">
             <h5>Primeiro Slide</h5>
-            <p>Jotaro.</p>
+            <p>Casa com Piscina.</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="https://media.idownloadblog.com/wp-content/uploads/2017/03/View-HTML.jpg" class="d-block w-100" alt="...">
+            <img class="d-block w-100 img-fluid" style="width:500px;height:600px;" src="https://s01.video.glbimg.com/x720/6166808.jpg" alt="...">
             <div class="carousel-caption d-none d-md-block">
             <h5>Segunda Slide</h5>
-            <p>Kono DioDa.</p>
+            <p>Casa Luxuosa.</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="https://www.ed2go.com/binaries/content/gallery/ed2go/products/16434.jpg" class="d-block w-100" alt="...">
+            <img class="d-block w-100 img-fluid" style="width:500px;height:600px;" src="https://thumbs.jusbr.com/filters:format(webp)/imgs.jusbr.com/publications/artigos/451460204/images/condominio11493087337.jpg"  alt="...">
             <div class="carousel-caption d-none d-md-block">
             <h5>Terceiro Slide</h5>
-            <p>Praise The Sun.</p>
+            <p>Condominio.</p>
             </div>
         </div>
         </div>
@@ -48,13 +48,11 @@
         </a>
 
 
-                        <!-- Page Content -->
-                    <div class="container">
+                <!-- Page Content -->
+                <div class="container">
 
                 <!-- Page Heading -->
-                <h1 class="my-4">Anúncios
-                
-                </h1>
+                <h1 class="my-4">Anúncios</h1>
                     
                 <!-- Project One -->
                 <?php $count = 0; ?>
