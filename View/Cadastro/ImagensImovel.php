@@ -46,10 +46,9 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-        $('#exemplo').tooltip(container: 'body');
-    });
-    $('body').tooltip({
-        selector: '[rel="tooltip"]'
+        Dropzone.autoDiscover = false;
+        Dropzone.autoProcessQueue = false;
+        Dropzone.forElement(".dropzone").options.autoProcessQueue = false;
     });
     $("#btn-AgoraNao").on("click", function(e){
         window.location.href='/corretora/index.php';
@@ -58,12 +57,6 @@
     $("#btn-Finalizar").on("click", function(e){
         window.location.href='/corretora/index.php';
     });
-
-    $('#btn-Info').tooltip(options);
-
-    Dropzone.autoDiscover = false;
-    Dropzone.autoProcessQueue = false;
-    Dropzone.forElement(".dropzone").options.autoProcessQueue = false;
 
     var submitButton = document.querySelector("#btn-Upload")
         myDropzone = this;
