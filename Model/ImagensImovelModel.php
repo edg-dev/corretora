@@ -49,6 +49,12 @@
             $delete->bindParam(":imagemImovel", $imagemImovel);
             $delete->execute();
         }
+
+        public function deletarAllImagens($idImovel){
+            $delete = $this->bd->prepare("DELETE FROM ImagensImovel WHERE idImovel = :idImovel");
+            $delete->bindParam(":idImovel", $idImovel);
+            $delete->execute();
+        }
     }
 
 ?>

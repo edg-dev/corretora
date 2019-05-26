@@ -96,5 +96,10 @@
 			return $idImovel = $getID->fetch();
 
 		}
+		public function deleteImovel($idImovel){
+			$delete = $this->bd->prepare("DELETE FROM Imovel WHERE idImovel = :idImovel");
+            $delete->bindParam(":idImovel", $idImovel);
+            $delete->execute();
+		}
 	}
 ?>

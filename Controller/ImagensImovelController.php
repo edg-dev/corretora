@@ -50,7 +50,7 @@
                             rename($tmp_path, $novo_path);
                             unlink($path_original);
                             $ImagensModel->inserir($idImovel, $novo_nome);
-                        
+                            
                             $imagemBanco = $novo_nome;
                             $pathBanco = $novo_path;
     

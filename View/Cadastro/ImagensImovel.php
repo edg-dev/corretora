@@ -63,6 +63,7 @@
 
     Dropzone.autoDiscover = false;
     Dropzone.autoProcessQueue = false;
+    Dropzone.forElement(".dropzone").options.autoProcessQueue = false;
 
     var submitButton = document.querySelector("#btn-Upload")
         myDropzone = this;
