@@ -1,12 +1,17 @@
 <?php include 'View/Templates/header.php'; 
 
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImovelModel.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImagensImovelModel.php";
     
     $imovelModel = new ImovelModel();
     $imoveis = $imovelModel->getAllImovel();
 
+    $imagensImovelModel = new ImagensImovelModel();
+    $imagens = $imagensImovelModel->getAllImagens();
+
 ?>
-    <h1>NOME DO SITE</h1>
+    <h1>Gabriela Guimarães Imóveis</h1>
+    <br>
 
     <div class="bd-example">
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -61,7 +66,11 @@
                 <div class="row">
                 <div class="col-md-7">
                     <a href="#">
-                    <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
+                    <!-- TESTE TESTE TESTE TESTE -->
+                    <?php foreach($imagens as $imagem){?>
+                        <img class="img-fluid" style="width:750px;height:300px;" src="Files/<?php echo $imagem;?>"  >
+                    <?php } ?> 
+                    <!-- TESTE TESTE TESTE TESTE -->
                     </a>
                 </div>
                 <div class="col-md-5">
