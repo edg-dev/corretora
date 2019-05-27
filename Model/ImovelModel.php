@@ -25,16 +25,17 @@
 
 			if($idEndereco == null){
 				$this->endereco->inserir($logradouro, $numero, $complemento, $cep, $nomeBairro, $nomeCidade, $idEstado);
-				$idEndereco = $this->endereco->getIdEndereco($logradouro, $numero, $complemento, $cep, $nomeBairro, 
-				$nomeCidade, $idEstado);
 			}
+
+			$idEndereco = $this->endereco->getIdEndereco($logradouro, $numero, $complemento, $cep, $nomeBairro, 
+			$nomeCidade, $idEstado);
 
 		 	    $insImovel = $this->bd->prepare("INSERT INTO Imovel(idEndereco, idTransacao, idTipoImovel, areaUtil, areaTotal, 
 				 		precoImovel, descricaoImovel, quantQuarto, quantSuite, quantVagaGaragem, quantBanheiro) 
 			    VALUES (:idEndereco, :idTransacao, :idTipoImovel, :areaUtil, :areaTotal, :precoImovel, :descricaoImovel, 
 						:quantQuarto, :quantSuite, :quantVagaGaragem, :quantBanheiro)");
 
-				$insImovel->bindParam(":idEndereco", $idEndereco, PDO::PARAM_INT);
+				$insImovel->bindParam(":idEndereco", intval($idEndereco[0]), PDO::PARAM_INT);
 				$insImovel->bindParam(":idTransacao", $idTransacao, PDO::PARAM_INT);
 				$insImovel->bindParam(":idTipoImovel", $idTipoImovel, PDO::PARAM_INT);
 
@@ -58,7 +59,7 @@
 
 		 public function getAllImovel(){
 			try{
-				$resImovel = $this->bd->query("select nomeBairro, nomeCidade, descricaoEstado, numero, logradouro,
+				$resImovel = $this->bd->query("SELECT idImovel, nomeBairro, nomeCidade, descricaoEstado, numero, logradouro,
 				areaUtil, areaTotal, precoImovel, descricaoImovel, quantQuarto, quantSuite, quantVagaGaragem, quantBanheiro,
 				descricaoTipoImovel, descricaoTransacao from imovel 
 				inner join transacao on imovel.idTransacao = transacao.idTransacao
@@ -100,6 +101,38 @@
 			$delete = $this->bd->prepare("DELETE FROM Imovel WHERE idImovel = :idImovel");
             $delete->bindParam(":idImovel", $idImovel);
             $delete->execute();
+		}
+
+		public function getImovelById($idImovel){
+			$select = $this->bd->prepare("SELECT
+			ti.descricaoTipoImovel, i.precoImovel, i.quantBanheiro, i.quantQuarto, i.quantSuite, i.quantVagaGaragem, i.areaTotal, i.areaUtil,
+			a.idAnuncio, i.idimovel, u.usuario, t.descricaoTransacao, p.nome, est.descricaoEstado, est.siglaEstado, p.idpessoa,
+			e.logradouro, e.numero, cep.descricaoCep, b.nomeBairro, c.nomecidade, i.descricaoImovel
+		from anuncio as a
+			inner join imovel as i
+				on i.idimovel = a.idImovel 
+			inner join endereco as e
+				on i.idEndereco = e.idEndereco
+			inner join cidade as c
+				on e.idCidade = c.idCidade
+			inner join estado as est
+				on est.idestado = e.idestado
+			inner join bairro as b
+				on e.idBairro = b.idBairro
+			inner join usuario as u
+				on u.idusuario = a.idusuario
+			inner join pessoa  as p
+				on p.idpessoa = u.idusuario
+			inner join transacao as t
+				on t.idtransacao = i.idtransacao
+			inner join cep
+				on cep.idcep = e.idcep
+			inner join tipoImovel ti
+				on ti.idtipoimovel = i.idtipoimovel
+			where i.idImovel = :idImovel");
+			$select->bindParam(":idImovel", $idImovel);
+			$select->execute();
+			return $select->fetch(PDO::FETCH_ASSOC);
 		}
 	}
 ?>

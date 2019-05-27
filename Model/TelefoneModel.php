@@ -27,6 +27,13 @@ class TelefoneModel {
         }
     }
 
+    public function getTelefonesById($idPessoa){
+        $select = $this->bd->prepare("SELECT telefone FROM Telefone where idPessoa = :idPessoa");
+        $select->bindParam(":idPessoa", $idPessoa);
+        $select->execute();
+        return $select->fetchAll();
+    }
+
 }
 
 ?>

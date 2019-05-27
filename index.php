@@ -104,7 +104,12 @@
                         <!-- Modal --> 
 
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo<?php echo $count; ?>">
-                            Detalhes
+                            <i class="fa fa-info-circle"></i> Detalhes
+                        </button>
+
+                        <button type="button" class="btn btn-success" 
+                        onclick="window.location.href='/corretora/View/Pages/anuncio.php?id=<?php echo $imovel['idImovel'];?>'">
+                            <i class="fa fa-arrow-right"></i> Visualizar
                         </button>
 
                         <div class="modal fade" id="modalExemplo<?php echo $count; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

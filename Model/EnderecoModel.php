@@ -28,18 +28,15 @@ class EnderecoModel{
            if($verCep == false){
                $this->cep->inserir($descricaoCep);             
            }
-          
            $idCep = $this->cep->ListarIdPorDescricao($descricaoCep);
 
            if($verBairro[0] == null){
                $this->bairro->inserir($nomeBairro); 
            }
-
            $idBairro = $this->bairro->ListarIdPorBairro($nomeBairro);
 
            if($idCidade == 0){
                $this->cidade->inserir($nomeCidade);
-               
            }
            $idCidade = $this->cidade->ListarIdPorCidade($nomeCidade);
            
@@ -51,9 +48,9 @@ class EnderecoModel{
            $insercao->bindParam(":logradouro",     $logradouro);
            $insercao->bindParam(":numero",         $numero, PDO::PARAM_INT);
            $insercao->bindParam(":complemento",    $complemento);
-           $insercao->bindParam(":idCep",          $idCep, PDO::PARAM_INT);
-           $insercao->bindParam(":idBairro",       $idBairro, PDO::PARAM_INT);
-           $insercao->bindParam(":idCidade",       $idCidade, PDO::PARAM_INT);
+           $insercao->bindParam(":idCep",          intval($idCep[0]), PDO::PARAM_INT);
+           $insercao->bindParam(":idBairro",       intval($idBairro[0]), PDO::PARAM_INT);
+           $insercao->bindParam(":idCidade",       intval($idCidade[0]), PDO::PARAM_INT);
            $insercao->bindParam(":idEstado",       $idEstado, PDO::PARAM_INT);
            $insercao->execute();
           
@@ -78,9 +75,9 @@ class EnderecoModel{
            $getEndereco->bindParam(":logradouro",     $logradouro);
            $getEndereco->bindParam(":numero",         $numero, PDO::PARAM_INT);
            $getEndereco->bindParam(":complemento",    $complemento);
-           $getEndereco->bindParam(":idCep",          $idCep, PDO::PARAM_INT);
-           $getEndereco->bindParam(":idBairro",       $idBairro, PDO::PARAM_INT);
-           $getEndereco->bindParam(":idCidade",       $idCidade, PDO::PARAM_INT);
+           $getEndereco->bindParam(":idCep",          intval($idCep[0]), PDO::PARAM_INT);
+           $getEndereco->bindParam(":idBairro",       intval($idBairro[0]), PDO::PARAM_INT);
+           $getEndereco->bindParam(":idCidade",       intval($idCidade[0]), PDO::PARAM_INT);
            $getEndereco->bindParam(":idEstado",       $idEstado);
            $getEndereco->execute();
 

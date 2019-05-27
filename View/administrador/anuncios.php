@@ -52,20 +52,7 @@
                         <i class="fa fa-info-circle"></i> Detalhes
                     </button> 
                 </td>
-                <td> 
-                    <button type="button" class="btn btn-success" onclick="aprovarAnuncio();">
-                        <i class="fa fa-clipboard-check"></i> Aprovar
-                    </button> 
-                </td>
-                <td> 
-                    <button type="button" class="btn btn-danger" onclick="reprovarAnuncio();">
-                        <i class="fa fa-flag"></i> Reprovar
-                    </button> 
-                </td>  
-            </tbody>
-            <?php } ?>
-        </table>
-
+                
 <!-- Modal detalhes -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -91,6 +78,19 @@
     </div>
   </div>
 </div>
+                <td> 
+                    <button type="button" class="btn btn-success" onclick="aprovarAnuncio();">
+                        <i class="fa fa-clipboard-check"></i> Aprovar
+                    </button> 
+                </td>
+                <td> 
+                    <button type="button" class="btn btn-danger" onclick="reprovarAnuncio();">
+                        <i class="fa fa-flag"></i> Reprovar
+                    </button> 
+                </td>  
+            </tbody>
+            <?php } ?>
+        </table>
 
 <script type="text/javascript">
 

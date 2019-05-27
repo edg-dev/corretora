@@ -15,6 +15,17 @@
     $sexoModel = new SexoModel();
     $sexo = $sexoModel->getAllSexo();
 ?>
+<style>
+    input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+</style>
+
 
 <h2> Cadastro de Pessoa Física </h2>
 <form method="POST" id="cadastroPessoaFisica" action="/corretora/Controller/PessoaFisicaController.php?acao=<?=$acao?>">
@@ -183,14 +194,4 @@
 </script>
 
 <?php include "../Templates/footer.php"; ?>
-<style>
-    input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-
-    input[type="number"] {
-        -moz-appearance: textfield;
-    }
-</style>
 

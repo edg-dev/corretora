@@ -19,6 +19,16 @@
 
 ?>
 <style>
+    
+    input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+    
     .container-form-dropzone{
     margin: 0 auto;
     }
@@ -59,7 +69,7 @@
     </div>
     <div class="form-group col-md-6">
         <label for="cep"><span>*</span>Cep:</label>
-        <input type="text" class="form-control" id="cep" placeholder="00000-000" name="cep" require>
+        <input type="number" class="form-control" id="cep" placeholder="00000-000" name="cep" require>
 		<select id="estado" class="form-control" name="estado" required>
                 <option selected>Selecione seu estado</option>
                 <?php foreach($estados as $estado){?>
@@ -73,7 +83,7 @@
         <input type="text" class="form-control" id="bairro" placeholder="Bairro" name="bairro" required>
         <input type="text" class="form-control" id="rua" placeholder="Rua" name="rua" required>
         <input type="text" class="form-control" id="complemento" placeholder="Complemento" name="complemento">
-        <input type="text" class="form-control" id="numero" placeholder="Número" name="numero" required>
+        <input type="number" class="form-control" id="numero" placeholder="Número" name="numero" required>
     </div>
 
     <div class="form-group col-md-6">
@@ -81,27 +91,27 @@
     </div>
     <div class="form-group col-md-6">
         <label for="quantQuarto">Quartos:</label>
-        <input type="text" class="form-control" id="quantQuarto" placeholder="0" name="quantQuarto" required>
+        <input type="number" class="form-control" id="quantQuarto" placeholder="0" name="quantQuarto" required>
     </div>
     <div class="form-group col-md-6">
         <label for="quantSuite">Suítes (Opcional):</label>
-        <input type="text" class="form-control" id="quantSuite" placeholder="0" name="quantSuite" required>
+        <input type="number" class="form-control" id="quantSuite" placeholder="0" name="quantSuite" required>
     </div>
     <div class="form-group col-md-6">
         <label for="quantVagaGaragem">Vagas de garagem (Opcional):</label>
-        <input type="text" class="form-control" id="quantVagaGaragem" placeholder="0" name="quantVagaGaragem" required>
+        <input type="number" class="form-control" id="quantVagaGaragem" placeholder="0" name="quantVagaGaragem" required>
     </div>
     <div class="form-group col-md-6">
         <label for="quantBanheiro">Banheiros:</label>
-        <input type="text" class="form-control" id="quantBanheiro" placeholder="0" name="quantBanheiro" required>
+        <input type="number" class="form-control" id="quantBanheiro" placeholder="0" name="quantBanheiro" required>
     </div>
     <div class="form-group col-md-6">
         <label for="areaUtil">Área útil (M²):</label>
-        <input type="text" class="form-control" id="areaUtil" placeholder="000" name="areaUtil" required>
+        <input type="number" class="form-control" id="areaUtil" placeholder="000" name="areaUtil" required>
     </div>
     <div class="form-group col-md-6">
         <label for="areaTotal">Área total (M²) (Opcional):</label>
-        <input type="text" class="form-control" id="areaTotal" placeholder="000" name="areaTotal" required>
+        <input type="number" class="form-control" id="areaTotal" placeholder="000" name="areaTotal" required>
     </div>
     <div class="form-group col-md-6">
         <label for="descricaoImovel">Descrição (Opcional):</label>
@@ -114,7 +124,7 @@
     </div>
     <div class="form-group col-md-6">
         <label for="precoImovel">Valor total de venda (R$):</label>
-        <input type="text" class="form-control" id="precoImovel" placeholder="000 000" name="precoImovel" required>
+        <input type="number" class="form-control" id="precoImovel" placeholder="000 000" name="precoImovel" required>
     </div>
 
     <div class="form-group col-md-6">
