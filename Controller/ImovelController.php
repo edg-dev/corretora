@@ -65,4 +65,20 @@
 
 	}
 
+	if($acao == "busca"){
+		$idTransacao = $_POST["transacao"];
+
+		$idTipoImovel = $_POST["tipoDeImovel"];
+
+		$idEstado = $_POST["estado"];
+		$nomeCidade = $_POST["cidade"];
+		$nomeBairro = $_POST["bairro"];
+		$logradouro = $_POST["rua"];
+
+		$buscar = $ImovelModel->getBuscaImovel($idTransacao, $idTipoImovel, $idEstado, $nomeCidade, $nomeBairro, 
+							   $logradouro);
+
+		echo "<script>alert('Imóvel buscado com sucesso'); </script>";
+	}
+
 ?>
