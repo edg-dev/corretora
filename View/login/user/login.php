@@ -10,8 +10,8 @@ if(empty($_POST['usuario']) || empty($_POST['senha'])) {
  
 $usuario = mysqli_real_escape_string($conexao, $_POST['usuario']);
 $senha = mysqli_real_escape_string($conexao, $_POST['senha']);
- 
-$query = "select * from usuario where usuario = '{$usuario}' and senha ='{$senha}'";
+$teste = sha1($senha);
+$query = "select * from usuario where usuario = '{$usuario}' and senha ='{$teste}'";
  
 $result = mysqli_query($conexao, $query);
  
