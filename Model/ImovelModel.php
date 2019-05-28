@@ -97,6 +97,41 @@
 			return $idImovel = $getID->fetch();
 
 		}
+
+		public function getBuscaImovel($idTransacao = null, $idTipoImovel = null, $idEstado= null, $nomeCidade= null, 
+		$nomeBairro = null, $logradouro = null){
+			try{
+				$buscaImovel = $this->bd->prepare("SELECT b.nomeBairro, c.nomeCidade, es.descricaoEstado, en.numero, en.logradouro,
+				i.areautil, i.areaTotal, i.precoImovel, i.descricaoImovel, i.quantQuarto, i.quantSuite, i.quantVagaGaragem, 
+				i.quantBanheiro, ti.descricaoTipoImovel, tr.descricaoTransacao from imovel as i
+				inner join transacao as tr on i.idTransacao = tr.idTransacao
+				inner join tipoimovel as ti on i.idTipoImovel = ti.idTipoImovel
+				inner join endereco as en on i.idEndereco = en.idEndereco
+				inner join bairro as b on en.idBairro = b.idBairro
+				inner join cidade as c on en.idCidade = c.idCidade
+				inner join estado as es on en.idEstado = es.idEstado
+				where
+				(en.logradouro like :logradouro) and 
+				(b.nomeBairro like :nomeBairro) and 
+				(c.nomeCidade like :nomeCidade) and 
+				(es.idEstado like :idEstado) and
+				(tr.idTransacao like :idTransacao) and 
+				(ti.idTipoImovel like :idTipoImovel)");
+
+					$buscaImovel->bindValue(':idTransacao', '%' . $idTransacao . '%');
+					$buscaImovel->bindValue(':idTipoImovel', '%' . $idTipoImovel . '%');
+
+					$buscaImovel->bindValue(':idEstado', '%' . $idEstado . '%');
+					$buscaImovel->bindValue(':nomeCidade', '%' . $nomeCidade . '%');
+					$buscaImovel->bindValue(':nomeBairro', '%' . $nomeBairro . '%');
+					$buscaImovel->bindValue(':logradouro', '%' . $logradouro . '%');
+
+				$buscaImovel->execute();
+
+				return $buscas = $buscaImovel->fetchAll();
+			} catch(Exception $e){
+				throw $e;
+			}
 		public function deleteImovel($idImovel){
 			$delete = $this->bd->prepare("DELETE FROM Imovel WHERE idImovel = :idImovel");
             $delete->bindParam(":idImovel", $idImovel);
