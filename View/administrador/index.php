@@ -1,5 +1,7 @@
 <?php include_once "templates/header.php"; 
 
+      
+
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/UsuarioModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/AnuncioModel.php";
 
