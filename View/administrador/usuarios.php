@@ -20,7 +20,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>✪</th>
                     <th>Nome do Usuário</th>
                     <th>Email</th>
                     <th>Estado Civil</th>
@@ -58,7 +58,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>✪</th>
                     <th>Razão Social</th>
                     <th>Email</th>
                     <th>Cnpj</th>

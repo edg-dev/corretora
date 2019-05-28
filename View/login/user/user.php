@@ -35,7 +35,7 @@ include('verifica_login.php');
 <hr>
 <div class="container bootstrap snippet">
     <div class="row">
-  		<div class="col-sm-10"><h1>Olá, você esta logado com <?php echo $_SESSION['usuario'];?></h1></div>
+  		<div class="col-sm-10"><h1>Olá, você esta logado com <strong> <?php echo $_SESSION['usuario'];?></strong></h1></div>
     	<div class="col-sm-2">
         <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign">
         <a href="\corretora\View\login\user\logout.php" class="pull-right"></i> Sair</a></button>
@@ -150,7 +150,7 @@ include('verifica_login.php');
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-bullhorn"></i>
                 </div>
-                <div class="mr-5"> <?php echo intVal($anunciosAP['total']); ?> Anúncios para aprovação</div>
+                <div class="mr-5"> <?php echo intVal($anunciosAP['total']); ?> Anúncios em aprovação</div>
               </div>
               <a class="card-footer text-white clearfix small z-1" href="anuncios.php">
                 <span class="float-left">View Details</span>
@@ -166,7 +166,7 @@ include('verifica_login.php');
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-bullhorn"></i>
                 </div>
-                <div class="mr-5"><?php echo intVal($anuncios['total']); ?> Anúncios Totais</div>
+                <div class="mr-5"><?php echo intVal($anuncios['total']); ?> Anúncios já cadastrados</div>
               </div>
             </div>
           </div>

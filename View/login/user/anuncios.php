@@ -12,22 +12,21 @@
 
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+            <a href="#">Seus anuncios</a>
           </li>
-          <li class="breadcrumb-item active">Anúncios para aprovação</li>
+          <li class="breadcrumb-item active">Anúncios que estão em aprovação</li>
         </ol>
 
         <table class="table">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>id Imovel</th>
-                    <th>Anunciante</th>
+                    <th>✪</th>
+                    
                     <th>Email</th>
                     <th>Tipo de Anúncio</th>
                     <th>Prioridade</th>
                     <th>Detalhes</th>
-                    <th>Ações</th>
+                    
                     <th></th>
                 </tr>
             </thead>

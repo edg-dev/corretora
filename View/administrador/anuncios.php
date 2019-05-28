@@ -20,7 +20,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>✪</th>
                     <th>id Imovel</th>
                     <th>Anunciante</th>
                     <th>Email</th>
