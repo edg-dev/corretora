@@ -27,9 +27,7 @@ include('verifica_login.php');
 <div class="container bootstrap snippet">
     <div class="row">
   		<div class="col-sm-10"><h1>Olá, <?php echo $_SESSION['usuario'];?></h1></div>
-    	<div class="col-sm-2"><a href="\corretora\View\login\user\logout.php" class="pull-right">
-        <img title="Fazer Logout" class="img-circle img-responsive" 
-        src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a>
+    	<div class="col-sm-2">
         <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign">
         <a href="\corretora\View\login\user\logout.php" class="pull-right"></i> Sair</a></button>
         </div>
