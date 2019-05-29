@@ -38,7 +38,7 @@
 		            on t.idtransacao = i.idtransacao
                 inner join cep
 		            on cep.idcep = e.idcep
-                where a.verificado = 0"
+                where a.verificado = 0 and (i.pedido is null or i.pedido = 0)"
             );
             $getAP->execute();
             return $getAP->fetchAll(PDO::FETCH_ASSOC);
@@ -51,7 +51,8 @@
         }
 
         public function countAnunciosAprovacao(){
-            $count = $this->bd->prepare("SELECT COUNT(*) as total FROM Anuncio WHERE verificado = 0");
+            $count = $this->bd->prepare("SELECT COUNT(*) as total FROM Anuncio inner join Imovel on Imovel.idImovel = Anuncio.idImovel
+            WHERE Anuncio.verificado = 0 and (Imovel.pedido is null or Imovel.pedido = 0)");
             $count->execute();
             return $count->fetch(PDO::FETCH_ASSOC);
         }
