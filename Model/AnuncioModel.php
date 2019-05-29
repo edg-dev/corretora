@@ -38,7 +38,7 @@
 		            on t.idtransacao = i.idtransacao
                 inner join cep
 		            on cep.idcep = e.idcep
-                where a.verificado = 0"
+                where a.verificado = 0 and (i.pedido is null or i.pedido = 0)"
             );
             $getAP->execute();
             return $getAP->fetchAll(PDO::FETCH_ASSOC);
