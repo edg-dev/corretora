@@ -67,6 +67,18 @@
             }        
             return $array;
         }
+
+        public function getImagemImovelIndex($idImovel){
+            $foto = $this->bd->prepare("SELECT imagemImovel FROM ImagensImovel where idImovel = :idImovel LIMIT 1");
+            $foto->bindParam(":idImovel", $idImovel);
+            $foto->execute();
+
+            $array = array();
+            while ($res = $foto->fetch(PDO::FETCH_ASSOC)){
+                array_push($array, $res['imagemImovel']);
+            }        
+            return $array;
+        }
     }
 
 ?>
