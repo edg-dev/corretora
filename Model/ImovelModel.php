@@ -128,7 +128,8 @@
 
 				$buscaImovel->execute();
 
-				return $buscas = $buscaImovel->fetchAll();
+				return $buscasImovel = $buscaImovel->fetchAll();
+
 			} catch(Exception $e){
 				throw $e;
 			}
