@@ -1,16 +1,52 @@
-<?php include_once "templates/header.php"; 
+<?php include '../../Templates/header.php'
+?>
+<?php 
 
-    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/AnuncioModel.php";
-    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/PrioridadeModel.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/AnuncioModel.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/PrioridadeModel.php";
 
-    $anuncio = new AnuncioModel();
-    $anuncioAP = $anuncio->getAnunciosAprovacao();
+$anuncio = new AnuncioModel();
+$anuncioAP = $anuncio->getAnunciosAprovacao();
+$listar = $anuncio->getAnunciosAprovacao();
 
-    $prioridadeModel = new PrioridadeModel();
-    $prioridades = $prioridadeModel->getPrioridades();
+$prioridadeModel = new PrioridadeModel();
+$prioridades = $prioridadeModel->getPrioridades();
 ?>
 
-        <ol class="breadcrumb">
+<?php
+
+include('verifica_login.php');
+?><link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<head>
+  <title>Usuário</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+
+<hr>
+<div class="container bootstrap snippet">
+    <div class="row">
+  		<div class="col-sm-10"><h1>Para voltar <strong> </strong></h1></div>
+    	<div class="col-sm-2">
+        <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign">
+        <a href="\corretora\View\login\user\user.php" class="pull-right"></i> Voltar</a></button>
+        </div>
+        
+    </div>           
+        <h2></h2>
           <li class="breadcrumb-item">
             <a href="#">Seus anuncios</a>
           </li>
@@ -31,7 +67,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($anuncioAP as $result) { ?>
+                <?php foreach($listar as $result) { ?>
                 <td id="idAnuncioval" data-idanuncio="<?php echo $result['idAnuncio'];?>"> <?php echo $result['idAnuncio'];?></td>
                 <td id="idImovelval" data-idimovel="<?php echo $result['idimovel'];?>"> <?php echo $result['idimovel'];?></td>
                 <td> <?php echo $result['nome'];?></td>
@@ -77,25 +113,26 @@
     </div>
   </div>
 </div>
-                <td> 
-                    <button type="button" class="btn btn-success" onclick="aprovarAnuncio();">
-                        <i class="fa fa-clipboard-check"></i> Aprovar
-                    </button> 
-                </td>
-                <td> 
-                    <button type="button" class="btn btn-danger" onclick="reprovarAnuncio();">
-                        <i class="fa fa-flag"></i> Reprovar
-                    </button> 
-                </td>  
+                 
             </tbody>
             <?php } ?>
         </table>
 
 <script type="text/javascript">
 
-
-
-
 </script>
 
-<?php include_once "templates/footer.php"; ?>
+            		
+               	
+                  <hr>
+                  
+              </div>
+               
+              </div><!--/tab-pane-->
+          </div><!--/tab-content-->
+
+        </div><!--/col-9-->
+    </div><!--/row-->
+
+
+        
