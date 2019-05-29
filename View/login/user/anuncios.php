@@ -12,22 +12,21 @@
 
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+            <a href="#">Seus anuncios</a>
           </li>
-          <li class="breadcrumb-item active">Anúncios para aprovação</li>
+          <li class="breadcrumb-item active">Anúncios que estão em aprovação</li>
         </ol>
 
         <table class="table">
             <thead>
                 <tr>
                     <th>✪</th>
-                    <th>id Imovel</th>
-                    <th>Anunciante</th>
+                    
                     <th>Email</th>
                     <th>Tipo de Anúncio</th>
                     <th>Prioridade</th>
                     <th>Detalhes</th>
-                    <th>Ações</th>
+                    
                     <th></th>
                 </tr>
             </thead>
@@ -94,55 +93,8 @@
 
 <script type="text/javascript">
 
-function aprovarAnuncio(){
 
-    $(document).on('click', '.btn-success', function(e) {
-        e.preventDefault;
-        var idAnuncio = $(this).closest('tr').find('td[data-idanuncio]').data('idanuncio');
-        var idImovel = $(this).closest('tr').find('td[data-idimovel]').data('idimovel');
-        var idPrioridade = $(this).parent().siblings().find("select").val();
-        
-        $.ajax({
-            url: 'controllers/adminController.php?acao=updateVerificado',
-            type: "POST",
-            data: {
-                idAnuncio: idAnuncio,
-                idImovel: idImovel,
-                idPrioridade: idPrioridade
-            },
-            dataType: "html",
-            success: function (data) {
-                notificar(data.message, data.type);
-                if (data.type == "success") {
-                    alert("Anúncio aprovado com sucesso!");
-                    window.location.href="anuncios.php";
-                }
-            }
-        });
-    });
-}
 
-function reprovarAnuncio(){
-
-    $(document).on('click', '.btn-danger', function(e) {
-        e.preventDefault;
-        var idAnuncio = $(this).closest('tr').find('td[data-idanuncio]').data('idanuncio');
-        var idImovel = $(this).closest('tr').find('td[data-idimovel]').data('idimovel');
-        $.ajax({
-            url: 'controllers/adminController.php?acao=reprovar',
-            type: "POST",
-            data: {
-                idAnuncio: idAnuncio,
-                idImovel: idImovel,
-            },
-            dataType: "html",
-            success: function (data) {
-                alert("Anúncio reprovado com sucesso!");
-                window.location.href="anuncios.php";    
-            }
-        });
-    });
-}
 
 </script>
 

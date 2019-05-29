@@ -1,4 +1,13 @@
-<?php include '../../Templates/header.php'?>
+<?php include '../../Templates/header.php'
+?>
+<?php
+
+    require_once $_SERVER["DOCUMENT_ROOT"]."/corretora/Model/AnuncioModel.php";
+    $anuncioModel = new AnuncioModel();
+    $anuncios = $anuncioModel->countAnuncios();
+    $anunciosAP = $anuncioModel->countAnunciosAprovacao();
+                  
+?>
 
 <?php
 
@@ -26,7 +35,7 @@ include('verifica_login.php');
 <hr>
 <div class="container bootstrap snippet">
     <div class="row">
-  		<div class="col-sm-10"><h1>Olá, <?php echo $_SESSION['usuario'];?></h1></div>
+  		<div class="col-sm-10"><h1>Olá, você esta logado com <strong> <?php echo $_SESSION['usuario'];?></strong></h1></div>
     	<div class="col-sm-2">
         <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign">
         <a href="\corretora\View\login\user\logout.php" class="pull-right"></i> Sair</a></button>
@@ -47,8 +56,9 @@ include('verifica_login.php');
           
           <ul class="list-group">
             <li class="list-group-item text-muted">Geral</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Total de Anuncios</strong></span> 5</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Mensagens</strong></span> 99</li>
+            <li class="list-group-item text-right"><span  class="pull-left" ><div class="mr-5"><?php echo intVal($anuncios['total']); ?> <strong>Anúncios Totais</strong></div></span> </li>
+            
+            <li class="list-group-item text-right"><span class="pull-left"><div class="mr-5"> <?php echo intVal($anunciosAP['total']); ?> <strong>Anúncios para aprovação</strong></div></span></li>
             
           </ul> 
                
@@ -133,8 +143,33 @@ include('verifica_login.php');
                
                <h2></h2>
                
-               //
                
+               <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card text-white bg-warning o-hidden h-100">
+              <div class="card-body">
+                <div class="card-body-icon">
+                  <i class="fas fa-fw fa-bullhorn"></i>
+                </div>
+                <div class="mr-5"> <?php echo intVal($anunciosAP['total']); ?> Anúncios em aprovação</div>
+              </div>
+              <a class="card-footer text-white clearfix small z-1" href="anuncios.php">
+                <span class="float-left">View Details</span>
+                <span class="float-right">
+                  <i class="fas fa-angle-right"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card text-white bg-success o-hidden h-100">
+              <div class="card-body">
+                <div class="card-body-icon">
+                  <i class="fas fa-fw fa-bullhorn"></i>
+                </div>
+                <div class="mr-5"><?php echo intVal($anuncios['total']); ?> Anúncios já cadastrados</div>
+              </div>
+            </div>
+          </div>
              </div><!--/tab-pane-->
              <div class="tab-pane" id="settings">
             		
