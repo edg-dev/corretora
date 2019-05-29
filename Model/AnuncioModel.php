@@ -71,6 +71,11 @@
             $delete->bindParam(":idAnuncio", $idAnuncio);
             $delete->execute();
         }
+        public function listar($idUsuario){
+            $listar = $this->bd->prepare("SELECT FROM Usuario WHERE idUsuario = :idUsuario");
+            $listar->bindParam(":idAUsuario", $idUsuario);
+            $listar->execute();
+        }
         
     }
 ?>
