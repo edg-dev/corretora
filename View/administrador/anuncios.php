@@ -32,7 +32,10 @@
                 </tr>
             </thead>
             <tbody>
+
+                <?php $count = 0; ?>
                 <?php foreach($anuncioAP as $result) { ?>
+
                 <td id="idAnuncioval" data-idanuncio="<?php echo $result['idAnuncio'];?>"> <?php echo $result['idAnuncio'];?></td>
                 <td id="idImovelval" data-idimovel="<?php echo $result['idimovel'];?>"> <?php echo $result['idimovel'];?></td>
                 <td> <?php echo $result['nome'];?></td>
@@ -48,13 +51,13 @@
                     </select>
                 </td>
                 <td> 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo<?php echo $count; ?>">
                         <i class="fa fa-info-circle"></i> Detalhes
                     </button> 
                 </td>
                 
 <!-- Modal detalhes -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalExemplo<?php echo $count; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -89,6 +92,7 @@
                     </button> 
                 </td>  
             </tbody>
+            <?php $count++; ?>
             <?php } ?>
         </table>
 
