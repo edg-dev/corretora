@@ -76,19 +76,15 @@
 		$logradouro = $_POST["rua"];
 
 
-			if(!isset($_POST["cidade"])){
-				$nomeCidade = " ";
-				}
-			if(!isset($_POST["bairro"])){
-				$nomeBairro = " ";
-				}
-			if(!isset($_POST["rua"])){
-				$logradouro = " ";
-				}	
-
 			$busca = $ImovelModel->getBuscaImovel($idTransacao, $idTipoImovel, $idEstado, $nomeCidade, $nomeBairro, 
 								   $logradouro);
-	
+			$_SESSION['idTransacao'] = $idTransacao;
+			$_SESSION['idTipoImovel'] = $idTipoImovel;
+			$_SESSION['idEstado'] = $idEstado;
+			$_SESSION['nomeCidade'] = $nomeCidade;
+			$_SESSION['nomeBairro'] = $nomeBairro;
+			$_SESSION['logradouro'] = $logradouro;
+
 		echo "<script>location.href='/corretora/View/Pages/busca.php';</script>";
 
 	}

@@ -3,12 +3,21 @@
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImovelModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImagensImovelModel.php";
 
+    $idTransacao =  $_SESSION['idTransacao'];
+    $idTipoImovel = $_SESSION['idTipoImovel'];
+    $idEstado = $_SESSION['idEstado'];
+    $nomeCidade =  $_SESSION['nomeCidade'];
+    $nomeBairro = $_SESSION['nomeBairro'];
+    $logradouro = $_SESSION['logradouro'];
+
     $imovelModel = new ImovelModel();
-    $buscasImovel = $imovelModel->getBuscaImovel();
+    $buscasImovel = $imovelModel->getBuscaImovel($idTransacao, $idTipoImovel, $idEstado, $nomeCidade, 
+    $nomeBairro, $logradouro);
 
     $imagensImovelModel = new ImagensImovelModel();
     $imagens = $imagensImovelModel->getAllImagens();
 
+    
 ?>
       
                 <!-- Page Content -->
@@ -25,9 +34,13 @@
                 <div class="col-md-7">
                     <a href="#">
                     <!-- TESTE TESTE TESTE TESTE -->
-                    <?php foreach($imagens as $imagem){?>
+                    <?php
+                        $idImovel = $imovel['idImovel'];
+                        $res = $imagensImovelModel->getImagemImovelIndex($idImovel);
+                        
+                        foreach($res as $imagem){?>
                         <img class="img-fluid" style="width:750px;height:300px;" src="Files/<?php echo $imagem;?>"  >
-                    <?php } ?> 
+                    <?php } ?>
                     <!-- TESTE TESTE TESTE TESTE -->
                     </a>
                 </div>

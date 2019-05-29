@@ -100,9 +100,10 @@
 
 		}
 
-		public function getBuscaImovel($idTransacao = null, $idTipoImovel = null, $idEstado= null, $nomeCidade= null, 
-		$nomeBairro = null, $logradouro = null){
+		public function getBuscaImovel($idTransacao, $idTipoImovel, $idEstado, $nomeCidade, 
+		$nomeBairro, $logradouro){
 			try{
+				echo "<script>console.log('teste: " . $idTransacao . "');</script>";
 				$buscaImovel = $this->bd->prepare("SELECT b.nomeBairro, c.nomeCidade, es.descricaoEstado, en.numero, en.logradouro,
 				i.areautil, i.areaTotal, i.precoImovel, i.descricaoImovel, i.quantQuarto, i.quantSuite, i.quantVagaGaragem, 
 				i.quantBanheiro, ti.descricaoTipoImovel, tr.descricaoTransacao from imovel as i
