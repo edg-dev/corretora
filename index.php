@@ -3,6 +3,21 @@
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImovelModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImagensImovelModel.php";
     
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/EstadoModel.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TransacaoModel.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TipoImovelModel.php";
+
+    $acao = "busca";
+
+    $estadoModel = new EstadoModel();
+    $estados = $estadoModel->getAllEstado();
+
+    $transacaoModel = new TransacaoModel();
+    $transacoes = $transacaoModel->getAllTransacao();
+    
+    $tipoImovelModel = new TipoImovelModel();
+    $tiposDeImovel = $tipoImovelModel->getAllTipoImovel();
+
     $imovelModel = new ImovelModel();
     $imoveis = $imovelModel->getAllImovel();
 
@@ -10,6 +25,61 @@
     $imagens = $imagensImovelModel->getAllImagens();
 
 ?>
+
+
+        <div class="col-md-12">
+
+        <!-- Search Widget -->
+        <form method="post" id="buscaImovel" method="POST" action="/corretora/Controller/ImovelController.php?acao=<?=$acao?>" >
+        <div class="card my-12">
+        <h5 class="card-header">Pesquise seu imóvel:</h5>
+        <div class="card-body">
+            <div class="input-group">
+
+            <div class="form-group col-md-4">
+                <b><label for="transacao">Você deseja alugar ou comprar um imóvel?</label></b>
+            <select id="transacao" class="form-control" name="transacao" >
+                    <option selected>Selecione a opção de transação:</option>
+                    <?php foreach($transacoes as $transacao){?>
+                    <option value="<?php echo $transacao['idTransacao'];?>"> <?php echo $transacao['descricaoTransacao'];?> </option>
+                    <?php } ?>
+            </select>
+            </div>
+
+            <div class="form-group col-md-4">
+                <b><label for="tipoDeImovel">Que tipo de imóvel você proucura?</label></b>
+            <select id="tipoDeImovel" class="form-control" name="tipoDeImovel" >
+                    <option selected>Selecione o tipo do imóvel:</option>
+                    <?php foreach($tiposDeImovel as $tipoImovel){?>
+                    <option value="<?php echo $tipoImovel['idTipoImovel'];?>"> <?php echo $tipoImovel['descricaoTipoImovel'];?> </option>
+                    <?php } ?>
+            </select>
+            </div>
+
+            <div class="form-group col-md-4">
+                <b><label for="endereco">Endereço:</label></b>
+                    <select id="estado" class="form-control" name="estado" >
+                        <option selected>Selecione seu estado</option>
+                        <?php foreach($estados as $estado){?>
+                        <option value="<?php echo $estado['idEstado'];?>"> <?php echo $estado['descricaoEstado'];?> </option>
+                        <?php }?>
+                    </select>
+                <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade" >
+                <input type="text" class="form-control" id="bairro" placeholder="Bairro" name="bairro" >
+                <input type="text" class="form-control" id="rua" placeholder="Rua" name="rua" >
+            </div>
+            <div class="form-group">
+                <button type="submit"  class="btn btn-primary"><i class="fa fa-check-circle"></i> Buscar</button>
+            </div>
+            </div>
+        </div>
+        </div>
+        </form>
+
+        </div>
+
+
+
     <h1>Gabriela Guimarães Imóveis</h1>
     <br>
 
