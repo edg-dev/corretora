@@ -74,13 +74,7 @@ include('verifica_login.php');
                 <td> <?php echo $result['usuario'];?></td>
                 <td> <?php echo $result['descricaoTransacao'];?></td>
                 <td>
-                    <select id="prioridade" class="form-control" name="prioridade" required>
-                        <option value="0">Nenhuma</option>
-                        <?php foreach($prioridades as $prioridade){?>
-                        <option id="idPrioridade" data-prioridade="<?php echo $prioridade['idPrioridade'];?>" value="<?php echo $prioridade['idPrioridade'];?>"> 
-                            <?php echo $prioridade['descricaoPrioridade'];?> </option>
-                        <?php } ?>
-                    </select>
+                    
                 </td>
                 <td> 
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
