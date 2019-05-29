@@ -128,10 +128,13 @@
 
 				$buscaImovel->execute();
 
-				return $buscas = $buscaImovel->fetchAll();
+				return $buscasImovel = $buscaImovel->fetchAll();
+
 			} catch(Exception $e){
 				throw $e;
 			}
+		}
+
 		public function deleteImovel($idImovel){
 			$delete = $this->bd->prepare("DELETE FROM Imovel WHERE idImovel = :idImovel");
             $delete->bindParam(":idImovel", $idImovel);

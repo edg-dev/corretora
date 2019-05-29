@@ -126,7 +126,9 @@
       <div class="col-md-4">
 
         <!-- Search Widget -->
-      <form method="post" id="buscaImovel" method="POST" action="../Controller/ImovelController.php?acao=<?=$acao?>">
+
+      <form method="post" id="buscaImovel" method="POST" action="/corretora/Controller/ImovelController.php?acao=<?=$acao?>">
+
         <div class="card my-4">
           <h5 class="card-header">Pesquise seu imóvel:</h5>
           <div class="card-body">
