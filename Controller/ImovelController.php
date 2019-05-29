@@ -75,6 +75,7 @@
 		$nomeBairro = $_POST["bairro"];
 		$logradouro = $_POST["rua"];
 
+
 			if(!isset($_POST["cidade"])){
 				$nomeCidade = " ";
 				}
@@ -89,6 +90,7 @@
 								   $logradouro);
 	
 		echo "<script>location.href='/corretora/View/Pages/busca.php';</script>";
+
 	}
 
 ?>
