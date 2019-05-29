@@ -132,6 +132,8 @@
 			} catch(Exception $e){
 				throw $e;
 			}
+		}
+
 		public function deleteImovel($idImovel){
 			$delete = $this->bd->prepare("DELETE FROM Imovel WHERE idImovel = :idImovel");
             $delete->bindParam(":idImovel", $idImovel);
