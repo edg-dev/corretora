@@ -4,15 +4,21 @@
 	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/EnderecoModel.php";
 	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TipoImovelModel.php";
 	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TransacaoModel.php";
+	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/BairroModel.php";
+	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/CidadeModel.php";
 
 	class ImovelModel{
 
 		private $bd;
 		private $endereco;
+		private $bairro;
+		private $cidade;
 
 		 function __construct(){
 			 $this->bd = BancoDados::obterConexao();
 			 $this->endereco = new EnderecoModel();
+			 $this->bairro = new BairroModel();
+			 $this->cidade = new CidadeModel();
 		 }
 
 		 public function inserir($idTipoImovel, $cep, $idEstado, $nomeCidade, $nomeBairro, $logradouro, $numero,
@@ -59,7 +65,7 @@
 
 		 public function getAllImovel(){
 			try{
-				$resImovel = $this->bd->query("SELECT  imovel.idImovel, nomeBairro, nomeCidade, descricaoEstado, numero, logradouro,
+				$resImovel = $this->bd->query("SELECT imovel.idImovel, nomeBairro, nomeCidade, descricaoEstado, numero, logradouro,
 				areaUtil, areaTotal, precoImovel, descricaoImovel, quantQuarto, quantSuite, quantVagaGaragem, quantBanheiro,
 				descricaoTipoImovel, descricaoTransacao from imovel 
 				inner join transacao on imovel.idTransacao = transacao.idTransacao
@@ -103,6 +109,7 @@
 		public function getBuscaImovel($idTransacao, $idTipoImovel, $idEstado, $nomeCidade, 
 		$nomeBairro, $logradouro){
 			try{
+
 				echo "<script>console.log('teste: " . $idTipoImovel . "');</script>";
 				echo "<script>console.log('trasa: " . $idTransacao . "');</script>";
 				echo "<script>console.log('estado: " . $idEstado . "');</script>";
@@ -179,6 +186,50 @@
 			$select->bindParam(":idImovel", $idImovel);
 			$select->execute();
 			return $select->fetch(PDO::FETCH_ASSOC);
+		}
+
+		public function cadastraPedido($idUsuario, $idTipoImovel, $idTransacao, $nomeBairro, $nomeCidade, $idEstado, 
+			$quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, $precoMin, $precoMax){
+				try {
+					$verBairro = $this->bairro->ListarIdPorBairro($nomeBairro);
+					$idCidade = $this->cidade->ListarIdPorCidade($nomeCidade);
+	
+					if($verBairro[0] == null){
+						$this->bairro->inserir($nomeBairro); 
+					}
+					$idBairro = $this->bairro->ListarIdPorBairro($nomeBairro);
+		 
+					if($idCidade == 0){
+						$this->cidade->inserir($nomeCidade);
+					}
+					$idCidade = $this->cidade->ListarIdPorCidade($nomeCidade);
+	
+					$insert = $this->bd->prepare("INSERT INTO Pedidos 
+						(idUsuario, idTipoImovel, idTransacao, idBairro, idCidade, idEstado, 
+						quantQuarto, quantSuite, quantVagaGaragem, quantBanheiro, precoMin, precoMax)
+						VALUES (:idUsuario, :idTipoImovel, :idTransacao, :idBairro, :idCidade, :idEstado, 
+						:quantQuarto, :quantSuite, :quantVagaGaragem, :quantBanheiro, :precoMin, :precoMax)");
+	
+					$insert->bindParam(":idUsuario", $idUsuario, PDO::PARAM_INT);
+					$insert->bindParam(":idTipoImovel", $idTipoImovel, PDO::PARAM_INT);
+					$insert->bindParam(":idTransacao", $idTransacao, PDO::PARAM_INT);
+	
+					$insert->bindParam(":idBairro", intval($idBairro[0]), PDO::PARAM_INT);
+					$insert->bindParam(":idCidade", intval($idCidade[0]), PDO::PARAM_INT);
+					$insert->bindParam(":idEstado", $idEstado, PDO::PARAM_INT);
+	
+					$insert->bindParam(":quantQuarto", $quantQuarto, PDO::PARAM_INT);
+					$insert->bindParam(":quantSuite", $quantSuite, PDO::PARAM_INT);
+					$insert->bindParam(":quantVagaGaragem", $quantVagaGaragem, PDO::PARAM_INT);
+					$insert->bindParam(":quantBanheiro", $quantBanheiro, PDO::PARAM_INT);
+
+					$insert->bindParam(":precoMin", $precoMin, PDO::PARAM_INT);
+					$insert->bindParam(":precoMax", $precoMax, PDO::PARAM_INT);
+					$insert->execute();
+
+				} catch(Exception $e){
+					throw $e;
+				}	
 		}
 	}
 ?>
