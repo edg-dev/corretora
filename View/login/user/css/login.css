@@ -16,3 +16,6 @@ input {
 p {
   font-weight: 700;
 }
+.menuItemLast{
+	padding-left: 10px;
+}

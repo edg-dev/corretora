@@ -46,31 +46,24 @@
                 <li class="nav-item active" >
                     <a class="nav-link" href="/corretora/index.php">Inicio<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/buscar/index.php">Buscar</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/Pages/cadastrar.php">Cadastre-se</a>
-                </li>
-
+            
                 <li class="nav-item">
                     <a class="nav-link" href="/corretora/View/Cadastro/Imovel.php">Anunciar</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/administrador/index.php">Adm</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="/corretora/View/login/user/user.php">Usuario </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/login/user/index.php">Entrar</a>
-                </li>
-
-                <li class="nav-item">
                     <a class="nav-link" href="/corretora/View/Cadastro/Pedido.php">Cadastrar Pedido</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/corretora/View/Pages/cadastrar.php">Cadastre-se</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/corretora/View/login/user/index.php">Entrar</a>
                 </li>
                
 
