@@ -69,7 +69,7 @@
     </div>
     <div class="form-group col-md-6">
         <label for="cep"><span>*</span>Cep:</label>
-        <input type="number" class="form-control" id="cep" placeholder="00000-000" name="cep" require>
+        <input type="text" class="form-control cep-mask" id="cep" placeholder="Ex.: 00000-000" name="cep" require>
 		<select id="estado" class="form-control" name="estado" required>
                 <option selected>Selecione seu estado</option>
                 <?php foreach($estados as $estado){?>
@@ -124,7 +124,7 @@
     </div>
     <div class="form-group col-md-6">
         <label for="precoImovel">Valor total de venda (R$):</label>
-        <input type="number" class="form-control" id="precoImovel" placeholder="000 000" name="precoImovel" required>
+        <input type="text" class="form-control" id="precoImovel" placeholder="000 000" name="precoImovel" required>
     </div>
 
     <div class="form-group col-md-6">
@@ -142,5 +142,10 @@
     </div>
 
 </form>
+<script src="/corretora/Config/JS/jquery.mask.js"></script>
 
+<script type="text/javascript">
+    $('#precoImovel').mask('000.000.000.000,00 ', {reverse: true});
+    $('#cep').mask('00000-000');
+</script>
 <?php include "../Templates/footer.php"; ?>

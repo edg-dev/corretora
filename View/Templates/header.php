@@ -15,12 +15,12 @@
         <link href="/corretora/Config/Bootstrap/bootstrap.css" type="text/css" rel="stylesheet">
 
         <!-- JavaScript  -->
-        
         <script src="/corretora/Config/JS/bootstrap.bundle.min.js"></script>
         <script src="/corretora/Config/JS/jquery-3.2.1.min.js"></script>
         <script src="/corretora/Config/JS/bootstrap.min.js"></script>
         <script src="/corretora/Config/JS/bootstrap.js"></script>
         <script src="/corretora/Config/JS/init.js"></script>
+        <script src="/corretora/Config/JS/jquery.mask.min.js"></script>
         
         <!-- Dropzonejs -->
         <script src="/corretora/Config/JS/dropzone.js"></script>
