@@ -89,4 +89,28 @@
 
 	}
 
+	if($acao == 'pedir'){
+		$idUsuario = $_GET['idUsuario'];
+
+		$idTipoImovel = $_POST["tipoDeImovel"];
+		$idTransacao = $_POST["transacao"];
+
+		$idEstado = $_POST["estado"];
+		$nomeCidade = $_POST["cidade"];
+		$nomeBairro = $_POST["bairro"];
+
+		$quantQuarto = $_POST["quantQuarto"];
+		$quantSuite = $_POST["quantSuite"];
+		$quantVagaGaragem = $_POST["quantVagaGaragem"];
+		$quantBanheiro = $_POST["quantBanheiro"];
+
+		$precoMin = $_POST["precoMin"];
+		$precoMax = $_POST["precoMax"];
+
+		$ImovelModel->cadastraPedido($idUsuario, $idTipoImovel, $idTransacao, $nomeBairro, $nomeCidade, $idEstado, 
+		$quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, $precoMin, $precoMax);
+
+		echo "<script>alert('Pedido cadastrado com sucesso'); location.href='/corretora/index.php';</script>";
+	}
+
 ?>

@@ -67,6 +67,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/corretora/View/login/user/index.php">Entrar</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/corretora/View/Cadastro/Pedido.php">Cadastrar Pedido</a>
+                </li>
                
 
             </ul>
