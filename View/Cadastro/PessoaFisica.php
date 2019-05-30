@@ -73,11 +73,11 @@
     <div class="row">
         <div class="form-group col-md-6">
             <label for="telefone1">Telefone residencial:</label>
-            <input type="text" class="form-control" placeholder="Telefone 1" name="telefone1">
+            <input type="text" class="form-control" placeholder="Ex.: (00) 0000-0000" name="telefone1" id="telefone1">
         </div>
         <div class="form-group col-md-6">
             <label for="telefone2">Telefone pessoal:</label>
-            <input type="text" class="form-control" placeholder="Telefone 2" name="telefone2">
+            <input type="text" class="form-control" placeholder="Ex.: (00) 0000-0000" name="telefone2" id="telefone2">
         </div>
     </div>
 
@@ -88,7 +88,7 @@
 
     <div class="form-group">
         <label for="cpf"><span>*</span>CPF:</label>
-        <input type="number" class="form-control" id="cpf" placeholder="Informe seu CPF" name="cpf" required>
+        <input type="text" class="form-control cpf" id="cpf" placeholder="Ex.: 000.000.000-00" name="cpf" required>
     </div>
     
     <div class="form-row">
@@ -105,14 +105,14 @@
     </div>
 
     <div class="form-group">
-        <label for="cpf">Complemento:</label>
+        <label for="complemento">Complemento:</label>
         <input type="text" class="form-control" id="complemento" placeholder="Opcional" name="complemento">
     </div>
   
     <div class="form-row">
         <div class="form-group col-md-4">
             <label for="cep"><span>*</span>CEP:</label>
-            <input type="number" class="form-control" id="cep" placeholder="Informe seu CEP" name="cep" required>
+            <input type="text" class="form-control cep" id="cep" placeholder="Ex.: 00000-000" name="cep" required>
         </div>
 
         <div class="form-group col-md-4">
@@ -150,8 +150,16 @@
 <br>
 <p style="text-align:center">Já possui uma conta?<a href="../login/user/login.php">Entre Aqui</a>
 
+<script src="/corretora/Config/JS/jquery.mask.js"></script>
 <!--JS do CEP -->
 <script type="text/javascript">
+
+        $('#telefone1').mask('(00) 0000-00000');
+        $('#telefone2').mask('(00) 0000-00000');
+        $('.cep').mask('00000-000');
+        $('.cpf').mask('000.000.000-00');
+        
+
 	$("#cep").focusout(function(){
 		//Início do Comando AJAX
 		$.ajax({
