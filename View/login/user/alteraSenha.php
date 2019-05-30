@@ -1,15 +1,40 @@
 <?php
+   include("conexao.php");
+   session_start();
 
-if ($senha_nova == $confirmacao){
-$teste = sha1($senha);
-$id = $_SESSION['usuario'];
-$atualiza - "UPDATE usuario SET senha ='{$teste}' WHERE id = "$id"";
+   $login = $_SESSION["usuario"];
 
-$confirmacao = mysql_query($atualiza, $conexao)
-echo "SEU ARQUIVO FOI ATUALIZADO";
-} else{
-echo "sua nova senha não confirma com a cionfirmacao,"; 
+   $senha = isset($_POST['senha_atual'])?$_POST['senha_atual']:"";
+   $senha_nova = $_POST['senha_nova'];
+   $confirme_senha = $_POST['confirme_senha'];
 
+   $sql=mysql_query("select senha from usuario where usuario='$login' ");
+   $row= mysql_fetch_array($sql);
+   $senha_banco = $row['senha'];  
 
-
-?>
+   if(($senha_nova=="") && ($confirme_senha=="") && ($senha_banco==""))
+   {
+	   echo"<script>alert('Os campos das senhas não podem ser Nulos!');
+			   window.location='index.php?ver=alterar_senha.php';
+			   </script>";
+	   return false;
+   }
+	  else
+	   {			
+		   if(($senha != $senha_banco) && ($senha_nova != $confirme_senha))
+		  {
+			   echo"<script>alert('Senhas Digitadas não conhecidem!');
+				  window.location='index.php?ver=alterar_senha.php';
+				  </script>";
+		  }
+		  else
+		  {
+			  if($result=mysql_query("update utilizadores set passe='$confirme_senha' where login='$login'"))
+	   		{	
+					echo"<script>alert('Senha Alterada com Sucesso!');
+					   window.location='index.php?ver=conta.php';
+					  </script>";
+			   }
+		   }  
+	   }		
+  ?>
