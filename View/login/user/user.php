@@ -12,6 +12,9 @@
 <?php
 
 include('verifica_login.php');
+include('conexao.php');
+
+
 ?><link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -114,27 +117,29 @@ include('verifica_login.php');
                          
                       </div>
                       <div class="form-group">
-                          
+                     
                           <div class="col-xs-6">
-                              <label for="password"><h4>Senha</h4></label>
-                              <input type="password" class="form-control" name="password" id="senha" placeholder="password" title="Insera sua senha.">
+                              <label for="password" ><h4>Nova Senha</h4></label>
+                              <input type="password_nova" class="form-control" name="senha_nova1" id="senha" placeholder="password" title="Insera sua senha.">
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                             <label for="password2"><h4>Confirme a senha</h4></label>
-                              <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
+                              <input type="password" class="form-control" name="confirmacao" id="password2" placeholder="password2" title="enter your password2.">
                           </div>
                       </div>
                       <div class="form-group">
                            <div class="col-xs-12">
                                 <br>
-                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Salvar</button>
+                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign">
+                                <a href="\corretora\View\login\user\alteraSenha.php" class="pull-right"></i> Salvar</a></button>
                                	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Refazer</button>
                             </div>
                       </div>
-              	</form>
+                </form>
+                
               
               <hr>
               
