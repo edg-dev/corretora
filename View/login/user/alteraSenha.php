@@ -29,10 +29,10 @@
 		  }
 		  else
 		  {
-			  if($result=mysql_query("update utilizadores set passe='$confirme_senha' where login='$login'"))
+			  if($result=mysql_query("update utilizadores set senha='$confirme_senha' where login='$login'"))
 	   		{	
 					echo"<script>alert('Senha Alterada com Sucesso!');
-					   window.location='index.php?ver=conta.php';
+					   window.location='index.php?ver=user.php';
 					  </script>";
 			   }
 		   }  
