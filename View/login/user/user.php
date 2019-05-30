@@ -12,6 +12,9 @@
 <?php
 
 include('verifica_login.php');
+include('conexao.php');
+
+
 ?><link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -75,38 +78,16 @@ include('verifica_login.php');
           <div class="tab-content">
             <div class="tab-pane active" id="home">
                 <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="first_name"><h4>Nome</h4></label>
-                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label for="last_name"><h4>Segundo nome</h4></label>
-                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
-                          </div>
-                      </div>
-          
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="phone"><h4>Telefone</h4></label>
-                              <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
-                          </div>
-                      </div>
-          
+                  <form class="form" action="\corretora\View\login\user\alteraSenha.php" method="post" id="registrationForm">
+       
                       <div class="form-group">
                           
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
-                              <label for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" name="email" id="usuario" placeholder="you@email.com" title="Insira seu email.">
+                              <label for="email"><h4>Senha Atual</h4></label>
+                              <input type="password" class="form-control" name="senha_atual" i placeholder="Senha atual" title="Insira sua senha atual." onfocus="this.value=''">
                           </div>
                       </div>
                       <div class="form-group">
@@ -114,27 +95,30 @@ include('verifica_login.php');
                          
                       </div>
                       <div class="form-group">
-                          
+                        
+                     
                           <div class="col-xs-6">
-                              <label for="password"><h4>Senha</h4></label>
-                              <input type="password" class="form-control" name="password" id="senha" placeholder="password" title="Insera sua senha.">
+                              <label for="password" ><h4>Nova Senha</h4></label>
+                              <input type="password" class="form-control" name="senha_nova"  placeholder="Nova senha" title="Insera sua nova senha.">
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                             <label for="password2"><h4>Confirme a senha</h4></label>
-                              <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
+                              <input type="password" class="form-control" name="onfirme_senha"  placeholder="Confirme a senha" title="Confirme sua nova senha.">
                           </div>
                       </div>
                       <div class="form-group">
                            <div class="col-xs-12">
                                 <br>
-                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Salvar</button>
+                              	<button action="\corretora\View\login\user\alteraSenha.php" class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign">
+                                <a href="\corretora\View\login\user\alteraSenha.php" class="pull-right"></i> Salvar</a></button>
                                	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Refazer</button>
                             </div>
                       </div>
-              	</form>
+                </form>
+                
               
               <hr>
               

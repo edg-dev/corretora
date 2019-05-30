@@ -1,5 +1,6 @@
 <?php 
     include '../Templates/header.php'; 
+    
 
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/EstadoModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TransacaoModel.php";
@@ -17,6 +18,11 @@
     $tipoImovelModel = new TipoImovelModel();
     $tiposDeImovel = $tipoImovelModel->getAllTipoImovel();
 
+?>
+
+<?php
+
+include('verifica_login.php');
 ?>
 <style>
     

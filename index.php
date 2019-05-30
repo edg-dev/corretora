@@ -73,7 +73,7 @@
                 <input type="text" class="form-control" id="rua" placeholder="Rua" name="rua" >
             </div>
             <div class="form-group">
-                <button type="submit"  class="btn btn-primary"><i class="fa fa-check-circle"></i> Buscar</button>
+                <button type="submit"  class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
             </div>
             </div>
         </div>
