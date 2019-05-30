@@ -4,7 +4,7 @@ html,body {
   font-weight: 300;
 }
 .hero.is-success {
-  background: rgb(85, 82, 82);
+  background: rgb(226, 226, 226);
 }
 .hero .nav, .hero.is-success .nav {
   -webkit-box-shadow: none;

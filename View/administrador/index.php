@@ -11,7 +11,10 @@
     $anuncioModel = new AnuncioModel();
     $anuncios = $anuncioModel->countAnuncios();
     $anunciosAP = $anuncioModel->countAnunciosAprovacao();
+
+    
 ?>
+
 
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">

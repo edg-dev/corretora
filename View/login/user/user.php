@@ -152,6 +152,11 @@ include('conexao.php');
                 </div>
                 <div class="mr-5"><?php echo intVal($anuncios['total']); ?> Anúncios já cadastrados</div>
               </div>
+              <a class="card-footer text-white clearfix small z-1" href="/corretora/View/Cadastro/Imovel.php">
+                <span class="float-left">Cadastre Um novo anúncio</span>
+                <span class="float-right">
+                  <i class="fas fa-angle-right"></i>
+                </span>
             </div>
           </div>
              </div><!--/tab-pane-->
