@@ -103,23 +103,28 @@
 		public function getBuscaImovel($idTransacao, $idTipoImovel, $idEstado, $nomeCidade, 
 		$nomeBairro, $logradouro){
 			try{
-				echo "<script>console.log('teste: " . $idTransacao . "');</script>";
-				$buscaImovel = $this->bd->prepare("SELECT b.nomeBairro, c.nomeCidade, es.descricaoEstado, en.numero, en.logradouro,
+				echo "<script>console.log('teste: " . $idTipoImovel . "');</script>";
+				echo "<script>console.log('trasa: " . $idTransacao . "');</script>";
+				echo "<script>console.log('estado: " . $idEstado . "');</script>";
+
+				$buscaImovel = $this->bd->prepare("SELECT i.idImovel, b.nomeBairro, c.nomeCidade, es.descricaoEstado, en.numero, en.logradouro,
 				i.areautil, i.areaTotal, i.precoImovel, i.descricaoImovel, i.quantQuarto, i.quantSuite, i.quantVagaGaragem, 
 				i.quantBanheiro, ti.descricaoTipoImovel, tr.descricaoTransacao from imovel as i
 				inner join transacao as tr on i.idTransacao = tr.idTransacao
 				inner join tipoimovel as ti on i.idTipoImovel = ti.idTipoImovel
+				inner join anuncio as a on i.idImovel = a.idImovel
 				inner join endereco as en on i.idEndereco = en.idEndereco
 				inner join bairro as b on en.idBairro = b.idBairro
 				inner join cidade as c on en.idCidade = c.idCidade
 				inner join estado as es on en.idEstado = es.idEstado
 				where
-				(en.logradouro like :logradouro) and 
-				(b.nomeBairro like :nomeBairro) and 
-				(c.nomeCidade like :nomeCidade) and 
-				(es.idEstado like :idEstado) and
-				(tr.idTransacao like :idTransacao) and 
-				(ti.idTipoImovel like :idTipoImovel)");
+				(en.logradouro like :logradouro or
+				b.nomeBairro like :nomeBairro or
+				c.nomeCidade like :nomeCidade or
+				es.idEstado like :idEstado or
+				tr.idTransacao like :idTransacao or
+				ti.idTipoImovel like :idTipoImovel) and
+				(a.verificado = 1 )");
 
 					$buscaImovel->bindValue(':idTransacao', '%' . $idTransacao . '%');
 					$buscaImovel->bindValue(':idTipoImovel', '%' . $idTipoImovel . '%');
