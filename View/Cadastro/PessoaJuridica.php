@@ -39,17 +39,17 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="telefone1">Telefone Empresarial 1</label>
-            <input type="text" class="form-control" id="telefone1" name="telefone1" placeholder="Informe seu Telefone 1">
+            <input type="text" class="form-control" id="telefone1" name="telefone1" placeholder="Ex.: (00) 0000-0000">
         </div>
         <div class="form-group col-md-6">
             <label for="telefone2">Telefone Empresarial 2</label>
-            <input type="text" class="form-control" id="telefone2" name="telefone2" placeholder="Informe seu Telefone 2">
+            <input type="text" class="form-control" id="telefone2" name="telefone2" placeholder="Ex.: (00) 0000-0000">
         </div>
     </div>
 
     <div class="form-group">
         <label for="cnpj"><span>*</span>CNPJ</label>
-        <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="Informe o CNPJ">
+        <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="Ex.: 00.000.000/0000-00">
     </div>
 
     <!--Endereco Completo com uma funcao de Buscar Atomaticamente-->
@@ -74,7 +74,7 @@
     <div class="form-row">
         <div class="form-group col-md-3">
             <label for="cep"><span>*</span>CEP:</label>
-            <input type="number" class="form-control" id="cep" placeholder="Informe seu CEP" name="cep" required>
+            <input type="text" class="form-control" id="cep" placeholder="Ex.: 00000-000" name="cep" required>
         </div>
 
         <div class="form-group col-md-3">
@@ -106,7 +106,15 @@
     <p style="text-align:center">Já possui uma conta?	<a href="../login/user/login.php">Entre Aqui</a>
 </div>
 <!--JS do CEP -->
+<script src="/corretora/Config/JS/jquery.mask.js"></script>
+
 <script type="text/javascript">
+
+        $('#telefone1').mask('(00) 0000-00000');
+        $('#telefone2').mask('(00) 0000-00000');
+        $('#cep').mask('00000-000');
+        $('#cnpj').mask('00.000.000/0000-00', {reverse: true});
+
 	$("#cep").focusout(function(){
 		//Início do Comando AJAX
 		$.ajax({

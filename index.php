@@ -6,6 +6,7 @@
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/EstadoModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TransacaoModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TipoImovelModel.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Config/execRotina.php";
 
     $acao = "busca";
 
@@ -23,6 +24,9 @@
 
     $imagensImovelModel = new ImagensImovelModel();
     $imagens = $imagensImovelModel->getAllImagens();
+
+    $rotina = new execRotina();
+    $rotina->execRotina();
 
 ?>
 
@@ -69,7 +73,9 @@
                 <input type="text" class="form-control" id="rua" placeholder="Rua" name="rua" >
             </div>
             <div class="form-group">
-                <button type="submit"  class="btn btn-primary"><i class="fas fa-search"></i> Buscar</button>
+
+                <button type="submit"  class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+
             </div>
             </div>
         </div>

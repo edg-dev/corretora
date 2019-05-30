@@ -44,7 +44,7 @@
                                     <input name="senha" class="input is-large" type="password" placeholder="Sua senha">
                                 </div>
                             </div>
-                            <button type="submit" class="button is-block is-link is-large is-fullwidth">Entrar</button>
+                            <button type="submit"  class="btn btn-primary"><i class="far fa-sign-in"></i> Entrar</button>
                         </form>
                     </div>
                 </div>
