@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/config/DataBase/dbConfig.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/UsuarioModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/BannerModel.php";
@@ -72,9 +73,11 @@
         $idImovel = $_POST['idImovel'];
         $idPrioridade = $_POST['idPrioridade'];
 
-        $anuncio->updateAprovacao($idImovel, $idPrioridade, $idAnuncio);
+        $idUsuario = $_SESSION['idUsuario'];
 
-        echo "<script>alert('Anúncio aprovado com sucesso!'); location.href='/corretora/View/administrador/banners.php';</script>";
+        $anuncio->updateAprovacao($idImovel, $idPrioridade, $idAnuncio, $idUsuario);
+
+        
     }
 
     if($acao == "reprovar"){
@@ -91,7 +94,7 @@
         $imagens->deletarAllImagens($idImovel);
         $imovel->deleteImovel($idImovel);
         
-        echo "<script>alert('Anúncio aprovado com sucesso!'); location.href='/corretora/View/administrador/banners.php';</script>";
+        
     }
 
     if($acao == "updatePerfil"){
@@ -101,6 +104,9 @@
 
         if(!isset($cresci)){
             $cresci = "";
+        }
+        if($perfil == 3){
+            $perfis->updateUsuarioAdmin($idPessoa);
         }
 
         $perfis->insertPerfil($idPessoa, $perfil, $cresci);

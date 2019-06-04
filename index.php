@@ -6,7 +6,6 @@
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/EstadoModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TransacaoModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TipoImovelModel.php";
-    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Config/execRotina.php";
 
     $acao = "busca";
 
@@ -25,11 +24,10 @@
     $imagensImovelModel = new ImagensImovelModel();
     $imagens = $imagensImovelModel->getAllImagens();
 
-    $rotina = new execRotina();
-    $rotina->execRotina();
-
 ?>
-
+    <br>
+    <h1>Gabriela Guimarães Imóveis</h1>
+    <br>
 
         <div class="col-md-12">
 
@@ -83,10 +81,9 @@
         </form>
 
         </div>
-
-
-
-    <h1>Gabriela Guimarães Imóveis</h1>
+    
+    <br>
+    <h1>Slide de Anúncios</h1>
     <br>
 
     <div class="bd-example">

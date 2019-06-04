@@ -30,7 +30,7 @@
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         <link href="/corretora/Config/CSS/FontAwesome/css/fontawesome.min.css" type="text/css" rel="stylesheet">
-
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     </head>
 
 <body>
@@ -52,25 +52,42 @@
                     <a class="nav-link" href="/corretora/View/Cadastro/Imovel.php">Anunciar</a>
                 </li>
 
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/login/user/user.php">Usuario </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/Cadastro/Pedido.php">Cadastrar Pedido</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/corretora/View/Pages/cadastrar.php">Cadastre-se</a>
                 </li>
+
+                <?php if(isset($_SESSION['idUsuario'])) { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="/corretora/View/Cadastro/Pedido.php">Cadastrar Pedido</a>
+                </li>
+                <?php } ?>
+
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <?php if(!isset($_SESSION['idUsuario'])) { ?>
                 <li class="nav-item">
                     <a class="nav-link" href="/corretora/View/login/user/index.php">Entrar</a>
                 </li>
+                <?php } ?>
+
+                <?php if(isset($_SESSION['admin'])) { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="/corretora/View/administrador/index.php">Administrativo</a>
+                </li>
+                <?php } ?>
+
+                <?php if(isset($_SESSION['idUsuario'])) { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="/corretora/View/login/user/user.php">Perfil</a>
+                </li>
+                <?php } ?>
+
+                <?php if(isset($_SESSION['idUsuario'])) { ?>
                 <li class="nav-item">
                     <a class="nav-link" href="\corretora\View\login\user\logout.php">Sair</a>
                 </li>
-               
-
+                <?php } ?>
             </ul>
         </div>
     </nav>

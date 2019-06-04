@@ -34,6 +34,8 @@
 
 		$descricaoImovel = $_POST["descricaoImovel"];
 
+		$idUsuario = $_SESSION['idUsuario'];
+
 		if(!isset($_POST["complemento"])){
             $complemento = " ";
 		}
@@ -58,7 +60,7 @@
 							  $idTransacao, $areaUtil, 
 							  $areaTotal, $precoImovel, $descricaoImovel);
 
-		$AnuncioModel->inserir($idteste);
+		$AnuncioModel->inserir($idteste, $idUsuario);
 							  
 		$_SESSION['idteste'] = $idteste;
 		echo "<script>alert('Imóvel cadastrado com sucesso'); location.href='/corretora/View/Cadastro/ImagensImovel.php';</script>";
