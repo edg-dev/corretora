@@ -36,7 +36,8 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="/corretora/index.php">(Logo)</a>
+
+        <a class="navbar-brand" href="/corretora/index.php"><img src="\corretora\Files\ggi.png" alt="Logo" width=60 height=40></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -46,16 +47,18 @@
                 <li class="nav-item active" >
                     <a class="nav-link" href="/corretora/index.php">Inicio<span class="sr-only">(current)</span></a>
                 </li>
+            
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/buscar/index.php">Buscar</a>
+                    <a class="nav-link" href="/corretora/View/Cadastro/Imovel.php">Anunciar</a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="/corretora/View/Pages/cadastrar.php">Cadastre-se</a>
                 </li>
                 <?php if(isset($_SESSION['idUsuario'])) { ?>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/Cadastro/Imovel.php">Anunciar</a>
+                    <a class="nav-link" href="/corretora/View/login/user/user.php">Usuario </a>
                 </li>
                 <?php } ?>
 

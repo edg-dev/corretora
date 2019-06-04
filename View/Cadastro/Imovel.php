@@ -21,9 +21,9 @@
 ?>
 
 <?php
-
 include($_SERVER["DOCUMENT_ROOT"] . '/corretora/View/login/user/verifica_login.php');
 ?>
+
 <style>
     
     input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
@@ -101,11 +101,11 @@ include($_SERVER["DOCUMENT_ROOT"] . '/corretora/View/login/user/verifica_login.p
     </div>
     <div class="form-group col-md-6">
         <label for="quantSuite">Suítes (Opcional):</label>
-        <input type="number" class="form-control" id="quantSuite" placeholder="0" name="quantSuite" required>
+        <input type="number" class="form-control" id="quantSuite" placeholder="0" name="quantSuite" >
     </div>
     <div class="form-group col-md-6">
         <label for="quantVagaGaragem">Vagas de garagem (Opcional):</label>
-        <input type="number" class="form-control" id="quantVagaGaragem" placeholder="0" name="quantVagaGaragem" required>
+        <input type="number" class="form-control" id="quantVagaGaragem" placeholder="0" name="quantVagaGaragem" >
     </div>
     <div class="form-group col-md-6">
         <label for="quantBanheiro">Banheiros:</label>
@@ -120,16 +120,16 @@ include($_SERVER["DOCUMENT_ROOT"] . '/corretora/View/login/user/verifica_login.p
         <input type="number" class="form-control" id="areaTotal" placeholder="000" name="areaTotal" required>
     </div>
     <div class="form-group col-md-6">
-        <label for="descricaoImovel">Descrição (Opcional):</label>
+        <label for="descricaoImovel">Descrição do imovel :</label>
         <input type="text" class="form-control" id="descricaoImovel" placeholder="Descrição do imóvel" 
-                                                                     name="descricaoImovel" required>
+                                                                     name="descricaoImovel" >
     </div>
 
     <div class="form-group col-md-6">
         <b><h1>Quanto custa seu imóvel?</h1></b> 
     </div>
     <div class="form-group col-md-6">
-        <label for="precoImovel">Valor total de venda (R$):</label>
+        <label for="precoImovel">Valor da transação (R$):</label>
         <input type="text" class="form-control" id="precoImovel" placeholder="000 000" name="precoImovel" required>
     </div>
 
