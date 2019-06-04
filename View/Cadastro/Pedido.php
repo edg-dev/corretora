@@ -51,12 +51,16 @@ if(!$_SESSION['usuario' ]) {
     .dz-max-files-reached {background-color: red};
 </style>
 
-<div class="form-group col-md-6">
-    <b><h1>Cadastro de Pedido:</h1></b> 
-</div>
+<div class="row">
+    <div class="col-md-2"></div>
+<div class="form-group col-md-8">
+
+<b><h1 class="titulo my-4">
+        Cadastro do Pedido:
+        </h1></b>
 
 <form method="post" id="formImovel" method="POST" action="/corretora/Controller/ImovelController.php?acao=pedir&idUsuario=1">
-    <div class="form-group col-md-6">
+    <div class="form-group">
         <b><label for="tipoDeImovel">Que tipo de imóvel você quer pedir?</label></b>
         <select id="tipoDeImovel" class="form-control" name="tipoDeImovel" required>
                 <option selected>Selecione o tipo do imóvel:</option>
@@ -66,7 +70,7 @@ if(!$_SESSION['usuario' ]) {
         </select>
     </div>
  
-    <div class="form-group col-md-6">
+    <div class="form-group">
         <b><label for="transacao">Qual a transação do pedido?</label></b>
         <select id="transacao" class="form-control" name="transacao" required>
                 <option selected>Selecione a opção de transação:</option>
@@ -82,7 +86,7 @@ if(!$_SESSION['usuario' ]) {
         </select>
     </div>
 
-    <div class="form-group col-md-6">
+    <div class="form-group">
         <b><label for="tipoDeImovel">Preferência de localização?</label></b>
 		<select id="estado" class="form-control" name="estado" required>
                 <option selected>Selecione seu estado</option>
@@ -95,22 +99,22 @@ if(!$_SESSION['usuario' ]) {
     </div>
 
     <br>
-    <div class="form-group col-md-6">
+    <div class="form-group">
         <b><label for="tipoDeImovel">Dados sobre o pedido:</label></b>
     </div>
-    <div class="form-group col-md-6">
+    <div class="form-group">
         <label for="quantQuarto">Quartos:</label>
         <input type="number" class="form-control" id="quantQuarto" placeholder="0" name="quantQuarto" required>
     </div>
-    <div class="form-group col-md-6">
+    <div class="form-group">
         <label for="quantSuite">Suítes (Opcional):</label>
         <input type="number" class="form-control" id="quantSuite" placeholder="0" name="quantSuite" required>
     </div>
-    <div class="form-group col-md-6">
+    <div class="form-group">
         <label for="quantVagaGaragem">Vagas de garagem (Opcional):</label>
         <input type="number" class="form-control" id="quantVagaGaragem" placeholder="0" name="quantVagaGaragem" required>
     </div>
-    <div class="form-group col-md-6">
+    <div class="form-group">
         <label for="quantBanheiro">Banheiros:</label>
         <input type="number" class="form-control" id="quantBanheiro" placeholder="0" name="quantBanheiro" required>
     </div>
@@ -134,7 +138,9 @@ if(!$_SESSION['usuario' ]) {
     </div>
 
 </form>
-
+</div>
+</div>
+                </div>
 <script type="text/javascript">
     $('#precoMin').mask('000.000.000.000,00 ', {reverse: true});
     $('#precoMax').mask('000.000.000.000,00 ', {reverse: true});
