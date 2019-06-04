@@ -26,8 +26,14 @@
     }
 </style>
 
+    <div class="row">
+        <div class="col-md-2"></div>
+            <div class="form-group col-md-8">
 
-<h2> Cadastro de Pessoa Física </h2>
+        <h1 class="titulo my-4">
+            Cadastro de Pessoa Física
+        </h1>
+
 <form method="POST" id="cadastroPessoaFisica" action="/corretora/Controller/PessoaFisicaController.php?acao=<?=$acao?>">
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <div class="form-row">
@@ -148,6 +154,9 @@
 
 </form>
 <br>
+</div>
+</div>
+
 <p style="text-align:center">Já possui uma conta?<a href="../login/user/login.php">Entre Aqui</a>
 
 <script src="/corretora/Config/JS/jquery.mask.js"></script>

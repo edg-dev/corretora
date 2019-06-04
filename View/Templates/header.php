@@ -10,6 +10,8 @@
 
         <title>Corretora</title>
 
+        <link rel="shortcut icon" href="/corretora/Files/favicon.ico" />
+
         <!-- CSS  -->
         <link href="/corretora/Config/CSS/style.css" type="text/css" rel="stylesheet">
         <link href="/corretora/Config/Bootstrap/bootstrap.css" type="text/css" rel="stylesheet">
@@ -44,20 +46,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active" >
-                    <a class="nav-link" href="/corretora/index.php">Inicio<span class="sr-only">(current)</span></a>
+                    <a class="nav-link btn-outline-warning" href="/corretora/index.php">Inicio<span class="sr-only">(current)</span></a>
                 </li>
             
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/Cadastro/Imovel.php">Anunciar</a>
+                    <a class="nav-link btn-outline-info" href="/corretora/View/Cadastro/Imovel.php">Anunciar</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/Pages/cadastrar.php">Cadastre-se</a>
+                    <a class="nav-link btn-outline-success" href="/corretora/View/Pages/cadastrar.php">Cadastre-se</a>
                 </li>
 
                 <?php if(isset($_SESSION['idUsuario'])) { ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/Cadastro/Pedido.php">Cadastrar Pedido</a>
+                    <a class="nav-link btn-outline-info" href="/corretora/View/Cadastro/Pedido.php">Cadastrar Pedido</a>
                 </li>
                 <?php } ?>
 
@@ -66,25 +68,25 @@
             <ul class="navbar-nav ml-auto">
                 <?php if(!isset($_SESSION['idUsuario'])) { ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/login/user/index.php">Entrar</a>
+                    <a class="nav-link btn-outline-success" href="/corretora/View/login/user/index.php">Entrar</a>
                 </li>
                 <?php } ?>
 
                 <?php if(isset($_SESSION['admin'])) { ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/administrador/index.php">Administrativo</a>
+                    <a class="nav-link btn-outline-primary" href="/corretora/View/administrador/index.php">Administrativo</a>
                 </li>
                 <?php } ?>
 
                 <?php if(isset($_SESSION['idUsuario'])) { ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/login/user/user.php">Perfil</a>
+                    <a class="nav-link btn-outline-success" href="/corretora/View/login/user/user.php">Perfil</a>
                 </li>
                 <?php } ?>
 
                 <?php if(isset($_SESSION['idUsuario'])) { ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="\corretora\View\login\user\logout.php">Sair</a>
+                    <a class="nav-link btn-outline-danger" href="\corretora\View\login\user\logout.php">Sair</a>
                 </li>
                 <?php } ?>
             </ul>

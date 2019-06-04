@@ -1,7 +1,6 @@
-    <br>
+
     <div>
-    <br>
-        <footer  class="page-footer black footer">
+        <footer  class="footer page-footer font-small">
             <div class="container">
                 
                 <div class="row">
@@ -34,17 +33,16 @@
                     </div>
                 </div>
             </div>
-            <br>
-            <div class="footer-copyright">
-                <div class="container">
-                @Copyright
-                </div>
+            <div class="footer-copyright text-center py-3">
+                @Copyright 
             </div>
+            
         </footer>
+        
     </div>
-    <div>
+    
         <button onclick="topFunction()" id="vpi" title="Vá Para o Inicio">Subir</button>
-    <div>
+    
     <script>
  
     window.onscroll = function() {scrollFunction()};
