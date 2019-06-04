@@ -28,6 +28,12 @@
             $update->bindParam(":cresci", $cresci);
             $update->execute();
         }
+
+        public function updateUsuarioAdmin($idUsuario){
+            $update = $this->bd->prepare("UPDATE Usuario SET admin = 1 WHERE idUsuario = :idUsuario");
+            $update->bindParam(":idUsuario", $idUsuario);
+            $update->execute();
+        }
     }
 
 ?>

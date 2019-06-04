@@ -1,12 +1,19 @@
 <?php include '../../Templates/header.php'
 ?>
 <?php
+    $idUsuario = $_SESSION['idUsuario'];
 
     require_once $_SERVER["DOCUMENT_ROOT"]."/corretora/Model/AnuncioModel.php";
+    
     $anuncioModel = new AnuncioModel();
-    $anuncios = $anuncioModel->countAnuncios();
-    $anunciosAP = $anuncioModel->countAnunciosAprovacao();
-                  
+    $anuncios = $anuncioModel->countAnunciosUser($idUsuario);
+    $anunciosAP = $anuncioModel->countAnunciosAprovacaoUser($idUsuario);
+    
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Config/execRotina.php";
+    
+    $rotina = new execRotina();
+    $rotina->execRotina();
+
 ?>
 
 <?php
@@ -38,7 +45,7 @@ include('conexao.php');
 <hr>
 <div class="container bootstrap snippet">
     <div class="row">
-  		<div class="col-sm-10"><h1>Olá, você esta logado com <strong> <?php echo $_SESSION['usuario'];?></strong></h1></div>
+  		<div class="col-sm-10"><h1>Olá, você esta logado com <strong> <?php echo $_SESSION['usuario'];?></strong> <?php echo $_SESSION['idUsuario'];?></h1></div>
     	<div class="col-sm-2">
         <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign">
         <a href="\corretora\View\login\user\logout.php" class="pull-right"></i> Sair</a></button>

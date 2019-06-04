@@ -3,13 +3,10 @@
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/AnuncioModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/PrioridadeModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TelefoneModel.php";
-
+    
     $anuncio = new AnuncioModel();
-    $anuncioAP = $anuncio->getAnunciosAprovacao();
-
-    $prioridadeModel = new PrioridadeModel();
-    $prioridades = $prioridadeModel->getPrioridades();
-
+    $anuncioAP = $anuncio->getAllAnuncios();
+    
     $telefoneModel = new TelefoneModel();
 ?>
 
@@ -17,7 +14,7 @@
           <li class="breadcrumb-item">
             <a href="#">Dashboard</a>
           </li>
-          <li class="breadcrumb-item active">Anúncios para aprovação</li>
+          <li class="breadcrumb-item active">Anúncios totais</li>
         </ol>
 
         <table class="table">
@@ -29,10 +26,8 @@
                     <th>Email</th>
                     <th>Telefones</th>
                     <th>Tipo de Anúncio</th>
-                    <th>Prioridade</th>
                     <th>Detalhes</th>
                     <th>Ações</th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -53,15 +48,6 @@
                 <?php } ?>
                 </td>
                 <td> <?php echo $result['descricaoTransacao'];?></td>
-                <td>
-                    <select id="prioridade" class="form-control" name="prioridade" required>
-                        <option value="0">Nenhuma</option>
-                        <?php foreach($prioridades as $prioridade){?>
-                        <option id="idPrioridade" data-prioridade="<?php echo $prioridade['idPrioridade'];?>" value="<?php echo $prioridade['idPrioridade'];?>"> 
-                            <?php echo $prioridade['descricaoPrioridade'];?> </option>
-                        <?php } ?>
-                    </select>
-                </td>
                 <td> 
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo<?php echo $count; ?>">
                         <i class="fa fa-info-circle"></i> Detalhes
@@ -95,13 +81,8 @@
 				</div>
 				
                 <td> 
-                    <button type="button" class="btn btn-success" onclick="aprovarAnuncio();">
-                        <i class="fa fa-clipboard-check"></i> Aprovar
-                    </button> 
-                </td>
-                <td> 
                     <button type="button" class="btn btn-danger" onclick="reprovarAnuncio();">
-                        <i class="fa fa-flag"></i> Reprovar
+                        <i class="fa fa-flag"></i> Excluir Anúncio
                     </button> 
                 </td>  
             </tbody>
@@ -111,33 +92,6 @@
 
 <script type="text/javascript">
 
-function aprovarAnuncio(){
-
-    $(document).on('click', '.btn-success', function(e) {
-        e.preventDefault;
-        var idAnuncio = $(this).closest('tr').find('td[data-idanuncio]').data('idanuncio');
-        var idImovel = $(this).closest('tr').find('td[data-idimovel]').data('idimovel');
-        var idPrioridade = $(this).parent().siblings().find("select").val();
-        
-        $.ajax({
-            url: 'controllers/adminController.php?acao=updateVerificado',
-            type: "POST",
-            data: {
-                idAnuncio: idAnuncio,
-                idImovel: idImovel,
-                idPrioridade: idPrioridade
-            },
-            dataType: "html",
-            success: function (data) {
-                notificar(data.message, data.type);
-                if (data.type == "success") {
-                    alert("Anúncio aprovado com sucesso!");
-                    window.location.href="anuncios.php";
-                }
-            }
-        });
-    });
-}
 
 function reprovarAnuncio(){
 
@@ -154,7 +108,7 @@ function reprovarAnuncio(){
             },
             dataType: "html",
             success: function (data) {
-                alert("Anúncio reprovado com sucesso!");
+                alert("Anúncio excluido com sucesso!");
                 window.location.href="anuncios.php";    
             }
         });
