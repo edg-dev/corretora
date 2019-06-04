@@ -35,7 +35,7 @@
             <tbody>
             <?php foreach($pessoaFisica as $result) {?>
                 <td data-idpessoa="<?php echo $result['idPessoa'];?>"><?php echo $result['idPessoa'];?></td>
-                <td><?php echo $result['nome'];?></td>
+                <td data-nome="<?php echo $result['nome'];?>"><?php echo $result['nome'];?></td>
                 <td><?php echo $result['emailContato'];?></td>
                 <td><?php echo $result['descricaoEstadoCivil'];?></td>
                 <td><?php echo $result['rg'];?></td>
@@ -59,6 +59,7 @@
             <thead>
                 <tr>
                     <th>✪</th>
+                    <th>Nome</th>
                     <th>Razão Social</th>
                     <th>Email</th>
                     <th>Cnpj</th>
@@ -70,6 +71,7 @@
             <tbody>
             <?php foreach($pessoaJuridica as $result2) {?>
                 <td data-idpessoa="<?php echo $result2['idpessoa'];?>"><?php echo $result2['idpessoa'];?></td>
+                <td data-nome="<?php echo $result2['nome'];?>"><?php echo $result2['nome'];?></td>
                 <td><?php echo $result2['razaoSocial'];?></td>
                 <td><?php echo $result2['emailContato'];?></td>
                 <td><?php echo $result2['cnpj'];?></td>
@@ -97,8 +99,9 @@
       <div class="modal-body">
         <form method="POST" action="controllers/adminController.php?acao=updatePerfil">
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Selecionar novo perfil:</label>
+            <label for="recipient-name" class="col-form-label">Selecionar novo perfil para:</label>
             <input type="hidden" class="form-control" id="idPessoaUpdatePerfil" name="idPessoaUpdatePerfil">
+            <input type="text" readonly class="form-control" id="nomeUpdate" name="nomeUpdate">
           </div>
 
           <select id="perfis" class="form-control" name="perfis" required>
@@ -132,7 +135,9 @@ function pegaid(){
 $(document).on('click', '.btn-warning', function(e) {
         e.preventDefault;
         var idPessoa = $(this).closest('tr').find('td[data-idpessoa]').data('idpessoa');
+        var nome  = $(this).closest('tr').find('td[data-nome]').data('nome');
         $('.modal-body #idPessoaUpdatePerfil').val( idPessoa );
+        $('.modal-body #nomeUpdate').val( nome );
     });
     
 }

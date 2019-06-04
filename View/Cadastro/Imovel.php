@@ -21,11 +21,9 @@
 ?>
 
 <?php
+include($_SERVER["DOCUMENT_ROOT"] . '/corretora/View/login/user/verifica_login.php');
+?>
 
-if(!$_SESSION['usuario' ]) {
-	header('Location: \corretora\View\login\user\index.php');
-	exit();
-}?>
 <style>
     
     input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {

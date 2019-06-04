@@ -52,25 +52,42 @@
                     <a class="nav-link" href="/corretora/View/Cadastro/Imovel.php">Anunciar</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="/corretora/View/Pages/cadastrar.php">Cadastre-se</a>
+                </li>
+                <?php if(isset($_SESSION['idUsuario'])) { ?>
 
                 <li class="nav-item">
                     <a class="nav-link" href="/corretora/View/login/user/user.php">Usuario </a>
                 </li>
+                <?php } ?>
 
+                <?php if(isset($_SESSION['idUsuario'])) { ?>
                 <li class="nav-item">
                     <a class="nav-link" href="/corretora/View/Cadastro/Pedido.php">Cadastrar Pedido</a>
+
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/Pages/cadastrar.php">Cadastre-se</a>
-                </li>
+                <?php } ?>
+
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="/corretora/View/login/user/index.php">Entrar</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="\corretora\View\login\user\logout.php">Sair</a>
-                </li>
-               
 
+                <?php if(isset($_SESSION['admin'])) { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="/corretora/View/administrador/index.php">Adm</a>
+
+                </li>
+                <?php } ?>
+
+                <?php if(isset($_SESSION['idUsuario'])) { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="/corretora/View/login/user/user.php">Perfil</a>
+                </li>
+                <?php } ?>
             </ul>
         </div>
     </nav>

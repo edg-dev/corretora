@@ -63,7 +63,7 @@ class PessoaJuridicaModel{
 
     public function getPessoaJuridicaInfo(){
         $select = $this->bd->prepare("SELECT  
-        p.idpessoa, pj.razaoSocial, p.emailContato, pj.cnpj, per.descricaoperfil, up.cresci
+        p.nome, p.idpessoa, pj.razaoSocial, p.emailContato, pj.cnpj, per.descricaoperfil, up.cresci
         from pessoajuridica as pj
             inner join pessoa as  p
                 on p.idpessoa = pj.idpessoa

@@ -21,20 +21,25 @@ echo $row;
 if($row == 1) {
 	while($percorrer = mysqli_fetch_array($result)){
 		$admin= $percorrer ['admin'];
-		if ($admin== 1){
-		$_SESSION['usuario'] = $usuario;
-	header('Location:\corretora\View\administrador\index.php');
-	exit();
-		}
-		else{
+		$user = $percorrer['idUsuario'];
+
+		if ($admin== 1) {
+			$_SESSION['idUsuario'] = $user;
+			$_SESSION['usuario'] = $usuario;
+			$_SESSION['admin'] = $admin;
+			header('Location:\corretora\View\administrador\index.php');
+			exit();
+		} else {
+			$_SESSION['idUsuario'] = $user;
 			$_SESSION['usuario'] = $usuario;
 			header('Location: user.php');
 			exit();
 		}
 	}
-	
-}else {
+} else {
 	$_SESSION['nao_autenticado'] = true;
 	header('Location: index.php');
 	exit();
 }
+
+
