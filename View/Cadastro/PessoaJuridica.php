@@ -11,8 +11,14 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-<h2> Cadastro de Pessoa Jurídica </h2>
+<div class="row">
+        <div class="col-md-2"></div>
+            <div class="form-group col-md-8">
 
+        <h1 class="titulo my-4">
+            Cadastro de Pessoa Jurídica 
+        </h1>
+        
 <form method="POST" id="cadastroPessoaJuridica" action="/corretora/Controller/PessoaJuridicaController.php?acao=<?=$acao?>">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <div class="form-group">
@@ -61,7 +67,7 @@
         </div>
 
         <div class="form-group col-md-2">
-            <label for="numero"><span>*</span>Numero:</label>
+            <label for="numero"><span>*</span>Número:</label>
             <input type="number" class="form-control" id="numero" name="numero" required>
         </div>
     </div>
@@ -103,6 +109,9 @@
 </form>
 <br>
 <div>
+    </div>
+    </div>
+
     <p style="text-align:center">Já possui uma conta?	<a href="../login/user/login.php">Entre Aqui</a>
 </div>
 <!--JS do CEP -->
