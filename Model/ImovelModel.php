@@ -125,18 +125,18 @@
 				inner join cidade as c on en.idCidade = c.idCidade
 				inner join estado as es on en.idEstado = es.idEstado
 				where
-				(en.logradouro like :logradouro or
-				b.nomeBairro like :nomeBairro or
-				c.nomeCidade like :nomeCidade or
-				es.idEstado like :idEstado or
-				tr.idTransacao like :idTransacao or
-				ti.idTipoImovel like :idTipoImovel) and
-				(a.verificado = 1 )");
+				(a.verificado = '1' ) and
+				(en.logradouro like ':logradouro' or
+				b.nomeBairro like ':nomeBairro' or
+				c.nomeCidade like ':nomeCidade' or
+				es.idEstado like ':idEstado' or
+				tr.idTransacao like ':idTransacao' or
+				ti.idTipoImovel like ':idTipoImovel')");
 
-					$buscaImovel->bindValue(':idTransacao', '%' . $idTransacao . '%');
-					$buscaImovel->bindValue(':idTipoImovel', '%' . $idTipoImovel . '%');
+					$buscaImovel->bindValue(':idTransacao', $idTransacao );
+					$buscaImovel->bindValue(':idTipoImovel', $idTipoImovel );
 
-					$buscaImovel->bindValue(':idEstado', '%' . $idEstado . '%');
+					$buscaImovel->bindValue(':idEstado', $idEstado );
 					$buscaImovel->bindValue(':nomeCidade', '%' . $nomeCidade . '%');
 					$buscaImovel->bindValue(':nomeBairro', '%' . $nomeBairro . '%');
 					$buscaImovel->bindValue(':logradouro', '%' . $logradouro . '%');

@@ -2,7 +2,7 @@
     position: absolute;
     left: 0;
     width: 100%;
-    background-color: black;
+    background-color: #1C1C1C;
     color: white;
     text-align: center;
  }
@@ -14,7 +14,7 @@
 
 /* link que foi visitado */
 .footer a:visited {
-    color: red;
+    color: #B22222;
 }
 
 /* mouse over */
@@ -37,7 +37,7 @@
    font-size: 18px;
    border: none;
    outline: none;
-   background-color: red;
+   background-color: #4B0082;
    color: white;
    cursor: pointer;
    padding: 15px;
