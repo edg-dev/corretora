@@ -25,7 +25,9 @@
     $imagens = $imagensImovelModel->getAllImagens();
 
 ?>
-
+    <br>
+    <h1>Gabriela Guimarães Imóveis</h1>
+    <br>
 
         <div class="col-md-12">
 
@@ -79,10 +81,9 @@
         </form>
 
         </div>
-
-
-
-    <h1>Gabriela Guimarães Imóveis</h1>
+    
+    <br>
+    <h1>Slide de Anúncios</h1>
     <br>
 
     <div class="bd-example">
