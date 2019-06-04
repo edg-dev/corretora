@@ -55,12 +55,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/corretora/View/Pages/cadastrar.php">Cadastre-se</a>
                 </li>
-                <?php if(isset($_SESSION['idUsuario'])) { ?>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/login/user/user.php">Usuario </a>
-                </li>
-                <?php } ?>
 
                 <?php if(isset($_SESSION['idUsuario'])) { ?>
                 <li class="nav-item">
@@ -71,19 +65,27 @@
             </ul>
 
             <ul class="navbar-nav ml-auto">
+                <?php if(!isset($_SESSION['idUsuario'])) { ?>
                 <li class="nav-item">
                     <a class="nav-link" href="/corretora/View/login/user/index.php">Entrar</a>
                 </li>
+                <?php } ?>
 
                 <?php if(isset($_SESSION['admin'])) { ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="/corretora/View/administrador/index.php">Adm</a>
+                    <a class="nav-link" href="/corretora/View/administrador/index.php">Administrativo</a>
                 </li>
                 <?php } ?>
 
                 <?php if(isset($_SESSION['idUsuario'])) { ?>
                 <li class="nav-item">
                     <a class="nav-link" href="/corretora/View/login/user/user.php">Perfil</a>
+                </li>
+                <?php } ?>
+
+                <?php if(isset($_SESSION['idUsuario'])) { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="\corretora\View\login\user\logout.php">Sair</a>
                 </li>
                 <?php } ?>
             </ul>
