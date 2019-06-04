@@ -25,11 +25,13 @@
     $imagens = $imagensImovelModel->getAllImagens();
 
 ?>
-    <br>
-    <h1>Gabriela Guimarães Imóveis</h1>
-    <br>
+        <h1 class="titulo my-4">
+           Gabriela Gimarães
+          <small>Corretora de Imóveis</small>
+        </h1>
 
-        <div class="col-md-12">
+<div class="row">
+        <div class="col-md-4">
 
         <!-- Search Widget -->
         <form method="post" id="buscaImovel" method="POST" action="/corretora/Controller/ImovelController.php?acao=<?=$acao?>" >
@@ -38,7 +40,7 @@
         <div class="card-body">
             <div class="input-group">
 
-            <div class="form-group col-md-4">
+            <div class="form-group">
                 <b><label for="transacao">Você deseja alugar ou comprar um imóvel?</label></b>
             <select id="transacao" class="form-control" name="transacao" >
                     <option selected>Selecione a opção de transação:</option>
@@ -48,7 +50,7 @@
             </select>
             </div>
 
-            <div class="form-group col-md-4">
+            <div class="form-group">
                 <b><label for="tipoDeImovel">Que tipo de imóvel você proucura?</label></b>
             <select id="tipoDeImovel" class="form-control" name="tipoDeImovel" >
                     <option selected>Selecione o tipo do imóvel:</option>
@@ -58,33 +60,30 @@
             </select>
             </div>
 
-            <div class="form-group col-md-4">
+            <div class="form-group">
                 <b><label for="endereco">Endereço:</label></b>
                     <select id="estado" class="form-control" name="estado" >
-                        <option selected>Selecione seu estado</option>
+                        <option selected>Selecione seu estado:</option>
                         <?php foreach($estados as $estado){?>
                         <option value="<?php echo $estado['idEstado'];?>"> <?php echo $estado['descricaoEstado'];?> </option>
                         <?php }?>
                     </select>
-                <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade" >
-                <input type="text" class="form-control" id="bairro" placeholder="Bairro" name="bairro" >
-                <input type="text" class="form-control" id="rua" placeholder="Rua" name="rua" >
+                <input type="text" class="form-control" id="cidade" placeholder="Digite a cidade aqui" name="cidade" >
+                <input type="text" class="form-control" id="bairro" placeholder="Digite o bairro aqui" name="bairro" >
+                <input type="text" class="form-control" id="rua" placeholder="Digite a rua aqui" name="rua" >
             </div>
-            <div class="form-group">
+           </div>
+                <div class="form-group">
+                    <button type="submit"  class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                </div>
 
-                <button type="submit"  class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
-
             </div>
             </div>
-        </div>
-        </div>
         </form>
-
         </div>
+        
     
-    <br>
-    <h1>Slide de Anúncios</h1>
-    <br>
+    <div class="col-md-8">
 
     <div class="bd-example">
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -124,7 +123,8 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Proximo</span>
         </a>
-
+    </div>
+</div>
 
                 <!-- Page Content -->
                 <div class="container">
@@ -231,32 +231,6 @@
                 <hr>
                 <?php $count++; ?>
                 <?php } ?> <!-- foreach fecha aki --> 
-
-                <!-- Pagination -->
-
-                <ul class="pagination justify-content-center">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                    </a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                    </a>
-                </li>
-                </ul>
 
                 </div>
                 <!-- /.container -->
