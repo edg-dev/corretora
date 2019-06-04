@@ -129,11 +129,8 @@ function aprovarAnuncio(){
             },
             dataType: "html",
             success: function (data) {
-                notificar(data.message, data.type);
-                if (data.type == "success") {
-                    alert("Anúncio aprovado com sucesso!");
-                    window.location.href="anuncios.php";
-                }
+                alert("Anúncio aprovado com sucesso!");
+                window.location.href="anuncios.php";   
             }
         });
     });
