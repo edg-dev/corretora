@@ -138,11 +138,8 @@ CREATE TABLE EstadoCivil(
 CREATE TABLE Anuncio(
 	idAnuncio int not null auto_increment,
     idImovel int not null,
-    descricaoAnuncio varchar(200) not null,
-    idTipoAnuncio smallint not null,
     verificado boolean not null,
 	idPrioridade smallint not null,
-    codigoAnuncio varchar(20) not null,
     idUsuario int not null,
     primary key (idAnuncio)
 ) ENGINE=InnoDB;
@@ -161,9 +158,9 @@ CREATE TABLE TipoAnuncio(
 
 CREATE TABLE Usuario(
 	idUsuario int not null auto_increment,
-    nomeUsuario varchar(30) not null,
+    admin smallint not null,
     usuario varchar(80) not null,
-    senha varchar(30) not null,
+    senha varchar(255) not null,
     primary key (idUsuario)
 ) ENGINE=InnoDB;
 
@@ -183,10 +180,28 @@ CREATE TABLE Perfis(
 
 CREATE TABLE Banners(
 	idBanner smallint not null auto_increment,
+    descricaoBanner varchar(500) not null,
     link varchar(2048) not null,
     imagemBanner varchar(500) not null,
     primary key (idBanner)
 ) ENGINE=InnoDB;
+
+CREATE TABLE Pedidos(
+	idPedido int not null auto_increment,
+    idUsuario int not null,
+    idTipoImovel smallint not null,
+    idTransacao int not null,
+    idCidade int not null,
+    idBairro int not null,
+    idEstado smallint not null,
+	quantQuarto int not null,
+    quantSuite int not null,
+    quantVagaGaragem int not null,
+    quantBanheiro int not null,
+    precoMin decimal(7,2) not null,
+    precoMax decimal(7,2) not null,
+    primary key (idPedido)
+)ENGINE=InnoDB;
 
 ALTER TABLE PessoaFisica
 	ADD CONSTRAINT FK_PessoaFisicaSexo 
@@ -250,13 +265,22 @@ ALTER TABLE Anuncio
 	ADD CONSTRAINT FK_AnuncioImovel
 		FOREIGN KEY (idImovel) REFERENCES Imovel(idImovel),
 	ADD CONSTRAINT FK_AnuncioUsuario
-		FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario),
-	ADD CONSTRAINT FK_AnuncioTipoAnuncio
-		FOREIGN KEY (idTipoAnuncio) REFERENCES TipoAnuncio(idTipoAnuncio),
-	ADD CONSTRAINT FK_AnuncioPrioridadeAnuncio
-		FOREIGN KEY (idPrioridade) REFERENCES PrioridadeAnuncio(idPrioridade);
+		FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario);
 
-        
+ALTER TABLE Pedidos
+	ADD CONSTRAINT FK_PedidoImovel
+		FOREIGN KEY (idTipoImovel) REFERENCES TipoImovel(idTipoImovel),
+	ADD CONSTRAINT FK_PedidoTransacao
+		FOREIGN KEY (idTransacao) REFERENCES Transacao(idTransacao),
+	ADD CONSTRAINT FK_PedidoCidade
+		FOREIGN KEY (idCidade) REFERENCES Cidade(idCidade),
+	ADD CONSTRAINT FK_PedidoBairro
+		FOREIGN KEY (idBairro) REFERENCES Bairro(idBairro),
+	ADD CONSTRAINT FK_PedidoEstado
+		FOREIGN KEY (idEstado) REFERENCES Estado(idEstado),
+	ADD CONSTRAINT FK_PedidoUsuario
+		FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario);
+	
 INSERT INTO Estado(descricaoEstado, siglaEstado) values
 ('Acre', 'AC'),
 ('Alagoas', 'AL'),
@@ -329,4 +353,13 @@ INSERT INTO transacao(descricaoTransacao) values
 ('Alugar'), 
 ('Vender'); 
     
+INSERT INTO Perfis(descricaoPerfil) values
+('Usuario'),
+('Corretor'),
+('Administrador');
+
+INSERT INTO Prioridadeanuncio(descricaoPrioridade) values
+('Alta'),
+('Média'),
+('Baixa');
 
