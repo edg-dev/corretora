@@ -22,23 +22,12 @@ include('verifica_login.php');
 include('conexao.php');
 
 
-?><link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+?>
 
 <head>
   <title>Usuário</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 
@@ -76,9 +65,7 @@ include('conexao.php');
         </div><!--/col-3-->
     	<div class="col-sm-9">
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#home">Pessoal</a></li>
-                <li><a data-toggle="tab" href="#messages">Anuncios</a></li>
-                
+                <li class="active"><a data-toggle="tab" href="#home">Pessoal</a></li>             
               </ul>
 
               
@@ -128,53 +115,7 @@ include('conexao.php');
                 
               
               <hr>
-              
-             </div><!--/tab-pane-->
-             <div class="tab-pane" id="messages">
-               
-               <h2></h2>
-               
-               
-               <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-warning o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-bullhorn"></i>
-                </div>
-                <div class="mr-5"> <?php echo intVal($anunciosAP['total']); ?> Anúncios em aprovação</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="anuncios.php">
-                <span class="float-left">View Details</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-success o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-bullhorn"></i>
-                </div>
-                <div class="mr-5"><?php echo intVal($anuncios['total']); ?> Anúncios já cadastrados</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="/corretora/View/Cadastro/Imovel.php">
-                <span class="float-left">Cadastre Um novo anúncio</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-            </div>
-          </div>
-             </div><!--/tab-pane-->
-             <div class="tab-pane" id="settings">
-            		
-               	
-                  <hr>
-                  
-              </div>
-               
-              </div><!--/tab-pane-->
+
           </div><!--/tab-content-->
 
         </div><!--/col-9-->

@@ -6,6 +6,7 @@
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/EstadoModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TransacaoModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TipoImovelModel.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/BannerModel.php";
 
     $acao = "busca";
 
@@ -24,13 +25,14 @@
     $imagensImovelModel = new ImagensImovelModel();
     $imagens = $imagensImovelModel->getAllImagens();
 
+    $bannerModel = new BannerModel();
+    $banner = $bannerModel->getRandomBanner();
+    $banner2 = $bannerModel->getRandomBanner();
 ?>
-        <h1 class="titulo my-4">
-           Gabriela Gimarães
-          <small>Corretora de Imóveis</small>
-        </h1>
-
-<div class="row">
+<div style="padding-top: 20px; text-align: center;">
+    <h3>Quer anunciar seu imóvel ou procurar um negócio? Você veio ao lugar certo!</h3>
+</div>
+<div class="row" style="padding-top: 60px;">
         <div class="col-md-4">
 
         <!-- Search Widget -->
@@ -125,7 +127,15 @@
         </a>
     </div>
 </div>
-
+</div>
+<!-- Banner 1 -->
+<?php if($banner != false) { ?>
+    <div class="offset-md-2 col-md-8" style="padding-top: 20px;">
+    <a href="<?php echo $banner['link']?>">
+        <img class="d-block w-100 img-fluid" style="width:450px;height:150px;" src="/corretora/Files/banners/<?php echo $banner['imagemBanner']?>" alt="Anuncie aqui">
+    </a>
+    </div>
+<?php } ?>
                 <!-- Page Content -->
                 <div class="container">
 
@@ -235,6 +245,12 @@
                 </div>
                 <!-- /.container -->
     </div>
+<!-- Banner 2-->
+<?php if($banner2 != false) { ?>
+    <div class="offset-md-2 col-md-8" style="padding-top: 20px; padding-bottom: 20px;">
+    <a href="<?php echo $banner2['link']?>">
+        <img class="d-block w-100 img-fluid" style="width:450px;height:150px;" src="/corretora/Files/banners/<?php echo $banner2['imagemBanner']?>" alt="Anuncie aqui">
+    </a>
     </div>
-
+<?php } ?>
 <?php include "View/Templates/footer.php"; ?>

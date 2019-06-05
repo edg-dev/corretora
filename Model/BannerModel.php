@@ -40,5 +40,11 @@
                 unlink($imagem['imagemBanner']);
             }
         }
+
+        public function getRandomBanner(){
+            $getBanner = $this->bd->prepare("SELECT * from Banners order by RAND() LIMIT 1");
+            $getBanner->execute();
+            return $getBanner->fetch(PDO::FETCH_ASSOC);
+        }
     }
 ?>
