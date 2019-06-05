@@ -57,15 +57,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active" >
-                    <a class="nav-link btn-outline-info" href="/corretora/index.php">Inicio<span class="sr-only">(current)</span></a>
+                    <a class="nav-link btn-outline-link" href="/corretora/index.php">Inicio<span class="sr-only">(current)</span></a>
                 </li>
             
                 <li class="nav-item">
-                    <a class="nav-link btn-outline-info" href="/corretora/View/Cadastro/Imovel.php">Anunciar</a>
+                    <a class="nav-link btn-outline-link" href="/corretora/View/Cadastro/Imovel.php">Anunciar</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link btn-outline-info" href="/corretora/View/Pages/cadastrar.php">Cadastre-se</a>
+                    <a class="nav-link btn-outline-link" href="/corretora/View/Pages/cadastrar.php">Cadastre-se</a>
                 </li>
 
                 <?php if(isset($_SESSION['idUsuario'])) { ?>
