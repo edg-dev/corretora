@@ -8,7 +8,7 @@
 
                         <h4>Institucional</h4>
 
-                            <h6><a href="#!">Quem Somos</a></h6>
+                            <h6><a href="/corretora/View/Pages/sobre.php">Quem Somos</a></h6>
                             <h6><a href="#!">Parceiros</a></h6>
                             <h6><a href="#!">Publicidade</a></h6>
                             <h6><a href="#!">Trabalhe Conosco</a></h6>
@@ -20,7 +20,7 @@
                         <h6><a href="/corretora/View/Cadastro/PessoaFisica.php">Cadastre-se</a></h6>
                         <h6><a href="/corretora/View/Pages/anunciar.php">Anuncie</a></h6>
                         <h6><a href="/corretora/View/buscar/index.php">Busque</a></h6>
-                        <h6><a href="/corretora/View/Cadastro/PessoaJuridica.php">Contrutora</a></h6>
+                        <h6><a href="/corretora/View/Cadastro/PessoaJuridica.php">Construtora</a></h6>
 
                     </div>
                     <div class="col l3 s12">
