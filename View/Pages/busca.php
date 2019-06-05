@@ -3,23 +3,114 @@
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImovelModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImagensImovelModel.php";
 
-    $idTransacao =  $_SESSION['idTransacao'];
-    $idTipoImovel = $_SESSION['idTipoImovel'];
-    $idEstado = $_SESSION['idEstado'];
-    $nomeCidade =  $_SESSION['nomeCidade'];
-    $nomeBairro = $_SESSION['nomeBairro'];
-    $logradouro = $_SESSION['logradouro'];
-
-    $imovelModel = new ImovelModel();
-    $buscasImovel = $imovelModel->getBuscaImovel($idTransacao, $idTipoImovel, $idEstado, $nomeCidade, 
-    $nomeBairro, $logradouro);
 
     $imagensImovelModel = new ImagensImovelModel();
     $imagens = $imagensImovelModel->getAllImagens();
 
     
 ?>
-      
+
+        <?php 
+        require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/config/DataBase/dbConfig.php";
+
+        // filtros da busca 
+        $cidade = isset($_GET['cidade']) ? $_GET['cidade'] : '';
+        $bairro = isset($_GET['bairro']) ? $_GET['bairro'] : '';
+
+        $transacao = isset($_GET['transacao']) ? $_GET['transacao'] : '';
+        $tipoDeImovel = isset($_GET['tipoDeImovel']) ? $_GET['tipoDeImovel'] : ''; 
+        $estado = isset($_GET['estado']) ? $_GET['estado'] : ''; 
+
+        // inicia a query, mas os filtros serão adicionados dinamicamente 
+        // o 1=1 é adicionado no WHERE para garantir que sempre haverá uma condição na busca, 
+        // evitando erro de sintaxe caso o usuário não selecione filtro algum 
+        $sql = "SELECT i.idImovel, b.nomeBairro, c.nomeCidade, es.descricaoEstado, en.numero, en.logradouro,
+				i.areautil, i.areaTotal, i.precoImovel, i.descricaoImovel, i.quantQuarto, i.quantSuite, i.quantVagaGaragem, 
+				i.quantBanheiro, ti.descricaoTipoImovel, tr.descricaoTransacao from imovel as i
+				inner join transacao as tr on i.idTransacao = tr.idTransacao
+				inner join tipoimovel as ti on i.idTipoImovel = ti.idTipoImovel
+				inner join anuncio as a on i.idImovel = a.idImovel
+				inner join endereco as en on i.idEndereco = en.idEndereco
+				inner join bairro as b on en.idBairro = b.idBairro
+				inner join cidade as c on en.idCidade = c.idCidade
+				inner join estado as es on en.idEstado = es.idEstado
+				WHERE
+                1=1 and a.verificado = 1 "; 
+        // cria um array com os filtros a serem aplicados 
+        $filters = []; 
+        if (!empty($cidade)) 
+        { 
+            $filters[] = [ 
+                'placeholder' => ':cidade',
+                'sql' => '(c.nomeCidade LIKE :cidade)',
+                'value' => '%' . $cidade . '%',
+                'param_type' => PDO::PARAM_STR,
+            ];
+        }
+        if (!empty($bairro)) 
+        { 
+            $filters[] = [ 
+                'placeholder' => ':bairro',
+                'sql' => '(b.nomeBairro LIKE :bairro)',
+                'value' => '%' . $bairro . '%',
+                'param_type' => PDO::PARAM_STR,
+            ];
+        }
+        
+        if (!empty($transacao))
+        {
+            $filters[] = [
+                'placeholder' => ':transacao',
+                'sql' => 'tr.idTransacao = :transacao',
+                'value' => $transacao,
+                'param_type' => PDO::PARAM_INT,
+            ];
+        }
+        if (!empty($tipoDeImovel))
+        {
+            $filters[] = [
+                'placeholder' => ':tipoDeImovel',
+                'sql' => 'ti.idTipoImovel = :tipoDeImovel',
+                'value' => $tipoDeImovel,
+                'param_type' => PDO::PARAM_INT,
+            ];
+        }
+        if (!empty($estado))
+        {
+            $filters[] = [
+                'placeholder' => ':estado',
+                'sql' => 'es.idEstado = :estado',
+                'value' => $estado,
+                'param_type' => PDO::PARAM_INT,
+            ];
+        }
+        
+        foreach ($filters as $filter)
+        {
+            $sql .= " AND " . $filter['sql'];
+        }
+        
+        $bd = BancoDados::obterConexao();
+
+        // cria o Prepared Statement
+        $stmt = $bd->prepare($sql);
+        
+        // faz o bind dos valores dos filtros
+        foreach ($filters as $filter)
+        {
+            $stmt->bindValue($filter['placeholder'], $filter['value'], $filter['param_type']);
+        }
+        
+        // executa a query
+        $stmt->execute();
+        
+        // cria um array com os resultados
+        $buscasImovel = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        ?>
+
+<!--Começo da view -->
+
                 <!-- Page Content -->
                 <div class="container">
 
@@ -28,6 +119,7 @@
                     
                 <!-- Project One -->
                 <?php $count = 0; ?>
+                <?php if (count($buscasImovel) > 0): ?>
                 <?php foreach($buscasImovel as $imovel){?>
 
                 <div class="row">
@@ -123,10 +215,14 @@
                 </div>
                 <!-- /.row -->
                 <hr>
-                <?php $count++; ?>
-                <?php } ?> <!-- foreach fecha aki --> 
-
- 
+                    <?php $count++; ?>
+                    <?php } ?> <!-- foreach fecha aki --> 
+                    <?php else: ?>
+                <div class="container">
+                <h1>Nenhum anúncio foi encontrado!</h1>            
+                </div>
+                <br><br>
+                    <?php endif; ?>
     </div>
 
 <?php include "../Templates/footer.php"; ?>

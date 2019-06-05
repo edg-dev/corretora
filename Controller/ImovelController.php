@@ -67,30 +67,6 @@
 
 	}
 
-	if($acao == "busca"){
-		$idTransacao = $_POST["transacao"];
-
-		$idTipoImovel = $_POST["tipoDeImovel"];
-
-		$idEstado = $_POST["estado"];
-		$nomeCidade = $_POST["cidade"];
-		$nomeBairro = $_POST["bairro"];
-		$logradouro = $_POST["rua"];
-
-
-			$busca = $ImovelModel->getBuscaImovel($idTransacao, $idTipoImovel, $idEstado, $nomeCidade, $nomeBairro, 
-								   $logradouro);
-			$_SESSION['idTransacao'] = $idTransacao;
-			$_SESSION['idTipoImovel'] = $idTipoImovel;
-			$_SESSION['idEstado'] = $idEstado;
-			$_SESSION['nomeCidade'] = $nomeCidade;
-			$_SESSION['nomeBairro'] = $nomeBairro;
-			$_SESSION['logradouro'] = $logradouro;
-
-		echo "<script>location.href='/corretora/View/Pages/busca.php';</script>";
-
-	}
-
 	if($acao == 'pedir'){
 		$idUsuario = $_GET['idUsuario'];
 
