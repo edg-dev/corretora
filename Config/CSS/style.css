@@ -6,7 +6,6 @@
     color: white;
     text-align: center;
  }
-
 /* link que ainda não foi visitado */
 .footer a:link {
    color: white;
@@ -49,3 +48,16 @@
  }
 
  /* Login */
+
+/* Menus */
+.navbar-nav .nav-link {
+    color: #FFFFFF !important;
+}
+
+a.nav-link.btn-outline-info:hover{
+    color: #000000 !important;
+}
+
+.nav-link.btn-outline-info{
+    padding-top: 20px !important;
+}

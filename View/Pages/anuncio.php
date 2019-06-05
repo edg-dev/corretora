@@ -117,7 +117,7 @@
                         <label for="enderecoImovel" class="col-sm-3 col-form-label"><i class="fa fa-map-marker-alt"></i> Endereço: </label>
                         <div class="col-sm-9">
                         <input type="text" readonly class="form-control-plaintext" id="enderecoImovel" wrap="hard"
-                        value="<?php echo $infoImovel["logradouro"];?>, número <?php echo $infoImovel["numero"];?>, <?php echo $infoImovel["nomeBairro"];?>, <?php echo $infoImovel["nomecidade"];?>, <?php echo $infoImovel["siglaEstado"];?>.">
+                        value="<?php echo $infoImovel["logradouro"];?>, número <?php echo $infoImovel["numero"];?>, <?php echo $infoImovel["complemento"];?> <?php echo $infoImovel["nomeBairro"];?>, <?php echo $infoImovel["nomecidade"];?>, <?php echo $infoImovel["siglaEstado"];?>.">
                         </div>
                     </div>
                     <br>

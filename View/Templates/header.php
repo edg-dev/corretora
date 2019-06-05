@@ -8,9 +8,9 @@
         <meta charset="ISO-8859-1"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
 
-        <title>Corretora</title>
+        <title>Gabriela Guimarães Corretora de Imóveis</title>
 
-        <link rel="shortcut icon" href="/corretora/Files/favicon.ico" />
+        <link rel="shortcut icon" href="/corretora/View/visual/favicon2.ico" />
 
         <!-- CSS  -->
         <link href="/corretora/Config/CSS/style.css" type="text/css" rel="stylesheet">
@@ -32,13 +32,24 @@
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         <link href="/corretora/Config/CSS/FontAwesome/css/fontawesome.min.css" type="text/css" rel="stylesheet">
+
+        <!-- Fontes -->
+        <link href="https://fonts.googleapis.com/css?family=Zilla+Slab&display=swap" rel="stylesheet">
     </head>
 
 <body>
+<style>
+    .bg-dark {
+        background-color: #ef7f1b !important;
+    }
+    body {
+        font-family: 'Zilla Slab', serif;
+    }
+</style>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="margin-bottom: 100px;">
 
-        <a class="navbar-brand" href="/corretora/index.php"><img src="\corretora\Files\logotipo.jpg" alt="Logo" width=60 height=40></a>
+        <a class="navbar-brand" href="/corretora/index.php"><img src="\corretora\View\visual\logo2.png" alt="Logo" width=64 height=64></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -46,7 +57,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active" >
-                    <a class="nav-link btn-outline-warning" href="/corretora/index.php">Inicio<span class="sr-only">(current)</span></a>
+                    <a class="nav-link btn-outline-info" href="/corretora/index.php">Inicio<span class="sr-only">(current)</span></a>
                 </li>
             
                 <li class="nav-item">
@@ -54,7 +65,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link btn-outline-success" href="/corretora/View/Pages/cadastrar.php">Cadastre-se</a>
+                    <a class="nav-link btn-outline-info" href="/corretora/View/Pages/cadastrar.php">Cadastre-se</a>
                 </li>
 
                 <?php if(isset($_SESSION['idUsuario'])) { ?>
@@ -62,10 +73,12 @@
                     <a class="nav-link btn-outline-info" href="/corretora/View/Cadastro/Pedido.php">Cadastrar Pedido</a>
                 </li>
                 <?php } ?>
-
+                <li style="padding-left: 200px;">
+                    <img style="width:200px;height:64px;" src="\corretora\View\visual\title.png" alt="Anuncie aqui">
+                </li>
             </ul>
 
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <?php if(!isset($_SESSION['idUsuario'])) { ?>
                 <li class="nav-item">
                     <a class="nav-link btn-outline-success" href="/corretora/View/login/user/index.php">Entrar</a>
@@ -92,4 +105,4 @@
             </ul>
         </div>
     </nav>
-    <div class="container-fluid" style="padding-top: 60px !important;">
+    <div class="container-fluid" style="padding-top: 100px !important;">
