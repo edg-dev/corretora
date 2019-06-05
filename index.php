@@ -8,8 +8,6 @@
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TipoImovelModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/BannerModel.php";
 
-    $acao = "busca";
-
     $estadoModel = new EstadoModel();
     $estados = $estadoModel->getAllEstado();
 
@@ -36,7 +34,7 @@
         <div class="col-md-4">
 
         <!-- Search Widget -->
-        <form method="post" id="buscaImovel" method="POST" action="/corretora/Controller/ImovelController.php?acao=<?=$acao?>" >
+        <form id="buscaImovel" method="GET" action="/corretora/View/Pages/busca.php" >
         <div class="card my-12">
         <h5 class="card-header">Pesquise seu imóvel:</h5>
         <div class="card-body">
@@ -45,7 +43,6 @@
             <div class="form-group">
                 <b><label for="transacao">Você deseja alugar ou comprar um imóvel?</label></b>
             <select id="transacao" class="form-control" name="transacao" >
-                    <option selected>Selecione a opção de transação:</option>
                     <?php foreach($transacoes as $transacao){?>
                     <option value="<?php echo $transacao['idTransacao'];?>"> <?php echo $transacao['descricaoTransacao'];?> </option>
                     <?php } ?>
@@ -55,7 +52,6 @@
             <div class="form-group">
                 <b><label for="tipoDeImovel">Que tipo de imóvel você proucura?</label></b>
             <select id="tipoDeImovel" class="form-control" name="tipoDeImovel" >
-                    <option selected>Selecione o tipo do imóvel:</option>
                     <?php foreach($tiposDeImovel as $tipoImovel){?>
                     <option value="<?php echo $tipoImovel['idTipoImovel'];?>"> <?php echo $tipoImovel['descricaoTipoImovel'];?> </option>
                     <?php } ?>
@@ -65,18 +61,16 @@
             <div class="form-group">
                 <b><label for="endereco">Endereço:</label></b>
                     <select id="estado" class="form-control" name="estado" >
-                        <option selected>Selecione seu estado:</option>
                         <?php foreach($estados as $estado){?>
                         <option value="<?php echo $estado['idEstado'];?>"> <?php echo $estado['descricaoEstado'];?> </option>
                         <?php }?>
                     </select>
                 <input type="text" class="form-control" id="cidade" placeholder="Digite a cidade aqui" name="cidade" >
                 <input type="text" class="form-control" id="bairro" placeholder="Digite o bairro aqui" name="bairro" >
-                <input type="text" class="form-control" id="rua" placeholder="Digite a rua aqui" name="rua" >
             </div>
            </div>
                 <div class="form-group">
-                    <button type="submit"  class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                    <button type="submit" value="buscar" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
                 </div>
 
             </div>
