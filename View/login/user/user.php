@@ -23,6 +23,8 @@
 
 include('verifica_login.php');
 include('conexao.php');
+include('alteraSenha.php');
+
 
 
 ?>
@@ -134,7 +136,7 @@ include('conexao.php');
                             
                             <div class="col-xs-6">
                                 <label for="email"><h4>Senha Atual</h4></label>
-                                <input type="password" class="form-control" name="senha" i placeholder="Senha atual" title="Insira sua senha atual." onfocus="this.value=''">
+                                <input action="alteraSenha.php" type="password" class="form-control" name="senha"  placeholder="Senha atual" title="Insira sua senha atual.">
                             </div>
                         </div>
                         <div class="form-group">
@@ -146,16 +148,10 @@ include('conexao.php');
                         
                             <div class="col-xs-6">
                                 <label for="password" ><h4>Nova Senha</h4></label>
-                                <input type="password" class="form-control" name="senha_nova"  placeholder="Nova senha" title="Insera sua nova senha.">
+                                <input action="alteraSenha.php" type="password" class="form-control" name="senha_nova"  placeholder="Nova senha" title="Insera sua nova senha.">
                             </div>
                         </div>
-                        <div class="form-group">
-                            
-                            <div class="col-xs-6">
-                                <label for="password2"><h4>Confirme a senha</h4></label>
-                                <input type="password" class="form-control" name="confirme_senha"  placeholder="Confirme a senha" title="Confirme sua nova senha.">
-                            </div>
-                        </div>
+                        
                         <div class="form-group">
                             <div class="col-xs-12">
                                     <br>
