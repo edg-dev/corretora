@@ -57,29 +57,29 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active" >
-                    <a class="nav-link btn-outline-link" href="/corretora/index.php">Inicio<span class="sr-only">(current)</span></a>
+                    <a class="nav-link btn-outline-success" href="/corretora/index.php">Inicio<span class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link btn-outline-link" href="/corretora/View/Cadastro/Imovel.php">Anunciar</a>
+                    <a class="nav-link btn-outline-success" href="/corretora/View/Cadastro/Imovel.php">Anunciar</a>
                 </li>
 
                 <?php if(!isset($_SESSION['idUsuario'])) { ?>
                 <li class="nav-item">
-                    <a class="nav-link btn-outline-link" href="/corretora/View/Pages/cadastrar.php">Cadastre-se</a>
+                    <a class="nav-link btn-outline-success" href="/corretora/View/Pages/cadastrar.php">Cadastre-se</a>
                 </li>
                 <?php } ?>
 
                 <?php if(isset($_SESSION['idUsuario'])) { ?>
                 <li class="nav-item">
-                    <a class="nav-link btn-outline-info" href="/corretora/View/Cadastro/Pedido.php">Cadastrar Pedido</a>
+                    <a class="nav-link btn-outline-success" href="/corretora/View/Cadastro/Pedido.php">Cadastrar Pedido</a>
                 </li>
                 <?php } ?>
-                <li style="padding-left: 200px;">
-                    <img style="width:200px;height:64px;" src="\corretora\View\visual\title.png" alt="Anuncie aqui">
-                </li>
+
             </ul>
 
+                <img class="nav-link" style="width:200px;height:64px;" src="/corretora/View/visual/title.png" alt="Anuncie aqui">
+                
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <?php if(!isset($_SESSION['idUsuario'])) { ?>
                 <li class="nav-item">
