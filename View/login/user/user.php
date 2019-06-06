@@ -51,10 +51,9 @@ include('conexao.php');
 <hr>
 <div class="container bootstrap snippet">
     <div class="row">
-  		<div class="col-sm-10"><h1>Olá, você esta logado com <strong> <?php echo $_SESSION['usuario'];?></strong></h1></div>
+  		<div class="col-sm-10"><h1>Olá, você está logado com <strong> <?php echo $_SESSION['usuario'];?></strong></h1></div>
     	<div class="col-sm-2">
-            <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign">
-            <a href="\corretora\View\login\user\logout.php" class="pull-right"></i> Sair</a></button>
+            <a href="\corretora\View\login\user\logout.php" class="btn btn-danger btn-lg">Sair</a>
         </div>
         
     </div>
@@ -72,7 +71,7 @@ include('conexao.php');
             <li class="list-group-item text-right"><span  class="pull-left" ><div class="mr-5"><?php echo intVal($anuncios['total']); ?> <strong>Anúncios ativos.</strong></div></span> </li>        
             <li class="list-group-item text-right"><span class="pull-left"><div class="mr-5"> <?php echo intVal($anunciosAP['total']); ?> <strong>Anúncios para aprovação.</strong></div></span></li>
             <?php if(isset($info['cresci'])) { ?>
-            <li class="list-group-item text-right"><span  class="pull-left" ><div class="mr-5"><strong>Cresci: </strong><?php echo $info['cresci'] ?></div></span> </li>        
+            <li class="list-group-item text-right"><span  class="pull-left" ><div class="mr-5"><strong>Creci: </strong><?php echo $info['cresci'] ?></div></span> </li>        
             <?php } ?>
           </ul> 
                
@@ -122,7 +121,7 @@ include('conexao.php');
                             <td>
                                 <?php if($anuncioUser['verificado'] == 1){ ?>
                                     <button type="button" class="btn btn-danger" onclick="reprovarAnuncio();">
-                                        <i class="fa fa-flag"></i> Deletar Anúncio
+                                        <i class="fa fa-flag"></i> Remover Anúncio
                                     </button>
                                 <?php } else { ?> 
                                     <button type="button" class="btn btn-danger" disabled>

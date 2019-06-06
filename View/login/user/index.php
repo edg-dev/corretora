@@ -21,7 +21,7 @@
     ?>
     <form class="form-signin" action="login.php" method="POST">
         <div class="form-label-group">
-            <label for="usuario">Usuario</label>
+            <label for="usuario">Usuário</label>
             <input name="usuario" id="inputEmail" class="form-control" name="text" placeholder="Seu usuário" autofocus required>
         </div>
         <br>
