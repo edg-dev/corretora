@@ -33,6 +33,26 @@ class UsuarioModel{
             throw $e;
         }     
     }
+    public function alteraSenha($senhanova, $idUsuario){
+        try{
+            $senha = sha1($senhanova);
+            $alteraSenha = $this->bd->prepare("UPDATE usuario as u SET u.senha = :senhanova
+                                                WHERE u.idUsuario = :idUsuario");
+            $alteraSenha->bindParam(":senhanova", $senha);
+            $alteraSenha->bindParam(":idUsuario", $idUsuario, PDO::PARAM_INT);
+            $alteraSenha->execute();
+        }
+        catch(Exception $e){
+            throw $e;
+        }
+    }
+
+    public function getSenha($idUsuario){
+        $senha = $this->bd->prepare("SELECT senha FROM usuario where idUsuario = :idUsuario");
+        $senha->bindParam(":idUsuario", $idUsuario, PDO::PARAM_INT);
+        $senha->execute();
+        return $senha->fetch(PDO::FETCH_ASSOC);
+    }
 }
 
 ?>

@@ -25,7 +25,7 @@
         // o 1=1 é adicionado no WHERE para garantir que sempre haverá uma condição na busca, 
         // evitando erro de sintaxe caso o usuário não selecione filtro algum 
         $sql = "SELECT i.idImovel, b.nomeBairro, c.nomeCidade, es.descricaoEstado, en.numero, en.logradouro,
-				i.areautil, i.areaTotal, i.precoImovel, i.descricaoImovel, i.quantQuarto, i.quantSuite, i.quantVagaGaragem, 
+				i.areaUtil, i.areaTotal, i.precoImovel, i.descricaoImovel, i.quantQuarto, i.quantSuite, i.quantVagaGaragem, 
 				i.quantBanheiro, ti.descricaoTipoImovel, tr.descricaoTransacao from imovel as i
 				inner join transacao as tr on i.idTransacao = tr.idTransacao
 				inner join tipoimovel as ti on i.idTipoImovel = ti.idTipoImovel

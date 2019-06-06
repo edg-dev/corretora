@@ -1,8 +1,8 @@
 <?php
+include('conexao.php');
 
 
-
-if (! isset(empty($_POST['senha']) || empty($_POST['senha'])) ) {
+if (!isset ($_POST['senha']) || ($_POST['senha_nova']) ) {
 	header('Location: user.php');
 	exit();
 }
