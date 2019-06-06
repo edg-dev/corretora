@@ -65,8 +65,11 @@ body::before{
    background-color: black;
  }
 
- /* Login */
+ /* Slide */
 
+ #slide{
+     text-decoration-color: #000000;
+ }
 /* Menus */
 .navbar-nav .nav-link {
     color: #FFFFFF !important;
