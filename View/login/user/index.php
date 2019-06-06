@@ -38,6 +38,7 @@
         <button type="submit"  class="btn btn-lg btn-primary btn-block text-uppercase">Entrar</button>
         <hr class="my-4">
     </form>
+    <p>Esqueceu a senha ?<a href="esqueciSenha.php"> Clique aqui!</a></p>
         </div>
         </div>
       </div>
