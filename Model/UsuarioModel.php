@@ -52,6 +52,13 @@ class UsuarioModel{
         $senha->bindParam(":idUsuario", $idUsuario, PDO::PARAM_INT);
         $senha->execute();
         return $senha->fetch(PDO::FETCH_ASSOC);
+
+    public function userInfo($idUsuario){
+        $select = $this->bd->prepare("SELECT * FROM Usuario as u inner join usuarioperfil as up
+            on up.idusuario = u.idusuario where u.idusuario = :idUsuario");
+        $select->bindParam(":idUsuario", $idUsuario);
+        $select->execute();
+        return $select->fetch(PDO::FETCH_ASSOC);
     }
 }
 

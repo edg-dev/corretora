@@ -6,6 +6,7 @@
     $acao = "update";
 
     require_once $_SERVER["DOCUMENT_ROOT"]."/corretora/Model/AnuncioModel.php";
+    require_once $_SERVER["DOCUMENT_ROOT"]."/corretora/Model/UsuarioModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"]."/corretora/Model/ImagensImovelModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"]."/corretora/Model/UsuarioModel.php";
 
@@ -13,10 +14,14 @@
 
     $imagensImovelModel = new ImagensImovelModel();
     $anuncioModel = new AnuncioModel();
+    $usuarioModel = new UsuarioModel();
+
     $anuncios = $anuncioModel->countAnunciosAtivosUser($idUsuario);
     $anunciosAP = $anuncioModel->countAnunciosAprovacaoUser($idUsuario);
     $allAnuncios = $anuncioModel->getAnunciosByUser($idUsuario);
     
+    $info = $usuarioModel->userInfo($idUsuario);
+
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Config/execRotina.php";
     
     $rotina = new execRotina();
@@ -66,7 +71,9 @@ include('conexao.php');
             <li class="list-group-item text-muted">Geral</li>
             <li class="list-group-item text-right"><span  class="pull-left" ><div class="mr-5"><?php echo intVal($anuncios['total']); ?> <strong>Anúncios ativos.</strong></div></span> </li>        
             <li class="list-group-item text-right"><span class="pull-left"><div class="mr-5"> <?php echo intVal($anunciosAP['total']); ?> <strong>Anúncios para aprovação.</strong></div></span></li>
-            
+            <?php if(isset($info['cresci'])) { ?>
+            <li class="list-group-item text-right"><span  class="pull-left" ><div class="mr-5"><strong>Cresci: </strong><?php echo $info['cresci'] ?></div></span> </li>        
+            <?php } ?>
           </ul> 
                
                     
