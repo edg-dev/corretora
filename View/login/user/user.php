@@ -3,9 +3,14 @@
 <?php
     $idUsuario = $_SESSION['idUsuario'];
 
+    $acao = "update";
+
     require_once $_SERVER["DOCUMENT_ROOT"]."/corretora/Model/AnuncioModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"]."/corretora/Model/UsuarioModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"]."/corretora/Model/ImagensImovelModel.php";
+    require_once $_SERVER["DOCUMENT_ROOT"]."/corretora/Model/UsuarioModel.php";
+
+
 
     $imagensImovelModel = new ImagensImovelModel();
     $anuncioModel = new AnuncioModel();
@@ -28,6 +33,7 @@
 
 include('verifica_login.php');
 include('conexao.php');
+
 
 
 ?>
@@ -132,7 +138,7 @@ include('conexao.php');
 
                 <div class="tab-pane container" id="home">
                     <hr>
-                    <form class="form" action="\corretora\View\login\user\alteraSenha.php" method="post" id="registrationForm">
+                    <form class="form" action="/corretora/Controller/usuarioController.php?acao=update&id=<?php echo $idUsuario?>" method="POST" id="registrationForm">
         
                         <div class="form-group">
                             
@@ -141,7 +147,7 @@ include('conexao.php');
                             
                             <div class="col-xs-6">
                                 <label for="email"><h4>Senha Atual</h4></label>
-                                <input type="password" class="form-control" name="senha_atual" i placeholder="Senha atual" title="Insira sua senha atual." onfocus="this.value=''">
+                                <input type="password" class="form-control" name="senha"  placeholder="Senha atual" title="Insira sua senha atual.">
                             </div>
                         </div>
                         <div class="form-group">
@@ -156,18 +162,12 @@ include('conexao.php');
                                 <input type="password" class="form-control" name="senha_nova"  placeholder="Nova senha" title="Insera sua nova senha.">
                             </div>
                         </div>
-                        <div class="form-group">
-                            
-                            <div class="col-xs-6">
-                                <label for="password2"><h4>Confirme a senha</h4></label>
-                                <input type="password" class="form-control" name="onfirme_senha"  placeholder="Confirme a senha" title="Confirme sua nova senha.">
-                            </div>
-                        </div>
+                        
                         <div class="form-group">
                             <div class="col-xs-12">
                                     <br>
-                                    <button action="\corretora\View\login\user\alteraSenha.php" class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign">
-                                    <a href="\corretora\View\login\user\alteraSenha.php" class="pull-right"></i> Salvar</a></button>
+                                    <button  class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign">
+                                    <a class="pull-right"></i> Salvar</a></button>
                                     <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Refazer</button>
                                 </div>
                         </div>
