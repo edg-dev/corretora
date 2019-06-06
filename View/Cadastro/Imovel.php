@@ -159,7 +159,6 @@ include($_SERVER["DOCUMENT_ROOT"] . '/corretora/View/login/user/verifica_login.p
 <script src="/corretora/Config/JS/jquery.mask.js"></script>
 
 <script type="text/javascript">
-    $('#precoImovel').mask('000.000.000.000,00 ', {reverse: true});
     $('#cep').mask('00000-000');
 </script>
 <?php include "../Templates/footer.php"; ?>
