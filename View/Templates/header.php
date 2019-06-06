@@ -59,14 +59,16 @@
                 <li class="nav-item active" >
                     <a class="nav-link btn-outline-link" href="/corretora/index.php">Inicio<span class="sr-only">(current)</span></a>
                 </li>
-            
+
                 <li class="nav-item">
                     <a class="nav-link btn-outline-link" href="/corretora/View/Cadastro/Imovel.php">Anunciar</a>
                 </li>
 
+                <?php if(!isset($_SESSION['idUsuario'])) { ?>
                 <li class="nav-item">
                     <a class="nav-link btn-outline-link" href="/corretora/View/Pages/cadastrar.php">Cadastre-se</a>
                 </li>
+                <?php } ?>
 
                 <?php if(isset($_SESSION['idUsuario'])) { ?>
                 <li class="nav-item">

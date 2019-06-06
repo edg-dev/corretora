@@ -10,6 +10,9 @@
   <meta name="author" content="">
 
   <title>Admin - Dashboard</title>
+  
+  <link rel="shortcut icon" href="/corretora/View/visual/favicon2.ico" />
+  <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -21,6 +24,18 @@
   <link href="css/sb-admin.css" rel="stylesheet">
 
 </head>
+<style>
+.bg-dark {
+    background-color: #ef7f1b !important;
+}
+.sidebar.navbar-nav{
+  background-color: #363636 !important;
+}
+body {
+  font-family: 'Nunito', sans-serif;
+}
+</style>
+
 
 <body id="page-top">
 

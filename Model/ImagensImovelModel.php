@@ -79,6 +79,13 @@
             }        
             return $array;
         }
+
+        public function countImagensImovel($idImovel){
+            $count = $this->bd->prepare("SELECT COUNT(*) as total FROM ImagensImovel where idImovel = :idImovel");
+            $count->bindParam(":idImovel", $idImovel);
+            $count->execute();
+            return $count->fetch(PDO::FETCH_ASSOC);
+        }
     }
 
 ?>
