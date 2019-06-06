@@ -121,5 +121,44 @@
             $count->execute();
             return $count->fetch(PDO::FETCH_ASSOC);
         }
+
+        public function countAnunciosAtivosUser($idUsuario){
+            $count = $this->bd->prepare("SELECT COUNT(*) as total FROM Anuncio where idUsuario = :idUsuario AND verificado = 1");
+            $count->bindParam(":idUsuario", $idUsuario);
+            $count->execute();
+            return $count->fetch(PDO::FETCH_ASSOC);
+        }
+
+        public function getAnunciosByUser($idUsuario){
+            $get = $this->bd->prepare(
+                "SELECT a.idAnuncio, a.idUsuario, i.idimovel, t.descricaoTransacao, ti.descricaoTipoImovel,
+                e.logradouro, e.numero, e.complemento, cep.descricaoCep, b.nomeBairro, c.nomecidade, a.verificado
+                FROM anuncio as a
+                inner join imovel as i
+                    on i.idimovel = a.idImovel 
+                inner join endereco as e
+                    on i.idEndereco = e.idEndereco
+                inner join cidade as c
+                    on e.idCidade = c.idCidade
+                inner join estado as est
+                    on est.idestado = e.idestado
+                inner join bairro as b
+                    on e.idBairro = b.idBairro
+                inner join usuario as u
+                    on u.idusuario = a.idusuario
+                inner join pessoa as p
+                    on p.idpessoa = u.idusuario
+                inner join transacao as t
+		            on t.idtransacao = i.idtransacao
+                inner join cep
+		            on cep.idcep = e.idcep
+                inner join tipoImovel ti
+                    on ti.idTipoImovel = i.idTipoImovel
+                where a.idUsuario = :idUsuario ORDER BY a.idAnuncio"
+            );
+            $get->bindParam(":idUsuario", $idUsuario);
+            $get->execute();
+            return $get->fetchAll(PDO::FETCH_ASSOC);
+        }
     }
 ?>
