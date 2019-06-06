@@ -108,11 +108,12 @@
 	
 </form>
 <br>
-<div>
+<div> 
+    <p style="text-align:center">Já possui uma conta?	<a href="../login/user/login.php">Entre Aqui</a>
     </div>
     </div>
 
-    <p style="text-align:center">Já possui uma conta?	<a href="../login/user/login.php">Entre Aqui</a>
+   
 </div>
 <!--JS do CEP -->
 <script src="/corretora/Config/JS/jquery.mask.js"></script>

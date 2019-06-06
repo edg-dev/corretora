@@ -41,7 +41,7 @@
             <div class="input-group">
 
             <div class="form-group">
-                <b><label for="transacao">Você deseja alugar ou comprar um imóvel?</label></b>
+                <b><label for="transacao">Em qual tipo de transação você quer?</label></b>
             <select id="transacao" class="form-control" name="transacao" >
                     <?php foreach($transacoes as $transacao){?>
                     <option value="<?php echo $transacao['idTransacao'];?>"> <?php echo $transacao['descricaoTransacao'];?> </option>
