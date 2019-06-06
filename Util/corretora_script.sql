@@ -75,7 +75,7 @@ CREATE TABLE Estado(
 
 CREATE TABLE Cep(
 	idCep int not null auto_increment,
-    descricaoCep int not null,
+    descricaoCep varchar(20) not null,
     primary key (idCep)
 ) ENGINE=InnoDB;
 
@@ -89,7 +89,7 @@ CREATE TABLE Pessoa(
 
 CREATE TABLE PessoaJuridica(
 	idPessoa int not null,
-    cnpj bigint not null,
+    cnpj varchar(20) not null,
     razaoSocial varchar(30) not null,
     primary key (idPessoa)
 ) ENGINE=InnoDB;
@@ -97,7 +97,7 @@ CREATE TABLE PessoaJuridica(
 CREATE TABLE PessoaFisica(
 	idPessoa int not null,
     rg varchar(15) not null,
-    cpf bigint not null,
+    cpf varchar(20) not null,
     codigoSexo char(1) not null,
     idEstadoCivil smallint not null,
     primary key (idPessoa)
