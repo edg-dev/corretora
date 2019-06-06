@@ -11,7 +11,7 @@
                         <h4><u>Institucional</u></h4>
                             <h6><a href="/corretora/View/Pages/sobre.php">Quem Somos</a></h6>
                             <h6><a href="#!">Parceiros</a></h6>
-                            <h6><a href="#!">Publicidade</a></h6>
+                            <h6><a href="/corretora/View/Pages/publicidade.php">Publicidade</a></h6>
 
                     </div>
                     <div class="col l3 s12">

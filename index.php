@@ -149,7 +149,7 @@
                 <div class="row">
                 <div class="col-md-7">
                     <a href="#">
-                    <!-- TESTE TESTE TESTE TESTE -->
+
                     <?php
                         $idImovel = $imovel['idImovel'];
                         $res = $imagensImovelModel->getImagemImovelIndex($idImovel);
@@ -157,7 +157,7 @@
                         foreach($res as $imagem){?>
                         <img class="img-fluid" style="width:750px;height:300px;" src="Files/<?php echo $imagem;?>"  >
                     <?php } ?> 
-                    <!-- TESTE TESTE TESTE TESTE -->
+
                     </a>
                 </div>
                 <div class="col-md-5">
