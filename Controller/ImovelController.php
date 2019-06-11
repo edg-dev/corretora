@@ -91,4 +91,39 @@
 		echo "<script>alert('Pedido cadastrado com sucesso'); location.href='/corretora/index.php';</script>";
 	}
 
+	if($acao == 'editar'){
+		$idImovel = $_GET['idImovel'];
+
+		$idTipoImovel = $_POST["tipoDeImovel"];
+
+		$cep = $_POST["cep"];
+		$idEstado = $_POST["estado"];
+		$nomeCidade = $_POST["cidade"];
+		$nomeBairro = $_POST["bairro"];
+		$logradouro = $_POST["rua"];
+		$numero =$_POST["numero"];
+		$complemento = $_POST["complemento"];
+
+		$quantQuarto = $_POST["quantQuarto"];
+		$quantSuite = $_POST["quantSuite"];
+		$quantVagaGaragem = $_POST["quantVagaGaragem"];
+		$quantBanheiro = $_POST["quantBanheiro"];
+
+		$idTransacao = $_POST["transacao"];
+
+		$areaUtil = $_POST["areaUtil"];
+		$areaTotal = $_POST["areaTotal"];
+		$precoImovel = $_POST["precoImovel"];
+
+		$descricaoImovel = $_POST["descricaoImovel"];
+
+		$idUsuario = $_SESSION['idUsuario'];
+
+		$ImovelModel->editar($idTipoImovel, $cep, $idEstado, $nomeCidade, $nomeBairro, $logradouro, $numero,
+			$complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, 
+			$idTransacao, $areaUtil, $areaTotal, $precoImovel, $descricaoImovel, $idImovel);
+
+		echo "<script>alert('Anúncio editado com sucesso!'); location.href='/corretora/index.php';</script>";
+	}
+
 ?>

@@ -18,41 +18,7 @@
     $imagens = $ImagemModel->listarArrayImagens($idImovel);
 
 ?>
-<style>
-.gallery {
-    -webkit-column-count: 3;
-    -moz-column-count: 3;
-    column-count: 3;
-    -webkit-column-width: 33%;
-    -moz-column-width: 33%;
-    column-width: 33%; }
-    .gallery .pics {
-    -webkit-transition: all 350ms ease;
-    transition: all 350ms ease; }
-    .gallery .animation {
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1); 
-}
-
-@media (max-width: 450px) {
-    .gallery {
-    -webkit-column-count: 1;
-    -moz-column-count: 1;
-    column-count: 1;
-    -webkit-column-width: 100%;
-    -moz-column-width: 100%;
-    column-width: 100%;
-    }
-}
-
-@media (max-width: 400px) {
-    .btn.filter {
-    padding-left: 1.1rem;
-    padding-right: 1.1rem;
-    }
-}
-</style>
+<link rel="stylesheet" href="anuncio.css" type="text/css" />
 <link rel="stylesheet" href="/corretora/Config/JS/jquery.fancybox/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
     <div class="container-fluid">
         <h1>Detalhes do anúncio:</h1>
@@ -146,24 +112,24 @@
                         </div>
                     </div>
 
-                    <h4>Imagens do imóvel:</h4>
+                    
                 </form>
             </div>
 
-            <div class="gallery" id="gallery">
-                <?php foreach($imagens as $imagem) { ?>
-                    <div class="mb-3">
-                        
-                        <a class="grouped_elements" rel="group1" href="/corretora/Files/<?php echo $imagem?>">
-                        <img src="/corretora/Files/<?php echo $imagem?>" alt="" width="160" height="108"/></a>
-                    </div>
-                <?php } ?>
-            </div>
-            <!--
+
+            
             <div class="col-md-4">
-                <div id="mapa" style="height: 500px; width: 500px"></div>
+                <h4>Imagens do imóvel:</h4>
+                <div class="gallery" id="gallery">
+                    <?php foreach($imagens as $imagem) { ?>
+                        <div>
+                            <a data-fancybox="images" data-type="image" class="grouped_elements" rel="group1" href="/corretora/Files/<?php echo $imagem?>">
+                            <img src="/corretora/Files/<?php echo $imagem?>" alt="" width="160" height="108"/></a>
+                        </div>
+                    <?php } ?>
+                </div>
             </div>
-            -->
+            
         </div>
     </div>
 
@@ -262,3 +228,4 @@ function initialize() {
 </script>
 <!--<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCEZWwY5xOnC3k21UwVGcO6F5IoazbDo0o&amp;sensor=false"></script>-->
 <?php include "../Templates/footer.php"; ?>
+
