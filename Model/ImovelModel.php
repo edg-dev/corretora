@@ -116,7 +116,7 @@
 			$select = $this->bd->prepare("SELECT
 			ti.descricaoTipoImovel, i.precoImovel, i.quantBanheiro, i.quantQuarto, i.quantSuite, i.quantVagaGaragem, i.areaTotal, i.areaUtil,
 			a.idAnuncio, i.idimovel, u.usuario, t.descricaoTransacao, p.nome, est.descricaoEstado, est.siglaEstado, p.idpessoa,
-			e.logradouro, e.numero, cep.descricaoCep, b.nomeBairro, c.nomecidade, i.descricaoImovel, e.complemento
+			e.logradouro, e.numero, cep.descricaoCep, b.nomeBairro, c.nomecidade, i.descricaoImovel, e.complemento, ti.idTipoImovel, est.idestado
 		from anuncio as a
 			inner join imovel as i
 				on i.idimovel = a.idImovel 
@@ -187,5 +187,58 @@
 					throw $e;
 				}	
 		}
+
+		public function editar($idTipoImovel, $cep, $idEstado, $nomeCidade, $nomeBairro, $logradouro, $numero,
+		 						 $complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, 
+								 $idTransacao, $areaUtil, $areaTotal, $precoImovel, $descricaoImovel, $idImovel){
+			try {
+				
+				$idEndereco = $this->endereco->getIdEndereco($logradouro, $numero, $complemento, $cep, $nomeBairro,
+															 $nomeCidade, $idEstado);
+
+				if($idEndereco == null){
+					$this->endereco->inserir($logradouro, $numero, $complemento, $cep, $nomeBairro, $nomeCidade, $idEstado);
+				}
+
+				$idEndereco = $this->endereco->getIdEndereco($logradouro, $numero, $complemento, $cep, $nomeBairro, 
+					$nomeCidade, $idEstado);
+
+		 	    $updateImovel = $this->bd->prepare("UPDATE imovel 
+					SET idTipoImovel = :idTipoImovel, 
+						areaUtil = :areaUtil,
+						areaTotal = :areaTotal,
+						precoImovel = :precoImovel,
+						idEndereco = :idEndereco,
+						idTransacao = :idTransacao,
+						descricaoImovel = :descricaoImovel,
+						quantQuarto = :quantQuarto,
+						quantSuite = :quantSuite,
+						quantVagaGaragem = :quantVagaGaragem,
+						quantBanheiro = :quantBanheiro
+					WHERE idImovel = :idImovel
+					 ");
+
+				$updateImovel->bindParam(":idEndereco", intval($idEndereco[0]), PDO::PARAM_INT);
+				$updateImovel->bindParam(":idTransacao", $idTransacao, PDO::PARAM_INT);
+				$updateImovel->bindParam(":idTipoImovel", $idTipoImovel, PDO::PARAM_INT);
+
+			    $updateImovel->bindParam(":areaUtil", $areaUtil, PDO::PARAM_INT);
+			    $updateImovel->bindParam(":areaTotal", $areaTotal, PDO::PARAM_INT);
+				$updateImovel->bindParam(":precoImovel", $precoImovel, PDO::PARAM_INT);
+				$updateImovel->bindParam(":descricaoImovel", $descricaoImovel);
+				$updateImovel->bindParam(":quantQuarto", $quantQuarto, PDO::PARAM_INT);
+				$updateImovel->bindParam(":quantSuite", $quantSuite, PDO::PARAM_INT);
+				$updateImovel->bindParam(":quantVagaGaragem", $quantVagaGaragem, PDO::PARAM_INT);
+				$updateImovel->bindParam(":quantBanheiro", $quantBanheiro, PDO::PARAM_INT);
+
+				$updateImovel->bindParam(":idImovel", $idImovel, PDO::PARAM_INT);
+
+				$updateImovel->execute();
+				
+			  } catch(Exception $e){
+				  throw $e;
+			  }
+
+		 }	
 	}
 ?>

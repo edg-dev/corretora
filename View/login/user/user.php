@@ -58,7 +58,7 @@ include('conexao.php');
         
     </div>
     <div class="row">
-  		<div class="col-sm-3"><!--left col-->
+  		<div class="col-sm-2"><!--left col-->
               
 
       <div class="text-center">
@@ -68,16 +68,16 @@ include('conexao.php');
 
           <ul class="list-group">
             <li class="list-group-item text-muted">Geral</li>
-            <li class="list-group-item text-right"><span  class="pull-left" ><div class="mr-5"><?php echo intVal($anuncios['total']); ?> <strong>Anúncios ativos.</strong></div></span> </li>        
-            <li class="list-group-item text-right"><span class="pull-left"><div class="mr-5"> <?php echo intVal($anunciosAP['total']); ?> <strong>Anúncios para aprovação.</strong></div></span></li>
+            <li class="list-group-item text-right"><span  class="pull-left" ><div class="mr-3"><?php echo intVal($anuncios['total']); ?> <strong>Anúncios ativos.</strong></div></span> </li>        
+            <li class="list-group-item text-right"><span class="pull-left"><div class="mr-3"> <?php echo intVal($anunciosAP['total']); ?> <strong>Anúncios para aprovação.</strong></div></span></li>
             <?php if(isset($info['cresci'])) { ?>
-            <li class="list-group-item text-right"><span  class="pull-left" ><div class="mr-5"><strong>Creci: </strong><?php echo $info['cresci'] ?></div></span> </li>        
+            <li class="list-group-item text-right"><span  class="pull-left" ><div class="mr-3"><strong>Creci: </strong><?php echo $info['cresci'] ?></div></span> </li>        
             <?php } ?>
           </ul> 
                
                     
         </div><!--/col-3-->
-    	<div class="col-sm-9">
+    	<div class="col-sm-10">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a class="nav-link" href="#anuncios">Anúncios</a>                
@@ -92,8 +92,8 @@ include('conexao.php');
                 <div class="tab-pane active container" id="anuncios">
                 <hr>      
                     <h4>Seus Anúncios</h4>
-                    <table class="table"> 
-                        <thead>
+                    <table class="table table-striped"> 
+                        <thead class="thead-dark">
                             <tr>
                                 <th>✪</th>
                                 <th>✪</th>
@@ -102,6 +102,7 @@ include('conexao.php');
                                 <th>Endereço</th>
                                 <th>Status</th>
                                 <th>Ações</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -118,6 +119,18 @@ include('conexao.php');
                             </td>
                             <?php if($anuncioUser['verificado'] == 1){?> <td>Verificado</td> <?php } ?>
                             <?php if($anuncioUser['verificado'] == 0){?> <td>Em Aprovação</td> <?php } ?>
+                            <td>
+                                <?php if($anuncioUser['verificado'] == 1){ ?>
+                                    <button type="button" class="btn btn-warning" 
+                                        onclick="window.location.href='/corretora/View/Pages/edit.php?idImovel=<?php echo $anuncioUser['idimovel']?>&idAnuncio=<?php echo $anuncioUser['idimovel']?>'">
+                                        <i class="fa fa-edit"></i> Editar Anúncio
+                                    </button>
+                                <?php } else { ?>
+                                    <button type="button" class="btn btn-warning" disabled>
+                                        <i class="fa fa-edit"></i> Aguarde Aprovação
+                                    </button>
+                                <?php } ?>
+                            </td>
                             <td>
                                 <?php if($anuncioUser['verificado'] == 1){ ?>
                                     <button type="button" class="btn btn-danger" onclick="reprovarAnuncio();">
@@ -174,11 +187,6 @@ include('conexao.php');
                     <hr>
                 </div>
             </div>
-
-       
-
-
-
         </div><!--/col-9-->
     </div><!--/row-->
 <script>
@@ -191,11 +199,10 @@ $(document).ready(function(){
 function reprovarAnuncio(){
 
 $(document).on('click', '.btn-danger', function(e) {
-    e.preventDefault;
+    e.preventDefault();
     var idAnuncio = $(this).closest('tr').find('td[data-idanuncio]').data('idanuncio');
     var idImovel = $(this).closest('tr').find('td[data-idimovel]').data('idimovel');
     var url = '/corretora/View/administrador/controllers/adminController.php?acao=reprovar';
-    alert(idAnuncio);
     $.ajax({
         url: url,
         type: "POST",
