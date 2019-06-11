@@ -122,19 +122,22 @@
     </div>
 </div>
 </div>
+<hr>
 <!-- Banner 1 -->
-<div class="row form-group">
-    <div class="col-md-4">
-        <h4>Texto de Teste Intuitivo de Disney SUperio a Dois elevado ao quadrado</h4>
-    </div>
+<div class="row" style="padding-top: 60px;">
+        <div class="col-md-4 text-center">
+            <h4>Entre em Contato conosco para anunciar seu Site aqui!</h4>
+        </div>
     <?php if($banner != false) { ?>
         <div class="col-md-8">
             <a href="<?php echo $banner['link']?>">
                 <img class="d-block w-100 img-fluid" style="width:400px;height:150px;" src="/corretora/Files/banners/<?php echo $banner['imagemBanner']?>" alt="Anuncie aqui">
             </a>
-        </div>
+    <?php } ?>
+    <hr>
+</div>
         
-<?php } ?>
+
 </div>
                 <!-- Page Content -->
                 <div class="container">
@@ -252,5 +255,6 @@
         <img class="d-block w-100 img-fluid" style="width:450px;height:150px;" src="/corretora/Files/banners/<?php echo $banner2['imagemBanner']?>" alt="Anuncie aqui">
     </a>
     </div>
+    
 <?php } ?>
 <?php include "View/Templates/footer.php"; ?>
