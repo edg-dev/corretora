@@ -86,10 +86,13 @@ include('conexao.php');
                 <li class="nav-item">
                     <a class="nav-link" href="#home">Pessoal</a>                
                 </li>     
+                <li class="nav-item">
+                    <a class="nav-link" href="#pedidos">Pedidos</a>                
+                </li>  
             </ul>
 
             <div class="tab-content">
-                <div class="tab-pane active container" id="anuncios">
+                <div class="tab-pane active container" id="anuncios"> <!-- Tab Anúncios -->
                 <hr>      
                     <h4>Seus Anúncios</h4>
                     <table class="table table-striped"> 
@@ -146,9 +149,9 @@ include('conexao.php');
                         <?php } ?>
                     </table>              
                 <hr>
-                </div>
+                </div> <!-- (close) Tab Anúncios -->
 
-                <div class="tab-pane container" id="home">
+                <div class="tab-pane container" id="home"> <!-- Tab Pessoal -->
                     <hr>
                     <form class="form" action="/corretora/Controller/usuarioController.php?acao=update&id=<?php echo $idUsuario?>" method="POST" id="registrationForm">
         
@@ -185,7 +188,12 @@ include('conexao.php');
                         </div>
                     </form>
                     <hr>
-                </div>
+                </div> <!-- (Close) Tab Pessoal -->
+
+                <div class="tab-pane container" id="pedidos"> <!-- Tab Pedidos -->
+                
+                </div> <!-- (Close) Tab Pedidos -->
+
             </div>
         </div><!--/col-9-->
     </div><!--/row-->
