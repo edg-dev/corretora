@@ -126,4 +126,27 @@
 		echo "<script>alert('Anúncio editado com sucesso!'); location.href='/corretora/index.php';</script>";
 	}
 
+	if($acao == "deletePedido"){
+		$idPedido = $_GET['idPedido'];
+
+		$ImovelModel->deletePedido($idPedido);
+		echo "<script>alert('Pedido removido com sucesso!'); location.href='/corretora/View/login/user/user.php#pedidos';</script>";
+	}
+
+	if($acao == "anuncio"){
+        $idImovel = $_GET['idImovel'];
+
+        $ImovelModel->updateAnuncio($idImovel);
+
+        echo "<script>alert('Anúncio disponível para acesso.'); location.href='/corretora/View/login/user/user.php#anuncios';</script>";
+	}
+	
+	if($acao == "negociar"){
+        $idImovel = $_GET['idImovel'];
+
+        $ImovelModel->updateNegociacao($idImovel);
+
+        echo "<script>alert('Anúncio em negociação.'); location.href='/corretora/View/login/user/user.php#anuncios';</script>";
+    }
+
 ?>
