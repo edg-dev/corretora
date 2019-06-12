@@ -3,8 +3,8 @@
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/BannerModel.php";
 
     $bannerModel = new BannerModel();
-    $banner = $bannerModel->getRandomBanner();
-    $banner2 = $bannerModel->getRandomBanner();
+    $banner = $bannerModel->getAllBanners();
+
 ?>
 <div class="text-center">
     <h1> Publicidade e Propagandas </h1>
@@ -16,7 +16,7 @@
         <div class="col-md-12 text-center">
         <h3>Banner</h3>
             <a href="<?php echo $banners['link']?>">
-                <img class="d-block w-100 img-fluid" style="width:600px;height:150px;" src="/corretora/Files/banners/<?php echo $banner['imagemBanner']?>" alt="Anuncie aqui">
+                <img class="d-block w-100 img-fluid" style="width:600px;height:150px;" src="/corretora/Files/banners/<?php echo $banners['imagemBanner']?>" alt="Anuncie aqui">
             </a>
         <hr>
         </div>
