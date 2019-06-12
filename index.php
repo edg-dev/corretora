@@ -156,11 +156,10 @@
                     <?php
                         $idImovel = $imovel['idImovel'];
                         $res = $imagensImovelModel->getImagemImovelIndex($idImovel);
-                        
-                        foreach($res as $imagem){?>
-                        <img class="img-fluid" style="width:750px;height:300px;" src="Files/<?php echo $imagem;?>"  >
-                    <?php } ?> 
 
+                        foreach($res as $imagem){ ?>
+                            <img class="img-fluid" style="width:750px;height:300px;" src="Files/<?php echo $imagem;?>"  >
+                        <?php } ?>  
                     </a>
                 </div>
                 <div class="col-md-5">

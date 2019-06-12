@@ -75,7 +75,8 @@
 				inner join cidade on endereco.idCidade = cidade.idCidade
 				inner join estado on endereco.idEstado = estado.idEstado
 				inner join anuncio on imovel.idImovel = anuncio.idImovel
-				where anuncio.verificado = 1 ORDER BY anuncio.idprioridade ASC");
+				where anuncio.verificado = 1 and (imovel.negociacao = 0 or imovel.negociacao is null)
+				ORDER BY anuncio.idprioridade ASC");
 				$resImovel->execute();
 				return $imoveis = $resImovel->fetchAll();
 			} catch(Exception $e){
@@ -240,5 +241,44 @@
 			  }
 
 		 }	
+
+		public function getAllPedidos($idUsuario){
+			$getPedidos = $this->bd->prepare("SELECT  
+				p.idpedido, p.idusuario, p.quantQuarto, p.quantSuite, p.quantVagaGaragem, p.quantBanheiro, p.precoMin, p.precoMax,
+				ti.descricaoTipoImovel, t.descricaoTransacao, c.nomeCidade, b.nomeBairro, e.descricaoEstado
+			FROM pedidos as p
+				inner join tipoimovel as ti
+					on ti.idtipoimovel = p.idtipoimovel
+				inner join transacao as t
+					on t.idtransacao = p.idtransacao
+				inner join cidade as c
+					on c.idcidade = p.idcidade
+				inner join bairro as b
+					on b.idbairro = p.idbairro
+				inner join estado as e
+					on e.idestado = p.idestado
+			WHERE p.idUsuario = :idUsuario");
+			$getPedidos->bindParam(":idUsuario", $idUsuario, PDO::PARAM_INT);
+			$getPedidos->execute();
+			return $getPedidos->fetchAll(PDO::FETCH_ASSOC);
+		}
+
+		public function deletePedido($idPedido){
+			$deletePedido = $this->bd->prepare("DELETE FROM pedidos where idPedido = :idPedido");
+			$deletePedido->bindParam(":idPedido", $idPedido, PDO::PARAM_INT);
+			$deletePedido->execute();
+		}
+
+		public function updateNegociacao($idImovel){
+			$update = $this->bd->prepare("UPDATE imovel SET negociacao = 1 WHERE idimovel = :idImovel");
+			$update->bindParam(":idImovel", $idImovel, PDO::PARAM_INT);
+			$update->execute();
+		}
+
+		public function updateAnuncio($idImovel){
+			$update = $this->bd->prepare("UPDATE imovel SET negociacao = 0 WHERE idimovel = :idImovel");
+			$update->bindParam(":idImovel", $idImovel, PDO::PARAM_INT);
+			$update->execute();
+		}
 	}
 ?>

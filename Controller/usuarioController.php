@@ -1,9 +1,11 @@
 <?php
 	session_start();
 	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/config/DataBase/dbConfig.php";
-	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/UsuarioModel.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/UsuarioModel.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImovelModel.php";
 
-	$UsuarioModel = new UsuarioModel();
+    $UsuarioModel = new UsuarioModel();
+    $ImovelModel = new ImovelModel();
 
     $acao = $_GET['acao'];
     $idUsuario = $_GET['id'];
@@ -24,5 +26,7 @@
         }
 		echo "<script>alert('Senha alterada com sucesso'); location.href='/corretora/View/login/user/user.php';</script>";
 
-	}
+    }
+    
+
 ?>

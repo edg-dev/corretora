@@ -9,23 +9,26 @@
     require_once $_SERVER["DOCUMENT_ROOT"]."/corretora/Model/UsuarioModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"]."/corretora/Model/ImagensImovelModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"]."/corretora/Model/UsuarioModel.php";
+    require_once $_SERVER["DOCUMENT_ROOT"]."/corretora/Model/ImovelModel.php";
 
 
 
     $imagensImovelModel = new ImagensImovelModel();
     $anuncioModel = new AnuncioModel();
     $usuarioModel = new UsuarioModel();
+    $imovelModel = new ImovelModel();
 
     $anuncios = $anuncioModel->countAnunciosAtivosUser($idUsuario);
     $anunciosAP = $anuncioModel->countAnunciosAprovacaoUser($idUsuario);
     $allAnuncios = $anuncioModel->getAnunciosByUser($idUsuario);
+    $pedidos = $imovelModel->getAllPedidos($idUsuario);
     
     $info = $usuarioModel->userInfo($idUsuario);
 
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Config/execRotina.php";
     
     $rotina = new execRotina();
-    $rotina->execRotina();
+    $rotina->execRotina($idUsuario);
 
 ?>
 
@@ -49,7 +52,7 @@ include('conexao.php');
 
 
 <hr>
-<div class="container bootstrap snippet">
+<div class="bootstrap snippet">
     <div class="row">
   		<div class="col-sm-10"><h1>Olá, você está logado com <strong> <?php echo $_SESSION['usuario'];?></strong></h1></div>
     	<div class="col-sm-2">
@@ -86,23 +89,27 @@ include('conexao.php');
                 <li class="nav-item">
                     <a class="nav-link" href="#home">Pessoal</a>                
                 </li>     
+                <li class="nav-item">
+                    <a class="nav-link" href="#pedidos">Pedidos</a>                
+                </li>  
             </ul>
 
             <div class="tab-content">
-                <div class="tab-pane active container" id="anuncios">
+                <div class="tab-pane container active" id="anuncios"> <!-- Tab Anúncios -->
                 <hr>      
                     <h4>Seus Anúncios</h4>
                     <table class="table table-striped"> 
                         <thead class="thead-dark">
                             <tr>
-                                <th>✪</th>
-                                <th>✪</th>
-                                <th>Tipo de Anúncio</th>
-                                <th>Tipo de Imóvel</th>
-                                <th>Endereço</th>
-                                <th>Status</th>
-                                <th>Ações</th>
-                                <th></th>
+                                <th style="width: 10%;">✪</th>
+                                <th style="width: 10%;">✪</th>
+                                <th style="width: 10%;">Tipo de Anúncio</th>
+                                <th style="width: 10%;">Tipo de Imóvel</th>
+                                <th style="width: 40%;">Endereço</th>
+                                <th style="width: 10%;">Status</th>
+                                <th style="width: 10%;">Ações</th>
+                                <th style="width: 10%;"></th>
+                                <th style="width: 10%;"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -142,13 +149,32 @@ include('conexao.php');
                                     </button>
                                 <?php } ?>
                             </td>
+                            <td>
+                                <?php if($anuncioUser['negociacao'] == 1){ ?>
+                                    <button type="button" class="btn btn-success" onclick="window.location.href='/corretora/Controller/ImovelController.php?acao=anuncio&idImovel=<?php echo $anuncioUser['idimovel']?>'">
+                                        <i class="fa fa-bullhorn"></i> Colocar em anúncio
+                                    </button>
+                                <?php } else { ?> 
+                                    <button type="button" class="btn btn-success" onclick="window.location.href='/corretora/Controller/ImovelController.php?acao=negociar&idImovel=<?php echo $anuncioUser['idimovel']?>'">
+                                        <i class="fa fa-handshake"></i> Colocar em negociação
+                                    </button>
+                                <?php } ?>
+                            </td>
                         </tbody>
                         <?php } ?>
                     </table>              
                 <hr>
-                </div>
+                    <div>
+                        <h4>
+                            <i class="fa fa-exclamation-triangle"></i> 
+                            Atenção! O botão [Colocar em Anúncio/Colocar em negociação] serve para ativar/desativar a exibição do anúncio publicamente.
+                            O mesmo deve ser usado para que ninguém encontre o anúncio enquanto em período de negociações. 
+                            Em caso de sucesso na venda/aluguel do imóvel, o anúncio deve ser manualmente removido para não ser mais exibido.
+                        </h4>
+                    </div>
+                </div> <!-- (close) Tab Anúncios -->
 
-                <div class="tab-pane container" id="home">
+                <div class="tab-pane container" id="home"> <!-- Tab Pessoal -->
                     <hr>
                     <form class="form" action="/corretora/Controller/usuarioController.php?acao=update&id=<?php echo $idUsuario?>" method="POST" id="registrationForm">
         
@@ -185,7 +211,48 @@ include('conexao.php');
                         </div>
                     </form>
                     <hr>
-                </div>
+                </div> <!-- (Close) Tab Pessoal -->
+
+                <div class="tab-pane container" id="pedidos"> <!-- Tab Pedidos -->
+                    <hr>
+                    <h4>Seus Pedidos</h4>
+                    <table class="table table-striped">                        
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>✪</th>
+                                <th>Tipo de Anúncio</th>
+                                <th>Tipo de Imóvel</th>
+                                <th>Local</th>
+                                <th>Comodos</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($pedidos as $pedido) { ?>
+                            <td data-idanuncio="<?php echo $pedido['idpedido']?>"><?php echo $pedido['idpedido']?></td>
+                            <td><?php echo $pedido['descricaoTransacao'];?></td>
+                            <td><?php echo $pedido['descricaoTipoImovel'];?></td>
+                            <td>
+				                <?php echo $pedido['nomeBairro'];?>, <br> 
+                                <?php echo $pedido['nomeCidade'];?>, <br> 
+                                <?php echo $pedido['descricaoEstado'];?>    
+                            </td>
+                            <td>
+                                Quartos: <?php echo $pedido['quantQuarto'];?> <br>
+                                Suítes: <?php echo $pedido['quantSuite'];?> <br>
+                                Vagas na Garagem: <?php echo $pedido['quantVagaGaragem'];?> <br>
+                                Banheiros: <?php echo $pedido['quantBanheiro'];?> <br>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger" onclick="window.location.href='/corretora/Controller/ImovelController.php?acao=deletePedido&idPedido=<?php echo $pedido['idpedido']?>'">
+                                        <i class="fa fa-flag"></i> Remover Pedido
+                                </button>
+                            </td>
+                        </tbody>
+                        <?php } ?>
+                    </table>
+                </div> <!-- (Close) Tab Pedidos -->
+
             </div>
         </div><!--/col-9-->
     </div><!--/row-->

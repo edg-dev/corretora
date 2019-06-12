@@ -132,7 +132,7 @@
         public function getAnunciosByUser($idUsuario){
             $get = $this->bd->prepare(
                 "SELECT a.idAnuncio, a.idUsuario, i.idimovel, t.descricaoTransacao, ti.descricaoTipoImovel,
-                e.logradouro, e.numero, e.complemento, cep.descricaoCep, b.nomeBairro, c.nomecidade, a.verificado
+                e.logradouro, e.numero, e.complemento, cep.descricaoCep, b.nomeBairro, c.nomecidade, a.verificado, i.negociacao
                 FROM anuncio as a
                 inner join imovel as i
                     on i.idimovel = a.idImovel 
