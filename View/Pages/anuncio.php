@@ -26,7 +26,7 @@
         <!-- Englobar o form e esse titulo abaixo em uma div para colocar o mapa na frente -->
         <h4>Detalhes do imóvel:</h4>
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <form>
                     <div class="form-group row">
                         <label for="tipoImovelAnuncio" class="col-sm-3 col-form-label"><i class="fa fa-home"></i> Tipo do imóvel: </label>
@@ -76,6 +76,13 @@
                         <input type="text" readonly class="form-control-plaintext" id="vagasGaragemImovelAnuncio" value="<?php echo $infoImovel["quantVagaGaragem"];?>">
                         </div>
                     </div>
+
+                    <div class="form-group row">
+                        <label for="precoimovel" class="col-sm-3 col-form-label"><i class="fa fa-dollar-sign"></i> Preço: </label>
+                        <div class="col-sm-9">
+                        <input type="text" readonly class="form-control-plaintext" id="precoimovel" value="<?php echo $infoImovel["precoImovel"];?>">
+                        </div>
+                    </div>
                     <br>
 
                     <h4>Localização:</h4>
@@ -118,16 +125,18 @@
 
 
             
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <h4>Imagens do imóvel:</h4>
+                <p>Clique nas imagens para visualizá-las.</p>
                 <div class="gallery" id="gallery">
                     <?php foreach($imagens as $imagem) { ?>
-                        <div>
+                        <div style="margin-bottom: 20px;">
                             <a data-fancybox="images" data-type="image" class="grouped_elements" rel="group1" href="/corretora/Files/<?php echo $imagem?>">
                             <img src="/corretora/Files/<?php echo $imagem?>" alt="" width="160" height="108"/></a>
                         </div>
                     <?php } ?>
                 </div>
+                <br>
             </div>
             
         </div>

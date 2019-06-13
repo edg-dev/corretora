@@ -44,7 +44,11 @@
                 <b><label for="transacao">Em qual tipo de transação você quer?</label></b>
             <select id="transacao" class="form-control" name="transacao" >
                     <?php foreach($transacoes as $transacao){?>
-                    <option value="<?php echo $transacao['idTransacao'];?>"> <?php echo $transacao['descricaoTransacao'];?> </option>
+                        <?php if($transacao['descricaoTransacao'] == "Vender") { ?>
+                            <option value="<?php echo $transacao['idTransacao'];?>"> Comprar </option>
+                        <?php } else { ?>
+                            <option value="<?php echo $transacao['idTransacao'];?>"> <?php echo $transacao['descricaoTransacao'];?> </option>
+                        <?php } ?>
                     <?php } ?>
             </select>
             </div>
@@ -99,14 +103,14 @@
         <div class="carousel-item">
             <img class="d-block w-100 img-fluid" style="width:500px;height:600px;" src="https://s01.video.glbimg.com/x720/6166808.jpg" alt="...">
             <div class="carousel-caption d-none d-md-block">
-            <h5><b><u>É uma oportunidade única, viu?.</u></b></h5>
+            <h5  style="color: black;"><b><u>É uma oportunidade única, viu?.</u></b></h5>
             <p></p>
             </div>
         </div>
         <div class="carousel-item">
             <img class="d-block w-100 img-fluid" style="width:500px;height:600px;" src="https://thumbs.jusbr.com/filters:format(webp)/imgs.jusbr.com/publications/artigos/451460204/images/condominio11493087337.jpg"  alt="...">
             <div class="carousel-caption d-none d-md-block">
-            <h5><b><u>Cada Imóvel é único e possui características que se adaptam a diferentes gostos. Encontre o seu com a nossa ajuda.</u></b></h5>
+            <h5  style="color: black;"><b><u>Cada Imóvel é único e possui características que se adaptam a diferentes gostos. Encontre o seu com a nossa ajuda.</u></b></h5>
             <p></p>
             </div>
         </div>
@@ -153,9 +157,14 @@
                 <div class="col-md-7">
                     <a href="#">
 
-                    <?php
-                        $idImovel = $imovel['idImovel'];
-                        $res = $imagensImovelModel->getImagemImovelIndex($idImovel);
+                        <?php
+                            $idImovel = $imovel['idImovel'];
+                            $res = $imagensImovelModel->getImagemImovelIndex($idImovel);
+
+                        if(empty($res)){
+                        ?>
+                            <img class="img-fluid" style="width:750px;height:300px;" src="Files/no_image.png">
+                        <?php } 
 
                         foreach($res as $imagem){ ?>
                             <img class="img-fluid" style="width:750px;height:300px;" src="Files/<?php echo $imagem;?>"  >

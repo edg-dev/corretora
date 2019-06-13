@@ -41,7 +41,18 @@
             </button>
         </div>
     </div>
-
+    <br>
+    <br>
+    <div>
+        <h4>
+            <i class="fa fa-exclamation-triangle"></i> 
+                Atenção! As imagens devem ser de até 10mb e de resolução [2250x900] para melhor exibição no site.
+        </h4>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
 <script type="text/javascript">
 
     $(document).ready(function () {
@@ -62,7 +73,7 @@
 
     $(".dropzone").dropzone({
         addRemoveLinks: true,
-        maxFilesize: 5,
+        maxFilesize: 10,
         maxFiles: 10,
         parallelUploads: 10,
         autoProcessQueue: false,

@@ -98,7 +98,7 @@ include('conexao.php');
                 <div class="tab-pane container active" id="anuncios"> <!-- Tab Anúncios -->
                 <hr>      
                     <h4>Seus Anúncios</h4>
-                    <table class="table table-striped"> 
+                    <table class="table container table-striped"> 
                         <thead class="thead-dark">
                             <tr>
                                 <th style="width: 10%;">✪</th>
@@ -150,15 +150,19 @@ include('conexao.php');
                                 <?php } ?>
                             </td>
                             <td>
-                                <?php if($anuncioUser['negociacao'] == 1){ ?>
+                                <?php if($anuncioUser['negociacao'] == 1 && $anuncioUser['verificado'] == 1){ ?>
                                     <button type="button" class="btn btn-success" onclick="window.location.href='/corretora/Controller/ImovelController.php?acao=anuncio&idImovel=<?php echo $anuncioUser['idimovel']?>'">
                                         <i class="fa fa-bullhorn"></i> Colocar em anúncio
                                     </button>
-                                <?php } else { ?> 
+                                <?php } if($anuncioUser['negociacao'] == 0 && $anuncioUser['verificado'] == 1) { ?> 
                                     <button type="button" class="btn btn-success" onclick="window.location.href='/corretora/Controller/ImovelController.php?acao=negociar&idImovel=<?php echo $anuncioUser['idimovel']?>'">
                                         <i class="fa fa-handshake"></i> Colocar em negociação
                                     </button>
-                                <?php } ?>
+                                <?php } else { ?>
+                                    <button type="button" class="btn btn-success" disabled>
+                                        <i class="fa fa-handshake"></i> Aguarde Aprovação
+                                    </button>
+                                <?php }  ?>
                             </td>
                         </tbody>
                         <?php } ?>
