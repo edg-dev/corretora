@@ -3,7 +3,6 @@
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImovelModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImagensImovelModel.php";
 
-
     $imagensImovelModel = new ImagensImovelModel();
     $imagens = $imagensImovelModel->getAllImagens();
 
@@ -105,7 +104,7 @@
         $stmt->execute();
         
         // cria um array com os resultados
-        $buscasImovel = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $imoveis = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         ?>
 
@@ -119,22 +118,26 @@
                     
                 <!-- Project One -->
                 <?php $count = 0; ?>
-                <?php if (count($buscasImovel) > 0): ?>
-                <?php foreach($buscasImovel as $imovel){?>
+                <?php if (count($imoveis) > 0): ?>
+                <?php foreach($imoveis as $imovel){?>
 
                 <div class="row">
                 <div class="col-md-7">
-                    <a href="#">
-                    <!-- TESTE TESTE TESTE TESTE -->
-                    <?php
-                        $idImovel = $imovel['idImovel'];
-                        $res = $imagensImovelModel->getImagemImovelIndex($idImovel);
-                        
-                        foreach($res as $imagem){?>
-                        <img class="img-fluid" style="width:750px;height:300px;" src="Files/<?php echo $imagem;?>"  >
-                    <?php } ?>
-                    <!-- TESTE TESTE TESTE TESTE -->
-                    </a>
+                        <a href="#">
+
+                        <?php
+                            $idImovel = $imovel['idImovel'];
+                            $res = $imagensImovelModel->getImagemImovelIndex($idImovel);
+
+                        if(empty($res)){
+                        ?>
+                            <img class="img-fluid" style="width:750px;height:300px;" src="Files/no_image.png">
+                        <?php } ?>
+
+                        <?php foreach($res as $imagem){ ?>
+                            <img class="img-fluid" style="width:750px;height:300px;" src="Files/<?php echo $imagem;?>"  >
+                        <?php } ?>  
+                        </a>
                 </div>
                 <div class="col-md-5">
                         <p><b>Transação:</b>      
