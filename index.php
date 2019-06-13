@@ -28,7 +28,7 @@
     $banner2 = $bannerModel->getRandomBanner();
 ?>
 <div style="padding-top: 20px; text-align: center;">
-    <h3>Quer anunciar seu imóvel ou procurar um negócio? Você veio ao lugar certo!</h3>
+    <h1>Quer anunciar seu imóvel ou procurar um negócio? Você veio ao lugar certo!</h1>
 </div>
 <div class="row" style="padding-top: 60px;">
         <div class="col-md-4">
@@ -69,7 +69,9 @@
                         <option value="<?php echo $estado['idEstado'];?>"> <?php echo $estado['descricaoEstado'];?> </option>
                         <?php }?>
                     </select>
+                    <br>
                 <input type="text" class="form-control" id="cidade" placeholder="Digite a cidade aqui" name="cidade" >
+                <br>
                 <input type="text" class="form-control" id="bairro" placeholder="Digite o bairro aqui" name="bairro" >
             </div>
            </div>
@@ -77,7 +79,10 @@
                     <button type="submit" value="buscar" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
                 </div>
 
-            </div>
+            </div>   
+            <br>
+            <br>
+            <hr>
             </div>
         </form>
         </div>
