@@ -154,7 +154,7 @@ include('conexao.php');
                                     <button type="button" class="btn btn-success" onclick="window.location.href='/corretora/Controller/ImovelController.php?acao=anuncio&idImovel=<?php echo $anuncioUser['idimovel']?>'">
                                         <i class="fa fa-bullhorn"></i> Colocar em anúncio
                                     </button>
-                                <?php } if($anuncioUser['negociacao'] == 0 && $anuncioUser['verificado'] == 1) { ?> 
+                                <?php } else if($anuncioUser['negociacao'] == 0 && $anuncioUser['verificado'] == 1) { ?> 
                                     <button type="button" class="btn btn-success" onclick="window.location.href='/corretora/Controller/ImovelController.php?acao=negociar&idImovel=<?php echo $anuncioUser['idimovel']?>'">
                                         <i class="fa fa-handshake"></i> Colocar em negociação
                                     </button>
@@ -201,7 +201,7 @@ include('conexao.php');
                         
                             <div class="col-xs-6">
                                 <label for="password" ><h4>Nova Senha</h4></label>
-                                <input type="password" class="form-control" name="senha_nova"  placeholder="Nova senha" title="Insera sua nova senha.">
+                                <input type="password" class="form-control" name="senha_nova"  placeholder="Nova senha" title="Insera sua nova senha." required>
                             </div>
                         </div>
                         
