@@ -134,7 +134,7 @@ include($_SERVER["DOCUMENT_ROOT"] . '/corretora/View/login/user/verifica_login.p
         </div>
         <div class="form-group">
             <label for="precoImovel">Valor da transação (R$):</label>
-            <input type="text" class="form-control" id="precoImovel" placeholder="000 000" name="precoImovel">
+            <input type="number" class="form-control" id="precoImovel" placeholder="000 000" name="precoImovel">
         </div>
 
         <div class="form-group">
