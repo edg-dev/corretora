@@ -131,11 +131,11 @@
 
                         if(empty($res)){
                         ?>
-                            <img class="img-fluid" style="width:750px;height:300px;" src="Files/no_image.png">
+                            <img class="img-fluid" style="width:750px;height:300px;" src="/corretora/Files/no_image.png">
                         <?php } ?>
 
                         <?php foreach($res as $imagem){ ?>
-                            <img class="img-fluid" style="width:750px;height:300px;" src="Files/<?php echo $imagem;?>"  >
+                            <img class="img-fluid" style="width:750px;height:300px;" src="/corretora/Files/<?php echo $imagem;?>"  >
                         <?php } ?>  
                         </a>
                 </div>
