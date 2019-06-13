@@ -101,8 +101,7 @@ include('conexao.php');
                     <table class="table container table-striped"> 
                         <thead class="thead-dark">
                             <tr>
-                                <th style="width: 10%;">✪</th>
-                                <th style="width: 10%;">✪</th>
+                                
                                 <th style="width: 10%;">Tipo de Anúncio</th>
                                 <th style="width: 10%;">Tipo de Imóvel</th>
                                 <th style="width: 40%;">Endereço</th>
@@ -114,8 +113,7 @@ include('conexao.php');
                         </thead>
                         <tbody>
                         <?php foreach($allAnuncios as $anuncioUser) { ?>
-                            <td data-idanuncio="<?php echo $anuncioUser['idAnuncio']?>"><?php echo $anuncioUser['idAnuncio']?></td>
-                            <td data-idimovel="<?php echo $anuncioUser['idimovel']?>"><?php echo $anuncioUser['idimovel']?></td>
+                            
                             <td><?php echo $anuncioUser['descricaoTransacao'];?></td>
                             <td><?php echo $anuncioUser['descricaoTipoImovel'];?></td>
                             <td> <?php echo $anuncioUser['logradouro'];?>, número <?php echo $anuncioUser['numero'];?> <?php echo $anuncioUser['complemento'];?>
@@ -156,7 +154,7 @@ include('conexao.php');
                                     </button>
                                 <?php } if($anuncioUser['negociacao'] == 0 && $anuncioUser['verificado'] == 1) { ?> 
                                     <button type="button" class="btn btn-success" onclick="window.location.href='/corretora/Controller/ImovelController.php?acao=negociar&idImovel=<?php echo $anuncioUser['idimovel']?>'">
-                                        <i class="fa fa-handshake"></i> Colocar em negociação
+                                        <i class="fa fa-handshake"></i> Ativar/Desativar Anúncio
                                     </button>
                                 <?php } else { ?>
                                     <button type="button" class="btn btn-success" disabled>
