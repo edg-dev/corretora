@@ -29,7 +29,7 @@
                         <a class="fb-ic mr-3" role="button" href="https://www.facebook.com/"><i class="fab fa-lg fa-facebook-f"></i></a>
                         <a class="tw-ic mr-3" role="button"  href="https://twitter.com/"><i class="fab fa-lg fa-twitter"></i></a>
                         <a class="yt-ic mr-3" role="button" href="https://www.youtube.com/"><i class="fab fa-lg fa-youtube"></i></a>
-                        <a class="ins-ic mr-3" role="button" href="https://www.instagram.com/"><i class="fab fa-lg fa-instagram"></i></a>
+                        <a class="ins-ic mr-3" role="button" href="https://www.instagram.com/gabriela_corretoradeimoveis/"><i class="fab fa-lg fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
