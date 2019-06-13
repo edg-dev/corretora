@@ -43,7 +43,7 @@
             <div class="form-group">
                 <b><label for="transacao">Em qual tipo de transação você quer?</label></b>
             <select id="transacao" class="form-control" name="transacao" >
-                <option selected>Selecione a opção:</option>
+                <option selected value="">Selecione a opção:</option>
                     <?php foreach($transacoes as $transacao){?>                
                         <?php if($transacao['descricaoTransacao'] == "Vender") { ?>
                             <option value="<?php echo $transacao['idTransacao'];?>"> Comprar </option>
@@ -57,7 +57,7 @@
             <div class="form-group">
                 <b><label for="tipoDeImovel">Que tipo de imóvel você proucura?</label></b>
             <select id="tipoDeImovel" class="form-control" name="tipoDeImovel" >
-                <option selected>Selecione o tipo do imóvel:</option>
+                <option selected value="">Selecione o tipo do imóvel:</option>
                     <?php foreach($tiposDeImovel as $tipoImovel){?>
                     <option value="<?php echo $tipoImovel['idTipoImovel'];?>"> <?php echo $tipoImovel['descricaoTipoImovel'];?> </option>
                     <?php } ?>
@@ -67,7 +67,7 @@
             <div class="form-group">
                 <b><label for="endereco">Endereço:</label></b>
                     <select id="estado" class="form-control" name="estado" >
-                    <option selected>Selecione seu estado:</option>
+                    <option selected value="">Selecione seu estado:</option>
                         <?php foreach($estados as $estado){?>
                         <option value="<?php echo $estado['idEstado'];?>"> <?php echo $estado['descricaoEstado'];?> </option>
                         <?php }?>
