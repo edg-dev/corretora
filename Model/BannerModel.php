@@ -33,11 +33,12 @@
         }
 
         public function deletar($id, $imagem){
+            $path = $_SERVER["DOCUMENT_ROOT"] . "/corretora/Files/Banners/";
             $deleteBanner = $this->bd->prepare("DELETE FROM Banners WHERE idBanner = :id");
             $deleteBanner->bindParam(":id", $id);
             $deleteBanner->execute();
             if($imagem != null || $imagem != ""){
-                unlink($imagem['imagemBanner']);
+                unlink($path . $imagem['imagemBanner']);
             }
         }
 
