@@ -219,7 +219,8 @@
                     <?php } ?> <!-- foreach fecha aki --> 
                     <?php else: ?>
                 <div class="container">
-                <h1>Nenhum anúncio foi encontrado!</h1>            
+                <h1>Nenhum anúncio foi encontrado!</h1>
+                <br><br><br><br><br><br><br><br><br>
                 </div>
                 <br><br>
                     <?php endif; ?>
