@@ -8,8 +8,8 @@
             $this->rotina = new Rotina();
         }
 
-        public function execRotina(){
-            $select = $this->rotina->selectPedidos();
+        public function execRotina($idUsuario){
+            $select = $this->rotina->selectPedidos($idUsuario);
 
             foreach($select as $res){
                 $idTipoImovel = $res['idTipoImovel'];

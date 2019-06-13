@@ -3,32 +3,26 @@
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/BannerModel.php";
 
     $bannerModel = new BannerModel();
-    $banner = $bannerModel->getRandomBanner();
-    $banner2 = $bannerModel->getRandomBanner();
+    $banner = $bannerModel->getAllBanners();
+
 ?>
-
+<div class="text-center">
+    <h1> Publicidade e Propagandas </h1>
+    <h4>Entre em Contato conosco para anunciar o Banner de seu Site aqui!</h4>
+<div>
 <!-- Banner 1 -->
-<div class="row form-group">
-    <div class="col-md-4">
-        <h4>Texto de Teste Intuitivo de Disney SUperio a Dois elevado ao quadrado</h4>
-    </div>
-    <?php if($banner != false) { ?>
-        <div class="col-md-8">
-            <a href="<?php echo $banner['link']?>">
-                <img class="d-block w-100 img-fluid" style="width:400px;height:150px;" src="/corretora/Files/banners/<?php echo $banner['imagemBanner']?>" alt="Anuncie aqui">
+<?php foreach($banner as $banners){ ?>
+<div class="row " style="padding-top: 60px;">
+        <div class="col-md-12 text-center">
+        <h3>Banner</h3>
+            <a href="<?php echo $banners['link']?>">
+                <img class="d-block w-100 img-fluid" style="width:600px;height:150px;" src="/corretora/Files/banners/<?php echo $banners['imagemBanner']?>" alt="Anuncie aqui">
             </a>
+        <hr>
         </div>
-        
-<?php } ?>
+</div>
+    <?php } ?>
 
-<!-- Banner 2-->
-<?php if($banner2 != false) { ?>
-    <div class="offset-md-2 col-md-8" style="padding-top: 20px; padding-bottom: 20px;">
-    <a href="<?php echo $banner2['link']?>">
-        <img class="d-block w-100 img-fluid" style="width:450px;height:150px;" src="/corretora/Files/banners/<?php echo $banner2['imagemBanner']?>" alt="Anuncie aqui">
-    </a>
-    </div>
-<?php } ?>
 
 
 <?php include '../Templates/footer.php'; ?>

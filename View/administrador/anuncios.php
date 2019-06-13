@@ -55,7 +55,6 @@
                 <td> <?php echo $result['descricaoTransacao'];?></td>
                 <td>
                     <select id="prioridade" class="form-control" name="prioridade" required>
-                        <option value="0">Nenhuma</option>
                         <?php foreach($prioridades as $prioridade){?>
                         <option id="idPrioridade" data-prioridade="<?php echo $prioridade['idPrioridade'];?>" value="<?php echo $prioridade['idPrioridade'];?>"> 
                             <?php echo $prioridade['descricaoPrioridade'];?> </option>
