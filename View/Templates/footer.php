@@ -19,7 +19,6 @@
 
                         <h6><a href="/corretora/View/Cadastro/PessoaFisica.php">Cadastre-se PF</a></h6>
                         <h6><a href="/corretora/View/Cadastro/PessoaJuridica.php">Cadastre-se PJ</a></h6>
-                        <h6><a href="/corretora/View/login/user/index.php">Entrar</a></h6>
                         <h6><a href="/corretora/View/buscar/index.php">Busque</a></h6>
 
                     </div>
