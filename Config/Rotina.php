@@ -10,8 +10,9 @@
             $this->bd = BancoDados::obterConexao();
         }
 
-        public function selectPedidos(){
-            $select = $this->bd->prepare("SELECT * FROM Pedidos WHERE idUsuario = 1");
+        public function selectPedidos($idUsuario){
+            $select = $this->bd->prepare("SELECT * FROM Pedidos WHERE idUsuario = :idUsuario");
+            $select->bindParam(":idUsuario", $idUsuario, PDO::PARAM_INT);
             $select->execute();
             return $select->fetchAll(PDO::FETCH_ASSOC);
         }

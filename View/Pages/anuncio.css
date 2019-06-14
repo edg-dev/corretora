@@ -1,0 +1,126 @@
+@media all and (min-width: 800px) {
+
+    /* Give space around main area */
+    .fancybox-custom-layout .fancybox-outer {
+      top: 50px;
+      left: 50px;
+      bottom: 50px;
+      right: 50px;
+      margin: auto;
+      max-width: 1180px;
+      max-height: 495px;
+      overflow: visible;
+      background: #fff;
+      box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+      transition: opacity .3s;
+    }
+  
+    /* Make it to fade-out while closing */
+    .fancybox-custom-layout.fancybox-is-closing .fancybox-outer {
+      opacity: 0;
+    }
+  
+    /* Set color for background element */
+    .fancybox-custom-layout .fancybox-bg {
+      background: #f6f6f6;
+    }
+  
+    .fancybox-custom-layout.fancybox-is-open .fancybox-bg {
+      opacity: 1;
+    }
+  
+    /* Move caption area to the right side */
+    .fancybox-custom-layout .fancybox-caption-wrap {
+      top: 0;
+      right: 44px;
+      bottom: 0;
+      left: auto;
+      width: 256px;
+      padding: 0;
+      background: #333;
+      pointer-events: all; /* Make text selectable */
+      border-right: 1px solid rgba(255,255,255,.08);
+    }
+  
+    /* Adjust content area position */
+    .fancybox-custom-layout .fancybox-stage {
+      right: 300px;
+    }
+  
+    /* Remove top border from the caption */
+    .fancybox-custom-layout .fancybox-caption {
+      padding: 30px 20px;
+      border: 0;
+    }
+  
+    /* Align buttons at the right side  */
+    .fancybox-custom-layout .fancybox-toolbar {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: auto;
+      width: 44px;
+      background: #333;
+      border-left: 1px solid #222;
+    }
+  
+    /* Remove background from all buttons */
+    .fancybox-custom-layout .fancybox-button,
+    .fancybox-custom-layout .fancybox-navigation button:before {
+      background: transparent;
+    }
+  
+    /* Change arrow color */
+    .fancybox-custom-layout .fancybox-navigation button {
+      color: #333 !important;
+      padding: 10px;
+    }
+  
+    /* Reposition arrows */
+    .fancybox-custom-layout .fancybox-button--arrow_left {
+      left: -60px;
+    }
+  
+    .fancybox-custom-layout .fancybox-button--arrow_right {
+      right: -60px;
+    }
+  
+    .fancybox-custom-layout.fancybox-show-thumbs .fancybox-button--arrow_right {
+      right: -272px;
+    }
+  
+  }
+
+  .gallery {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    -webkit-column-width: 33%;
+    -moz-column-width: 33%;
+    column-width: 33%; }
+    .gallery .pics {
+    -webkit-transition: all 350ms ease;
+    transition: all 350ms ease; }
+    .gallery .animation {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1); 
+}
+
+@media (max-width: 450px) {
+    .gallery {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+    -webkit-column-width: 100%;
+    -moz-column-width: 100%;
+    column-width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .btn.filter {
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+    }
+}

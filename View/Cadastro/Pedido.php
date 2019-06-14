@@ -140,10 +140,7 @@ if(!$_SESSION['usuario' ]) {
 </form>
 </div>
 </div>
-                </div>
-<script type="text/javascript">
-    $('#precoMin').mask('000.000.000.000,00 ', {reverse: true});
-    $('#precoMax').mask('000.000.000.000,00 ', {reverse: true});
-</script>
+</div>
+
 
 <?php include '../Templates/footer.php'; ?>

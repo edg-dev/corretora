@@ -1,13 +1,11 @@
-<?php 
-    include '../Templates/header.php'; 
-    
+<?php include '../Templates/header.php';
 
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/EstadoModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TransacaoModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TipoImovelModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImovelModel.php";
 
-    $acao = "create";
+    $acao = "editar";
 
     $estadoModel = new EstadoModel();
     $estados = $estadoModel->getAllEstado();
@@ -17,6 +15,12 @@
     
     $tipoImovelModel = new TipoImovelModel();
     $tiposDeImovel = $tipoImovelModel->getAllTipoImovel();
+
+    $idImovel = $_GET['idImovel'];
+    $idAnuncio = $_GET['idAnuncio'];
+
+    $imovelModel = new ImovelModel();
+    $valImovel = $imovelModel->getImovelById($idImovel);
 
 ?>
 
@@ -60,14 +64,16 @@ include($_SERVER["DOCUMENT_ROOT"] . '/corretora/View/login/user/verifica_login.p
 <div class="form-group col-md-8">
 
     <b><h1 class="titulo my-4">
-        Cadastro do Imóvel:
+        Editar Imóvel:
         </h1></b>
-
-    <form method="post" id="formImovel" method="POST" action="/corretora/Controller/ImovelController.php?acao=<?=$acao?>">
+    <br>
+    <h4>Atenção: A opção de transação necessita ser selecionada novamente por questões de confirmação.</h4>
+    <br>
+    <form method="post" id="formImovel" method="POST" action="/corretora/Controller/ImovelController.php?acao=<?=$acao?>&idImovel=<?=$idImovel?>">
         <div class="form-group">
             <b><label for="tipoDeImovel">Que tipo de imóvel você quer anunciar?</label></b>
             <select id="tipoDeImovel" class="form-control" name="tipoDeImovel" required>
-                    <option selected>Selecione o tipo do imóvel:</option>
+                    <option selected value="<?php echo $valImovel['idTipoImovel'];?>"><?php echo $valImovel['descricaoTipoImovel'];?></option>
                     <?php foreach($tiposDeImovel as $tipoImovel){?>
                     <option value="<?php echo $tipoImovel['idTipoImovel'];?>"> <?php echo $tipoImovel['descricaoTipoImovel'];?> </option>
                     <?php } ?>
@@ -79,9 +85,9 @@ include($_SERVER["DOCUMENT_ROOT"] . '/corretora/View/login/user/verifica_login.p
         </div>
         <div class="form-group">
             <label for="cep"><span>*</span>Cep:</label>
-            <input type="text" class="form-control cep-mask" id="cep" placeholder="Ex.: 00000-000" name="cep" require>
+            <input type="text" class="form-control cep-mask" id="cep" placeholder="Ex.: 00000-000" name="cep" require value="<?php echo $valImovel['descricaoCep'];?>">
             <select id="estado" class="form-control" name="estado" required>
-                    <option selected>Selecione seu estado</option>
+                    <option selected value="<?php echo $valImovel['idestado'];?>"><?php echo $valImovel['descricaoEstado'];?></option>
                     <?php foreach($estados as $estado){?>
                     <option value="<?php echo $estado['idEstado'];?>"> <?php echo $estado['descricaoEstado'];?> </option>
                     <?php }?>
@@ -89,11 +95,11 @@ include($_SERVER["DOCUMENT_ROOT"] . '/corretora/View/login/user/verifica_login.p
         </div>
         <div class="form-group">
             <label for="endereco">Endereço:</label>
-            <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade" required>
-            <input type="text" class="form-control" id="bairro" placeholder="Bairro" name="bairro" required>
-            <input type="text" class="form-control" id="rua" placeholder="Rua" name="rua" required>
-            <input type="text" class="form-control" id="complemento" placeholder="Complemento" name="complemento">
-            <input type="number" class="form-control" id="numero" placeholder="Número" name="numero" required>
+            <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade" required value="<?php echo $valImovel['nomecidade'];?>">
+            <input type="text" class="form-control" id="bairro" placeholder="Bairro" name="bairro" required value="<?php echo $valImovel['nomeBairro'];?>">
+            <input type="text" class="form-control" id="rua" placeholder="Rua" name="rua" required value="<?php echo $valImovel['logradouro'];?>">
+            <input type="text" class="form-control" id="complemento" placeholder="Complemento" name="complemento" value="<?php echo $valImovel['complemento'];?>">
+            <input type="number" class="form-control" id="numero" placeholder="Número" name="numero" required value="<?php echo $valImovel['numero'];?>">
         </div>
 
         <div class="form-group">
@@ -101,32 +107,32 @@ include($_SERVER["DOCUMENT_ROOT"] . '/corretora/View/login/user/verifica_login.p
         </div>
         <div class="form-group">
             <label for="quantQuarto">Quartos:</label>
-            <input type="number" class="form-control" id="quantQuarto" placeholder="0" name="quantQuarto">
+            <input type="number" class="form-control" id="quantQuarto" placeholder="0" name="quantQuarto" value="<?php echo $valImovel['quantQuarto'];?>">
         </div>
         <div class="form-group">
             <label for="quantSuite">Suítes (Opcional):</label>
-            <input type="number" class="form-control" id="quantSuite" placeholder="0" name="quantSuite">
+            <input type="number" class="form-control" id="quantSuite" placeholder="0" name="quantSuite" value="<?php echo $valImovel['quantSuite'];?>">
         </div>
         <div class="form-group">
             <label for="quantVagaGaragem">Vagas de garagem (Opcional):</label>
-            <input type="number" class="form-control" id="quantVagaGaragem" placeholder="0" name="quantVagaGaragem">
+            <input type="number" class="form-control" id="quantVagaGaragem" placeholder="0" name="quantVagaGaragem" value="<?php echo $valImovel['quantVagaGaragem'];?>">
         </div>
         <div class="form-group">
             <label for="quantBanheiro">Banheiros:</label>
-            <input type="number" class="form-control" id="quantBanheiro" placeholder="0" name="quantBanheiro">
+            <input type="number" class="form-control" id="quantBanheiro" placeholder="0" name="quantBanheiro" value="<?php echo $valImovel['quantBanheiro'];?>">
         </div>
         <div class="form-group">
             <label for="areaUtil">Área útil (M²):</label>
-            <input type="number" class="form-control" id="areaUtil" placeholder="000" name="areaUtil">
+            <input type="number" class="form-control" id="areaUtil" placeholder="000" name="areaUtil" value="<?php echo $valImovel['areaUtil'];?>">
         </div>
         <div class="form-group">
             <label for="areaTotal">Área total (M²) (Opcional):</label>
-            <input type="number" class="form-control" id="areaTotal" placeholder="000" name="areaTotal">
+            <input type="number" class="form-control" id="areaTotal" placeholder="000" name="areaTotal" value="<?php echo $valImovel['areaTotal'];?>">
         </div>
         <div class="form-group">
             <label for="descricaoImovel">Descrição do imovel :</label>
             <input type="text" class="form-control" id="descricaoImovel" placeholder="Descrição do imóvel" 
-                                                                        name="descricaoImovel">
+                                                                        name="descricaoImovel" value="<?php echo $valImovel['descricaoImovel'];?>">
         </div>
 
         <div class="form-group">
@@ -134,7 +140,7 @@ include($_SERVER["DOCUMENT_ROOT"] . '/corretora/View/login/user/verifica_login.p
         </div>
         <div class="form-group">
             <label for="precoImovel">Valor da transação (R$):</label>
-            <input type="number" class="form-control" id="precoImovel" placeholder="000 000" name="precoImovel">
+            <input type="text" class="form-control" id="precoImovel" placeholder="000 000" name="precoImovel" value="<?php echo $valImovel['precoImovel'];?>">
         </div>
 
         <div class="form-group">
