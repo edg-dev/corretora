@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/config/DataBase/dbConfig.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Config/DataBase/dbConfig.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/UsuarioModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/BannerModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/AnuncioModel.php";
@@ -18,19 +18,20 @@
     $acao = $_GET['acao'];
 
     if($acao == "create"){
-
+        try{
         $link = $_POST["link"];
         $descricao = $_POST["nome"];
         $imagem = $_FILES["banner"];
         $path_dir = $_SERVER["DOCUMENT_ROOT"] . "/corretora/Files/Banners/";
 
-        if(!($imagem['name'] == "")){
+        
 
             preg_match("/\.(gif|bmp|png|jpg|jpeg){1}$/i", $imagem["name"], $ext);
-        
             $nome_original = md5(uniqid(time())) . "." . $ext[1];
             $path_original =  $path_dir . $nome_original;
             move_uploaded_file($imagem["tmp_name"], $path_original);
+            
+
                 
             if($ext[1] == 'jpeg' || $ext[1] == 'jpg'){
                 $img = imagecreatefromjpeg($path_original);
@@ -52,10 +53,8 @@
 
             $banners->inserir($link, $descricao, $novo_nome);
             echo "<script>alert('Banner cadastrado com sucesso'); location.href='/corretora/View/administrador/banners.php';</script>";
-        } else {
-            $nopath = "";
-            $banners->inserir($link, $descricao, $nopath);
-            echo "<script>alert('Banner cadastrado (sem imagem) com sucesso'); location.href='/corretora/View/administrador/banners.php';</script>";
+        } catch(Exception $ex){
+            throw $ex;
         }
     }
 
@@ -88,7 +87,7 @@
         $imagensImovel = $imagens->listarArrayImagens($idImovel);
 
         foreach($imagensImovel as $imagem){
-            $path = $_SERVER["DOCUMENT_ROOT"] . "/corretora/Files/" . $imagem;
+            $path = $_SERVER["DOCUMENT_ROOT"] . "/corretora/Files/imagens/" . $imagem;
             unlink($path);
         }
         $imagens->deletarAllImagens($idImovel);

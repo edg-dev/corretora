@@ -196,18 +196,6 @@
 			}
 		});
 	});
-		$("#cadastroPessoaFisica").on("submit", function(event){
-			event.preventDefault();
-
-			$.ajax({
-				url: $("#cadastroPessoaFisica").attr("action"),
-				method: $("#cadastroPessoaFisica").attr("method"),
-				data: $("#cadastroPessoaFisica").serialize(),
-				success: function(data){
-					$("#mensagem").html(data);
-				}
-			})
-        });
 </script>
 
 <?php include "../Templates/footer.php"; ?>

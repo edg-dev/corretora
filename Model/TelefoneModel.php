@@ -13,12 +13,12 @@ class TelefoneModel {
         try{
             $idP = intval($idPessoa[0]);
 
-            $telefone = $this->bd->prepare("INSERT INTO Telefone(idPessoa, telefone) VALUES (:idPessoa, :telefone)");
+            $telefone = $this->bd->prepare("INSERT INTO telefone(idPessoa, telefone) VALUES (:idPessoa, :telefone)");
             $telefone->bindParam(":idPessoa", $idP, PDO::PARAM_INT);
             $telefone->bindParam(":telefone", $telefone1);
             $telefone->execute();
 
-            $telefone = $this->bd->prepare("INSERT INTO Telefone(idPessoa, telefone) VALUES (:idPessoa, :telefone)");
+            $telefone = $this->bd->prepare("INSERT INTO telefone(idPessoa, telefone) VALUES (:idPessoa, :telefone)");
             $telefone->bindParam(":idPessoa", $idP, PDO::PARAM_INT);
             $telefone->bindParam(":telefone", $telefone2);
             $telefone->execute();
@@ -28,7 +28,7 @@ class TelefoneModel {
     }
 
     public function getTelefonesById($idPessoa){
-        $select = $this->bd->prepare("SELECT telefone FROM Telefone where idPessoa = :idPessoa");
+        $select = $this->bd->prepare("SELECT telefone FROM telefone where idPessoa = :idPessoa");
         $select->bindParam(":idPessoa", $idPessoa);
         $select->execute();
         return $select->fetchAll();

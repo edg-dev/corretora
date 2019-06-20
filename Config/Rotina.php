@@ -1,6 +1,6 @@
 <?php
 
-    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/config/DataBase/dbConfig.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Config/DataBase/dbConfig.php";
     
     class Rotina {
 
@@ -11,7 +11,7 @@
         }
 
         public function selectPedidos($idUsuario){
-            $select = $this->bd->prepare("SELECT * FROM Pedidos WHERE idUsuario = :idUsuario");
+            $select = $this->bd->prepare("SELECT * FROM pedidos WHERE idUsuario = :idUsuario");
             $select->bindParam(":idUsuario", $idUsuario, PDO::PARAM_INT);
             $select->execute();
             return $select->fetchAll(PDO::FETCH_ASSOC);
@@ -23,8 +23,8 @@
             $compare = $this->bd->prepare("SELECT 
                 i.idTipoImovel, i.idTransacao, e.idCidade, e.idBairro, e.idEstado,
                 i.quantQuarto, i.quantSuite, i.quantVagaGaragem, i.quantBanheiro, i.precoImovel
-                FROM Imovel as i
-                    inner join Endereco as e
+                FROM imovel as i
+                    inner join endereco as e
                         on e.idEndereco = i.idEndereco
                 WHERE  i.idTipoImovel = :idTipoImovel and i.idTransacao = :idTransacao and e.idCidade = :idCidade and e.idBairro = :idBairro and
                     e.idEstado = :idEstado and i.quantQuarto = :quantQuarto and i.quantSuite = :quantSuite and 

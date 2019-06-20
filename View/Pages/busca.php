@@ -10,7 +10,7 @@
 ?>
 
         <?php 
-        require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/config/DataBase/dbConfig.php";
+        require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Config/DataBase/dbConfig.php";
 
         // filtros da busca 
         $cidade = isset($_GET['cidade']) ? $_GET['cidade'] : '';

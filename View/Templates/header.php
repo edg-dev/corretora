@@ -1,9 +1,8 @@
+<?php session_start();?>
 <!doctype html>
 <html lang="pt-br">
     <head> 
-    <?php
-    session_start();
-    ?> 
+ 
         
         <meta charset="ISO-8859-1"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
@@ -87,7 +86,7 @@
                 </li>
                 <?php } ?>
 
-                <?php if(isset($_SESSION['admin'])) { ?>
+                <?php if(isset($_SESSION['admin']) && $_SESSION['admin'] == 1 ) { ?>
                 <li class="nav-item">
                     <a class="nav-link btn-outline-primary" href="/corretora/View/administrador/index.php">Administrativo</a>
                 </li>

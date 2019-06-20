@@ -9,7 +9,7 @@
         }
 
         public function inserir($idPessoa, $idProfissao){
-            $insProf = $this->bd->prepare("INSERT INTO PessoaProfissao(idPessoa, idProfissao) 
+            $insProf = $this->bd->prepare("INSERT INTO pessoaprofissao(idPessoa, idProfissao) 
                                             VALUES (:idPessoa, :idProfissao)");
             $idPes = intval($idPessoa[0]);
             $idProf = intval($idProfissao[0]);

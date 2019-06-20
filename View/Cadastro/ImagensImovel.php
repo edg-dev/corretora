@@ -25,15 +25,16 @@
         <!-- Formulário do dropzone. Não modificar sob qualquer circunstância -->
         <div class="container-form-dropzone form-group">
             <div class="content-form-dropzone">
-                <form action="/corretora/Controller/ImagensImovelController.php?acao=<?=$acao?>" 
+                <form action="/corretora/Controller/ImagensImovelController.php?acao=create" 
                     class="dropzone" method="POST">
                     <input type="hidden" name="idImovel" value="<?php echo $id?>" id="idImovel">
+                <button type="button" class="btn btn-primary" id="btn-Upload"><i class="fa fa-cloud-upload-alt"></i> Upload</button>
                 </form>
             </div>
         </div>
         <div class="form-group">
             <button type="button" class="btn btn-success" id="btn-Finalizar"><i class="fa fa-check-circle"></i> Finalizar</button>
-            <button type="button" class="btn btn-primary" id="btn-Upload"><i class="fa fa-cloud-upload-alt"></i> Upload</button>
+
             <button type="button" class="btn btn-danger" id="btn-AgoraNao"><i class="fa fa-times-circle"></i> Agora não</button>
             <button class="btn btn-info" data-toggle="tooltip" data-placement="top" id="exemplo"
                 title="Após enviadas, as imagens são removidas apenas da fila e não do banco nem do servidor.">

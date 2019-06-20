@@ -10,7 +10,7 @@
         }
         public function getCodigoSexo($codigoSexo){
             try{
-                $sexo = $this->bd->prepare("SELECT codigoSexo FROM Sexo WHERE codigoSexo = :codigoSexo");
+                $sexo = $this->bd->prepare("SELECT codigoSexo FROM sexo WHERE codigoSexo = :codigoSexo");
                 $sexo->bindParam(":codigoSexo", $codigoSexo);
                 $sexo->execute();
 
@@ -22,7 +22,7 @@
 
         public function getAllSexo(){
             try{
-                $resSexo = $this->bd->query("SELECT * FROM Sexo");
+                $resSexo = $this->bd->query("SELECT * FROM sexo");
                 $resSexo->execute();
                 return $sexo = $resSexo->fetchAll();
             }catch(Exception $e){

@@ -1,5 +1,5 @@
 <?php
-    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/config/DataBase/dbConfig.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Config/DataBase/dbConfig.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/PessoaJuridicaModel.php";
 
     $pessoaJuridicaModel = new PessoaJuridicaModel();

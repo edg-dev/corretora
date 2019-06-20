@@ -1,6 +1,6 @@
 <?php
 	
-	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/config/DataBase/dbConfig.php";
+	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Config/DataBase/dbConfig.php";
 	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/EnderecoModel.php";
 	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TipoImovelModel.php";
 	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TransacaoModel.php";
@@ -36,7 +36,7 @@
 			$idEndereco = $this->endereco->getIdEndereco($logradouro, $numero, $complemento, $cep, $nomeBairro, 
 			$nomeCidade, $idEstado);
 
-		 	    $insImovel = $this->bd->prepare("INSERT INTO Imovel(idEndereco, idTransacao, idTipoImovel, areaUtil, areaTotal, 
+		 	    $insImovel = $this->bd->prepare("INSERT INTO imovel(idEndereco, idTransacao, idTipoImovel, areaUtil, areaTotal, 
 				 		precoImovel, descricaoImovel, quantQuarto, quantSuite, quantVagaGaragem, quantBanheiro) 
 			    VALUES (:idEndereco, :idTransacao, :idTipoImovel, :areaUtil, :areaTotal, :precoImovel, :descricaoImovel, 
 						:quantQuarto, :quantSuite, :quantVagaGaragem, :quantBanheiro)");
@@ -87,7 +87,7 @@
 		public function getIdImovel($idTipoImovel, $areaUtil, $areaTotal, $precoImovel, $idTransacao, $descricaoImovel,
 									$quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro){
 
-			$getID = $this->bd->prepare("SELECT idImovel FROM Imovel where 
+			$getID = $this->bd->prepare("SELECT idImovel FROM imovel where 
 			idTipoImovel = :idTipoImovel and areaUtil = :areaUtil and areaTotal = :areaTotal and precoImovel = :precoImovel
 			and idTransacao = :idTransacao and descricaoImovel = :descricaoImovel and quantQuarto = :quantQuarto
 			and quantSuite = :quantSuite and quantVagaGaragem = :quantVagaGaragem and quantBanheiro = :quantBanheiro");
@@ -108,7 +108,7 @@
 		}
 
 		public function deleteImovel($idImovel){
-			$delete = $this->bd->prepare("DELETE FROM Imovel WHERE idImovel = :idImovel");
+			$delete = $this->bd->prepare("DELETE FROM imovel WHERE idImovel = :idImovel");
             $delete->bindParam(":idImovel", $idImovel);
             $delete->execute();
 		}
@@ -137,7 +137,7 @@
 				on t.idtransacao = i.idtransacao
 			inner join cep
 				on cep.idcep = e.idcep
-			inner join tipoImovel ti
+			inner join tipoimovel ti
 				on ti.idtipoimovel = i.idtipoimovel
 			where i.idImovel = :idImovel");
 			$select->bindParam(":idImovel", $idImovel);
@@ -161,7 +161,7 @@
 					}
 					$idCidade = $this->cidade->ListarIdPorCidade($nomeCidade);
 	
-					$insert = $this->bd->prepare("INSERT INTO Pedidos 
+					$insert = $this->bd->prepare("INSERT INTO pedidos 
 						(idUsuario, idTipoImovel, idTransacao, idBairro, idCidade, idEstado, 
 						quantQuarto, quantSuite, quantVagaGaragem, quantBanheiro, precoMin, precoMax)
 						VALUES (:idUsuario, :idTipoImovel, :idTransacao, :idBairro, :idCidade, :idEstado, 

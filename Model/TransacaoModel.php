@@ -12,7 +12,7 @@ class TransacaoModel{
 
     public function getidTrasacao($transacao){       
         try{
-            $selTransacao = $this->bd->prepare("SELECT idTransacao FROM Transacao WHERE descricaoTransacao LIKE ? ");
+            $selTransacao = $this->bd->prepare("SELECT idTransacao FROM transacao WHERE descricaoTransacao LIKE ? ");
             $param = array("%$transacao%");//pode dar errado
             $selTransacao->execute($param);
 
@@ -23,7 +23,7 @@ class TransacaoModel{
     }
     public function getAllTransacao(){
         try{
-            $resTransacao = $this->bd->query("SELECT * FROM Transacao");
+            $resTransacao = $this->bd->query("SELECT * FROM transacao");
             $resTransacao->execute();
             return $transacao = $resTransacao->fetchAll();
         }catch(Exception $e){
