@@ -11,7 +11,7 @@ class CepModel{
 
     public function listarIdPorDescricao($descricaoCep){
         try{
-            $resCep = $this->bd->prepare("SELECT idCep FROM Cep WHERE descricaoCep = :descricaoCep");
+            $resCep = $this->bd->prepare("SELECT idCep FROM cep WHERE descricaoCep = :descricaoCep");
             $resCep->bindParam(":descricaoCep", $descricaoCep);
             $resCep->execute();
             return $idCep = $resCep->fetch();

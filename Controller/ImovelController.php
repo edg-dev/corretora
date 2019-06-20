@@ -1,6 +1,5 @@
-<?php
-	session_start();
-	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/config/DataBase/dbConfig.php";
+<?php session_start();
+	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Config/DataBase/dbConfig.php";
 	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImovelModel.php";
 	require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/AnuncioModel.php";
 
@@ -18,7 +17,7 @@
 		$nomeCidade = $_POST["cidade"];
 		$nomeBairro = $_POST["bairro"];
 		$logradouro = $_POST["rua"];
-		$numero =$_POST["numero"];
+		$numero = $_POST["numero"];
 		$complemento = $_POST["complemento"];
 
 		$quantQuarto = $_POST["quantQuarto"];
@@ -55,10 +54,9 @@
             $descricaoImovel = " ";
 		}
 
-		$idteste = $ImovelModel->inserir($idTipoImovel, $cep, $idEstado, $nomeCidade, $nomeBairro, $logradouro, $numero,
-							  $complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, 
-							  $idTransacao, $areaUtil, 
-							  $areaTotal, $precoImovel, $descricaoImovel);
+		$idteste = $ImovelModel->inserir($idTipoImovel, $cep, $idEstado, $nomeCidade, $nomeBairro, $logradouro, $numero, $complemento, $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, 
+			$idTransacao, $areaUtil, 
+			$areaTotal, $precoImovel, $descricaoImovel);
 
 		$AnuncioModel->inserir($idteste, $idUsuario);
 							  

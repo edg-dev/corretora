@@ -56,7 +56,7 @@ class PessoaFisicaModel {
 
             $this->telefone->inserir($valPessoa, $telefone1, $telefone2);
 
-            $insPF = $this->bd->prepare("INSERT INTO PessoaFisica(idPessoa, rg, cpf, codigoSexo, idestadoCivil) 
+            $insPF = $this->bd->prepare("INSERT INTO pessoafisica(idPessoa, rg, cpf, codigoSexo, idestadoCivil) 
                                         VALUES (:idPessoa, :rg, :cpf, :codigoSexo, :estadoCivil)");
             $idPf = intval($valPessoa[0]);
             $insPF->bindParam(":idPessoa",      $idPf,  PDO::PARAM_INT);

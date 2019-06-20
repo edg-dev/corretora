@@ -11,7 +11,7 @@ class CidadeModel{
 
     public function listarIdPorCidade($nomeCidade){
         try{
-            $resCidade = $this->bd->prepare("SELECT idCidade FROM Cidade WHERE nomeCidade = :nomeCidade");
+            $resCidade = $this->bd->prepare("SELECT idCidade FROM cidade WHERE nomeCidade = :nomeCidade");
             $resCidade->bindParam(":nomeCidade", $nomeCidade);
             $resCidade->execute();
             return $idCidade = $resCidade->fetch();  

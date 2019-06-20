@@ -1,6 +1,6 @@
 <?php
 
-    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/config/DataBase/dbConfig.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Config/DataBase/dbConfig.php";
 
     class ImagensImovelModel{
         private $bd;
@@ -11,7 +11,7 @@
 
         public function inserir($idImovel, $imagemImovel){
             try{
-                $insImagem = $this->bd->prepare("INSERT INTO ImagensImovel(idImovel, imagemImovel) VALUES(:idImovel, :imagemImovel)");
+                $insImagem = $this->bd->prepare("INSERT INTO imagensimovel(idImovel, imagemImovel) VALUES(:idImovel, :imagemImovel)");
                 $insImagem->bindParam(":idImovel", $idImovel, PDO::PARAM_INT);
                 $insImagem->bindParam(":imagemImovel", $imagemImovel);
                 $insImagem->execute();
@@ -21,7 +21,7 @@
         }
 
         public function listarArrayImagens($idImovel){
-            $lista = $this->bd->prepare("SELECT * FROM ImagensImovel WHERE idImovel = :idImovel");
+            $lista = $this->bd->prepare("SELECT * FROM imagensimovel WHERE idImovel = :idImovel");
             $lista->bindParam(":idImovel", $idImovel);
             $lista->execute();
 
@@ -33,7 +33,7 @@
         }
 
         public function listarAllImagens(){
-            $lista = $this->bd->query("SELECT * FROM ImagensImovel");
+            $lista = $this->bd->query("SELECT * FROM imagensimovel");
             $lista->execute();
 
             $array = array();
@@ -44,21 +44,21 @@
         }
 
         public function deletar($idImovel, $imagemImovel){
-            $delete = $this->bd->query("DELETE FROM ImagensImovel where idImovel = :idImovel and imagemImovel = :imagemImovel");
+            $delete = $this->bd->query("DELETE FROM imagensimovel where idImovel = :idImovel and imagemImovel = :imagemImovel");
             $delete->bindParam(":idImovel", $idImovel);
             $delete->bindParam(":imagemImovel", $imagemImovel);
             $delete->execute();
         }
 
         public function deletarAllImagens($idImovel){
-            $delete = $this->bd->prepare("DELETE FROM ImagensImovel WHERE idImovel = :idImovel");
+            $delete = $this->bd->prepare("DELETE FROM imagensimovel WHERE idImovel = :idImovel");
             $delete->bindParam(":idImovel", $idImovel);
             $delete->execute();
         }
 
         //TESTE
         public function getAllImagens(){
-            $foto = $this->bd->query("SELECT imagemImovel FROM ImagensImovel");
+            $foto = $this->bd->query("SELECT imagemImovel FROM imagensimovel");
             $foto->execute();
 
             $array = array();
@@ -69,7 +69,7 @@
         }
 
         public function getImagemImovelIndex($idImovel){
-            $foto = $this->bd->prepare("SELECT imagemImovel FROM ImagensImovel where idImovel = :idImovel LIMIT 1");
+            $foto = $this->bd->prepare("SELECT imagemImovel FROM imagensimovel where idImovel = :idImovel LIMIT 1");
             $foto->bindParam(":idImovel", $idImovel);
             $foto->execute();
 
@@ -81,7 +81,7 @@
         }
 
         public function countImagensImovel($idImovel){
-            $count = $this->bd->prepare("SELECT COUNT(*) as total FROM ImagensImovel where idImovel = :idImovel");
+            $count = $this->bd->prepare("SELECT COUNT(*) as total FROM imagensimovel where idImovel = :idImovel");
             $count->bindParam(":idImovel", $idImovel);
             $count->execute();
             return $count->fetch(PDO::FETCH_ASSOC);

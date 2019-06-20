@@ -1,6 +1,8 @@
 <?php
-    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/config/DataBase/dbConfig.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Config/DataBase/dbConfig.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/PessoaFisicaModel.php";
+
+    include($_SERVER["DOCUMENT_ROOT"] . "/corretora/index.php");
 
     $pessoaFisicaModel = new PessoaFisicaModel();
 
@@ -31,7 +33,8 @@
         
         $pessoaFisicaModel->inserir($nome, $codSexo, $email, $senha, $telefone1, $telefone2, $rg, $cpf, $logradouro, $numero, 
                                     $complemento, $cep, $nomeBairro, $nomeCidade, $idEstado, $idEstadoCivil, $descricaoProfissao);
-
+                                    
+        # header('Location: /corretora/index.php');
         echo "<script>alert('Pessoa cadastrada com sucesso'); location.href='/corretora/index.php';</script>";
     }
 

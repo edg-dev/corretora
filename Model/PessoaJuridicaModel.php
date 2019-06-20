@@ -45,7 +45,7 @@ class PessoaJuridicaModel{
 
             $this->telefone->inserir($valPessoa, $telefone1, $telefone2);
 
-            $insPJ = $this->bd->prepare("INSERT INTO PessoaJuridica(idPessoa, razaoSocial, cnpj) 
+            $insPJ = $this->bd->prepare("INSERT INTO pessoajuridica(idPessoa, razaoSocial, cnpj) 
                                         VALUES (:idPessoa, :razaoSocial, :cnpj)");
             $idPj = intval($valPessoa[0]);
             $insPJ->bindParam(":idPessoa", $idPj, PDO::PARAM_INT);

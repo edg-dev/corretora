@@ -150,11 +150,11 @@ include('conexao.php');
                             <td>
                                 <?php if($anuncioUser['negociacao'] == 1 && $anuncioUser['verificado'] == 1){ ?>
                                     <button type="button" class="btn btn-success" onclick="window.location.href='/corretora/Controller/ImovelController.php?acao=anuncio&idImovel=<?php echo $anuncioUser['idimovel']?>'">
-                                        <i class="fa fa-bullhorn"></i> Colocar em anúncio
+                                        <i class="fa fa-bullhorn"></i> Ativar anúncio
                                     </button>
                                 <?php } else if($anuncioUser['negociacao'] == 0 && $anuncioUser['verificado'] == 1) { ?> 
                                     <button type="button" class="btn btn-success" onclick="window.location.href='/corretora/Controller/ImovelController.php?acao=negociar&idImovel=<?php echo $anuncioUser['idimovel']?>'">
-                                        <i class="fa fa-handshake"></i> Ativar/Desativar Anúncio
+                                        <i class="fa fa-handshake"></i> Desativar Anúncio
                                     </button>
                                 <?php } else { ?>
                                     <button type="button" class="btn btn-success" disabled>
@@ -169,8 +169,8 @@ include('conexao.php');
                     <div>
                         <h4>
                             <i class="fa fa-exclamation-triangle"></i> 
-                            Atenção! O botão [Colocar em Anúncio/Colocar em negociação] serve para ativar/desativar a exibição do anúncio publicamente.
-                            O mesmo deve ser usado para que ninguém encontre o anúncio enquanto em período de negociações. 
+                            Atenção! O botão [Ativar/Desativar] serve para ativar/desativar a exibição do anúncio publicamente.
+                            O mesmo deve ser usado para que ninguém encontre o anúncio enquanto em período de negociações(desativado). 
                             Em caso de sucesso na venda/aluguel do imóvel, o anúncio deve ser manualmente removido para não ser mais exibido.
                         </h4>
                     </div>

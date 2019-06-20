@@ -15,13 +15,13 @@
         }
 
         public function insertPerfilDefault($idUsuario){
-            $insert = $this->bd->prepare("INSERT INTO UsuarioPerfil(idUsuario, idPerfil) VALUES (:idUsuario, 1)");
+            $insert = $this->bd->prepare("INSERT INTO usuarioperfil(idUsuario, idPerfil) VALUES (:idUsuario, 1)");
             $insert->bindParam(":idUsuario", $idUsuario);
             $insert->execute();
         }
 
         public function insertPerfil($idUsuario, $idPerfil, $cresci){
-            $update = $this->bd->prepare("UPDATE UsuarioPerfil SET idUsuario = :idUsuario, idPerfil = :idPerfil, cresci = :cresci
+            $update = $this->bd->prepare("UPDATE usuarioperfil SET idUsuario = :idUsuario, idPerfil = :idPerfil, cresci = :cresci
                 WHERE idUsuario = :idUsuario");
             $update->bindParam(":idUsuario", $idUsuario);
             $update->bindParam(":idPerfil", $idPerfil);
@@ -30,7 +30,7 @@
         }
 
         public function updateUsuarioAdmin($idUsuario){
-            $update = $this->bd->prepare("UPDATE Usuario SET admin = 1 WHERE idUsuario = :idUsuario");
+            $update = $this->bd->prepare("UPDATE usuario SET admin = 1 WHERE idUsuario = :idUsuario");
             $update->bindParam(":idUsuario", $idUsuario);
             $update->execute();
         }

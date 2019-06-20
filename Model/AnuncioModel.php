@@ -10,7 +10,7 @@
         }
 
         public function inserir($idImovel, $idUsuario){
-            $inserir = $this->bd->prepare("INSERT INTO Anuncio(idImovel, verificado, idUsuario) VALUES (:idImovel, 0, :idUsuario)");
+            $inserir = $this->bd->prepare("INSERT INTO anuncio(idImovel, verificado, idUsuario, idPrioridade) VALUES (:idImovel, 0, :idUsuario, 3)");
             $inserir->bindParam(":idImovel", $idImovel);
             $inserir->bindParam(":idUsuario", $idUsuario);
             $inserir->execute();
@@ -46,20 +46,20 @@
         }
 
         public function countAnuncios(){
-            $count = $this->bd->prepare("SELECT COUNT(*) as total FROM Anuncio");
+            $count = $this->bd->prepare("SELECT COUNT(*) as total FROM anuncio");
             $count->execute();
             return $count->fetch(PDO::FETCH_ASSOC);
         }
 
         public function countAnunciosAprovacao(){
-            $count = $this->bd->prepare("SELECT COUNT(*) as total FROM Anuncio inner join Imovel on Imovel.idImovel = Anuncio.idImovel
-            WHERE Anuncio.verificado = 0 and (Imovel.pedido is null or Imovel.pedido = 0)");
+            $count = $this->bd->prepare("SELECT COUNT(*) as total FROM anuncio inner join imovel on imovel.idImovel = anuncio.idImovel
+            WHERE anuncio.verificado = 0 and (imovel.pedido is null or imovel.pedido = 0)");
             $count->execute();
             return $count->fetch(PDO::FETCH_ASSOC);
         }
 
         public function updateAprovacao($idImovel, $idPrioridade, $idAnuncio, $idUsuario){
-            $update = $this->bd->prepare("UPDATE Anuncio SET idImovel = :idImovel, verificado = 1, 
+            $update = $this->bd->prepare("UPDATE anuncio SET idImovel = :idImovel, verificado = 1, 
                 idPrioridade = :idPrioridade, idUsuario = :idUsuario WHERE idAnuncio = :idAnuncio");
             $update->bindParam(":idImovel", $idImovel);
             $update->bindParam(":idPrioridade", $idPrioridade);
@@ -69,12 +69,12 @@
         }
 
        public function delete($idAnuncio){
-            $delete = $this->bd->prepare("DELETE FROM Anuncio WHERE idAnuncio = :idAnuncio");
+            $delete = $this->bd->prepare("DELETE FROM anuncio WHERE idAnuncio = :idAnuncio");
             $delete->bindParam(":idAnuncio", $idAnuncio);
             $delete->execute();
         }
         public function listar($idUsuario){
-            $listar = $this->bd->prepare("SELECT FROM Usuario WHERE idUsuario = :idUsuario");
+            $listar = $this->bd->prepare("SELECT FROM usuario WHERE idUsuario = :idUsuario");
             $listar->bindParam(":idAUsuario", $idUsuario);
             $listar->execute();
         }
@@ -108,22 +108,22 @@
         }
 
         public function countAnunciosUser($idUsuario){
-            $count = $this->bd->prepare("SELECT COUNT(*) as total FROM Anuncio where idUsuario = :idUsuario");
+            $count = $this->bd->prepare("SELECT COUNT(*) as total FROM anuncio where idUsuario = :idUsuario");
             $count->bindParam(":idUsuario", $idUsuario);
             $count->execute();
             return $count->fetch(PDO::FETCH_ASSOC);
         }
 
         public function countAnunciosAprovacaoUser($idUsuario){
-            $count = $this->bd->prepare("SELECT COUNT(*) as total FROM Anuncio inner join Imovel on Imovel.idImovel = Anuncio.idImovel
-            WHERE Anuncio.verificado = 0 and (Imovel.pedido is null or Imovel.pedido = 0) and Anuncio.idUsuario = :idUsuario");
+            $count = $this->bd->prepare("SELECT COUNT(*) as total FROM anuncio inner join imovel on imovel.idImovel = anuncio.idImovel
+            WHERE anuncio.verificado = 0 and (imovel.pedido is null or imovel.pedido = 0) and anuncio.idUsuario = :idUsuario");
             $count->bindParam(":idUsuario", $idUsuario);
             $count->execute();
             return $count->fetch(PDO::FETCH_ASSOC);
         }
 
         public function countAnunciosAtivosUser($idUsuario){
-            $count = $this->bd->prepare("SELECT COUNT(*) as total FROM Anuncio where idUsuario = :idUsuario AND verificado = 1");
+            $count = $this->bd->prepare("SELECT COUNT(*) as total FROM anuncio where idUsuario = :idUsuario AND verificado = 1");
             $count->bindParam(":idUsuario", $idUsuario);
             $count->execute();
             return $count->fetch(PDO::FETCH_ASSOC);
@@ -152,7 +152,7 @@
 		            on t.idtransacao = i.idtransacao
                 inner join cep
 		            on cep.idcep = e.idcep
-                inner join tipoImovel ti
+                inner join tipoimovel ti
                     on ti.idTipoImovel = i.idTipoImovel
                 where a.idUsuario = :idUsuario ORDER BY a.idAnuncio"
             );

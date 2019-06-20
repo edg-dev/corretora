@@ -22,7 +22,7 @@ class BairroModel{
 
     public function listarIdPorBairro($nomeBairro){
         try{
-            $resBairro = $this->bd->prepare("SELECT idBairro FROM Bairro WHERE nomeBairro = :nomeBairro");
+            $resBairro = $this->bd->prepare("SELECT idBairro FROM bairro WHERE nomeBairro = :nomeBairro");
             $resBairro->bindParam(":nomeBairro", $nomeBairro);
             $resBairro->execute();
             return $idBairro = $resBairro->fetch();

@@ -59,7 +59,7 @@ if(!$_SESSION['usuario' ]) {
         Cadastro do Pedido:
         </h1></b>
 
-<form method="post" id="formImovel" method="POST" action="/corretora/Controller/ImovelController.php?acao=pedir&idUsuario=1">
+<form method="post" id="formImovel" method="POST" action="/corretora/Controller/ImovelController.php?acao=pedir&idUsuario=<?php echo $_SESSION['idUsuario'];?> ">
     <div class="form-group">
         <b><label for="tipoDeImovel">Que tipo de imóvel você quer pedir?</label></b>
         <select id="tipoDeImovel" class="form-control" name="tipoDeImovel" required>

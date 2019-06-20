@@ -10,7 +10,7 @@
         }
 
         public function getPrioridades(){
-            $get = $this->bd->prepare("SELECT * FROM PrioridadeAnuncio");
+            $get = $this->bd->prepare("SELECT * FROM prioridadeanuncio");
             $get->execute();
             return $prioridades = $get->fetchAll();
         }
