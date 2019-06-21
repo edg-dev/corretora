@@ -28,7 +28,11 @@
     $banner2 = $bannerModel->getRandomBanner();
 ?>
 <div style="padding-top: 20px; text-align: center;">
-    <h1>Quer anunciar seu imóvel ou procurar um negócio? Você veio ao lugar certo!</h1>
+    <h1>
+        QUER ANUNCIAR OU PROCURA UM IMÓVEL IDEAL PARA SER SEU NOVO LAR, INVESTIMENTO OU NEGÓCIO?
+        VOCÊ ESTÁ NO LUGAR CERTO!<br>
+        Gaste seu tempo  organizando a mudança, deixa que a busca nós te ajudamos!
+    </h1>
 </div>
 <div class="row" style="padding-top: 60px;">
         <div class="col-md-4">
@@ -41,7 +45,7 @@
             <div class="input-group">
 
             <div class="form-group">
-                <b><label for="transacao">Em qual tipo de transação você quer?</label></b>
+                <b><label for="transacao">O que você deseja?</label></b>
             <select id="transacao" class="form-control" name="transacao" >
                 <option selected value="">Selecione a opção:</option>
                     <?php foreach($transacoes as $transacao){?>                
@@ -53,7 +57,7 @@
                     <?php } ?>
             </select>
             </div>
-
+            <hr>
             <div class="form-group">
                 <b><label for="tipoDeImovel">Que tipo de imóvel você proucura?</label></b>
             <select id="tipoDeImovel" class="form-control" name="tipoDeImovel" >
@@ -172,8 +176,12 @@
                         <b>um(a)</b>
                         <?php echo $imovel['descricaoTipoImovel'];?></p>
 
-                        <p><b>Preço: R$</b>        
-                        <?php echo $imovel['precoImovel'];?></p>
+                        <p><b>Preço: R$</b> 
+                        <?php if($imovel['precoImovel'] == null || $imovel['precoImovel'] == 0) { 
+                             echo "Valor a negociar";
+                        } else {
+                            echo $imovel['precoImovel'];
+                        }?></p>
 
                         <p><b>Área útil:</b>
                         <?php echo $imovel['areaUtil'];?> M² ;

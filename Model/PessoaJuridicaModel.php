@@ -77,6 +77,11 @@ class PessoaJuridicaModel{
         return $select->fetchAll();
     }
 
+    public function removerPessoaJuridica($idPessoa){
+        $delete = $this->bd->prepare("DELETE FROM pessoajuridica where idPessoa = :idPessoa");
+        $delete->bindParam(":idPessoa", $idPessoa);
+        $delete->execute();
+    }
 }
 
 

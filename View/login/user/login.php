@@ -1,5 +1,8 @@
 <?php session_start();
 
+require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/PessoaModel.php";
+
+$pessoa = new PessoaModel();
 
 include('conexao.php');
  
@@ -21,17 +24,19 @@ if($row == 1) {
 	while($percorrer = mysqli_fetch_array($result)){
 		$admin= $percorrer ['admin'];
 		$user = $percorrer['idUsuario'];
-
+		$nomePessoa = $pessoa->getNomePessoa($user);
 		if ($admin== 1) {
 			$_SESSION['idUsuario'] = $user;
 			$_SESSION['usuario'] = $usuario;
 			$_SESSION['admin'] = $admin;
+			$_SESSION['nomePessoa'] = $nomePessoa['nome'];
 			echo "<script>location.href='/corretora/View/administrador/index.php';</script>";
 			# header('Location: /corretora/View/administrador/index.php');
 			exit();
 		} else {
 			$_SESSION['idUsuario'] = $user;
 			$_SESSION['usuario'] = $usuario;
+			$_SESSION['nomePessoa'] = $nomePessoa['nome'];
 			echo "<script>location.href='user.php';</script>";
 			# header('Location: user.php');
 			exit();

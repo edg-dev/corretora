@@ -97,6 +97,12 @@ class PessoaFisicaModel {
         $select->execute();
         return $select->fetchAll();
     }
+
+    public function removerPessoaFisica($idPessoa){
+        $delete = $this->bd->prepare("DELETE FROM pessoafisica where idPessoa = :idPessoa");
+        $delete->bindParam(":idPessoa", $idPessoa);
+        $delete->execute();
+    }
 }
 
 

@@ -62,6 +62,18 @@ class UsuarioModel{
         $select->execute();
         return $select->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function removerUsuarioPerfil($idPessoa){
+        $delete = $this->bd->prepare("DELETE FROM usuarioperfil where idUsuario = :idUsuario");
+        $delete->bindParam(":idUsuario", $idPessoa);
+        $delete->execute();
+    }
+
+    public function removerUsuario($idPessoa){
+        $delete = $this->bd->prepare("DELETE FROM usuario where idUsuario = :idUsuario");
+        $delete->bindParam(":idUsuario", $idPessoa);
+        $delete->execute();
+    }
 }
 
 ?>

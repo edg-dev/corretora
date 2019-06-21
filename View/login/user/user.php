@@ -37,8 +37,6 @@
 include('verifica_login.php');
 include('conexao.php');
 
-
-
 ?>
 
 <head>
@@ -54,7 +52,7 @@ include('conexao.php');
 <hr>
 <div class="bootstrap snippet">
     <div class="row">
-  		<div class="col-sm-10"><h1>Olá, você está logado com <strong> <?php echo $_SESSION['usuario'];?></strong></h1></div>
+  		<div class="col-sm-10"><h3>Olá<strong> <?php echo $_SESSION['nomePessoa'];?></strong>, seja bem vindo(a)!</h3></div>
     	<div class="col-sm-2">
             <a href="\corretora\View\login\user\logout.php" class="btn btn-danger btn-lg">Sair</a>
         </div>
