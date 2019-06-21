@@ -71,13 +71,25 @@
 
                 <?php if(isset($_SESSION['idUsuario'])) { ?>
                 <li class="nav-item">
-                    <a class="nav-link btn-outline-success" href="/corretora/View/Cadastro/Pedido.php">Cadastrar Pedido</a>
+                    <a class="nav-link btn-outline-success" href="/corretora/View/Cadastro/Pedido.php">Cadastrar meus desejos</a>
+                </li>
+                <?php } ?>
+
+                <?php if(isset($_SESSION['idUsuario'])) { ?>
+                <li class="nav-item">
+                    <a class="nav-link btn-outline-success" href="/corretora/View/login/user/user.php#anuncios">Meus anúncios</a>
+                </li>
+                <?php } ?>
+
+                <?php if(isset($_SESSION['idUsuario'])) { ?>
+                <li class="nav-item">
+                    <a class="nav-link btn-outline-success" href="/corretora/View/login/user/user.php#pedidos">Meus desejos</a>
                 </li>
                 <?php } ?>
 
             </ul>
 
-                <img class="nav-link" style="width:200px;height:64px;" src="/corretora/View/visual/title.png" alt="Anuncie aqui">
+                <img class="nav-link" style="width:200px;height:64px;margin-right: 350px;" src="/corretora/View/visual/title.png" alt="Anuncie aqui">
                 
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <?php if(!isset($_SESSION['idUsuario'])) { ?>

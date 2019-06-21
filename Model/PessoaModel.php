@@ -39,6 +39,13 @@ class PessoaModel{
         $delete->bindParam(":idPessoa", $idPessoa);
         $delete->execute();
     }
+
+    public function getNomePessoa($idPessoa){
+        $select = $this->bd->prepare("SELECT nome FROM pessoa where idPessoa = :idPessoa");
+        $select->bindParam(":idPessoa", $idPessoa);
+        $select->execute();
+        return $select->fetch(PDO::FETCH_ASSOC);
+    }
 }
 
 ?>

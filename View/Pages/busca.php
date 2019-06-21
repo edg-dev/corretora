@@ -146,8 +146,12 @@
                         <b>um(a)</b>
                         <?php echo $imovel['descricaoTipoImovel'];?></p>
 
-                        <p><b>Preço: R$</b>        
-                        <?php echo $imovel['precoImovel'];?></p>
+                        <p><b>Preço: R$</b> 
+                        <?php if($imovel['precoImovel'] == null || $imovel['precoImovel'] == 0) { 
+                             echo "Valor a negociar";
+                        } else {
+                            echo $imovel['precoImovel'];
+                        }?></p>
 
                         <p><b>Área útil:</b>
                         <?php echo $imovel['areaUtil'];?> M² ;
