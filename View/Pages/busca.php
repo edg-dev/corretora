@@ -10,7 +10,7 @@
 ?>
 
         <?php 
-        require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/config/DataBase/dbConfig.php";
+        require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Config/DataBase/dbConfig.php";
 
         // filtros da busca 
         $cidade = isset($_GET['cidade']) ? $_GET['cidade'] : '';
@@ -146,8 +146,12 @@
                         <b>um(a)</b>
                         <?php echo $imovel['descricaoTipoImovel'];?></p>
 
-                        <p><b>Preço: R$</b>        
-                        <?php echo $imovel['precoImovel'];?></p>
+                        <p><b>Preço: R$</b> 
+                        <?php if($imovel['precoImovel'] == null || $imovel['precoImovel'] == 0) { 
+                             echo "Valor a negociar";
+                        } else {
+                            echo $imovel['precoImovel'];
+                        }?></p>
 
                         <p><b>Área útil:</b>
                         <?php echo $imovel['areaUtil'];?> M² ;

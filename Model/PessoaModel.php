@@ -12,7 +12,7 @@ class PessoaModel{
     public function inserir($nome, $idEndereco, $email){
         try{
             $idend = intval($idEndereco[0]);
-            $insPessoa = $this->bd->prepare("INSERT INTO Pessoa(nome, idEndereco, emailContato) VALUES(:nome, :idEndereco, :email)");
+            $insPessoa = $this->bd->prepare("INSERT INTO pessoa(nome, idEndereco, emailContato) VALUES(:nome, :idEndereco, :email)");
             $insPessoa->bindParam(":nome",          $nome);
             $insPessoa->bindParam(":idEndereco",    $idend, PDO::PARAM_INT);
             $insPessoa->bindParam(":email",         $email);
@@ -24,7 +24,7 @@ class PessoaModel{
 
     public function getIdPessoa($nome, $email){       
         try{
-            $selPessoa = $this->bd->prepare("SELECT idPessoa FROM Pessoa WHERE nome LIKE ? AND emailContato LIKE ?");
+            $selPessoa = $this->bd->prepare("SELECT idPessoa FROM pessoa WHERE nome LIKE ? AND emailContato LIKE ?");
             $params = array("%$nome%", "%$email%");
             $selPessoa->execute($params);
 
@@ -32,6 +32,19 @@ class PessoaModel{
         } catch(Exception $e){
             throw $e;
         }
+    }
+
+    public function removerPessoa($idPessoa){
+        $delete = $this->bd->prepare("DELETE FROM pessoa where idPessoa = :idPessoa");
+        $delete->bindParam(":idPessoa", $idPessoa);
+        $delete->execute();
+    }
+
+    public function getNomePessoa($idPessoa){
+        $select = $this->bd->prepare("SELECT nome FROM pessoa where idPessoa = :idPessoa");
+        $select->bindParam(":idPessoa", $idPessoa);
+        $select->execute();
+        return $select->fetch(PDO::FETCH_ASSOC);
     }
 }
 

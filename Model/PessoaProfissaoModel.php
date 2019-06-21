@@ -9,13 +9,19 @@
         }
 
         public function inserir($idPessoa, $idProfissao){
-            $insProf = $this->bd->prepare("INSERT INTO PessoaProfissao(idPessoa, idProfissao) 
+            $insProf = $this->bd->prepare("INSERT INTO pessoaprofissao(idPessoa, idProfissao) 
                                             VALUES (:idPessoa, :idProfissao)");
             $idPes = intval($idPessoa[0]);
             $idProf = intval($idProfissao[0]);
             $insProf->bindParam(":idPessoa", $idPes, PDO::PARAM_INT);
             $insProf->bindParam(":idProfissao", $idProf, PDO::PARAM_INT);
             $insProf->execute();
+        }
+
+        public function deletar($idPessoa){
+            $delete = $this->bd->prepare("DELETE FROM pessoaprofissao where idPessoa = :idPessoa");
+            $delete->bindParam(":idPessoa", $idPessoa);
+            $delete->execute();
         }
     }
 

@@ -1,9 +1,8 @@
+<?php session_start();?>
 <!doctype html>
 <html lang="pt-br">
     <head> 
-    <?php
-    session_start();
-    ?> 
+ 
         
         <meta charset="ISO-8859-1"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
@@ -72,13 +71,25 @@
 
                 <?php if(isset($_SESSION['idUsuario'])) { ?>
                 <li class="nav-item">
-                    <a class="nav-link btn-outline-success" href="/corretora/View/Cadastro/Pedido.php">Cadastrar Pedido</a>
+                    <a class="nav-link btn-outline-success" href="/corretora/View/Cadastro/Pedido.php">Cadastrar meus desejos</a>
+                </li>
+                <?php } ?>
+
+                <?php if(isset($_SESSION['idUsuario'])) { ?>
+                <li class="nav-item">
+                    <a class="nav-link btn-outline-success" href="/corretora/View/login/user/user.php#anuncios">Meus anúncios</a>
+                </li>
+                <?php } ?>
+
+                <?php if(isset($_SESSION['idUsuario'])) { ?>
+                <li class="nav-item">
+                    <a class="nav-link btn-outline-success" href="/corretora/View/login/user/user.php#pedidos">Meus desejos</a>
                 </li>
                 <?php } ?>
 
             </ul>
 
-                <img class="nav-link" style="width:200px;height:64px;" src="/corretora/View/visual/title.png" alt="Anuncie aqui">
+                <img class="nav-link" style="width:200px;height:64px;margin-right: 350px;" src="/corretora/View/visual/title.png" alt="Anuncie aqui">
                 
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <?php if(!isset($_SESSION['idUsuario'])) { ?>
@@ -87,7 +98,7 @@
                 </li>
                 <?php } ?>
 
-                <?php if(isset($_SESSION['admin'])) { ?>
+                <?php if(isset($_SESSION['admin']) && $_SESSION['admin'] == 1 ) { ?>
                 <li class="nav-item">
                     <a class="nav-link btn-outline-primary" href="/corretora/View/administrador/index.php">Administrativo</a>
                 </li>

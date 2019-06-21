@@ -80,7 +80,11 @@
                     <div class="form-group row">
                         <label for="precoimovel" class="col-sm-3 col-form-label"><i class="fa fa-dollar-sign"></i> Preço: </label>
                         <div class="col-sm-9">
-                        <input type="text" readonly class="form-control-plaintext" id="precoimovel" value="<?php echo $infoImovel["precoImovel"];?>">
+                        <input type="text" readonly class="form-control-plaintext" id="precoimovel" value="<?php if($infoImovel['precoImovel'] == null || $infoImovel['precoImovel'] == 0) { 
+                                echo "Valor a negociar";
+                            } else {
+                                echo $infoImovel['precoImovel'];
+                            }?>">
                         </div>
                     </div>
                     <br>

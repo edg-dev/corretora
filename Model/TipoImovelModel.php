@@ -12,7 +12,7 @@ class TipoImovelModel{
 
     public function getIdTipoImovel($descricaoTipoImovel){       
         try{
-            $selTipoImovel = $this->bd->prepare("SELECT idTipoImovel FROM TipoImovel WHERE descricaoTipoImovel LIKE ? ");
+            $selTipoImovel = $this->bd->prepare("SELECT idTipoImovel FROM tipoimovel WHERE descricaoTipoImovel LIKE ? ");
             $param = array("%$descricaoTipoImovel%");//pode dar errado
             $selTipoImovel->execute($param);
 
@@ -23,7 +23,7 @@ class TipoImovelModel{
     }
     public function getAllTipoImovel(){
         try{
-            $resTipo = $this->bd->query("SELECT * FROM TipoImovel");
+            $resTipo = $this->bd->query("SELECT * FROM tipoimovel");
             $resTipo->execute();
             return $tipoImovel = $resTipo->fetchAll();
         }catch(Exception $e){

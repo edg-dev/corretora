@@ -12,7 +12,7 @@ class EstadoCivilModel{
 
     public function getAllEstadoCivil(){
         try{
-            $resEstadoCivil = $this->bd->query("SELECT * FROM estadoCivil");
+            $resEstadoCivil = $this->bd->query("SELECT * FROM estadocivil");
             $resEstadoCivil->execute();
             return $estadosCivil = $resEstadoCivil->fetchAll();
         } catch(Exception $e){
