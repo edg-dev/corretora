@@ -17,6 +17,12 @@
             $insProf->bindParam(":idProfissao", $idProf, PDO::PARAM_INT);
             $insProf->execute();
         }
+
+        public function deletar($idPessoa){
+            $delete = $this->bd->prepare("DELETE FROM pessoaprofissao where idPessoa = :idPessoa");
+            $delete->bindParam(":idPessoa", $idPessoa);
+            $delete->execute();
+        }
     }
 
 ?>

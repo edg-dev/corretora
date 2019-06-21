@@ -33,6 +33,12 @@ class PessoaModel{
             throw $e;
         }
     }
+
+    public function removerPessoa($idPessoa){
+        $delete = $this->bd->prepare("DELETE FROM pessoa where idPessoa = :idPessoa");
+        $delete->bindParam(":idPessoa", $idPessoa);
+        $delete->execute();
+    }
 }
 
 ?>

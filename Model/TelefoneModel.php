@@ -34,6 +34,12 @@ class TelefoneModel {
         return $select->fetchAll();
     }
 
+    public function removerTelefones($idPessoa){
+        $delete = $this->bd->prepare("DELETE FROM telefone where idPessoa = :idPessoa");
+        $delete->bindParam(":idPessoa", $idPessoa);
+        $delete->execute();
+    }
+
 }
 
 ?>
