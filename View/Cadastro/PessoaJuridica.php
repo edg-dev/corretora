@@ -60,40 +60,43 @@
 
     <!--Endereco Completo com uma funcao de Buscar Atomaticamente-->
     <div class="form-row">
-        <div class="form-group col-md-10">
+
+        <div class="form-group col-md-4">
+            <label for="cep"><span>*</span>CEP:</label>
+            <input type="text" class="form-control" id="cep" placeholder="Ex.: 00000-000" name="cep" required>
+            <small id="cep" class="form-text text-muted">Se o CEP preenchido for válido, alguns dados serão preenchidos automaticamente.</small>
+        </div>
+
+        <div class="form-group col-md-7">
             <label for="logradouro"><span>*</span>Logradouro:</label>
             <input type="text" class="form-control" id="logradouro" placeholder="Rua, Avenida, etc..." name="logradouro" required>
 
         </div>
 
-        <div class="form-group col-md-2">
+        <div class="form-group col-md-1">
             <label for="numero"><span>*</span>Número:</label>
             <input type="number" class="form-control" id="numero" name="numero" required>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="cpf">Complemento:</label>
-        <input type="text" class="form-control" id="complemento" placeholder="Opcional" name="complemento">
+        <label for="complemento">Complemento:</label>
+        <input type="text" class="form-control" id="complemento" aria-describedby="complemento" placeholder="Apartamento, fundos, etc..." name="complemento">
+        <small id="complemento" class="form-text text-muted">Esse campo é opcional.</small>
     </div>
   
     <div class="form-row">
-        <div class="form-group col-md-3">
-            <label for="cep"><span>*</span>CEP:</label>
-            <input type="text" class="form-control" id="cep" placeholder="Ex.: 00000-000" name="cep" required>
-        </div>
-
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-4">
             <label for="bairro"><span>*</span>Bairro:</label>
             <input type="text" class="form-control" id="bairro" placeholder="Informe seu bairro" name="bairro" required>
         </div>
 	    
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-4">
             <label for="cidade"><span>*</span>Cidade:</label>
             <input type="text" class="form-control" id="cidade" placeholder="Informe sua cidade" name="cidade" required>
         </div>
 
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-4">
             <label for="estado"><span>*</span>Estado:</label>
             <select id="estado" class="form-control" name="estado" required>
                 <option selected>Selecione seu estado</option>

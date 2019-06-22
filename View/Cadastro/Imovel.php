@@ -61,7 +61,7 @@ include($_SERVER["DOCUMENT_ROOT"] . '/corretora/View/login/user/verifica_login.p
 
     <b><h1 class="titulo my-4">
         Cadastro do Imóvel:
-        </h1></b>
+    </h1></b>
 
     <form method="post" id="formImovel" method="POST" action="/corretora/Controller/ImovelController.php?acao=<?=$acao?>">
         <div class="form-group">
@@ -74,26 +74,51 @@ include($_SERVER["DOCUMENT_ROOT"] . '/corretora/View/login/user/verifica_login.p
             </select>
         </div>
 
-        <div class="form-group">
         <b><label for="tipoDeImovel">Onde fica seu imóvel?</label></b>
+        <div class="form-row">
+            <div class="form-group col-md-4">            
+                <label for="cep"><span>*</span>Cep:</label>
+                <input type="text" class="form-control cep-mask" id="cep" placeholder="Ex.: 00000-000" name="cep" required>
+            </div>
+
+            <div class="form-group col-md-7">
+                <label for="logradouro"><span>*</span>Logradouro:</label>
+                <input type="text" class="form-control" id="logradouro" placeholder="Rua, Avenida, etc..." name="rua" required>
+            </div>
+
+            <div class="form-group col-md-1">
+                <label for="numero"><span>*</span>Número:</label>
+                <input type="number" class="form-control" id="numero" name="numero" required>
+            </div> 
         </div>
-        <div class="form-group">
-            <label for="cep"><span>*</span>Cep:</label>
-            <input type="text" class="form-control cep-mask" id="cep" placeholder="Ex.: 00000-000" name="cep" require>
-            <select id="estado" class="form-control" name="estado" required>
+
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="complemento">Complemento:</label>
+                <input type="text" class="form-control" id="complemento" placeholder="Complemento" name="complemento">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="bairro"><span>*</span>Bairro:</label>
+                <input type="text" class="form-control" id="bairro" placeholder="Bairro" name="bairro" required>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="cidade"><span>*</span>Cidade:</label>
+                <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade" required>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="estado"><span>*</span>Estado:</label>
+                <select id="estado" class="form-control" name="estado" required>
                     <option selected>Selecione seu estado</option>
                     <?php foreach($estados as $estado){?>
-                    <option value="<?php echo $estado['idEstado'];?>"> <?php echo $estado['descricaoEstado'];?> </option>
+                        <option data-uf="<?php echo $estado['siglaEstado'];?>" value="<?php echo $estado['idEstado'];?>"> <?php echo $estado['descricaoEstado'];?> </option>
                     <?php }?>
-                </select>   
-        </div>
-        <div class="form-group">
-            <label for="endereco">Endereço:</label>
-            <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade" required>
-            <input type="text" class="form-control" id="bairro" placeholder="Bairro" name="bairro" required>
-            <input type="text" class="form-control" id="rua" placeholder="Rua" name="rua" required>
-            <input type="text" class="form-control" id="complemento" placeholder="Complemento" name="complemento">
-            <input type="number" class="form-control" id="numero" placeholder="Número" name="numero" required>
+                </select> 
+            </div>
         </div>
 
         <div class="form-group">
@@ -160,5 +185,33 @@ include($_SERVER["DOCUMENT_ROOT"] . '/corretora/View/login/user/verifica_login.p
 
 <script type="text/javascript">
     $('#cep').mask('00000-000');
+
+    $("#cep").focusout(function(){
+		//Início do Comando AJAX
+		$.ajax({
+			//O campo URL diz o caminho de onde virá os dados
+			//É importante concatenar o valor digitado no CEP
+			url: 'https://viacep.com.br/ws/'+$(this).val()+'/json/unicode/',
+			//Aqui você deve preencher o tipo de dados que será lido,
+			//no caso, estamos lendo JSON.
+			dataType: 'json',
+			//SUCESS é referente a função que será executada caso
+			//ele consiga ler a fonte de dados com sucesso.
+			//O parâmetro dentro da função se refere ao nome da variável
+			//que você vai dar para ler esse objeto.
+			success: function(resposta){
+				//Agora basta definir os valores que você deseja preencher
+				//automaticamente nos campos acima.
+				$("#logradouro").val(resposta.logradouro);
+				$("#complemento").val(resposta.complemento);
+				$("#bairro").val(resposta.bairro);
+				$("#cidade").val(resposta.localidade);
+				$("#estado").data("data-uf").val(resposta.uf);
+				//Vamos incluir para que o Número seja focado automaticamente
+				//melhorando a experiência do usuário
+				$("#numero").focus();
+			}
+		});
+	});
 </script>
 <?php include "../Templates/footer.php"; ?>
