@@ -37,6 +37,14 @@
     </form>
     <form class="form-signin" action="esqueciSenha.php" >
         <button type="submit"  class="btn btn-lg btn-primary btn-block text-uppercase">Esqueci a senha</button>
+        <br>
+    </form>
+    <form class="form-signin" action="../../Cadastro/PessoaFisica.php" >
+        <button type="submit"  class="btn btn-lg btn-primary btn-block text-uppercase">Cadastre-se (PF)</button>
+        <br>
+    </form>
+    <form class="form-signin" action="../../Cadastro/PessoaJuridica.php" >
+        <button type="submit"  class="btn btn-lg btn-primary btn-block text-uppercase">Cadastre-se (PJ)</button>
     </form>
         </div>
         </div>
