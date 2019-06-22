@@ -78,7 +78,8 @@ include($_SERVER["DOCUMENT_ROOT"] . '/corretora/View/login/user/verifica_login.p
         <div class="form-row">
             <div class="form-group col-md-4">            
                 <label for="cep"><span>*</span>Cep:</label>
-                <input type="text" class="form-control cep-mask" id="cep" placeholder="Ex.: 00000-000" name="cep" required>
+                <input type="text" class="form-control cep" id="cep"  aria-describedby="cep" placeholder="Ex.: 00000-000" name="cep" required>
+                <small id="cep" class="form-text text-muted">Se o CEP preenchido for válido, alguns dados serão preenchidos automaticamente.</small>
             </div>
 
             <div class="form-group col-md-7">
@@ -95,7 +96,8 @@ include($_SERVER["DOCUMENT_ROOT"] . '/corretora/View/login/user/verifica_login.p
         <div class="form-row">
             <div class="form-group col-md-12">
                 <label for="complemento">Complemento:</label>
-                <input type="text" class="form-control" id="complemento" placeholder="Complemento" name="complemento">
+                <input type="text" class="form-control" id="complemento" aria-describedby="complemento" placeholder="Apartamento, fundos, etc..." name="complemento">
+                <small id="complemento" class="form-text text-muted">Esse campo é opcional.</small>
             </div>
         </div>
 

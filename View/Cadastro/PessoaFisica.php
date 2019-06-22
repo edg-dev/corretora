@@ -95,6 +95,7 @@
     <div class="form-group">
         <label for="cpf"><span>*</span>CPF:</label>
         <input type="text" class="form-control cpf" id="cpf" placeholder="Ex.: 000.000.000-00" name="cpf" required>
+        <small id="cpf" class="form-text text-muted">Digite apenas os números.</small>
     </div>
     
     <div class="form-row">

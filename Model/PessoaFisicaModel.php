@@ -61,7 +61,7 @@ class PessoaFisicaModel {
             $idPf = intval($valPessoa[0]);
             $insPF->bindParam(":idPessoa",      $idPf,  PDO::PARAM_INT);
             $insPF->bindParam(":rg",            $rg);
-            $insPF->bindParam(":cpf",           $cpf,  PDO::PARAM_INT);
+            $insPF->bindParam(":cpf",           $cpf);
             $insPF->bindParam(":codigoSexo",    $codSexo);
             $insPF->bindParam(":estadoCivil",   $idEstadoCivil,  PDO::PARAM_INT);
             $insPF->execute();
