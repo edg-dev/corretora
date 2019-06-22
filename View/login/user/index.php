@@ -32,9 +32,12 @@
         <br>
 
         <button type="submit"  class="btn btn-lg btn-primary btn-block text-uppercase">Entrar</button>
+        
         <hr class="my-4">
     </form>
-   
+    <form class="form-signin" action="esqueciSenha.php" >
+        <button type="submit"  class="btn btn-lg btn-primary btn-block text-uppercase">Esqueci a senha</button>
+    </form>
         </div>
         </div>
       </div>

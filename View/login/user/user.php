@@ -205,7 +205,7 @@ include('conexao.php');
                             <div class="col-xs-12">
                                     <br>
                                     <button  class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign">
-                                    <a class="pull-right"></i> Salvar</a></button>
+                                    <a class="pull-right"  ></i> Salvar</a></button>
                                     <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Refazer</button>
                                 </div>
                         </div>
