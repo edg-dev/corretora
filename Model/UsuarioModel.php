@@ -54,8 +54,8 @@ class UsuarioModel{
             $alteraSenha = $this->bd->prepare("UPDATE usuario as u inner join pessoa as p SET u.senha = :senhanova
                                                 WHERE u.usuario = :usuario and p.nome = :nome");
             $alteraSenha->bindParam(":nome", $nome);
-            $alteraSenha->bindParam(":senhanova", $senha);            
-            $alteraSenha->bindParam(":usuario", $usuario, PDO::PARAM_INT);
+            $alteraSenha->bindParam(":senhanova", $senhanova);            
+            $alteraSenha->bindParam(":usuario", $usuario);
             $alteraSenha->execute();
         }
         catch(Exception $e){
@@ -66,7 +66,7 @@ class UsuarioModel{
         $senha = $this->bd->prepare("SELECT senha FROM usuario as u inner join pessoa as p 
                                      where u.usuario = :u.usuario and p.nome = :nome");
         $senha->bindParam(":nome", $nome);
-        $senha->bindParam(":usuario", $usuario, PDO::PARAM_INT);
+        $senha->bindParam(":usuario", $usuario);
         $senha->execute();
         return $senha->fetch(PDO::FETCH_ASSOC);
     }

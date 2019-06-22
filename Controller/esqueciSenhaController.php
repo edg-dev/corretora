@@ -14,9 +14,10 @@
         $nome = $_POST["nome"];
         $usuario = $_POST["usuario"];
         $senhanova = $_POST["senha_nova"];
+        #$senha = $_POST["senha"];
         
-        $senhaSha1 = sha1($senha);
-        $verificaSenha = $UsuarioModel->recuperaSenha($usuario);
+        $senhaSha1 = sha1($senhanova);
+        $verificaSenha = $UsuarioModel->recuperaSenha($nome, $usuario);
 
         if($verificaSenha['senha'] == $senhaSha1){
             $UsuarioModel->esqueciSenha($senhanova, $usuario, $nome, $senha);
