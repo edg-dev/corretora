@@ -154,6 +154,7 @@ include($_SERVER["DOCUMENT_ROOT"] . '/corretora/View/login/user/verifica_login.p
             <label for="descricaoImovel">Descrição do imovel :</label>
             <input type="text" class="form-control" id="descricaoImovel" placeholder="Descrição do imóvel" 
                                                                         name="descricaoImovel">
+            <small id="descricaoImovel" class="form-text text-muted">Adicione aqui o estado do imóvel(novo, usado, em construção, etc..) e/ou detalhes como churrasqueira, piscina, área de lazer ou serviço, etc...</small>
         </div>
 
         <div class="form-group">
