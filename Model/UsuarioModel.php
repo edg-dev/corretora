@@ -48,6 +48,29 @@ class UsuarioModel{
         }
     }
 
+    public function esqueciSenha($senhanova, $usuario, $senha, $nome){
+        try{
+            $senha = sha1($senhanova);
+            $alteraSenha = $this->bd->prepare("UPDATE usuario as u inner join pessoa as p SET u.senha = :senhanova
+                                                WHERE u.usuario = :usuario and p.nome = :nome");
+            $alteraSenha->bindParam(":nome", $nome);
+            $alteraSenha->bindParam(":senhanova", $senha);            
+            $alteraSenha->bindParam(":usuario", $usuario, PDO::PARAM_INT);
+            $alteraSenha->execute();
+        }
+        catch(Exception $e){
+            throw $e;
+        }
+    }
+    public function recuperaSenha($usuario, $nome){
+        $senha = $this->bd->prepare("SELECT senha FROM usuario as u inner join pessoa as p 
+                                     where u.usuario = :u.usuario and p.nome = :nome");
+        $senha->bindParam(":nome", $nome);
+        $senha->bindParam(":usuario", $usuario, PDO::PARAM_INT);
+        $senha->execute();
+        return $senha->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function getSenha($idUsuario){
         $senha = $this->bd->prepare("SELECT senha FROM usuario where idUsuario = :idUsuario");
         $senha->bindParam(":idUsuario", $idUsuario, PDO::PARAM_INT);
