@@ -56,6 +56,7 @@
     <div class="form-group">
         <label for="cnpj"><span>*</span>CNPJ</label>
         <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="Ex.: 00.000.000/0000-00">
+        <small id="cpf" class="form-text text-muted">Digite apenas os números.</small>
     </div>
 
     <!--Endereco Completo com uma funcao de Buscar Atomaticamente-->

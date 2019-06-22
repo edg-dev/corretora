@@ -3,6 +3,7 @@
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImovelModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/TelefoneModel.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/ImagensImovelModel.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/corretora/Model/EnderecoModel.php";
 
     $idImovel = $_GET["id"];
 
@@ -10,6 +11,9 @@
     $infoImovel = $ImovelModel->getImovelById($idImovel);
 
     $idPessoa = $infoImovel['idpessoa'];
+
+    $EnderecoModel = new EnderecoModel();
+    $endereco = $EnderecoModel->getBairroCidadeAnunciante($idPessoa);
 
     $TelefoneModel = new TelefoneModel();
     $telefones = $TelefoneModel->getTelefonesById($idPessoa);
@@ -111,6 +115,13 @@
                         <label for="emailAnunciante" class="col-sm-3 col-form-label"><i class="fa fa-at"></i> Email de contato: </label>
                         <div class="col-sm-9">
                         <input type="text" readonly class="form-control-plaintext" id="emailAnunciante" value="<?php echo $infoImovel["usuario"];?>">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="emailAnunciante" class="col-sm-3 col-form-label"><i class="fa fa-map-marker-alt"></i> Endereço: </label>
+                        <div class="col-sm-9">
+                        <input type="text" readonly class="form-control-plaintext" id="enderecoAnunciante" value="<?php echo $endereco["nomeBairro"];?>, <?php echo $endereco["nomeCidade"];?>.">
                         </div>
                     </div>
 
