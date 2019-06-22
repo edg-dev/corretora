@@ -98,13 +98,18 @@
     </div>
     
     <div class="form-row">
-        <div class="form-group col-md-10">
-            <label for="logradouro"><span>*</span>Logradouro:</label>
-            <input type="text" class="form-control" id="logradouro" placeholder="Rua, Avenida, etc..." name="logradouro" required>
-
+        <div class="form-group col-md-4">
+            <label for="cep"><span>*</span>CEP:</label>
+            <input type="text" class="form-control cep" id="cep"  aria-describedby="cep" placeholder="Ex.: 00000-000" name="cep" required>
+            <small id="cep" class="form-text text-muted">Se o CEP preenchido for válido, alguns dados serão preenchidos automaticamente.</small>
         </div>
 
-        <div class="form-group col-md-2">
+        <div class="form-group col-md-7">
+            <label for="logradouro"><span>*</span>Logradouro:</label>
+            <input type="text" class="form-control" id="logradouro" placeholder="Rua, Avenida, etc..." name="logradouro" required>
+        </div>
+
+        <div class="form-group col-md-1">
             <label for="numero"><span>*</span>Numero:</label>
             <input type="number" class="form-control" id="numero" name="numero" required>
         </div>
@@ -112,15 +117,11 @@
 
     <div class="form-group">
         <label for="complemento">Complemento:</label>
-        <input type="text" class="form-control" id="complemento" placeholder="Opcional" name="complemento">
+        <input type="text" class="form-control" id="complemento" aria-describedby="complemento" placeholder="Apartamento, fundos, etc..." name="complemento">
+        <small id="complemento" class="form-text text-muted">Esse campo é opcional.</small>
     </div>
   
     <div class="form-row">
-        <div class="form-group col-md-4">
-            <label for="cep"><span>*</span>CEP:</label>
-            <input type="text" class="form-control cep" id="cep" placeholder="Ex.: 00000-000" name="cep" required>
-        </div>
-
         <div class="form-group col-md-4">
             <label for="bairro"><span>*</span>Bairro:</label>
             <input type="text" class="form-control" id="bairro" placeholder="Informe seu bairro" name="bairro" required>
@@ -130,9 +131,7 @@
             <label for="cidade"><span>*</span>Cidade:</label>
             <input type="text" class="form-control" id="cidade" placeholder="Informe sua cidade" name="cidade" required>
         </div>
-    </div>
 
-    <div class="form-row">
         <div class="form-group col-md-4">
             <label for="estado"><span>*</span>Estado:</label>
             <select id="estado" class="form-control" name="estado" required>
@@ -142,8 +141,10 @@
                 <?php }?>
             </select>
         </div>
+    </div>
 
-        <div class="form-group col-md-8">
+    <div class="form-row">
+        <div class="form-group col-md-12">
             <label for="profissao"><span>*</span>Profissão:</label>
             <input type="text" class="form-control" id="profissao" placeholder="Informe sua profissão" name="profissao" required>
         </div>
