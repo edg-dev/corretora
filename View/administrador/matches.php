@@ -80,7 +80,7 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Tipo do Imóvel:
+                                        <i class="fa fa-home"></i> Tipo do Imóvel:
                                     </div>
                                     <div class="col-md-6">
                                         <?php echo $res['descricaoTipoImovel']; ?>
@@ -89,7 +89,7 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Transação:
+                                        <i class="fa fa-exchange-alt"></i> Transação:
                                     </div>
                                     <div class="col-md-6">
                                         <?php echo $res['descricaoTransacao']; ?>
@@ -98,7 +98,7 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Bairro:
+                                        <i class="fa fa-map-signs"></i> Bairro:
                                     </div>
                                     <div class="col-md-6">
                                         <?php echo $res['nomeBairro']; ?>
@@ -107,7 +107,7 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Cidade:
+                                        <i class="fa fa-city"></i> Cidade:
                                     </div>
                                     <div class="col-md-6">
                                         <?php echo $res['nomeCidade']; ?>
@@ -116,7 +116,7 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Estado:
+                                        <i class="fa fa-map-marked"></i> Estado:
                                     </div>
                                     <div class="col-md-6">
                                         <?php echo $res['descricaoEstado']; ?>
@@ -125,7 +125,7 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Quantidade de quartos:
+                                        <i class="fa fa-bed"></i> Quantidade de quartos:
                                     </div>
                                     <div class="col-md-6">
                                         <?php echo $res['quantQuarto']; ?>
@@ -134,7 +134,7 @@
                                 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Quantidade de suítes:
+                                        <i class="fa fa-bath"></i> Quantidade de suítes:
                                     </div>
                                     <div class="col-md-6">
                                         <?php echo $res['quantSuite']; ?>
@@ -143,7 +143,7 @@
                                
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Quantidade de banheiros:
+                                        <i class="fa fa-shower"></i> Quantidade de banheiros:
                                     </div>
                                     <div class="col-md-6">
                                         <?php echo $res['quantBanheiro']; ?>
@@ -152,7 +152,7 @@
                                 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Vagas na garagem:
+                                        <i class="fa fa-car"></i> Vagas na garagem:
                                     </div>
                                     <div class="col-md-6">
                                         <?php echo $res['quantVagaGaragem']; ?>
@@ -161,7 +161,7 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Faixa de preço:
+                                        <i class="fa fa-dollar-sign"></i> Faixa de preço:
                                     </div>
                                     <div class="col-md-6">
                                         Preço mínimo: <?php echo $res['precoMin']; ?> <br> 
@@ -177,7 +177,7 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Tipo do Imóvel:
+                                        <i class="fa fa-home"></i>Tipo do Imóvel:
                                     </div>
                                     <div class="col-md-6">
                                         <?php echo $anuncio[0]['descricaoTipoImovel']; ?>
@@ -186,7 +186,7 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Transação:
+                                        <i class="fa fa-exchange-alt"></i> Transação:
                                     </div>
                                     <div class="col-md-6">
                                         <?php echo $anuncio[0]['descricaoTransacao']; ?>
@@ -195,7 +195,7 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Bairro:
+                                        <i class="fa fa-map-signs"></i> Bairro:
                                     </div>
                                     <div class="col-md-6">
                                         <?php echo $anuncio[0]['nomeBairro']; ?>
@@ -204,7 +204,7 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Cidade:
+                                        <i class="fa fa-city"></i> Cidade:
                                     </div>
                                     <div class="col-md-6">
                                         <?php echo $anuncio[0]['nomeCidade']; ?>
@@ -213,7 +213,7 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Estado:
+                                        <i class="fa fa-map-marked"></i> Estado:
                                     </div>
                                     <div class="col-md-6">
                                         <?php echo $anuncio[0]['descricaoEstado']; ?>
@@ -222,7 +222,7 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Quantidade de quartos:
+                                        <i class="fa fa-bed"></i> Quantidade de quartos:
                                     </div>
                                     <div class="col-md-6">
                                         <?php echo $anuncio[0]['quantQuarto']; ?>
@@ -231,7 +231,7 @@
                                 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Quantidade de suítes:
+                                        <i class="fa fa-bath"></i> Quantidade de suítes:
                                     </div>
                                     <div class="col-md-6">
                                         <?php echo $anuncio[0]['quantSuite']; ?>
@@ -240,7 +240,7 @@
                                
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Quantidade de banheiros:
+                                        <i class="fa fa-shower"></i> Quantidade de banheiros:
                                     </div>
                                     <div class="col-md-6">
                                         <?php echo $anuncio[0]['quantBanheiro']; ?>
@@ -249,7 +249,7 @@
                                 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Vagas na garagem:
+                                        <i class="fa fa-car"></i>Vagas na garagem:
                                     </div>
                                     <div class="col-md-6">
                                         <?php echo $anuncio[0]['quantVagaGaragem']; ?>
@@ -258,7 +258,7 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Preço do imóvel:
+                                        <i class="fa fa-dollar-sign"></i>Preço do imóvel:
                                     </div>
                                     <div class="col-md-6">
                                         <?php echo $anuncio[0]['precoImovel']; ?>
@@ -267,7 +267,7 @@
                                 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Descrição do imóvel:
+                                        <i class="fa fa-file-alt"></i> Descrição do imóvel:
                                     </div>
                                     <div class="col-md-6">
                                         <?php echo $anuncio[0]['descricaoImovel']; ?>
