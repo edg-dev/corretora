@@ -87,6 +87,20 @@ class EnderecoModel{
            throw $e;
        }
    }
+
+   public function getBairroCidadeAnunciante($idPessoa){
+       $select = $this->bd->prepare("SELECT b.nomeBairro, c.nomeCidade FROM pessoa p 
+            inner join endereco e
+                on e.idEndereco = p.idEndereco
+            inner join bairro b
+                on b.idBairro = e.idBairro
+            inner join cidade c
+                on c.idCidade = e.idCidade
+            where p.idPessoa = :idPessoa");
+        $select->bindParam(":idPessoa", $idPessoa);
+        $select->execute();
+        return $select->fetch(PDO::FETCH_ASSOC);
+   }
 }
 
 ?>

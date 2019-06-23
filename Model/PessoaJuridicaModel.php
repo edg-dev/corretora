@@ -50,7 +50,7 @@ class PessoaJuridicaModel{
             $idPj = intval($valPessoa[0]);
             $insPJ->bindParam(":idPessoa", $idPj, PDO::PARAM_INT);
             $insPJ->bindParam(":razaoSocial", $razaoSocial);
-            $insPJ->bindParam(":cnpj", $cnpj, PDO::PARAM_INT);
+            $insPJ->bindParam(":cnpj", $cnpj);
             $insPJ->execute();
 
             $this->usuario->inserir($idPj, $email, $senha);
