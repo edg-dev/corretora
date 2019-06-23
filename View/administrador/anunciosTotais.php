@@ -49,8 +49,9 @@
                 </td>
                 <td> <?php echo $result['descricaoTransacao'];?></td>
                 <td> 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo<?php echo $count; ?>">
-                        <i class="fa fa-info-circle"></i> Detalhes
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo<?php echo $count; ?>"
+                        onclick="getIdImovel();">
+                        <i class="fa fa-info-circle" ></i> Detalhes
                     </button> 
                 </td>
                 
@@ -65,16 +66,21 @@
 				        </button>
 				      </div>
 				      <div class="modal-body">
+                          
 				          <h4>Endereço completo do imóvel:</h4>
 				          <br> 
 				          <?php echo $result['logradouro'];?>, número <?php echo $result['numero'];?> <?php echo $result['complemento'];?>
 				          <br>
 				          <?php echo $result['nomeBairro'];?>, <?php echo $result['nomecidade'];?>   
 				          <br>     
-				          CEP: <?php echo $result['descricaoCep'];?>
+                          CEP: <?php echo $result['descricaoCep'];?>
+                          <input type="hidden" class="form-control" id="idImovelVisualizacao2" name="idImovelVisualizacao2">
 				      </div>
 				      <div class="modal-footer">
-				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-success" onclick="irParaAnuncio();">
+                            <i class="fa fa-arrow-right"></i> Visualizar anúncio
+                        </button>
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Fechar</button>
 				      </div>
 				    </div>
 				  </div>
@@ -112,6 +118,18 @@ function reprovarAnuncio(){
                 window.location.href="anuncios.php";    
             }
         });
+    });
+}
+
+function irParaAnuncio(){
+    var idImovel = $("#idImovelVisualizacao2").val();
+    window.location.href='/corretora/View/Pages/anuncio.php?id=' + idImovel;
+}
+
+function getIdImovel(){
+    $(document).on('click', '.btn-primary', function(e) {
+        var idImovel = $(this).closest('tr').find('td[data-idimovel]').data('idimovel');
+        $('.modal-body #idImovelVisualizacao2').val( idImovel );
     });
 }
 
