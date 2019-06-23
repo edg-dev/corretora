@@ -32,5 +32,24 @@
                 }
             }
         }
+
+        public function execMatches($res){
+
+                $idTipoImovel = $res['idTipoImovel'];
+                $idTransacao = $res['idTransacao'];
+                $idCidade = $res['idCidade'];
+                $idBairro = $res['idBairro'];
+                $idEstado = $res['idEstado'];
+                $quantQuarto = $res['quantQuarto'];
+                $quantSuite = $res['quantSuite'];
+                $quantVagaGaragem = $res['quantVagaGaragem'];
+                $quantBanheiro = $res['quantBanheiro'];
+                $precoMin = $res['precoMin'];
+                $precoMax = $res['precoMax'];
+
+                return $result = $this->rotina->matches($idTipoImovel, $idTransacao, $idCidade, $idBairro, $idEstado,
+                $quantQuarto, $quantSuite, $quantVagaGaragem, $quantBanheiro, $precoMin, $precoMax);
+        
+        }
     }
 ?>
