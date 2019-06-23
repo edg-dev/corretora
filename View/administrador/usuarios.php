@@ -14,6 +14,13 @@
     $perfis = $PerfisModel->getPerfis();
 ?>
 
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="index.php">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active">Usuários</li>
+        </ol>
+
 <h3>Lista de usuários</h3>
 <br>
 <h4>Pessoas Físicas</h4>

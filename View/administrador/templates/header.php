@@ -111,6 +111,13 @@ body {
           <i class="fas fa-fw fa-user"></i>
           <span>Usuários</span></a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="matches.php">
+          <i class="fas fa-fw fa-check-double"></i>
+          <span>Matches</span></a>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" href="\corretora\View\login\user\logout.php">
          
