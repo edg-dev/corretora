@@ -33,6 +33,13 @@
             <div class="col-md-6">
                 <form>
                     <div class="form-group row">
+                        <label for="codigoImovelAnuncio" class="col-sm-3 col-form-label"><i class="fa fa-code"></i> Código do imóvel: </label>
+                        <div class="col-sm-9">
+                        <input type="text" readonly class="form-control-plaintext" id="codigoImovelAnuncio" value="<?php echo $idImovel;?>">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <label for="tipoImovelAnuncio" class="col-sm-3 col-form-label"><i class="fa fa-home"></i> Tipo do imóvel: </label>
                         <div class="col-sm-9">
                         <input type="text" readonly class="form-control-plaintext" id="tipoImovelAnuncio" value="<?php echo $infoImovel["descricaoTipoImovel"];?>">
