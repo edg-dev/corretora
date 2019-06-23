@@ -45,11 +45,11 @@ function Mudarestado(el) {
 </script>
 
 <div style="padding-top: 20px; text-align: center;">
-    <h1>
+    <h2>
         QUER ANUNCIAR OU PROCURA UM IMÓVEL IDEAL PARA SER SEU NOVO LAR, INVESTIMENTO OU NEGÓCIO?
         VOCÊ ESTÁ NO LUGAR CERTO!<br>
         Gaste seu tempo  organizando a mudança, deixa que a busca nós te ajudamos!
-    </h1>
+    </h2>
 </div>
 
 <?php
