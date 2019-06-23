@@ -21,7 +21,7 @@
             <thead>
                 <tr>
                     <th>✪</th>
-                    <th>id Imovel</th>
+                    <th>Código do Imóvel</th>
                     <th>Anunciante</th>
                     <th>Email</th>
                     <th>Telefones</th>

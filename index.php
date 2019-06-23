@@ -332,6 +332,10 @@ if ($imoveisRamdom == null ) { ?>
                         <?php } ?>  
                 </div>
                 <div class="col-md-5">
+
+                        <p><b>Código do Imóvel: </b>      
+                        <?php echo $imovel['idImovel'];?></p>
+
                         <p><b>Transação:</b>      
                         <?php echo $imovel['descricaoTransacao'];?>
                         
