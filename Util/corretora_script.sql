@@ -11,7 +11,7 @@ CREATE TABLE Imovel(
     idTipoImovel smallint not null,
     areaUtil smallint not null,
     areaTotal smallint not null,
-    precoImovel decimal(7,2) not null,
+    precoImovel decimal(15,2),
     idEndereco int not null,
     pedido boolean,
     idTransacao int not null,
@@ -20,6 +20,7 @@ CREATE TABLE Imovel(
     quantSuite int not null,
     quantVagaGaragem int not null,
     quantBanheiro int not null,
+    negociacao tinyint(1),
     primary key (idImovel)
 ) ENGINE=InnoDB;
 
@@ -351,7 +352,8 @@ INSERT INTO TipoImovel(descricaoTipoImovel) values
 
 INSERT INTO transacao(descricaoTransacao) values 
 ('Alugar'), 
-('Vender'); 
+('Vender'),
+('Permutar'); 
     
 INSERT INTO Perfis(descricaoPerfil) values
 ('Usuario'),
@@ -363,3 +365,11 @@ INSERT INTO Prioridadeanuncio(descricaoPrioridade) values
 ('Média'),
 ('Baixa');
 
+#Inserção usuário ADM
+INSERT INTO cep(`descricaoCep`) VALUES ('00000-000');
+INSERT INTO bairro(`nomeBairro`) VALUES ('adm');
+INSERT INTO cidade(`nomeCidade`) VALUES ('adm');
+INSERT INTO endereco(`logradouro`, `numero`, `idCep`, `idBairro`, `idCidade`, `idEstado`) VALUES ('adm', '1', '1', '1', '1', '13');
+INSERT INTO pessoa(`nome`, `idEndereco`, `emailContato`) VALUES ('Administrador', '1', 'adm@corretora.com');
+INSERT INTO pessoafisica(`idPessoa`, `rg`, `cpf`, `codigoSexo`, `idEstadoCivil`) VALUES ('1', 'adm', '123', 'M', '1');
+INSERT INTO usuario(`idUsuario`, `admin`, `usuario`, `senha`) VALUES ('1', '1', 'adm@corretora.com', '3d81329daae93459894e6b56f277e08d49fee8dd');

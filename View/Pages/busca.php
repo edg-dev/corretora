@@ -34,7 +34,9 @@
 				inner join cidade as c on en.idCidade = c.idCidade
 				inner join estado as es on en.idEstado = es.idEstado
 				WHERE
-                1=1 and a.verificado = 1 and (i.negociacao = 0 or i.negociacao is null)"; 
+                1=1 and a.verificado = 1 and (i.negociacao = 0 or i.negociacao is null
+                ORDER BY i.idImovel desc
+                )"; 
         // cria um array com os filtros a serem aplicados 
         $filters = []; 
         if (!empty($cidade)) 
