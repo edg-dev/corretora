@@ -30,7 +30,20 @@
     $imovelModel = new ImovelModel();
     $imoveisRamdom = $imovelModel->getImovelAltoRamdom();
 
+    $imovelModel = new ImovelModel();
+    $imoveisRamdomUno = $imovelModel->getImovelAltoRamdomUno();
+
 ?>
+<script>
+function Mudarestado(el) {
+  var display = document.getElementById(el).style.display;
+  if (display == "none")
+    document.getElementById(el).style.display = 'block';
+  else
+    document.getElementById(el).style.display = 'none';
+}
+</script>
+
 <div style="padding-top: 20px; text-align: center;">
     <h1>
         QUER ANUNCIAR OU PROCURA UM IMÓVEL IDEAL PARA SER SEU NOVO LAR, INVESTIMENTO OU NEGÓCIO?
@@ -89,6 +102,30 @@ if ($imoveisRamdom == null ) { ?>
                 <input type="text" class="form-control" id="bairro" placeholder="Digite o bairro aqui" name="bairro" >
             </div>
            </div>
+
+                <div class="form-group" id="minhaDiv" style="display:none">
+                        <div class="form-group">
+                            <label for="quantQuarto">Quartos:</label>
+                            <input type="number" class="form-control" id="quantQuarto" placeholder="0" name="quantQuarto">
+                        </div>
+                        <div class="form-group">
+                            <label for="quantSuite">Suítes:</label>
+                            <input type="number" class="form-control" id="quantSuite" placeholder="0" name="quantSuite">
+                        </div>
+                        <div class="form-group">
+                            <label for="quantVagaGaragem">Vagas de garagem:</label>
+                            <input type="number" class="form-control" id="quantVagaGaragem" placeholder="0" name="quantVagaGaragem">
+                        </div>
+                        <div class="form-group">
+                            <label for="quantBanheiro">Banheiros:</label>
+                            <input type="number" class="form-control" id="quantBanheiro" placeholder="0" name="quantBanheiro">
+                        </div>
+                
+                </div>
+                    <div class="form-group">
+                    <button class="btn btn-warning" type="button" onclick="Mudarestado('minhaDiv')">Busca Avançada</button>
+                    </div>
+
                 <div class="form-group">
                     <button type="submit" value="buscar" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
                 </div>
@@ -155,13 +192,35 @@ if ($imoveisRamdom == null ) { ?>
                 <input type="text" class="form-control" id="bairro" placeholder="Digite o bairro aqui" name="bairro" >
             </div>
            </div>
+
+           <div class="form-group" id="minhaDiv" style="display:none">
+                <div class="form-group">
+                    <label for="quantQuarto">Quartos:
+                    <input type="number" class="form-control" id="quantQuarto" placeholder="0" name="quantQuarto"></label>
+
+                    <label for="quantSuite">Suítes:
+                    <input type="number" class="form-control" id="quantSuite" placeholder="0" name="quantSuite"></label>
+                </div>
+                <div class="form-group">
+                    <label for="quantVagaGaragem">Vagas de garagem:
+                    <input type="number" class="form-control" id="quantVagaGaragem" placeholder="0" name="quantVagaGaragem"></label>
+                </div>
+                <div class="form-group">
+                    <label for="quantBanheiro">Banheiros:
+                    <input type="number" class="form-control" id="quantBanheiro" placeholder="0" name="quantBanheiro"></label>
+                </div>
+
+
+           
+           </div>
+            <div class="form-group">
+            <button class="btn btn-warning" type="button" onclick="Mudarestado('minhaDiv')">Busca Avançada</button>
+            </div>
                 <div class="form-group">
                     <button type="submit" value="buscar" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
                 </div>
 
             </div>   
-            <br>
-            <br>
             <hr>
             </div>
         </form>
@@ -175,8 +234,34 @@ if ($imoveisRamdom == null ) { ?>
 
     <div class="carousel-inner">
 
-        <?php foreach($imoveisRamdom as $imovelRamdom){?>
+    <?php foreach($imoveisRamdomUno as $imovelRamdomUno){?>
         <div class="carousel-item active">
+                    <a onclick="window.location.href='/corretora/View/Pages/anuncio.php?id=<?php echo $imovelRamdomUno['idImovel'];?>'">    
+                        <?php
+                            $idImovel = $imovelRamdomUno['idImovel'];
+                            $res = $imagensImovelModel->getImagemImovelIndex($idImovel);
+
+                        if(empty($res)){
+                        ?>
+                            <img class="d-block w-100 img-fluid" style="width:500px;height:600px;" src="Files/no_image.png">
+                        <?php } 
+
+                        foreach($res as $imagem){ ?>
+                            <img class="d-block w-100 img-fluid" style="width:500px;height:600px;" src="Files/<?php echo $imagem;?>"  >
+                        <?php } ?>
+                    </a>
+            <div class="carousel-caption d-none d-md-block">
+                    <h5><b><u>
+            <b>Transação:</b><?php echo $imovelRamdomUno['descricaoTransacao'];?>
+                <b>um(a)</b> <?php echo $imovelRamdomUno['descricaoTipoImovel'];?>
+                    </u></b></h5>
+            <p></p>
+            </div>
+        </div>
+        <?php } ?> <!-- foreach uno fecha aki --> 
+
+        <?php foreach($imoveisRamdom as $imovelRamdom){?>
+        <div class="carousel-item">
                     <a onclick="window.location.href='/corretora/View/Pages/anuncio.php?id=<?php echo $imovelRamdom['idImovel'];?>'">    
                         <?php
                             $idImovel = $imovelRamdom['idImovel'];
@@ -193,13 +278,13 @@ if ($imoveisRamdom == null ) { ?>
                     </a>
             <div class="carousel-caption d-none d-md-block">
                     <h5><b><u>
-            <b>Transação:</b><?php echo $imovelRamdom['descricaoTransacao'];?>
+                             <?php echo $imovelRamdom['descricaoTransacao'];?>
                 <b>um(a)</b> <?php echo $imovelRamdom['descricaoTipoImovel'];?>
                     </u></b></h5>
             <p></p>
             </div>
         </div>
-        <?php } ?> <!-- foreach fecha aki --> 
+        <?php } ?> <!-- foreach ramdom fecha aki --> 
 
     </div>
         <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
@@ -232,7 +317,6 @@ if ($imoveisRamdom == null ) { ?>
 
                 <div class="row">
                 <div class="col-md-7">
-                    <a href="#">
 
                         <?php
                             $idImovel = $imovel['idImovel'];
@@ -246,7 +330,6 @@ if ($imoveisRamdom == null ) { ?>
                         foreach($res as $imagem){ ?>
                             <img class="img-fluid" style="width:750px;height:300px;" src="Files/<?php echo $imagem;?>"  >
                         <?php } ?>  
-                    </a>
                 </div>
                 <div class="col-md-5">
                         <p><b>Transação:</b>      
