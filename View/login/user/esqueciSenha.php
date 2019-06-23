@@ -7,11 +7,11 @@
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="email"><h4>Insira seu nome ( O mesmo usado em seu cadastro)</h4></label>
-                                <input type="text" class="form-control" name="nome"  placeholder="Insira seu nome" title="Insira seu nome.">
+                                <input type="text" class="form-control" name="nome"  placeholder="Insira seu nome" title="Insira seu nome." required>
                             </div>
                             <div class="col-xs-6">
                                 <label for="email"><h4>Insira seu Email</h4></label>
-                                <input type="email" class="form-control" name="usuario"  placeholder="Insira seu email" title="Insira seu email.">
+                                <input type="email" class="form-control" name="usuario"  placeholder="Insira seu email" title="Insira seu email." required>
                             </div>
                             
                         </div>

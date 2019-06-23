@@ -48,23 +48,23 @@ class UsuarioModel{
         }
     }
 
-    public function esqueciSenha($senhanova, $usuario, $senha, $nome){
+    public function esqueciSenha($senhanova, $usuario, $nome){
         try{
             $senha = sha1($senhanova);
             $alteraSenha = $this->bd->prepare("UPDATE usuario as u inner join pessoa as p SET u.senha = :senhanova
                                                 WHERE u.usuario = :usuario and p.nome = :nome");
-            $alteraSenha->bindParam(":nome", $nome);
-            $alteraSenha->bindParam(":senhanova", $senhanova);            
+            $alteraSenha->bindParam(":senhanova", $senhanova); 
             $alteraSenha->bindParam(":usuario", $usuario);
+            $alteraSenha->bindParam(":nome", $nome);   
             $alteraSenha->execute();
         }
         catch(Exception $e){
             throw $e;
         }
     }
-    public function recuperaSenha($usuario, $nome){
+    public function recuperaSenha($nome, $usuario ){
         $senha = $this->bd->prepare("SELECT senha FROM usuario as u inner join pessoa as p 
-                                     where u.usuario = :u.usuario and p.nome = :nome");
+                                     where u.usuario = :usuario and p.nome = :nome");
         $senha->bindParam(":nome", $nome);
         $senha->bindParam(":usuario", $usuario);
         $senha->execute();
