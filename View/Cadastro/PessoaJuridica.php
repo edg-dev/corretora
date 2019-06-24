@@ -102,7 +102,7 @@
             <select id="estado" class="form-control" name="estado" required>
                 <option selected>Selecione seu estado</option>
                 <?php foreach($estados as $estado){?>
-                <option value="<?php echo $estado['idEstado'];?>"> <?php echo $estado['descricaoEstado'];?> </option>
+                <option data-uf="<?php echo $estado['siglaEstado'];?>" value="<?php echo $estado['idEstado'];?>"> <?php echo $estado['descricaoEstado'];?> </option>
                 <?php }?>
             </select>
         </div>
@@ -149,7 +149,7 @@
 				$("#complemento").val(resposta.complemento);
 				$("#bairro").val(resposta.bairro);
 				$("#cidade").val(resposta.localidade);
-				$("#uf").val(resposta.uf);
+				$("#estado option[data-uf="+resposta.uf+"]").attr("selected", true);
 				//Vamos incluir para que o Número seja focado automaticamente
 				//melhorando a experiência do usuário
 				$("#numero").focus();
