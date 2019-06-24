@@ -15,11 +15,10 @@
 
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+            <a href="index.php">Dashboard</a>
           </li>
           <li class="breadcrumb-item active">Anúncios para aprovação</li>
         </ol>
-
         <table class="table">
             <thead>
                 <tr>
@@ -62,7 +61,8 @@
                     </select>
                 </td>
                 <td> 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo<?php echo $count; ?>">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo<?php echo $count; ?>"
+                    onclick="pegaidimovel();">
                         <i class="fa fa-info-circle"></i> Detalhes
                     </button> 
                 </td>
@@ -84,10 +84,19 @@
 				          <br>
 				          <?php echo $result['nomeBairro'];?>, <?php echo $result['nomecidade'];?>   
 				          <br>     
-				          CEP: <?php echo $result['descricaoCep'];?>
+                          CEP: <?php echo $result['descricaoCep'];?>
+                          <input type="hidden" class="form-control" id="idImovelVisualizacao" name="idImovelVisualizacao">
+                          <hr>
+                          <p>
+                            Atenção! A opção "Pré-visualizar anúncio" não aprova o mesmo, apenas mostra como o anúncio ficará ao ser aprovado.
+                          </p>
 				      </div>
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+				      <div class="modal-footer">          
+                        <button type="button" class="btn btn-success" 
+                        onclick="irParaAnuncio();">
+                            <i class="fa fa-arrow-right"></i> Pré-visualizar anúncio
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Fechar</button>
 				      </div>
 				    </div>
 				  </div>
@@ -154,6 +163,18 @@ function reprovarAnuncio(){
                 window.location.href="anuncios.php";    
             }
         });
+    });
+}
+
+function irParaAnuncio(){
+    var idImovel = $("#idImovelVisualizacao").val();
+    window.location.href='/corretora/View/Pages/anuncio.php?id=' + idImovel;
+}
+
+function pegaidimovel(){
+    $(document).on('click', '.btn-primary', function(e) {
+        var idImovel = $(this).closest('tr').find('td[data-idimovel]').data('idimovel');
+        $('.modal-body #idImovelVisualizacao').val( idImovel );
     });
 }
 

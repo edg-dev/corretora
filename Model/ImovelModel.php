@@ -280,5 +280,40 @@
 			$update->bindParam(":idImovel", $idImovel, PDO::PARAM_INT);
 			$update->execute();
 		}
+
+		public function getImovelAltoRamdom(){
+			try{
+				$resImovelRamdom = $this->bd->query("SELECT imovel.idImovel, tipoimovel.descricaoTipoImovel, 
+				transacao.descricaoTransacao from imovel 
+				inner join transacao on imovel.idTransacao = transacao.idTransacao
+				inner join tipoimovel on imovel.idTipoImovel = tipoimovel.idTipoImovel
+				inner join anuncio on imovel.idImovel = anuncio.idImovel
+				where anuncio.verificado = 1 
+                and anuncio.idprioridade = 1 
+                and (imovel.negociacao = 0 or imovel.negociacao is null)
+				ORDER BY RAND() LIMIT 4");
+				$resImovelRamdom->execute();
+				return $imoveisRamdom = $resImovelRamdom->fetchAll();
+			} catch(Exception $e){
+				throw $e;
+			}
+		}
+		public function getImovelAltoRamdomUno(){
+			try{
+				$resImovelRamdom = $this->bd->query("SELECT imovel.idImovel, tipoimovel.descricaoTipoImovel, 
+				transacao.descricaoTransacao from imovel 
+				inner join transacao on imovel.idTransacao = transacao.idTransacao
+				inner join tipoimovel on imovel.idTipoImovel = tipoimovel.idTipoImovel
+				inner join anuncio on imovel.idImovel = anuncio.idImovel
+				where anuncio.verificado = 1 
+                and anuncio.idprioridade = 1 
+                and (imovel.negociacao = 0 or imovel.negociacao is null)
+				ORDER BY RAND() LIMIT 1");
+				$resImovelRamdom->execute();
+				return $imoveisRamdom = $resImovelRamdom->fetchAll();
+			} catch(Exception $e){
+				throw $e;
+			}
+		}
 	}
 ?>

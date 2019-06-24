@@ -20,6 +20,11 @@
         $tipoDeImovel = isset($_GET['tipoDeImovel']) ? $_GET['tipoDeImovel'] : ''; 
         $estado = isset($_GET['estado']) ? $_GET['estado'] : ''; 
 
+        $quantQuarto = isset($_GET['quantQuarto']) ? $_GET['quantQuarto'] : '';
+        $quantSuite = isset($_GET['quantSuite']) ? $_GET['quantSuite'] : '';
+        $quantVagaGaragem = isset($_GET['quantVagaGaragem']) ? $_GET['quantVagaGaragem'] : '';
+        $quantBanheiro = isset($_GET['quantBanheiro']) ? $_GET['quantBanheiro'] : '';
+
         // inicia a query, mas os filtros serão adicionados dinamicamente 
         // o 1=1 é adicionado no WHERE para garantir que sempre haverá uma condição na busca, 
         // evitando erro de sintaxe caso o usuário não selecione filtro algum 
@@ -34,7 +39,8 @@
 				inner join cidade as c on en.idCidade = c.idCidade
 				inner join estado as es on en.idEstado = es.idEstado
 				WHERE
-                1=1 and a.verificado = 1 and (i.negociacao = 0 or i.negociacao is null)"; 
+                1=1 and a.verificado = 1 and (i.negociacao = 0 or i.negociacao is null
+                )"; 
         // cria um array com os filtros a serem aplicados 
         $filters = []; 
         if (!empty($cidade)) 
@@ -80,6 +86,42 @@
                 'placeholder' => ':estado',
                 'sql' => 'es.idEstado = :estado',
                 'value' => $estado,
+                'param_type' => PDO::PARAM_INT,
+            ];
+        }
+        if (!empty($quantQuarto))
+        {
+            $filters[] = [
+                'placeholder' => ':quantQuarto',
+                'sql' => 'i.quantQuarto = :quantQuarto',
+                'value' => $quantQuarto,
+                'param_type' => PDO::PARAM_INT,
+            ];
+        }
+        if (!empty($quantSuite))
+        {
+            $filters[] = [
+                'placeholder' => ':quantSuite',
+                'sql' => 'i.quantSuite = :quantSuite',
+                'value' => $quantSuite,
+                'param_type' => PDO::PARAM_INT,
+            ];
+        }
+        if (!empty($quantVagaGaragem))
+        {
+            $filters[] = [
+                'placeholder' => ':quantVagaGaragem',
+                'sql' => 'i.quantVagaGaragem = :quantVagaGaragem',
+                'value' => $quantVagaGaragem,
+                'param_type' => PDO::PARAM_INT,
+            ];
+        }
+        if (!empty($quantBanheiro))
+        {
+            $filters[] = [
+                'placeholder' => ':quantBanheiro',
+                'sql' => 'i.quantBanheiro = :quantBanheiro',
+                'value' => $quantBanheiro,
                 'param_type' => PDO::PARAM_INT,
             ];
         }
