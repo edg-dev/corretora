@@ -53,7 +53,7 @@ class UsuarioModel{
             $senha = sha1($senhanova);
             $alteraSenha = $this->bd->prepare("UPDATE usuario as u inner join pessoa as p SET u.senha = :senhanova
                                                 WHERE u.usuario = :usuario and p.nome = :nome");
-            $alteraSenha->bindParam(":senhanova", $senhanova); 
+            $alteraSenha->bindParam(":senhanova", $senha); 
             $alteraSenha->bindParam(":usuario", $usuario);
             $alteraSenha->bindParam(":nome", $nome);   
             $alteraSenha->execute();

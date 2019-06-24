@@ -19,7 +19,7 @@
         $senhaSha1 = sha1($senhanova);
         $verificaSenha = $UsuarioModel->recuperaSenha($nome, $usuario);
 
-        if($verificaSenha['senha'] == $senhaSha1){
+        if($verificaSenha['senha'] != $senhaSha1){
             $UsuarioModel->esqueciSenha($senhanova, $usuario, $nome);
         } else {
             echo "<script>alert('Seu nome ou email está incorreto.'); location.href='/corretora/View/login/user/index.php';</script>";
@@ -27,7 +27,7 @@
 		echo "<script>alert('Senha alterada com sucesso'); location.href='/corretora/View/login/user/index.php';</script>";
 
     }
-    console_log( $UsuarioModel);
+    
     
 
 ?>
