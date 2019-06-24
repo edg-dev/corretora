@@ -209,7 +209,7 @@ include($_SERVER["DOCUMENT_ROOT"] . '/corretora/View/login/user/verifica_login.p
 				$("#complemento").val(resposta.complemento);
 				$("#bairro").val(resposta.bairro);
 				$("#cidade").val(resposta.localidade);
-				$("#estado").data("data-uf").val(resposta.uf);
+				$("#estado option[data-uf="+resposta.uf+"]").attr("selected", true);
 				//Vamos incluir para que o Número seja focado automaticamente
 				//melhorando a experiência do usuário
 				$("#numero").focus();
