@@ -47,4 +47,3 @@
 <br>
 </body>
 <?php include '../../Templates/footer.php'?>
-</html>
