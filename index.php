@@ -120,6 +120,10 @@ if ($imoveisRamdom == null ) { ?>
                             <label for="quantBanheiro">Banheiros:</label>
                             <input type="number" class="form-control" id="quantBanheiro" placeholder="0" name="quantBanheiro">
                         </div>
+                        <div class="form-group">
+                            <label for="idImovel">Código do imóvel:</label>
+                            <input type="number" class="form-control" id="idImovel" placeholder="0" name="idImovel">
+                        </div>
                 
                 </div>
                     <div class="form-group">
@@ -209,7 +213,10 @@ if ($imoveisRamdom == null ) { ?>
                     <label for="quantBanheiro">Banheiros:
                     <input type="number" class="form-control" id="quantBanheiro" placeholder="0" name="quantBanheiro"></label>
                 </div>
-
+                <div class="form-group">
+                    <label for="idImovel">Código do imóvel:
+                    <input type="number" class="form-control" id="idImovel" placeholder="0" name="idImovel"></label>
+                </div>
 
            
            </div>
@@ -252,7 +259,7 @@ if ($imoveisRamdom == null ) { ?>
                     </a>
             <div class="carousel-caption d-none d-md-block">
                     <h5><b><u>
-            <b>Transação:</b><?php echo $imovelRamdomUno['descricaoTransacao'];?>
+                             <?php echo $imovelRamdomUno['descricaoTransacao'];?>
                 <b>um(a)</b> <?php echo $imovelRamdomUno['descricaoTipoImovel'];?>
                     </u></b></h5>
             <p></p>
@@ -340,7 +347,7 @@ if ($imoveisRamdom == null ) { ?>
                         <?php echo $imovel['descricaoTransacao'];?>
                         
                         <b>um(a)</b>
-                        <?php echo $imovel['descricaoTipoImovel'];?></p>
+                        <?php echo $imovel['descricaoTipoImovel'];?>.</p>
 
                         <p><b>Preço: R$</b> 
                         <?php if($imovel['precoImovel'] == null || $imovel['precoImovel'] == 0) { 
@@ -350,22 +357,22 @@ if ($imoveisRamdom == null ) { ?>
                         }?></p>
 
                         <p><b>Área útil:</b>
-                        <?php echo $imovel['areaUtil'];?> M² ;
+                        <?php echo $imovel['areaUtil'];?> M² &nbsp
 
                         <b>Área total:</b>
-                        <?php echo $imovel['areaTotal'];?> M² ;</p>
+                        <?php echo $imovel['areaTotal'];?> M² </p>
 
                         <p><img src="https://img.icons8.com/windows/32/000000/bed.png" title="Quantidade de Quartos:">:
-                        <?php echo $imovel['quantQuarto'];?> quartos </p>
+                        <?php echo $imovel['quantQuarto'];?> quarto(s) &nbsp
 
-                        <p><img src="https://img.icons8.com/metro/32/000000/shower-and-tub.png" title="Quantidade de Suítes:">:
-                        <?php echo $imovel['quantSuite'];?> suítes </p>
+                        <img src="https://img.icons8.com/metro/32/000000/shower-and-tub.png" title="Quantidade de Suítes:">:
+                        <?php echo $imovel['quantSuite'];?> suíte(s) </p>
 
-                        <p><img src="https://img.icons8.com/ios/32/000000/car.png" title="Quantidade de Vagas na Garagem:">
-                        <?php echo $imovel['quantVagaGaragem'];?> vagas </p>
+                        <p><img src="https://img.icons8.com/ios/32/000000/car.png" title="Quantidade de Vagas na Garagem:">:
+                        <?php echo $imovel['quantVagaGaragem'];?> vaga(s) &nbsp
 
-                        <p><img src="https://img.icons8.com/ios/32/000000/shower.png" title="Quantidade de Banheiros:">
-                        <?php echo $imovel['quantBanheiro'];?> banheiros </p>
+                        <img src="https://img.icons8.com/ios/32/000000/shower.png" title="Quantidade de Banheiros:">:
+                        <?php echo $imovel['quantBanheiro'];?> banheiro(s) </p>
 
                         <!-- Modal --> 
 
@@ -389,22 +396,22 @@ if ($imoveisRamdom == null ) { ?>
                             </div>
                             <div class="modal-body">
 
-                                <p><b>Estado:</b>
+                                <p><b>Estado: </b>
                                 <?php echo $imovel['descricaoEstado'];?>.</p>
 
-                                <p><b>Cidade:</b>
+                                <p><b>Cidade: </b>
                                 <?php echo $imovel['nomeCidade'];?>.</p>
 
-                                <p><b>Bairro:</b>
+                                <p><b>Bairro: </b>
                                 <?php echo $imovel['nomeBairro'];?>.</p>
 
-                                <p><b>Rua:</b>
+                                <p><b>Rua: </b>
                                 <?php echo $imovel['logradouro'];?>.</p>
 
-                                <p><b>Número:</b>
+                                <p><b>Número: </b>
                                 <?php echo $imovel['numero'];?>.</p>                              
                                
-                                <p><b>Descrição do Imovel:</b>
+                                <p><b>Descrição do Imóvel: </b>
                                 <?php echo $imovel['descricaoImovel'];?>.</p>
                             </div>
                             <div class="modal-footer">

@@ -25,6 +25,8 @@
         $quantVagaGaragem = isset($_GET['quantVagaGaragem']) ? $_GET['quantVagaGaragem'] : '';
         $quantBanheiro = isset($_GET['quantBanheiro']) ? $_GET['quantBanheiro'] : '';
 
+        $idImovel = isset($_GET['idImovel']) ? $_GET['idImovel'] : '';
+
         // inicia a query, mas os filtros serão adicionados dinamicamente 
         // o 1=1 é adicionado no WHERE para garantir que sempre haverá uma condição na busca, 
         // evitando erro de sintaxe caso o usuário não selecione filtro algum 
@@ -125,6 +127,15 @@
                 'param_type' => PDO::PARAM_INT,
             ];
         }
+        if (!empty($idImovel))
+        {
+            $filters[] = [
+                'placeholder' => ':idImovel',
+                'sql' => 'i.idImovel = :idImovel',
+                'value' => $idImovel,
+                'param_type' => PDO::PARAM_INT,
+            ];
+        }
         
         foreach ($filters as $filter)
         {
@@ -182,11 +193,15 @@
                         </a>
                 </div>
                 <div class="col-md-5">
+
+                        <p><b>Código do Imóvel: </b>      
+                        <?php echo $imovel['idImovel'];?></p>
+
                         <p><b>Transação:</b>      
                         <?php echo $imovel['descricaoTransacao'];?>
                         
                         <b>um(a)</b>
-                        <?php echo $imovel['descricaoTipoImovel'];?></p>
+                        <?php echo $imovel['descricaoTipoImovel'];?>.</p>
 
                         <p><b>Preço: R$</b> 
                         <?php if($imovel['precoImovel'] == null || $imovel['precoImovel'] == 0) { 
@@ -196,22 +211,22 @@
                         }?></p>
 
                         <p><b>Área útil:</b>
-                        <?php echo $imovel['areaUtil'];?> M² ;
+                        <?php echo $imovel['areaUtil'];?> M² &nbsp
 
                         <b>Área total:</b>
-                        <?php echo $imovel['areaTotal'];?> M² ;</p>
-
+                        <?php echo $imovel['areaTotal'];?> M² </p>
+                        
                         <p><img src="https://img.icons8.com/windows/32/000000/bed.png" title="Quantidade de Quartos:">:
-                        <?php echo $imovel['quantQuarto'];?> quartos </p>
+                        <?php echo $imovel['quantQuarto'];?> quarto(s) &nbsp
 
-                        <p><img src="https://img.icons8.com/metro/32/000000/shower-and-tub.png" title="Quantidade de Suítes:">:
-                        <?php echo $imovel['quantSuite'];?> suítes </p>
+                        <img src="https://img.icons8.com/metro/32/000000/shower-and-tub.png" title="Quantidade de Suítes:">:
+                        <?php echo $imovel['quantSuite'];?> suíte(s) </p>
 
-                        <p><img src="https://img.icons8.com/ios/32/000000/car.png" title="Quantidade de Vagas na Garagem:">
-                        <?php echo $imovel['quantVagaGaragem'];?> vagas </p>
+                        <p><img src="https://img.icons8.com/ios/32/000000/car.png" title="Quantidade de Vagas na Garagem:">:
+                        <?php echo $imovel['quantVagaGaragem'];?> vaga(s) &nbsp
 
-                        <p><img src="https://img.icons8.com/ios/32/000000/shower.png" title="Quantidade de Banheiros:">
-                        <?php echo $imovel['quantBanheiro'];?> banheiros </p>
+                        <img src="https://img.icons8.com/ios/32/000000/shower.png" title="Quantidade de Banheiros:">:
+                        <?php echo $imovel['quantBanheiro'];?> banheiro(s) </p>
 
                         <!-- Modal --> 
 
