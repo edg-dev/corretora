@@ -163,6 +163,7 @@ include($_SERVER["DOCUMENT_ROOT"] . '/corretora/View/login/user/verifica_login.p
         <div class="form-group">
             <label for="precoImovel">Valor da transação (R$):</label>
             <input type="number" class="form-control" id="precoImovel" placeholder="000 000" name="precoImovel">
+	    <small id="precoImovel" class="form-text text-muted">Se não adicionado, o valor será exibido como "Valor a negociar".</small>
         </div>
 
         <div class="form-group">
