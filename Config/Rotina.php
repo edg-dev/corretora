@@ -46,9 +46,9 @@
                 FROM imovel as i
                     inner join endereco as e
                         on e.idEndereco = i.idEndereco
-                WHERE  i.idTipoImovel = :idTipoImovel and i.idTransacao = :idTransacao and e.idCidade = :idCidade and e.idBairro = :idBairro and
-                    e.idEstado = :idEstado and i.quantQuarto = :quantQuarto and i.quantSuite = :quantSuite and 
-                    i.quantVagaGaragem = :quantVagaGaragem and i.quantBanheiro = :quantBanheiro and 
+                WHERE  i.idTipoImovel = :idTipoImovel or i.idTransacao = :idTransacao or e.idCidade = :idCidade or e.idBairro = :idBairro or
+                    e.idEstado = :idEstado or i.quantQuarto = :quantQuarto or i.quantSuite = :quantSuite or 
+                    i.quantVagaGaragem = :quantVagaGaragem or i.quantBanheiro = :quantBanheiro or 
                     (:precoMin < i.precoImovel and i.precoImovel < :precoMax)");
 
             #$compare->bindParam(":idUsuario", $idUsuario, PDO::PARAM_INT);
@@ -93,9 +93,9 @@
                         on p.idPessoa = u.idUsuario
                     inner join transacao as tr
                         on tr.idTransacao = i.idTransacao
-                WHERE  i.idTipoImovel = :idTipoImovel and i.idTransacao = :idTransacao and e.idCidade = :idCidade and e.idBairro = :idBairro and
-                    e.idEstado = :idEstado and i.quantQuarto = :quantQuarto and i.quantSuite = :quantSuite and 
-                    i.quantVagaGaragem = :quantVagaGaragem and i.quantBanheiro = :quantBanheiro and 
+                WHERE  (i.idTipoImovel = :idTipoImovel or i.idTransacao = :idTransacao or e.idCidade = :idCidade or e.idBairro = :idBairro or
+                    e.idEstado = :idEstado or i.quantQuarto = :quantQuarto or i.quantSuite = :quantSuite or 
+                    i.quantVagaGaragem = :quantVagaGaragem or i.quantBanheiro = :quantBanheiro) and 
                     (:precoMin < i.precoImovel and i.precoImovel < :precoMax)");
 
             $compare->bindParam(":idTipoImovel", $idTipoImovel, PDO::PARAM_INT);

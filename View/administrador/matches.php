@@ -38,8 +38,10 @@
 
     <tbody>
         <?php $count = 0; ?>
+        <?php $i = 0; ?>
         <?php foreach($pedido as $res) { 
-            $anuncio = $exec->execMatches($res);
+             $anuncio = $exec->execMatches($res);
+             foreach($anuncio as $an) { 
         ?>
 
         <td><?php echo $res['idUsuario']?></td>
@@ -180,7 +182,7 @@
                                         <i class="fa fa-home"></i>Tipo do Imóvel:
                                     </div>
                                     <div class="col-md-6">
-                                        <?php echo $anuncio[0]['descricaoTipoImovel']; ?>
+                                        <?php echo $anuncio[$i]['descricaoTipoImovel']; ?>
                                     </div>
                                 </div><hr>
 
@@ -189,7 +191,7 @@
                                         <i class="fa fa-exchange-alt"></i> Transação:
                                     </div>
                                     <div class="col-md-6">
-                                        <?php echo $anuncio[0]['descricaoTransacao']; ?>
+                                        <?php echo $anuncio[$i]['descricaoTransacao']; ?>
                                     </div>
                                 </div><hr>
 
@@ -198,7 +200,7 @@
                                         <i class="fa fa-map-signs"></i> Bairro:
                                     </div>
                                     <div class="col-md-6">
-                                        <?php echo $anuncio[0]['nomeBairro']; ?>
+                                        <?php echo $anuncio[$i]['nomeBairro']; ?>
                                     </div>
                                 </div><hr>
 
@@ -207,7 +209,7 @@
                                         <i class="fa fa-city"></i> Cidade:
                                     </div>
                                     <div class="col-md-6">
-                                        <?php echo $anuncio[0]['nomeCidade']; ?>
+                                        <?php echo $anuncio[$i]['nomeCidade']; ?>
                                     </div>
                                 </div><hr>
 
@@ -216,7 +218,7 @@
                                         <i class="fa fa-map-marked"></i> Estado:
                                     </div>
                                     <div class="col-md-6">
-                                        <?php echo $anuncio[0]['descricaoEstado']; ?>
+                                        <?php echo $anuncio[$i]['descricaoEstado']; ?>
                                     </div>
                                 </div><hr>
 
@@ -225,7 +227,7 @@
                                         <i class="fa fa-bed"></i> Quantidade de quartos:
                                     </div>
                                     <div class="col-md-6">
-                                        <?php echo $anuncio[0]['quantQuarto']; ?>
+                                        <?php echo $anuncio[$i]['quantQuarto']; ?>
                                     </div>
                                 </div><hr>
                                 
@@ -234,7 +236,7 @@
                                         <i class="fa fa-bath"></i> Quantidade de suítes:
                                     </div>
                                     <div class="col-md-6">
-                                        <?php echo $anuncio[0]['quantSuite']; ?>
+                                        <?php echo $anuncio[$i]['quantSuite']; ?>
                                     </div>
                                 </div><hr>
                                
@@ -243,7 +245,7 @@
                                         <i class="fa fa-shower"></i> Quantidade de banheiros:
                                     </div>
                                     <div class="col-md-6">
-                                        <?php echo $anuncio[0]['quantBanheiro']; ?>
+                                        <?php echo $anuncio[$i]['quantBanheiro']; ?>
                                     </div>
                                 </div><hr>
                                 
@@ -252,7 +254,7 @@
                                         <i class="fa fa-car"></i>Vagas na garagem:
                                     </div>
                                     <div class="col-md-6">
-                                        <?php echo $anuncio[0]['quantVagaGaragem']; ?>
+                                        <?php echo $anuncio[$i]['quantVagaGaragem']; ?>
                                     </div>
                                 </div><hr>
 
@@ -261,7 +263,7 @@
                                         <i class="fa fa-dollar-sign"></i>Preço do imóvel:
                                     </div>
                                     <div class="col-md-6">
-                                        <?php echo $anuncio[0]['precoImovel']; ?>
+                                        <?php echo $anuncio[$i]['precoImovel']; ?>
                                     </div>
                                 </div><hr>
                                 
@@ -270,7 +272,7 @@
                                         <i class="fa fa-file-alt"></i> Descrição do imóvel:
                                     </div>
                                     <div class="col-md-6">
-                                        <?php echo $anuncio[0]['descricaoImovel']; ?>
+                                        <?php echo $anuncio[$i]['descricaoImovel']; ?>
                                     </div>
                                 </div>
                             </div>
@@ -285,12 +287,12 @@
 			</div>
 		</div>
 
-        <td><?php echo $anuncio[0]['idUsuario']?></td>
-        <td><?php echo $anuncio[0]['nome']?></td>
-        <td><?php echo $anuncio[0]['emailContato']?></td>
+        <td><?php echo $anuncio[$i]['idUsuario']?></td>
+        <td><?php echo $anuncio[$i]['nome']?></td>
+        <td><?php echo $anuncio[$i]['emailContato']?></td>
         <td>
             <?php 
-                $telefones = $telefoneModel->getTelefonesById($anuncio[0]['idUsuario']);
+                $telefones = $telefoneModel->getTelefonesById($anuncio[$i]['idUsuario']);
 
                 foreach($telefones as $telefone) { ?>
                     <?php echo $telefone['telefone'];?> <br>
@@ -299,7 +301,8 @@
 
     </tbody>
         <?php $count++; ?>
-        <?php } ?>
+        <?php $i++; ?>
+        <?php } ?><?php } ?>
 </table>
 
 <?php include_once "templates/footer.php"; ?>
