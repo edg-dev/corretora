@@ -93,9 +93,9 @@
                         on p.idPessoa = u.idUsuario
                     inner join transacao as tr
                         on tr.idTransacao = i.idTransacao
-                WHERE  i.idTipoImovel = :idTipoImovel or i.idTransacao = :idTransacao or e.idCidade = :idCidade or e.idBairro = :idBairro or
+                WHERE  (i.idTipoImovel = :idTipoImovel or i.idTransacao = :idTransacao or e.idCidade = :idCidade or e.idBairro = :idBairro or
                     e.idEstado = :idEstado or i.quantQuarto = :quantQuarto or i.quantSuite = :quantSuite or 
-                    i.quantVagaGaragem = :quantVagaGaragem or i.quantBanheiro = :quantBanheiro or 
+                    i.quantVagaGaragem = :quantVagaGaragem or i.quantBanheiro = :quantBanheiro) and 
                     (:precoMin < i.precoImovel and i.precoImovel < :precoMax)");
 
             $compare->bindParam(":idTipoImovel", $idTipoImovel, PDO::PARAM_INT);
