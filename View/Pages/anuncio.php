@@ -25,13 +25,21 @@
 <link rel="stylesheet" href="anuncio.css" type="text/css" />
 <link rel="stylesheet" href="/corretora/Config/JS/jquery.fancybox/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
     <div class="container-fluid">
-        <h1>Detalhes do anúncio:</h1>
         <br>
         <!-- Englobar o form e esse titulo abaixo em uma div para colocar o mapa na frente -->
-        <h4>Detalhes do imóvel:</h4>
         <div class="row">
-            <div class="col-md-6">
-                <form>
+            <div class="offset-md-1 col-md-6">
+            <div class="form-group">
+                <h1>Detalhes do anúncio:</h1>
+            </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-md-1 col-md-6">
+                <div class="form-group">
+                    <h4><b>Detalhes do imóvel:</b></h4>
+                </div>
+
                     <div class="form-group row">
                         <label for="codigoImovelAnuncio" class="col-sm-3 col-form-label"><i class="fa fa-code"></i> Código do imóvel: </label>
                         <div class="col-sm-9">
@@ -100,7 +108,7 @@
                     </div>
                     <br>
 
-                    <h4>Localização:</h4>
+                    <h4><b>Localização:</b></h4>
                     <div class="form-group row">
                         <label for="enderecoImovel" class="col-sm-3 col-form-label"><i class="fa fa-map-marker-alt"></i> Endereço: </label>
                         <div class="col-sm-9">
@@ -110,7 +118,13 @@
                     </div>
                     <br>
 
-                    <h4>Detalhes do Anunciante:</h4>
+            </div>
+
+
+            
+            <div class="col-md-5">
+
+                    <h4><b>Detalhes do Anunciante:</b></h4>
                     <div class="form-group row">
                         <label for="nomeAnunciante" class="col-sm-3 col-form-label"><i class="fa fa-user"></i> Nome: </label>
                         <div class="col-sm-9">
@@ -141,14 +155,7 @@
                         </div>
                     </div>
 
-                    
-                </form>
-            </div>
-
-
-            
-            <div class="col-md-6">
-                <h4>Imagens do imóvel:</h4>
+                <h4><b>Imagens do imóvel:</b></h4>
                 <p>Clique nas imagens para visualizá-las.</p>
                 <div class="gallery" id="gallery">
                     <?php foreach($imagens as $imagem) { ?>
