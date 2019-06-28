@@ -58,13 +58,12 @@
             return $count->fetch(PDO::FETCH_ASSOC);
         }
 
-        public function updateAprovacao($idImovel, $idPrioridade, $idAnuncio, $idUsuario){
+        public function updateAprovacao($idImovel, $idPrioridade, $idAnuncio){
             $update = $this->bd->prepare("UPDATE anuncio SET idImovel = :idImovel, verificado = 1, 
-                idPrioridade = :idPrioridade, idUsuario = :idUsuario WHERE idAnuncio = :idAnuncio");
+                idPrioridade = :idPrioridade WHERE idAnuncio = :idAnuncio");
             $update->bindParam(":idImovel", $idImovel);
             $update->bindParam(":idPrioridade", $idPrioridade);
-            $update->bindParam(":idAnuncio", $idAnuncio);
-            $update->bindParam(":idUsuario", $idUsuario);          
+            $update->bindParam(":idAnuncio", $idAnuncio);         
             $update->execute();
         }
 

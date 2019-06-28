@@ -72,9 +72,7 @@
         $idImovel = $_POST['idImovel'];
         $idPrioridade = $_POST['idPrioridade'];
 
-        $idUsuario = $_SESSION['idUsuario'];
-
-        $anuncio->updateAprovacao($idImovel, $idPrioridade, $idAnuncio, $idUsuario);
+        $anuncio->updateAprovacao($idImovel, $idPrioridade, $idAnuncio);
 
         
     }
